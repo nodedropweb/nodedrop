@@ -7,7 +7,7 @@ title: "Getting Started"
 import { PlatformProvider, PlatformSelectorButton, PlatformItem } from "@site/src/components/platformcontext";
 import { Kbd } from "@site/src/components/kbd";
 
-Wave Terminal is a modern terminal that includes graphical capabilities like web browsing, file previews, and AI assistance alongside traditional terminal features. This guide will help you get started.
+NodeDrop Terminal is a modern terminal that includes graphical capabilities like web browsing, file previews, and AI assistance alongside traditional terminal features. This guide will help you get started.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Wave Terminal is a modern terminal that includes graphical capabilities like web
 
 :::note
 
-ARM64 is planned, but is currently blocked by upstream dependencies (see [Windows ARM Support](https://github.com/wavetermdev/waveterm/issues/928)).
+ARM64 is planned, but is currently blocked by upstream dependencies (see [Windows ARM Support](https://github.com/nodedropweb/nodedrop/issues/928)).
 
 :::
 
@@ -43,47 +43,27 @@ ARM64 is planned, but is currently blocked by upstream dependencies (see [Window
 
 </PlatformItem>
 
-### Package managers
+### Download
 
-<PlatformItem platforms={["mac"]}>
-
-#### Homebrew
-
-```bash
-brew install --cask wave
-```
-
-</PlatformItem>
+NodeDrop Terminal is distributed through the [Releases page](https://github.com/nodedropweb/nodedrop/releases).
 
 <PlatformItem platforms={["windows"]}>
 
-#### Windows Package Manager
+Download `NodeDrop-win32-x64-<version>.exe` (installer) or the `.zip` (portable version). Compare the SHA-256 checksum with the one in `SHA256SUMS.txt` before you run the file.
 
-```powershell
-winget install CommandLine.Wave
-```
+:::note
 
-#### Chocolatey
+The current releases are not code-signed yet, so Windows SmartScreen or Smart App Control can warn you or block the start.
 
-```powershell
-choco install wave
-```
+:::
 
 </PlatformItem>
 
-<PlatformItem platforms={["linux"]}>
+<PlatformItem platforms={["mac", "linux"]}>
 
-#### Snap
-
-```bash
-sudo snap install --classic waveterm
-```
-
-Other options available: [AUR package](https://aur.archlinux.org/packages/waveterm) (community maintained), [Nix package](https://search.nixos.org/packages?channel=unstable&show=waveterm) (community maintained)
+There are no prebuilt packages for macOS and Linux yet. You can build NodeDrop from source, see [BUILD.md](https://github.com/nodedropweb/nodedrop/blob/main/BUILD.md).
 
 </PlatformItem>
-
-You can also download installers directly from our [Downloads page](https://www.waveterm.dev/download).
 
 ## Core Concepts
 
@@ -99,7 +79,7 @@ You can also download installers directly from our [Downloads page](https://www.
 
    - Works with common shells (bash, zsh, fish)
    - Supports standard terminal features (readline, control sequences, etc)
-   - Includes the `wsh` command for interacting with Wave's GUI features
+   - Includes the `ndsh` command for interacting with NodeDrop's GUI features
    - GPU accelerated (on most platforms)
 
 2. **Graphical Widgets**
@@ -118,7 +98,7 @@ You can also download installers directly from our [Downloads page](https://www.
 
 1. **Open Your First New Tab**
 
-   - New Wave tabs start with a single terminal block
+   - New NodeDrop tabs start with a single terminal block
    - Use it just like your regular terminal
    - Create additional terminal blocks with <Kbd k="Cmd:n"/>
 
@@ -126,13 +106,13 @@ You can also download installers directly from our [Downloads page](https://www.
 
    ```bash
    # View a file or directory
-   wsh view ~/Documents
+   ndsh view ~/Documents
 
    # Open a webpage
-   wsh web open github.com
+   ndsh web open github.com
 
    # Get AI assistance
-   wsh ai -m "how do I find large files in my current directory?" -s
+   ndsh ai -m "how do I find large files in my current directory?" -s
    ```
 
 3. **Customize Your Layout**
@@ -152,13 +132,12 @@ You can also download installers directly from our [Downloads page](https://www.
 - Explore [Key Bindings](./keybindings) to work more efficiently
 - Learn about [Tab Layouts](./layout) to organize your workspace
 - Set up [Custom Widgets](./customwidgets) for quick access to your tools
-- Configure [Wave AI](./waveai) to use your preferred AI models
+- Configure [NodeDrop AI](./waveai) to use your preferred AI models
 - Check out [Configuration](./config) for detailed customization options
 
 ## Getting Help
 
-- Join our [Discord community](https://discord.gg/XfvZ334gwU) for help and discussions
-- Report issues on [GitHub](https://github.com/wavetermdev/waveterm/issues)
+- Report issues on [GitHub](https://github.com/nodedropweb/nodedrop/issues)
 - Check our [FAQ](./faq) for common questions
 
 </PlatformProvider>

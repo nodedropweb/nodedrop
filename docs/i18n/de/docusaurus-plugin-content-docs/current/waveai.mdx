@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1.5
 id: "waveai"
-title: "Wave AI"
+title: "NodeDrop AI"
 ---
 
 import { Kbd } from "@site/src/components/kbd";
@@ -44,12 +44,12 @@ Ziehe Dateien auf das KI-Panel, um sie anzuhängen (nicht bei allen Modellen unt
 
 ## CLI-Integration
 
-Nutze `wsh ai`, um Dateien und Prompts von der Kommandozeile aus zu senden:
+Nutze `ndsh ai`, um Dateien und Prompts von der Kommandozeile aus zu senden:
 
 ```bash
-git diff | wsh ai -                          # An die KI weiterleiten
-wsh ai main.go -m "find bugs"                # Dateien mit Nachricht anhängen
-wsh ai $(tail -n 500 my.log) -m "review" -s  # Automatisch mit Ausgabe absenden
+git diff | ndsh ai -                          # An die KI weiterleiten
+ndsh ai main.go -m "find bugs"                # Dateien mit Nachricht anhängen
+ndsh ai $(tail -n 500 my.log) -m "review" -s  # Automatisch mit Ausgabe absenden
 ```
 
 Unterstützt Textdateien, Bilder, PDFs und Verzeichnisse. Nutze `-n` für einen neuen Chat, `-s` zum automatischen Absenden.
@@ -76,30 +76,28 @@ Dateisystemoperationen erfordern eine ausdrückliche Freigabe. Du behältst die 
 
 ## Lokale Modelle & BYOK
 
-Wave AI unterstützt die Nutzung eigener KI-Modelle und API-Schlüssel:
+NodeDrop AI unterstützt die Nutzung eigener KI-Modelle und API-Schlüssel:
 
 - **Lokale Modelle**: Betreibe KI-Modelle lokal mit [Ollama](https://ollama.ai), [LM Studio](https://lmstudio.ai), [vLLM](https://docs.vllm.ai) und anderen OpenAI-kompatiblen Servern
 - **BYOK (Bring Your Own Key)**: Nutze deine eigenen API-Schlüssel mit OpenAI, OpenRouter, Google AI (Gemini), Azure OpenAI und anderen Cloud-Anbietern
 - **Mehrere Modi**: Konfiguriere mehrere KI-Anbieter und -Modelle und wechsle zwischen ihnen
 - **Datenschutz**: Behalte deine Daten lokal oder nutze deinen bevorzugten Cloud-Anbieter
 
+Um ein Modell hinzuzufügen, öffne **Einstellungen → NodeDrop-AI-Modi** und wähle **Modell hinzufügen (Assistent)**. Der Assistent erklärt, was möglich ist, fragt die Werte Schritt für Schritt ab und schreibt die Konfiguration für dich. Du musst also kein JSON von Hand bearbeiten.
+
 Die vollständige Anleitung zu Konfiguration, Beispielen und Fehlerbehebung findest du im [**Leitfaden zu lokalen Modellen & BYOK**](./waveai-modes.mdx).
 
 ## Datenschutz
 
-**Standard-Wave-AI-Dienst:**
-- Nachrichten werden über den Wave-Cloud-AI-Dienst weitergeleitet (betrieben mit den APIs von OpenAI). Details zum Umgang mit deinen Daten findest du in der Datenschutzerklärung von OpenAI.
-- Wave speichert deine Chats und Anhänge nicht und nutzt sie nicht zum Training
-- Nutzungszähler sind in der anonymen Telemetrie enthalten
-- Dateizugriff erfordert eine ausdrückliche Freigabe
+NodeDrop betreibt keinen eigenen KI-Dienst und leitet deine Nachrichten nicht weiter.
 
-**Lokale Modelle & BYOK:**
-- Bei Nutzung lokaler Modelle verlassen deine Chatdaten niemals deinen Rechner
-- Bei Nutzung von BYOK mit Cloud-Anbietern werden Anfragen direkt an den von dir gewählten Anbieter gesendet
-- Details zum Umgang mit deinen Daten findest du in der Datenschutzerklärung deines Anbieters
+- **Lokale Modelle**: Deine Chatdaten verlassen niemals deinen Rechner.
+- **BYOK**: Anfragen gehen direkt von deinem Rechner an den von dir gewählten Anbieter. Details zum Umgang mit deinen Daten findest du in der Datenschutzerklärung deines Anbieters.
+- Dateizugriff erfordert eine ausdrückliche Freigabe.
+- API-Schlüssel liegen im Secret-Speicher deines Betriebssystems, nicht in der Konfigurationsdatei.
 
 :::info In aktiver Entwicklung
-Wave AI befindet sich in einer aktiven Beta-Phase mit enthaltenem KI-Guthaben, während wir die Erfahrung weiter verfeinern. Teile dein Feedback in unserem [Discord](https://discord.gg/XfvZ334gwU).
+NodeDrop AI befindet sich in aktiver Entwicklung. Teile dein Feedback in den [GitHub-Diskussionen](https://github.com/nodedropweb/nodedrop/discussions).
 
 **Demnächst:**
 - **Remote-Dateizugriff**: Dateien auf per SSH verbundenen Systemen lesen

@@ -1,34 +1,44 @@
 ---
 sidebar_position: 1.6
 id: "waveai-modes"
-title: "Wave AI (Local Models + BYOK)"
+title: "NodeDrop AI (Local Models + BYOK)"
 ---
 
 import { VersionBadge } from "@site/src/components/versionbadge";
 
 <VersionBadge version="v0.13" noLeftMargin={true}/>
 
-Wave AI supports custom AI modes that allow you to use local models, custom API endpoints, and alternative AI providers. This gives you complete control over which models and providers you use with Wave's AI features.
+NodeDrop AI supports custom AI modes that allow you to use local models, custom API endpoints, and alternative AI providers. This gives you complete control over which models and providers you use with NodeDrop's AI features.
+
+## Setup wizard (recommended)
+
+The easiest way to add a model is the setup wizard. You do not have to edit JSON, so there are no typos in the configuration.
+
+1. Click the settings (gear) icon in the widget bar and choose "Settings".
+2. Open "NodeDrop AI Modes" in the sidebar. The **Visual** tab shows your models.
+3. Click **Add model (wizard)** and follow the steps: overview, provider, details, API key, summary.
+
+The wizard supports OpenAI, OpenRouter, Groq, NanoGPT, Google Gemini, Azure OpenAI (current and legacy API), local servers (Ollama, LM Studio, vLLM) and any other OpenAI-compatible service. It checks required fields, stores your API key in the secret store (never in `waveai.json`) and can set the new model as your default. Existing models can be edited or deleted from the same list. The **Raw JSON** tab remains available for advanced settings.
 
 ## Configuration Overview
 
-AI modes are configured in `~/.config/waveterm/waveai.json`.
+AI modes are configured in `~/.config/nodedrop/waveai.json`.
 
 **To edit using the UI:**
 1. Click the settings (gear) icon in the widget bar
 2. Select "Settings" from the menu
-3. Choose "Wave AI Modes" from the settings sidebar
+3. Choose "NodeDrop AI Modes" from the settings sidebar
 
 **Or launch from the command line:**
 ```bash
-wsh editconfig waveai.json
+ndsh editconfig waveai.json
 ```
 
 Each mode defines a complete AI configuration including the model, API endpoint, authentication, and display properties.
 
 ## Provider-Based Configuration
 
-Wave AI now supports provider-based configuration which automatically applies sensible defaults for common providers. By specifying the `ai:provider` field, you can significantly simplify your configuration as the system will automatically set up endpoints, API types, and secret names.
+NodeDrop AI now supports provider-based configuration which automatically applies sensible defaults for common providers. By specifying the `ai:provider` field, you can significantly simplify your configuration as the system will automatically set up endpoints, API types, and secret names.
 
 ### Supported Providers
 
@@ -43,19 +53,19 @@ Wave AI now supports provider-based configuration which automatically applies se
 
 ### Supported API Types
 
-Wave AI supports the following API types:
+NodeDrop AI supports the following API types:
 
 - **`openai-chat`**: Uses the `/v1/chat/completions` endpoint (most common)
 - **`openai-responses`**: Uses the `/v1/responses` endpoint (modern API for GPT-5+ models)
 - **`google-gemini`**: Google's Gemini API format (automatically set when using `ai:provider: "google"`, not typically used directly)
 
-## Global Wave AI Settings
+## Global NodeDrop AI Settings
 
-You can configure global Wave AI behavior in your Wave Terminal settings (separate from the mode configurations in `waveai.json`).
+You can configure global NodeDrop AI behavior in your NodeDrop Terminal settings (separate from the mode configurations in `waveai.json`).
 
 ### Setting a Default AI Mode
 
-After configuring a local model or custom mode, you can make it the default by setting `waveai:defaultmode` in your Wave Terminal settings.
+After configuring a local model or custom mode, you can make it the default by setting `waveai:defaultmode` in your NodeDrop Terminal settings.
 
 :::important
 Use the **mode key** (the key in your `waveai.json` configuration), not the display name. For example, use `"ollama-llama"` (the key), not `"Ollama - Llama 3.3"` (the display name).
@@ -63,7 +73,7 @@ Use the **mode key** (the key in your `waveai.json` configuration), not the disp
 
 **Using the settings command:**
 ```bash
-wsh setconfig waveai:defaultmode="ollama-llama"
+ndsh setconfig waveai:defaultmode="ollama-llama"
 ```
 
 **Or edit settings.json directly:**
@@ -74,30 +84,15 @@ wsh setconfig waveai:defaultmode="ollama-llama"
   "waveai:defaultmode": "ollama-llama"
 ```
 
-This will make the specified mode the default selection when opening Wave AI features.
+This will make the specified mode the default selection when opening NodeDrop AI features.
 
 :::note
-Wave AI normally requires telemetry to be enabled. However, if you configure your own custom model (local or BYOK) and set `waveai:defaultmode` to that custom mode's key, you will not receive telemetry requirement messages. This allows you to use Wave AI features completely privately with your own models. <VersionBadge version="v0.13.1"/>
+NodeDrop AI does not need telemetry or an account. Telemetry is off by default. If you have not set `waveai:defaultmode`, the AI panel asks you to configure a model first.
 :::
 
-### Hiding Wave Cloud Modes
+### Built-in cloud modes
 
-If you prefer to use only your local or custom models and want to hide Wave's cloud AI modes from the mode dropdown, set `waveai:showcloudmodes` to `false`:
-
-**Using the settings command:**
-```bash
-wsh setconfig waveai:showcloudmodes=false
-```
-
-**Or edit settings.json directly:**
-1. Click the settings (gear) icon in the widget bar
-2. Select "Settings" from the menu
-3. Add the `waveai:showcloudmodes` key to your settings.json:
-```json
-  "waveai:showcloudmodes": false
-```
-
-This will hide Wave's built-in cloud AI modes, showing only your custom configured modes.
+The cloud AI modes of the original Wave Terminal (`waveai@quick`, `waveai@balanced`, `waveai@deep`) need a service that NodeDrop does not operate. They are hidden by default (`waveai:showcloudmodes` is `false`) and cannot be used. Add your own models instead.
 
 ## Local Model Examples
 
@@ -226,7 +221,7 @@ If you provide only the baseurl, you are likely to get a 404 message.
 }
 ```
 
-The `ai:apitokensecretname` should be the name of an environment variable that contains your API key. Set this environment variable before running Wave Terminal.
+The `ai:apitokensecretname` should be the name of an environment variable that contains your API key. Set this environment variable before running NodeDrop Terminal.
 
 
 ### OpenRouter
@@ -397,7 +392,7 @@ For Azure Legacy provider, you must manually specify `ai:capabilities` based on 
 
 ## Using Secrets for API Keys
 
-Instead of storing API keys directly in the configuration, you should use Wave's secret store to keep your credentials secure. Secrets are stored encrypted using your system's native keychain.
+Instead of storing API keys directly in the configuration, you should use NodeDrop's secret store to keep your credentials secure. Secrets are stored encrypted using your system's native keychain.
 
 ### Storing an API Key
 
@@ -410,8 +405,8 @@ Instead of storing API keys directly in the configuration, you should use Wave's
 
 **Or from the command line:**
 ```bash
-wsh secret set OPENAI_KEY=sk-xxxxxxxxxxxxxxxx
-wsh secret set OPENROUTER_KEY=sk-xxxxxxxxxxxxxxxx
+ndsh secret set OPENAI_KEY=sk-xxxxxxxxxxxxxxxx
+ndsh secret set OPENROUTER_KEY=sk-xxxxxxxxxxxxxxxx
 ```
 
 ### Referencing the Secret
@@ -463,7 +458,7 @@ You can define multiple AI modes and switch between them easily:
 
 ### Connection Issues
 
-If Wave can't connect to your model server:
+If NodeDrop can't connect to your model server:
 
 1. **For cloud providers with `ai:provider` set**: Ensure you have the correct secret stored (e.g., `OPENAI_KEY`, `OPENROUTER_KEY`)
 2. **For local/custom endpoints**: Verify the server is running (`curl http://localhost:11434/v1/models` for Ollama)
@@ -559,7 +554,7 @@ The `ai:capabilities` field specifies what features the AI mode supports:
 - **OpenRouter, NanoGPT, Groq, Azure, Azure-Legacy, and Custom providers**: You must manually specify capabilities based on your model's features.
 
 :::warning
-If you don't include `"tools"` in the `ai:capabilities` array, the AI model will not be able to interact with your Wave terminal widgets, read/write files, or execute commands. Most AI modes should include `"tools"` for the best Wave experience.
+If you don't include `"tools"` in the `ai:capabilities` array, the AI model will not be able to interact with your NodeDrop terminal widgets, read/write files, or execute commands. Most AI modes should include `"tools"` for the best NodeDrop experience.
 :::
 
 Most models support `tools` and can benefit from it. Vision-capable models should include `images`. Not all models support PDFs, so only include `pdfs` if your model can process them.

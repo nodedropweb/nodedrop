@@ -13,19 +13,19 @@ import { VersionBadge, DeprecatedBadge } from "@site/src/components/versionbadge
 <PlatformSelectorButton />
 <div style={{ marginBottom: 20 }}></div>
 
-Waves Konfigurationsdateien befinden sich unter `~/.config/waveterm/`.
+NodeDrops Konfigurationsdateien befinden sich unter `~/.config/nodedrop/`.
 
-Die Hauptkonfigurationsdatei ist `settings.json` (`~/.config/waveterm/settings.json`).
+Die Hauptkonfigurationsdatei ist `settings.json` (`~/.config/nodedrop/settings.json`).
 
 Die Datei ist als weitgehend flaches JSON strukturiert. Statt Unterobjekten nutzen wir bevorzugt
 ":" als Ebenentrenner.
 
 :::info
 
-Der einfachste Weg, deine Konfigurationsdateien zu bearbeiten, ist der Befehl wsh editconfig, der deine Wave-Konfigurationsdatei in unserem integrierten Vorschau-Editor öffnet.
+Der einfachste Weg, deine Konfigurationsdateien zu bearbeiten, ist der Befehl ndsh editconfig, der deine NodeDrop-Konfigurationsdatei in unserem integrierten Vorschau-Editor öffnet.
 
 ```
-wsh editconfig
+ndsh editconfig
 ```
 
 :::
@@ -34,12 +34,12 @@ wsh editconfig
 
 | Schlüsselname                             | Typ     | Funktion                                                                                                                                                                                                                                                      |
 | ------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app:globalhotkey                     | string   | Eine systemweite Tastenkombination, um dein zuletzt genutztes Wave-Fenster zu öffnen. Eine Reihe von Tastennamen, getrennt durch `:`. Weitere Infos unter [Anpassbare systemweite globale Tastenkombination](#anpassbare-systemweite-globale-tastenkombination)                                                 |
-| app:dismissarchitecturewarning       | bool     | Deaktiviert Warnungen beim App-Start, wenn du eine nicht-native Architektur für Wave nutzt. Weitere Infos unter [Warum warnt mich Wave beim Start vor der ARM64-Übersetzung?](./faq#why-does-wave-warn-me-about-arm64-translation-when-it-launches).              |
+| app:globalhotkey                     | string   | Eine systemweite Tastenkombination, um dein zuletzt genutztes NodeDrop-Fenster zu öffnen. Eine Reihe von Tastennamen, getrennt durch `:`. Weitere Infos unter [Anpassbare systemweite globale Tastenkombination](#anpassbare-systemweite-globale-tastenkombination)                                                 |
+| app:dismissarchitecturewarning       | bool     | Deaktiviert Warnungen beim App-Start, wenn du eine nicht-native Architektur für NodeDrop nutzt. Weitere Infos unter [Warum warnt mich NodeDrop beim Start vor der ARM64-Übersetzung?](./faq#why-does-wave-warn-me-about-arm64-translation-when-it-launches).              |
 | app:defaultnewblock                  | string   | Legt den standardmäßigen neuen Block fest (Cmd:n, Cmd:d). "term" für Terminal-Block, "launcher" für Launcher-Block (Standard = "term")                                                                                                                                        |
 | app:showoverlayblocknums             | bool     | Auf false setzen, um das Blocknummern-Overlay zu deaktivieren, das beim Halten von Strg+Umschalt erscheint (Standard true)                                                                                                                                           |
 | app:ctrlvpaste                       | bool     | Unter Windows/Linux nutzt der Wert null (Standard) Strg+V nur unter Windows. Auf true setzen, um Strg+V auf allen Nicht-macOS-Plattformen zu erzwingen, false, um das Tastenkürzel zu deaktivieren. macOS nutzt unabhängig von dieser Einstellung immer Cmd+V                                     |
-| app:confirmquit <VersionBadge version="v0.14" />                     | bool     | Auf false setzen, um den Bestätigungsdialog beim Beenden von Wave Terminal zu deaktivieren (Standard true, erfordert App-Neustart)                                                                                                                                      |
+| app:confirmquit <VersionBadge version="v0.14" />                     | bool     | Auf false setzen, um den Bestätigungsdialog beim Beenden von NodeDrop Terminal zu deaktivieren (Standard true, erfordert App-Neustart)                                                                                                                                      |
 | app:hideaibutton <VersionBadge version="v0.14" />                    | bool     | Auf true setzen, um den KI-Button in der Tableiste auszublenden (Standard false)                                                                                                                                                                                          |
 | app:disablectrlshiftarrows <VersionBadge version="v0.14" />          | bool     | Auf true setzen, um die Strg+Umschalt-Block-Navigations-Tastenkombinationen (`Arrow` und `h/j/k/l`) zu deaktivieren (Standard false)                                                                                                                                                    |
 | app:disablectrlshiftdisplay <VersionBadge version="v0.14" />         | bool     | Auf true setzen, um die visuelle Strg+Umschalt-Anzeige zu deaktivieren (Standard false)                                                                                                                                                                            |
@@ -50,14 +50,14 @@ wsh editconfig
 | ai:baseurl                           | string   | Legt die KI-Basis-URL fest (muss OpenAI-kompatibel sein)                                                                                                                                                                                                               |
 | ai:apitoken                          | string   | dein KI-API-Token                                                                                                                                                                                                                                             |
 | ai:apitype                           | string   | Standard ist "open_ai", kann aber auch auf "azure" (für spezielle Azure-AI-Behandlung), "anthropic" oder "perplexity" gesetzt werden                                                                                                                                               |
-| ai:name                              | string   | in der Wave-AI-Block-Kopfzeile angezeigter Text                                                                                                                                                                                                                 |
+| ai:name                              | string   | in der NodeDrop-AI-Block-Kopfzeile angezeigter Text                                                                                                                                                                                                                 |
 | ai:model                             | string   | an die API zu übergebender Modellname                                                                                                                                                                                                                                     |
 | ai:apiversion                        | string   | nur für Azure AI (wenn apitype "azure" ist, ist der Standard "2023-05-15")                                                                                                                                                                                                |
 | ai:orgid                             | string   |                                                                                                                                                                                                                                                               |
 | ai:maxtokens                         | int      | maximale Tokenanzahl für die API                                                                                                                                                     |
 | ai:timeoutms                         | int      | Timeout (in Millisekunden) für KI-Aufrufe                                                                                                                                        |
 | ai:proxyurl                          | string   | HTTP-Proxy-URL für KI-API-Anfragen (gilt nicht für Wave Cloud AI)                                                                                                                          |
-| conn:askbeforewshinstall             | bool     | auf false setzen, um das Popup zu deaktivieren, das fragt, ob du wsh-Erweiterungen auf neuen Rechnern installieren möchtest                                                                                                                                                                    |
+| conn:askbeforewshinstall             | bool     | auf false setzen, um das Popup zu deaktivieren, das fragt, ob du ndsh-Erweiterungen auf neuen Rechnern installieren möchtest                                                                                                                                                                    |
 | conn:localhostdisplayname <VersionBadge version="v0.14" />           | string   | überschreibt den Anzeigenamen für localhost in der UI (z. B. auf "Mein Laptop" oder "Lokal" setzen, oder auf einen leeren String setzen, um den Namen auszublenden)                                                                                                                                                                       |
 | term:fontsize                        | float    | die Schriftgröße für den Terminal-Block                                                                                                                                                                                                                           |
 | term:fontfamily                      | string   | für den Terminal-Block zu nutzende Schriftart                                                                                                                                                                                                                         |
@@ -138,7 +138,7 @@ Als Referenz, dies ist die aktuelle Standardkonfiguration (v0.14.0):
     "conn:askbeforewshinstall": true,
     "conn:wshenabled": true,
     "editor:minimapenabled": true,
-    "web:defaulturl": "https://github.com/wavetermdev/waveterm",
+    "web:defaulturl": "https://github.com/nodedropweb/nodedrop",
     "web:defaultsearch": "https://www.google.com/search?q={query}",
     "window:tilegapsize": 3,
     "window:maxtabcachesize": 10,
@@ -150,7 +150,7 @@ Als Referenz, dies ist die aktuelle Standardkonfiguration (v0.14.0):
     "window:magnifiedblockblursecondarypx": 2,
     "window:confirmclose": true,
     "window:savelastwindow": true,
-    "telemetry:enabled": true,
+    "telemetry:enabled": false,
     "term:bellsound": false,
     "term:bellindicator": false,
     "term:osc52": "always",
@@ -158,23 +158,22 @@ Als Referenz, dies ist die aktuelle Standardkonfiguration (v0.14.0):
     "term:cursorblink": false,
     "term:copyonselect": true,
     "term:durable": false,
-    "waveai:showcloudmodes": true,
-    "waveai:defaultmode": "waveai@balanced",
+    "waveai:showcloudmodes": false,
     "preview:defaultsort": "name"
 }
 ```
 
 :::warning
 
-Wenn du Wave vor v0.9.0 installiert hast, befindet sich deine Konfigurationsdatei unter
-`~/.waveterm/config/settings.json`. Das gilt auch für alle anderen Konfigurationsdateien:
+Wenn du NodeDrop vor v0.9.0 installiert hast, befindet sich deine Konfigurationsdatei unter
+`~/.nodedrop/config/settings.json`. Das gilt auch für alle anderen Konfigurationsdateien:
 `termthemes.json`, `presets.json` und `widgets.json`.
 
 :::
 
 ## Auflösung von Umgebungsvariablen
 
-Um Secrets nicht direkt in Konfigurationsdateien zu speichern, unterstützt Wave die Auflösung von Umgebungsvariablen über die Syntax `$ENV:VARIABLE_NAME` oder `$ENV:VARIABLE_NAME:fallback`. Dies funktioniert für jeden String-Wert in jeder Konfigurationsdatei (settings.json, presets.json, ai.json usw.).
+Um Secrets nicht direkt in Konfigurationsdateien zu speichern, unterstützt NodeDrop die Auflösung von Umgebungsvariablen über die Syntax `$ENV:VARIABLE_NAME` oder `$ENV:VARIABLE_NAME:fallback`. Dies funktioniert für jeden String-Wert in jeder Konfigurationsdatei (settings.json, presets.json, ai.json usw.).
 
 ```json
 {
@@ -224,13 +223,13 @@ Jedes Lesezeichen folgt dieser Struktur (nur `url` ist erforderlich):
     "title": "Claude AI"
   },
   "bookmark@wave": {
-    "url": "https://waveterm.dev",
-    "title": "Wave Terminal",
+    "url": "https://github.com/nodedropweb/nodedrop",
+    "title": "NodeDrop Terminal",
     "display:order": -1
   },
   "bookmark@wave-github": {
-    "url": "https://github.com/wavetermdev/waveterm",
-    "title": "Wave Github",
+    "url": "https://github.com/nodedropweb/nodedrop",
+    "title": "NodeDrop Github",
     "iconurl": "https://github.githubassets.com/favicons/favicon-dark.png"
   },
   "bookmark@chatgpt": {
@@ -238,8 +237,8 @@ Jedes Lesezeichen folgt dieser Struktur (nur `url` ist erforderlich):
     "iconurl": "https://cdn.oaistatic.com/assets/favicon-miwirzcw.ico"
   },
   "bookmark@wave-pulls": {
-    "url": "https://github.com/wavetermdev/waveterm/pulls",
-    "title": "Wave Pull Requests",
+    "url": "https://github.com/nodedropweb/nodedrop/pulls",
+    "title": "NodeDrop Pull Requests",
     "iconurl": "https://github.githubassets.com/favicons/favicon-dark.png"
   }
 }
@@ -254,17 +253,17 @@ Jedes Lesezeichen folgt dieser Struktur (nur `url` ist erforderlich):
 
 ## Terminal-Theming
 
-Benutzerdefinierte Terminal-Themes befinden sich unter `~/.config/waveterm/termthemes.json`.
+Benutzerdefinierte Terminal-Themes befinden sich unter `~/.config/nodedrop/termthemes.json`.
 
 Diese JSON-Datei ist als Objekt strukturiert, wobei jeder Unterschlüssel ein Theme definiert.
 Themes werden angewendet, indem du mit der rechten Maustaste auf die Kopfzeile des Terminals klickst und einen Eintrag aus dem Untermenü "Themes" auswählst. Alternativ können sie auf
 den Metadaten-Schlüssel `term:theme` des Blocks angewendet werden. Dabei wird der JSON-Schlüsselwert als Bezeichner genutzt. Beachte, dass für beste Konsistenz alle Farben im Format "#rrggbb" oder "#rrggbbaa" (aa = Alphakanal für Transparenz) angegeben werden sollten.
 
 ```
-wsh setmeta this term:theme="default-dark"
+ndsh setmeta this term:theme="default-dark"
 ```
 
-Hier ist ein Beispiel für die Definition eines vollständigen Terminal-Themes. Alle integrierten Themes sind hier definiert: https://github.com/wavetermdev/waveterm/blob/main/pkg/wconfig/defaultconfig/termthemes.json (wenn du ein beliebtes Terminal-Theme hinzufügen möchtest, reiche bitte einen PR ein!)
+Hier ist ein Beispiel für die Definition eines vollständigen Terminal-Themes. Alle integrierten Themes sind hier definiert: https://github.com/nodedropweb/nodedrop/blob/main/pkg/wconfig/defaultconfig/termthemes.json (wenn du ein beliebtes Terminal-Theme hinzufügen möchtest, reiche bitte einen PR ein!)
 
 ```json
 {
@@ -302,7 +301,7 @@ Hier ist ein Beispiel für die Definition eines vollständigen Terminal-Themes. 
 Du kannst die Konfigurationsdatei termthemes.json einfach öffnen, indem du Folgendes ausführst:
 
 ```
-wsh editconfig termthemes.json
+ndsh editconfig termthemes.json
 ```
 
 :::
@@ -336,11 +335,11 @@ wsh editconfig termthemes.json
 
 ## Anpassbare systemweite globale Tastenkombination
 
-Wave erlaubt es, eine benutzerdefinierte globale Tastenkombination festzulegen, um von überall auf deinem Computer dein zuletzt genutztes Fenster zu öffnen. Diese heißt `"app:globalhotkey"` in der `settings.json`-Datei und besteht aus einer Reihe von Tastennamen, getrennt durch das Zeichen `:`.
+NodeDrop erlaubt es, eine benutzerdefinierte globale Tastenkombination festzulegen, um von überall auf deinem Computer dein zuletzt genutztes Fenster zu öffnen. Diese heißt `"app:globalhotkey"` in der `settings.json`-Datei und besteht aus einer Reihe von Tastennamen, getrennt durch das Zeichen `:`.
 
 ### Beispiele
 
-Als praktisches Beispiel: Angenommen, du möchtest `F5` als globale Tastenkombination nutzen. Dann kannst du einfach den Wert von `"app:globalhotkey"` auf `"F5"` setzen und Wave neu starten, damit dies deine globale Tastenkombination wird.
+Als praktisches Beispiel: Angenommen, du möchtest `F5` als globale Tastenkombination nutzen. Dann kannst du einfach den Wert von `"app:globalhotkey"` auf `"F5"` setzen und NodeDrop neu starten, damit dies deine globale Tastenkombination wird.
 
 Als weniger praktisches Beispiel: Angenommen, du nutzt die Kombination der Tasten `Ctrl`, `Option` und `e`. Dann wäre der Wert für diese Tastenkombination `"Ctrl:Option:e"`.
 

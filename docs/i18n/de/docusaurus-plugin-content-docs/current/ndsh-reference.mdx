@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4.1
-id: "wsh-reference"
-title: "wsh-Referenz"
+id: "ndsh-reference"
+title: "ndsh-Referenz"
 ---
 
 import { Kbd } from "@site/src/components/kbd";
@@ -10,11 +10,11 @@ import { VersionBadge } from "@site/src/components/versionbadge";
 
 <PlatformProvider>
 
-# wsh-Befehl
+# ndsh-Befehl
 
-Der Befehl `wsh` ist in Wave-Blöcken immer verfügbar. Er ist ein leistungsstarkes Werkzeug zur Interaktion mit Wave-Blöcken und kann Daten zwischen deiner CLI und den Widget-Oberflächen austauschen.
+Der Befehl `ndsh` ist in NodeDrop-Blöcken immer verfügbar. Er ist ein leistungsstarkes Werkzeug zur Interaktion mit NodeDrop-Blöcken und kann Daten zwischen deiner CLI und den Widget-Oberflächen austauschen.
 
-Dies ist die ausführliche wsh-Referenzdokumentation. Einen Überblick über die `wsh`-Funktionalität findest du in unserer [wsh-Befehlsdokumentation](/wsh).
+Dies ist die ausführliche ndsh-Referenzdokumentation. Einen Überblick über die `ndsh`-Funktionalität findest du in unserer [ndsh-Befehlsdokumentation](/ndsh).
 
 ---
 
@@ -23,39 +23,39 @@ Dies ist die ausführliche wsh-Referenzdokumentation. Einen Überblick über die
 Du kannst einen Vorschau-Block mit dem Inhalt einer beliebigen Datei oder eines Verzeichnisses öffnen, indem du Folgendes ausführst:
 
 ```sh
-wsh view [path]
-wsh view -m [path]           # öffnet in vergrößertem Block
+ndsh view [path]
+ndsh view -m [path]           # öffnet in vergrößertem Block
 ```
 
 Mit diesem Befehl kannst du einfach Bilder, Markdown-Dateien und Verzeichnisse in der Vorschau ansehen. Bei Code-/Textdateien öffnet sich
-ein Codeedit-Block, mit dem du die Datei schnell in Waves integriertem grafischen Editor bearbeiten kannst.
+ein Codeedit-Block, mit dem du die Datei schnell in NodeDrops integriertem grafischen Editor bearbeiten kannst.
 
 ---
 
 ## edit
 
 ```sh
-wsh edit [path]
-wsh edit -m [path]           # öffnet in vergrößertem Block
+ndsh edit [path]
+ndsh edit -m [path]           # öffnet in vergrößertem Block
 ```
 
-Dies öffnet einen Codeedit-Block für die angegebene Datei. Nützlich, um Dateien auf einem lokalen oder entfernten Rechner schnell in Waves grafischem Editor zu bearbeiten. Dieser Befehl kehrt sofort nach dem Öffnen des Blocks zurück.
+Dies öffnet einen Codeedit-Block für die angegebene Datei. Nützlich, um Dateien auf einem lokalen oder entfernten Rechner schnell in NodeDrops grafischem Editor zu bearbeiten. Dieser Befehl kehrt sofort nach dem Öffnen des Blocks zurück.
 
-Für die `$EDITOR`-Integration (z. B. mit `git commit`) siehe [`wsh editor`](#editor), der blockiert, bis der Editor geschlossen wird.
+Für die `$EDITOR`-Integration (z. B. mit `git commit`) siehe [`ndsh editor`](#editor), der blockiert, bis der Editor geschlossen wird.
 
 ---
 
 ## editor
 
 ```sh
-wsh editor [path]
-wsh editor -m [path]         # öffnet in vergrößertem Block
+ndsh editor [path]
+ndsh editor -m [path]         # öffnet in vergrößertem Block
 ```
 
-Dies öffnet einen Codeedit-Block für die angegebene Datei und **blockiert, bis der Editor geschlossen wird**. Nützlich, um deine Umgebungsvariable `$EDITOR` so zu setzen, dass CLI-Tools (z. B. `git commit`, `crontab -e`) Dateien in Waves grafischem Editor öffnen:
+Dies öffnet einen Codeedit-Block für die angegebene Datei und **blockiert, bis der Editor geschlossen wird**. Nützlich, um deine Umgebungsvariable `$EDITOR` so zu setzen, dass CLI-Tools (z. B. `git commit`, `crontab -e`) Dateien in NodeDrops grafischem Editor öffnen:
 
 ```sh
-export EDITOR="wsh editor"
+export EDITOR="ndsh editor"
 ```
 
 Die Datei muss bereits existieren. Nutze `-m`, um den Editor im vergrößerten Modus zu öffnen.
@@ -68,25 +68,25 @@ Du kannst dir die Metadaten eines beliebigen Blocks oder Tabs ansehen, indem du 
 
 ```sh
 # Metadaten für den aktuellen Terminal-Block abrufen
-wsh getmeta
+ndsh getmeta
 
 # Metadaten für Block Nummer 2 abrufen (Blocknummern siehst du bei gedrückter Strg+Umschalt-Taste)
-wsh getmeta -b 2
+ndsh getmeta -b 2
 
 # Metadaten für eine Block-ID abrufen (Block-IDs per Rechtsklick auf eine Block-Kopfzeile "Copy Block Id")
-wsh getmeta -b [blockid]
+ndsh getmeta -b [blockid]
 
 # Metadaten für einen Tab abrufen
-wsh getmeta -b tab
+ndsh getmeta -b tab
 
 # Einen einzelnen Metadaten-Schlüssel ausgeben
-wsh getmeta [-b [blockid]] [key]
+ndsh getmeta [-b [blockid]] [key]
 
 # Eine Reihe von Schlüsseln mit einem bestimmten Präfix ausgeben
-wsh getmeta -b tab "bg:*"
+ndsh getmeta -b tab "bg:*"
 
 # Eine Reihe von Schlüsseln mit Präfix ausgeben (und den 'clear'-Schlüssel einschließen)
-wsh getmeta -b tab --clear-prefix "bg:*"
+ndsh getmeta -b tab --clear-prefix "bg:*"
 ```
 
 Das ist besonders nützlich für Vorschau- und Web-Blöcke, da du die Datei oder URL sehen kannst, auf die sie verweisen, und sie in deinen CLI-Skripten nutzen kannst.
@@ -106,15 +106,15 @@ Format der blockid:
 Du kannst jedes Metadaten-Schlüssel-Wert-Paar für Blöcke (und Tabs) mit dem Befehl setmeta aktualisieren. Der setmeta-Befehl nimmt dieselben `-b`-Argumente wie getmeta.
 
 ```sh
-wsh setmeta -b [blockid] [key]=[value]
-wsh setmeta -b [blockid] file=~/myfile.txt
-wsh setmeta -b [blockid] url=https://waveterm.dev/
+ndsh setmeta -b [blockid] [key]=[value]
+ndsh setmeta -b [blockid] file=~/myfile.txt
+ndsh setmeta -b [blockid] url=https://github.com/nodedropweb/nodedrop
 
 # Metadaten für den aktuellen Tab mit der angegebenen JSON-Datei setzen
-wsh setmeta -b tab --json [jsonfile]
+ndsh setmeta -b tab --json [jsonfile]
 
 # Metadaten für den aktuellen Tab mit einer von stdin gelesenen JSON-Datei setzen
-wsh setmeta -b tab --json
+ndsh setmeta -b tab --json
 ```
 
 Block- und Tab-IDs erhältst du per Rechtsklick auf den entsprechenden Block und Auswahl von "Copy BlockId" (oder über die Blocknummer mit Strg+Umschalt). Wenn du
@@ -125,39 +125,39 @@ Weitere nützliche Metadatenwerte zum Überschreiben von Block-Titeln, -Icons, -
 Hier ist ein komplexerer Befehl, der den Hintergrund (bg:\*-Schlüssel) von einem Tab in den aktuellen Tab kopiert:
 
 ```sh
-wsh getmeta -b [other-tab-id] "bg:*" --clear-prefix | wsh setmeta -b tab --json -
+ndsh getmeta -b [other-tab-id] "bg:*" --clear-prefix | ndsh setmeta -b tab --json -
 ```
 
 ---
 
 ## ai
 
-Fügt der Wave-AI-Seitenleiste Inhalte hinzu. Dateien werden als richtige Dateianhänge angehängt (mit Unterstützung für Bilder, PDFs und Text), nicht als Text kodiert. Standardmäßig wird der Inhalt der Seitenleiste hinzugefügt, ohne automatisch abzusenden, sodass du vor dem Senden an die KI weiteren Kontext prüfen und hinzufügen kannst.
+Fügt der NodeDrop-AI-Seitenleiste Inhalte hinzu. Dateien werden als richtige Dateianhänge angehängt (mit Unterstützung für Bilder, PDFs und Text), nicht als Text kodiert. Standardmäßig wird der Inhalt der Seitenleiste hinzugefügt, ohne automatisch abzusenden, sodass du vor dem Senden an die KI weiteren Kontext prüfen und hinzufügen kannst.
 
 Du kannst mehrere Dateien gleichzeitig anhängen (bis zu 15 Dateien). Nutze `-m`, um eine Nachricht zusammen mit Dateien hinzuzufügen, `-s`, um sofort automatisch abzusenden, und `-n`, um ein neues Gespräch zu beginnen. Nutze "-", um von stdin zu lesen.
 
 ```sh
 # Befehlsausgabe an KI weiterleiten (Frage in der UI stellen)
-git diff | wsh ai -
-docker logs mycontainer | wsh ai -
+git diff | ndsh ai -
+docker logs mycontainer | ndsh ai -
 
 # Dateien ohne automatisches Absenden anhängen (zuerst in der UI prüfen)
-wsh ai main.go utils.go
-wsh ai screenshot.png logs.txt
+ndsh ai main.go utils.go
+ndsh ai screenshot.png logs.txt
 
 # Dateien mit Nachricht anhängen
-wsh ai app.py -m "find potential bugs"
-wsh ai *.log -m "analyze these error logs"
+ndsh ai app.py -m "find potential bugs"
+ndsh ai *.log -m "analyze these error logs"
 
 # Sofort automatisch absenden
-wsh ai config.json -s -m "explain this configuration"
-tail -n 50 app.log | wsh ai -s - -m "what's causing these errors?"
+ndsh ai config.json -s -m "explain this configuration"
+tail -n 50 app.log | ndsh ai -s - -m "what's causing these errors?"
 
 # Neuen Chat starten und Dateien anhängen
-wsh ai -n report.pdf data.csv -m "summarize these reports"
+ndsh ai -n report.pdf data.csv -m "summarize these reports"
 
 # Verschiedene Dateitypen anhängen (Bilder, PDFs, Code)
-wsh ai architecture.png api-spec.pdf server.go -m "review the system design"
+ndsh ai architecture.png api-spec.pdf server.go -m "review the system design"
 ```
 
 **Dateigrößenlimits:**
@@ -175,22 +175,22 @@ wsh ai architecture.png api-spec.pdf server.go -m "review the system design"
 
 ## editconfig
 
-Mit diesem Befehl kannst du einfach jede beliebige Konfigurationsdatei von Wave öffnen.
+Mit diesem Befehl kannst du einfach jede beliebige Konfigurationsdatei von NodeDrop öffnen.
 
 ```sh
-wsh editconfig [config-file-name]
+ndsh editconfig [config-file-name]
 
 # öffnet die Standard-Datei settings.json
-wsh editconfig
+ndsh editconfig
 
 # öffnet presets.json
-wsh editconfig presets.json
+ndsh editconfig presets.json
 
 # öffnet widgets.json
-wsh editconfig widgets.json
+ndsh editconfig widgets.json
 
 # öffnet die KI-Voreinstellungen
-wsh editconfig presets/ai.json
+ndsh editconfig presets/ai.json
 ```
 
 ---
@@ -200,7 +200,7 @@ wsh editconfig presets/ai.json
 Mit dem Befehl `setbg` kannst du für den aktuellen Tab ein Hintergrundbild oder eine Hintergrundfarbe mit verschiedenen Anpassungsoptionen festlegen.
 
 ```sh
-wsh setbg [--opacity value] [--tile|--center] [--size value] [--border-color color] [--active-border-color color] (image-path|"#color"|color-name)
+ndsh setbg [--opacity value] [--tile|--center] [--size value] [--border-color color] [--active-border-color color] (image-path|"#color"|color-name)
 ```
 
 Du kannst einen Hintergrund festlegen mit:
@@ -226,34 +226,34 @@ Beispiele:
 
 ```sh
 # Bildhintergrund mit Standardeinstellungen festlegen
-wsh setbg ~/pictures/background.jpg
+ndsh setbg ~/pictures/background.jpg
 
 # Hintergrund mit benutzerdefinierter Deckkraft festlegen
-wsh setbg --opacity 0.3 ~/pictures/light-pattern.png
+ndsh setbg --opacity 0.3 ~/pictures/light-pattern.png
 
 # Gekachelten Hintergrund festlegen
-wsh setbg --tile --opacity 0.2 ~/pictures/texture.png
+ndsh setbg --tile --opacity 0.2 ~/pictures/texture.png
 
 # Ein Bild zentrieren (gut für Logos)
-wsh setbg --center ~/pictures/logo.png
-wsh setbg --center --size 200px ~/pictures/logo.png
+ndsh setbg --center ~/pictures/logo.png
+ndsh setbg --center --size 200px ~/pictures/logo.png
 
 # Farbhintergründe festlegen
-wsh setbg "#ff0000"          # Hex-Farbe (benötigt Anführungszeichen)
-wsh setbg forestgreen        # CSS-Farbname
+ndsh setbg "#ff0000"          # Hex-Farbe (benötigt Anführungszeichen)
+ndsh setbg forestgreen        # CSS-Farbname
 
 # Nur die Deckkraft des aktuellen Hintergrunds ändern
-wsh setbg --opacity 0.7
+ndsh setbg --opacity 0.7
 
 # Rahmenfarben zusammen mit einem Hintergrund festlegen
-wsh setbg --border-color "#ff0000" --active-border-color "#00ff00" ~/pictures/background.jpg
-wsh setbg --border-color steelblue forestgreen
+ndsh setbg --border-color "#ff0000" --active-border-color "#00ff00" ~/pictures/background.jpg
+ndsh setbg --border-color steelblue forestgreen
 
 # Hintergrund entfernen
-wsh setbg --clear
+ndsh setbg --clear
 
 # Die Metadaten in der Vorschau ansehen
-wsh setbg --print "#ff0000"
+ndsh setbg --print "#ff0000"
 ```
 
 Der Befehl prüft, dass:
@@ -276,8 +276,8 @@ Nutze `--print`, um die Metadaten für eine Hintergrundkonfiguration in der Vors
 Der Befehl `badge` setzt oder entfernt einen visuellen Badge-Indikator an einer Block- oder Tab-Kopfzeile.
 
 ```sh
-wsh badge [icon]
-wsh badge --clear
+ndsh badge [icon]
+ndsh badge --clear
 ```
 
 Badges werden genutzt, um Aufmerksamkeit auf einen Block oder Tab zu lenken, zum Beispiel um anzuzeigen, dass ein Prozess abgeschlossen ist oder Aufmerksamkeit benötigt. Wird kein Icon angegeben, ist der Standard `circle-small`. Icon-Namen sind [Font-Awesome](https://fontawesome.com/icons)-Icon-Namen (ohne das Präfix `fa-`).
@@ -295,25 +295,25 @@ Beispiele:
 
 ```sh
 # Ein Standard-Badge auf dem aktuellen Block setzen
-wsh badge
+ndsh badge
 
 # Ein Badge mit benutzerdefiniertem Icon und Farbe setzen
-wsh badge circle-check --color green
+ndsh badge circle-check --color green
 
 # Ein hochprioritäres Badge auf einem bestimmten Block setzen
-wsh badge triangle-exclamation --color red --priority 20 -b 2
+ndsh badge triangle-exclamation --color red --priority 20 -b 2
 
 # Ein Badge setzen, das entfernt wird, wenn ein Prozess beendet wird
-wsh badge --pid 12345
+ndsh badge --pid 12345
 
 # Beim Fertigstellen den Signalton abspielen und ein Badge setzen
-wsh badge circle-check --beep
+ndsh badge circle-check --beep
 
 # Das Badge am aktuellen Block entfernen
-wsh badge --clear
+ndsh badge --clear
 
 # Das Badge an einem bestimmten Tab entfernen
-wsh badge --clear -b tab
+ndsh badge --clear -b tab
 ```
 
 :::note
@@ -328,22 +328,22 @@ Der Befehl `run` erstellt einen neuen Terminal-Befehlsblock und führt einen ang
 
 ```sh
 # Einen nach -- angegebenen Befehl ausführen
-wsh run -- ls -la
+ndsh run -- ls -la
 
 # Einen Befehl mit dem Flag -c ausführen
-wsh run -c "ls -la"
+ndsh run -c "ls -la"
 
 # Mit angegebenem Arbeitsverzeichnis ausführen
-wsh run --cwd /path/to/dir -- ./script.sh
+ndsh run --cwd /path/to/dir -- ./script.sh
 
 # Im vergrößerten Modus ausführen
-wsh run -m -- make build
+ndsh run -m -- make build
 
 # Ausführen und bei erfolgreichem Abschluss automatisch schließen
-wsh run -x -- npm test
+ndsh run -x -- npm test
 
 # Ausführen und unabhängig vom Status automatisch schließen
-wsh run -X -- ./long-running-task.sh
+ndsh run -X -- ./long-running-task.sh
 ```
 
 Der Befehl übernimmt standardmäßig die aktuellen Umgebungsvariablen und das aktuelle Arbeitsverzeichnis.
@@ -363,22 +363,22 @@ Beispiele:
 
 ```sh
 # Einen Build-Befehl im vergrößerten Modus ausführen
-wsh run -m -- npm run build
+ndsh run -m -- npm run build
 
 # Ein Skript ausführen und nach Erfolg automatisch schließen
-wsh run -x -- ./backup-script.sh
+ndsh run -x -- ./backup-script.sh
 
 # Einen Befehl in einem bestimmten Verzeichnis ausführen
-wsh run --cwd ./project -- make test
+ndsh run --cwd ./project -- make test
 
 # Einen Shell-Befehl ausführen und nach Abschluss zwangsweise schließen
-wsh run -X -c "find . -name '*.log' -delete"
+ndsh run -X -c "find . -name '*.log' -delete"
 
 # Einen Befehl im pausierten Zustand starten
-wsh run -p -- ./server --dev
+ndsh run -p -- ./server --dev
 
 # Mit benutzerdefinierter Schließverzögerung ausführen
-wsh run -x --delay 5000 -- ./deployment.sh
+ndsh run -x --delay 5000 -- ./deployment.sh
 ```
 
 Bei Nutzung der Flags `-x` oder `-X` schließt sich der Block automatisch, sobald der Befehl abgeschlossen ist. Das Flag `-x` schließt nur bei erfolgreichem Abschluss (Exit-Code 0), während `-X` unabhängig vom Status schließt. Das Flag `--delay` steuert, wie lange vor dem Schließen gewartet wird (Standard 2000ms).
@@ -394,7 +394,7 @@ Du kannst entweder `--` gefolgt von deinem Befehl und Argumenten nutzen, oder da
 ## deleteblock
 
 ```sh
-wsh deleteblock -b [blockid]
+ndsh deleteblock -b [blockid]
 ```
 
 Dies löscht den Block mit der angegebenen ID.
@@ -404,17 +404,17 @@ Dies löscht den Block mit der angegebenen ID.
 ## ssh
 
 ```sh
-wsh ssh [user@host]
+ndsh ssh [user@host]
 ```
 
-Dies nutzt Waves interne SSH-Implementierung, um sich mit dem angegebenen entfernten Rechner zu verbinden. Mit dem Flag `-i` kann ein Pfad zu einer Identitätsdatei angegeben werden.
+Dies nutzt NodeDrops interne SSH-Implementierung, um sich mit dem angegebenen entfernten Rechner zu verbinden. Mit dem Flag `-i` kann ein Pfad zu einer Identitätsdatei angegeben werden.
 
 ---
 
 ## wsl
 
 ```sh
-wsh wsl [-d <distribution-name>]
+ndsh wsl [-d <distribution-name>]
 ```
 
 Dies verbindet sich mit einer WSL-Distribution auf dem lokalen Rechner. Ist keine Distribution angegeben, wird die Standarddistribution genutzt.
@@ -423,10 +423,10 @@ Dies verbindet sich mit einer WSL-Distribution auf dem lokalen Rechner. Ist kein
 
 ## web
 
-Der Befehl `web` öffnet URLs in einem Web-Block innerhalb von Wave Terminal.
+Der Befehl `web` öffnet URLs in einem Web-Block innerhalb von NodeDrop Terminal.
 
 ```sh
-wsh web open [url] [-m] [-r blockid]
+ndsh web open [url] [-m] [-r blockid]
 ```
 
 Du kannst eine bestimmte URL öffnen oder mit der konfigurierten Suchmaschine eine Suche durchführen.
@@ -440,16 +440,16 @@ Beispiele:
 
 ```sh
 # Eine URL öffnen
-wsh web open https://waveterm.dev
+ndsh web open https://github.com/nodedropweb/nodedrop
 
 # Mit der konfigurierten Suchmaschine suchen
-wsh web open "wave terminal documentation"
+ndsh web open "wave terminal documentation"
 
 # Im vergrößerten Modus öffnen
-wsh web open -m https://github.com
+ndsh web open -m https://github.com
 
 # Einen bestehenden Block ersetzen
-wsh web open -r 2 https://example.com
+ndsh web open -r 2 https://example.com
 ```
 
 Der Befehl öffnet einen neuen Web-Block mit der gewünschten Seite oder ersetzt einen bestehenden Block, wenn das Flag `-r` genutzt wird. Beachte, dass `--replace` und `--magnified` nicht zusammen genutzt werden können.
@@ -458,10 +458,10 @@ Der Befehl öffnet einen neuen Web-Block mit der gewünschten Seite oder ersetzt
 
 ## notify
 
-Der Befehl `notify` erstellt eine Desktop-Benachrichtigung von Wave Terminal.
+Der Befehl `notify` erstellt eine Desktop-Benachrichtigung von NodeDrop Terminal.
 
 ```sh
-wsh notify [message] [-t title] [-s]
+ndsh notify [message] [-t title] [-s]
 ```
 
 Damit kannst du Desktop-Benachrichtigungen aus Skripten oder Befehlen auslösen. Die Benachrichtigung erscheint über das native Benachrichtigungssystem deines Systems. Sie funktioniert sowohl auf entfernten Rechnern als auch auf deinem lokalen Rechner.
@@ -475,13 +475,13 @@ Beispiele:
 
 ```sh
 # Einfache Benachrichtigung
-wsh notify "Build completed successfully"
+ndsh notify "Build completed successfully"
 
 # Benachrichtigung mit benutzerdefiniertem Titel
-wsh notify -t "Deployment Status" "Production deployment finished"
+ndsh notify -t "Deployment Status" "Production deployment finished"
 
 # Stille Benachrichtigung
-wsh notify -s "Background task completed"
+ndsh notify -s "Background task completed"
 ```
 
 Das ist besonders nützlich für lang laufende Befehle, bei denen du über Abschluss oder Statusänderungen benachrichtigt werden möchtest.
@@ -495,39 +495,39 @@ Dieser Befehl hat mehrere Unterbefehle, die verschiedene Funktionen im Zusammenh
 ### status
 
 ```sh
-wsh conn status
+ndsh conn status
 ```
 
-Dieser Befehl liefert den Status aller Verbindungen, die seit dem Start von Waveterm hergestellt wurden.
+Dieser Befehl liefert den Status aller Verbindungen, die seit dem Start von NodeDrop hergestellt wurden.
 
 ### reinstall
 
 Für SSH-Verbindungen,
 
 ```sh
-wsh conn reinstall [user@host]
+ndsh conn reinstall [user@host]
 ```
 
 Für WSL-Verbindungen,
 
 ```sh
-wsh conn reinstall [wsl://<distribution-name>]
+ndsh conn reinstall [wsl://<distribution-name>]
 ```
 
-Dieser Befehl installiert die Wave-Shell-Erweiterungen auf der angegebenen Verbindung neu.
+Dieser Befehl installiert die NodeDrop-Shell-Erweiterungen auf der angegebenen Verbindung neu.
 
 ### disconnect
 
 Für SSH-Verbindungen,
 
 ```sh
-wsh conn disconnect [user@host]
+ndsh conn disconnect [user@host]
 ```
 
 Für WSL-Verbindungen,
 
 ```sh
-wsh conn disconnect [wsl://<distribution name>]
+ndsh conn disconnect [wsl://<distribution name>]
 ```
 
 Dieser Befehl trennt die angegebene Verbindung vollständig. Das gilt für alle Blöcke, in denen die Verbindung genutzt wird.
@@ -537,13 +537,13 @@ Dieser Befehl trennt die angegebene Verbindung vollständig. Das gilt für alle 
 Für SSH-Verbindungen,
 
 ```sh
-wsh conn connect [user@host]
+ndsh conn connect [user@host]
 ```
 
 Für WSL-Verbindungen,
 
 ```sh
-wsh conn connect [wsl://<distribution-name>]
+ndsh conn connect [wsl://<distribution-name>]
 ```
 
 Dieser Befehl stellt eine Verbindung zur angegebenen Verbindung her, erstellt aber keinen Block dafür.
@@ -553,13 +553,13 @@ Dieser Befehl stellt eine Verbindung zur angegebenen Verbindung her, erstellt ab
 Für SSH-Verbindungen,
 
 ```sh
-wsh conn ensure [user@host]
+ndsh conn ensure [user@host]
 ```
 
 Für WSL-Verbindungen,
 
 ```sh
-wsh conn ensure [wsl://<distribution-name>]
+ndsh conn ensure [wsl://<distribution-name>]
 ```
 
 Dieser Befehl stellt eine Verbindung zur angegebenen Verbindung her, falls sie noch nicht verbunden ist.
@@ -569,7 +569,7 @@ Dieser Befehl stellt eine Verbindung zur angegebenen Verbindung her, falls sie n
 ## setconfig
 
 ```sh
-wsh setconfig [<config-name>=<config-value>]
+ndsh setconfig [<config-name>=<config-value>]
 ```
 
 Damit lassen sich verschiedene Optionen in der Datei `config/settings.json` festlegen. Es wird geprüft, ob eine gültige Konfigurationsoption angegeben wurde.
@@ -578,24 +578,24 @@ Damit lassen sich verschiedene Optionen in der Datei `config/settings.json` fest
 
 ## file
 
-Der Befehl `file` bietet eine Reihe von Unterbefehlen zur Verwaltung von Dateien über verschiedene Speichersysteme hinweg, wie z. B. `wsh`-Remote-Server.
+Der Befehl `file` bietet eine Reihe von Unterbefehlen zur Verwaltung von Dateien über verschiedene Speichersysteme hinweg, wie z. B. `ndsh`-Remote-Server.
 
 :::note
 
-Wave Terminal kann Dateien von entfernten SSH-Hosts verwalten. Dateien werden über URIs adressiert, die
+NodeDrop Terminal kann Dateien von entfernten SSH-Hosts verwalten. Dateien werden über URIs adressiert, die
 je nach Speichersystem variieren. Ist kein Schema angegeben, wird die Datei als lokale Verbindung behandelt.
 
 URI-Format: `[profile]:[uri-scheme]://[connection]/[path]`
 
 Unterstützte URI-Schemata:
 
-- `wsh` - Wird genutzt, um über SSH per WSH-Helfer auf Dateien auf entfernten Hosts zuzugreifen. Ermöglicht Datei-Streaming zu Wave und anderen entfernten Rechnern.
+- `ndsh` - Wird genutzt, um über SSH per WSH-Helfer auf Dateien auf entfernten Hosts zuzugreifen. Ermöglicht Datei-Streaming zu NodeDrop und anderen entfernten Rechnern.
 
   Profile sind für WSH-URIs optional, sofern du den entfernten Host in deiner "connections.json" oder "~/.ssh/config"-Datei konfiguriert hast.
 
-  Ist ein Profil angegeben, muss es in "profiles.json" im Wave-Konfigurationsverzeichnis definiert sein.
+  Ist ein Profil angegeben, muss es in "profiles.json" im NodeDrop-Konfigurationsverzeichnis definiert sein.
 
-  Format: `wsh://[remote]/[path]`
+  Format: `ndsh://[remote]/[path]`
 
   Für den aktuellen Remote-Rechner und deinen lokalen Computer können Kurzformen genutzt werden:
   `[path]` ein relativer oder absoluter Pfad auf dem aktuellen Remote-Rechner
@@ -607,53 +607,53 @@ Unterstützte URI-Schemata:
 ### cat
 
 ```sh
-wsh file cat [file-uri]
+ndsh file cat [file-uri]
 ```
 
 Zeigt den Inhalt einer Datei an (maximale Dateigröße 10MB). Zum Beispiel:
 
 ```sh
-wsh file cat wsh://user@ec2/home/user/config.txt
-wsh file cat ./local-config.txt
+ndsh file cat ndsh://user@ec2/home/user/config.txt
+ndsh file cat ./local-config.txt
 ```
 
 ### write
 
 ```sh
-wsh file write [file-uri]
+ndsh file write [file-uri]
 ```
 
 Schreibt Daten von stdin in eine Datei. Die maximale Dateigröße beträgt 10MB. Zum Beispiel:
 
 ```sh
-echo "hello" | wsh file write ./greeting.txt
-cat config.json | wsh file write //ec2-user@remote01/~/config.json
+echo "hello" | ndsh file write ./greeting.txt
+cat config.json | ndsh file write //ec2-user@remote01/~/config.json
 ```
 
 ### append
 
 ```sh
-wsh file append [file-uri]
+ndsh file append [file-uri]
 ```
 
 Hängt Daten von stdin an eine Datei an. Die Eingabe wird lokal gepuffert (bis zu einem Gesamtdateigrößenlimit von 10MB), bevor sie geschrieben wird. Zum Beispiel:
 
 ```sh
-cat additional-content.txt | wsh file append ./notes.txt
-echo "new line" | wsh file append //user@remote/~/notes.txt
+cat additional-content.txt | ndsh file append ./notes.txt
+echo "new line" | ndsh file append //user@remote/~/notes.txt
 ```
 
 ### rm
 
 ```sh
-wsh file rm [flag] [file-uri]
+ndsh file rm [flag] [file-uri]
 ```
 
 Entfernt eine Datei. Zum Beispiel:
 
 ```sh
-wsh file rm wsh://user@ec2/home/user/config.txt
-wsh file rm ./local-config.txt
+ndsh file rm ndsh://user@ec2/home/user/config.txt
+ndsh file rm ./local-config.txt
 ```
 
 Flags:
@@ -663,33 +663,33 @@ Flags:
 ### info
 
 ```sh
-wsh file info [file-uri]
+ndsh file info [file-uri]
 ```
 
 Zeigt Informationen über eine Datei an, einschließlich Größe, Erstellungszeit, Änderungszeit und Metadaten. Zum Beispiel:
 
 ```sh
-wsh file info wsh://user@ec2/home/user/config.txt
-wsh file info ./local-config.txt
+ndsh file info ndsh://user@ec2/home/user/config.txt
+ndsh file info ./local-config.txt
 ```
 
 ### cp
 
 ```sh
-wsh file cp [flags] [source-uri] [destination-uri]
+ndsh file cp [flags] [source-uri] [destination-uri]
 ```
 
 Kopiert Dateien zwischen verschiedenen Speichersystemen (maximale Dateigröße 10MB). Zum Beispiel:
 
 ```sh
 # Eine entfernte Datei in dein lokales Dateisystem kopieren
-wsh file cp wsh://user@ec2/home/user/config.txt ./local-config.txt
+ndsh file cp ndsh://user@ec2/home/user/config.txt ./local-config.txt
 
 # Eine lokale Datei auf ein entferntes System kopieren
-wsh file cp ./local-config.txt wsh://user@ec2/home/user/config.txt
+ndsh file cp ./local-config.txt ndsh://user@ec2/home/user/config.txt
 
 # Zwischen entfernten Systemen kopieren
-wsh file cp wsh://user@ec2/home/user/config.txt wsh://user@server2/home/user/backup.txt
+ndsh file cp ndsh://user@ec2/home/user/config.txt ndsh://user@server2/home/user/backup.txt
 ```
 
 Flags:
@@ -700,20 +700,20 @@ Flags:
 ### mv
 
 ```sh
-wsh file mv [flags] [source-uri] [destination-uri]
+ndsh file mv [flags] [source-uri] [destination-uri]
 ```
 
 Verschiebt Dateien zwischen verschiedenen Speichersystemen (maximale Dateigröße 10MB). Die Quelldatei wird gelöscht, sobald der Vorgang erfolgreich abgeschlossen ist. Zum Beispiel:
 
 ```sh
 # Eine entfernte Datei in dein lokales Dateisystem verschieben
-wsh file mv wsh://user@ec2/home/user/config.txt ./local-config.txt
+ndsh file mv ndsh://user@ec2/home/user/config.txt ./local-config.txt
 
 # Eine lokale Datei auf ein entferntes System verschieben
-wsh file mv ./local-config.txt wsh://user@ec2/home/user/config.txt
+ndsh file mv ./local-config.txt ndsh://user@ec2/home/user/config.txt
 
 # Zwischen entfernten Systemen verschieben
-wsh file mv wsh://user@ec2/home/user/config.txt wsh://user@server2/home/user/backup.txt
+ndsh file mv ndsh://user@ec2/home/user/config.txt ndsh://user@server2/home/user/backup.txt
 ```
 
 Flags:
@@ -723,7 +723,7 @@ Flags:
 ### ls
 
 ```sh
-wsh file ls [flags] [file-uri]
+ndsh file ls [flags] [file-uri]
 ```
 
 Listet Dateien in einem Verzeichnis auf. Standardmäßig werden die Dateien im aktuellen Verzeichnis der aktuellen Terminal-Sitzung aufgelistet.
@@ -731,8 +731,8 @@ Listet Dateien in einem Verzeichnis auf. Standardmäßig werden die Dateien im a
 Beispiele:
 
 ```sh
-wsh file ls wsh://user@ec2/home/user/
-wsh file ls ./local-dir/
+ndsh file ls ndsh://user@ec2/home/user/
+ndsh file ls ./local-dir/
 ```
 
 Flags:
@@ -745,17 +745,17 @@ Wird die Ausgabe an einen anderen Befehl weitergeleitet, wird automatisch auf da
 
 ```sh
 # Einfach mit grep, awk usw. zu verarbeiten
-wsh file ls ./ | grep ".json$"
+ndsh file ls ./ | grep ".json$"
 ```
 
 ---
 
 ## launch
 
-Mit dem Befehl `wsh launch` kannst du vorkonfigurierte Widgets direkt aus deinem Terminal öffnen.
+Mit dem Befehl `ndsh launch` kannst du vorkonfigurierte Widgets direkt aus deinem Terminal öffnen.
 
 ```sh
-wsh launch [flags] widget-id
+ndsh launch [flags] widget-id
 ```
 
 Der Befehl sucht die angegebene Widget-ID sowohl in benutzerdefinierten als auch in Standard-Widgets und erstellt dann einen neuen Block mit der Konfiguration des Widgets.
@@ -768,28 +768,28 @@ Beispiele:
 
 ```sh
 # Ein Widget mit seinen Standardeinstellungen starten
-wsh launch my-custom-widget
+ndsh launch my-custom-widget
 
 # Ein Widget im vergrößerten Modus starten
-wsh launch -m system-monitor
+ndsh launch -m system-monitor
 ```
 
 Die Konfiguration des Widgets bestimmt die anfänglichen Blockeinstellungen, einschließlich Ansichtstyp, Metadaten und Standard-Vergrößerungszustand. Das Flag `-m` kann genutzt werden, um die Standard-Vergrößerungseinstellung des Widgets zu überschreiben.
 
 :::tip
-Widget-Konfigurationen können in deiner Konfigurationsdatei `widgets.json` angepasst werden, die du mit `wsh editconfig widgets.json` bearbeiten kannst
+Widget-Konfigurationen können in deiner Konfigurationsdatei `widgets.json` angepasst werden, die du mit `ndsh editconfig widgets.json` bearbeiten kannst
 :::
 
 ---
 
 ## getvar/setvar
 
-Wave Terminal bietet Befehle zur Verwaltung dauerhafter Variablen auf verschiedenen Ebenen (Block, Tab, Workspace oder clientweit).
+NodeDrop Terminal bietet Befehle zur Verwaltung dauerhafter Variablen auf verschiedenen Ebenen (Block, Tab, Workspace oder clientweit).
 
 ### setvar
 
 ```sh
-wsh setvar [flags] KEY=VALUE...
+ndsh setvar [flags] KEY=VALUE...
 ```
 
 Setzt eine oder mehrere Variablen. Standardmäßig werden Variablen auf Client-(globaler) Ebene gesetzt. Nutze `-l` für blocklokale Variablen.
@@ -798,16 +798,16 @@ Beispiele:
 
 ```sh
 # Eine einzelne Variable setzen
-wsh setvar API_KEY=abc123
+ndsh setvar API_KEY=abc123
 
 # Mehrere Variablen gleichzeitig setzen
-wsh setvar HOST=localhost PORT=8080 DEBUG=true
+ndsh setvar HOST=localhost PORT=8080 DEBUG=true
 
 # Eine blocklokale Variable setzen
-wsh setvar -l BLOCK_SPECIFIC=value
+ndsh setvar -l BLOCK_SPECIFIC=value
 
 # Variablen entfernen
-wsh setvar -r API_KEY PORT
+ndsh setvar -r API_KEY PORT
 ```
 
 Flags:
@@ -820,28 +820,28 @@ Flags:
 ### getvar
 
 ```sh
-wsh getvar [flags] [key]
+ndsh getvar [flags] [key]
 ```
 
 Ruft den Wert einer Variable ab. Gibt den Exit-Code 0 zurück, wenn die Variable existiert, sonst 1. Das ermöglicht Shell-Skripte wie:
 
 ```sh
 # Prüfen, ob eine Variable existiert
-if wsh getvar API_KEY >/dev/null; then
+if ndsh getvar API_KEY >/dev/null; then
     echo "API key is set"
 fi
 
 # Eine Variable in einem Befehl nutzen
-curl -H "Authorization: $(wsh getvar API_KEY)" https://api.example.com
+curl -H "Authorization: $(ndsh getvar API_KEY)" https://api.example.com
 
 # Eine blocklokale Variable abrufen
-wsh getvar -l BLOCK_SPECIFIC
+ndsh getvar -l BLOCK_SPECIFIC
 
 # Alle Variablen auflisten
-wsh getvar --all
+ndsh getvar --all
 
 # Alle Variablen mit Null-Terminatoren auflisten (zum Skripten)
-wsh getvar --all -0
+ndsh getvar --all -0
 ```
 
 Flags:
@@ -855,20 +855,20 @@ Auf Variablen kann mit dem Flag `-b` in verschiedenen Geltungsbereichen zugegrif
 
 ```sh
 # Auf Block-Ebene abrufen/setzen
-wsh getvar -b block MYVAR
-wsh setvar -b block MYVAR=value
+ndsh getvar -b block MYVAR
+ndsh setvar -b block MYVAR=value
 
 # Auf Tab-Ebene abrufen/setzen
-wsh getvar -b tab MYVAR
-wsh setvar -b tab MYVAR=value
+ndsh getvar -b tab MYVAR
+ndsh setvar -b tab MYVAR=value
 
 # Auf Workspace-Ebene abrufen/setzen
-wsh getvar -b workspace MYVAR
-wsh setvar -b workspace MYVAR=value
+ndsh getvar -b workspace MYVAR
+ndsh setvar -b workspace MYVAR=value
 
 # Auf Client-(globaler) Ebene abrufen/setzen
-wsh getvar -b client MYVAR
-wsh setvar -b client MYVAR=value
+ndsh getvar -b client MYVAR
+ndsh setvar -b client MYVAR=value
 ```
 
 Mit diesen Befehlen gesetzte Variablen bleiben über Sitzungen hinweg erhalten und können genutzt werden, um Konfigurationswerte, Secrets oder andere String-Daten zu speichern, auf die über Blöcke oder Tabs hinweg zugegriffen werden muss.
@@ -880,7 +880,7 @@ Mit diesen Befehlen gesetzte Variablen bleiben über Sitzungen hinweg erhalten u
 Ruft den Terminal-Scrollback eines Terminal-Blocks ab. Nützlich, um Terminal-Ausgaben zur Weiterverarbeitung oder Archivierung zu erfassen.
 
 ```sh
-wsh termscrollback [-b blockid] [flags]
+ndsh termscrollback [-b blockid] [flags]
 ```
 
 Standardmäßig werden alle Zeilen des aktuellen Terminal-Blocks abgerufen. Du kannst Zeilenbereiche angeben oder nur die Ausgabe des letzten Befehls abrufen.
@@ -897,25 +897,25 @@ Beispiele:
 
 ```sh
 # Den gesamten Scrollback des aktuellen Terminals abrufen
-wsh termscrollback
+ndsh termscrollback
 
 # Scrollback von einem bestimmten Terminal-Block abrufen
-wsh termscrollback -b 2
+ndsh termscrollback -b 2
 
 # Nur die Ausgabe des letzten Befehls abrufen
-wsh termscrollback --lastcommand
+ndsh termscrollback --lastcommand
 
 # Einen bestimmten Zeilenbereich abrufen (Zeilen 100-200)
-wsh termscrollback --start 100 --end 200
+ndsh termscrollback --start 100 --end 200
 
 # Scrollback in eine Datei speichern
-wsh termscrollback -o terminal-log.txt
+ndsh termscrollback -o terminal-log.txt
 
 # Ausgabe des letzten Befehls in eine Datei speichern
-wsh termscrollback --lastcommand -o last-output.txt
+ndsh termscrollback --lastcommand -o last-output.txt
 
 # Ausgabe des letzten Befehls mit grep verarbeiten
-wsh termscrollback --lastcommand | grep "ERROR"
+ndsh termscrollback --lastcommand | grep "ERROR"
 ```
 
 :::note
@@ -926,13 +926,13 @@ Das Flag `--lastcommand` erfordert aktivierte Shell-Integration. Mit dieser Funk
 
 ## wavepath
 
-Mit dem Befehl `wavepath` kannst du die Pfade zu verschiedenen Wave-Terminal-Verzeichnissen und -Dateien abrufen, darunter Konfiguration, Datenspeicherung und Logs.
+Mit dem Befehl `wavepath` kannst du die Pfade zu verschiedenen NodeDrop-Terminal-Verzeichnissen und -Dateien abrufen, darunter Konfiguration, Datenspeicherung und Logs.
 
 ```sh
-wsh wavepath {config|data|log}
+ndsh wavepath {config|data|log}
 ```
 
-Dieser Befehl liefert den vollständigen Pfad zum angeforderten Wave-Terminal-Systemverzeichnis oder zur Datei. Nützlich für den Zugriff auf Waves Konfigurationsdateien, Datenspeicherung oder zur Prüfung von Logs.
+Dieser Befehl liefert den vollständigen Pfad zum angeforderten NodeDrop-Terminal-Systemverzeichnis oder zur Datei. Nützlich für den Zugriff auf NodeDrops Konfigurationsdateien, Datenspeicherung oder zur Prüfung von Logs.
 
 Flags:
 
@@ -944,29 +944,29 @@ Beispiele:
 
 ```sh
 # Pfad zum Konfigurationsverzeichnis abrufen
-wsh wavepath config
+ndsh wavepath config
 
 # Pfad zum Datenverzeichnis abrufen
-wsh wavepath data
+ndsh wavepath data
 
 # Pfad zur Log-Datei abrufen
-wsh wavepath log
+ndsh wavepath log
 
 # Log-Datei in einem neuen Block öffnen
-wsh wavepath -o log
+ndsh wavepath -o log
 
 # Konfigurationsverzeichnis im System-Datei-Explorer öffnen
-wsh wavepath -O config
+ndsh wavepath -O config
 
 # Aktuelle Log-Einträge ansehen
-wsh wavepath -t log
+ndsh wavepath -t log
 ```
 
 Der Befehl zeigt dir den vollständigen Pfad zu:
 
-- `config` - Wo Wave Terminal seine Konfigurationsdateien speichert
-- `data` - Wo Wave Terminal seine dauerhaften Daten speichert
-- `log` - Die Haupt-Log-Datei von Wave Terminal
+- `config` - Wo NodeDrop Terminal seine Konfigurationsdateien speichert
+- `data` - Wo NodeDrop Terminal seine dauerhaften Daten speichert
+- `log` - Die Haupt-Log-Datei von NodeDrop Terminal
 
 :::tip
 Nutze das Flag `-t` mit dem Log-Pfad, um schnell aktuelle Log-Einträge anzusehen, ohne die gesamte Datei öffnen zu müssen. Das ist besonders nützlich für die Fehlerbehebung.
@@ -981,7 +981,7 @@ Der Befehl `blocks` bietet Operationen zum Auflisten und Abfragen von Blöcken �
 ### list
 
 ```sh
-wsh blocks list [flags]
+ndsh blocks list [flags]
 ```
 
 Listet alle Blöcke mit optionaler Filterung nach Workspace, Fenster, Tab oder Ansichtstyp auf. Die Ausgabe kann als Tabelle (Standard) oder JSON zum Skripten formatiert werden.
@@ -998,16 +998,16 @@ Beispiele:
 
 ```sh
 # Alle Blöcke auflisten
-wsh blocks list
+ndsh blocks list
 
 # Nur Terminal-Blöcke auflisten
-wsh blocks list --view=term
+ndsh blocks list --view=term
 
 # Nach Workspace filtern
-wsh blocks list --workspace=12d0c067-378e-454c-872e-77a314248114
+ndsh blocks list --workspace=12d0c067-378e-454c-872e-77a314248114
 
 # Als JSON zum Skripten ausgeben
-wsh blocks list --json
+ndsh blocks list --json
 ```
 
 
@@ -1022,7 +1022,7 @@ Secret-Namen müssen mit einem Buchstaben beginnen und dürfen nur Buchstaben, Z
 ### get
 
 ```sh
-wsh secret get [name]
+ndsh secret get [name]
 ```
 
 Ruft den Wert eines gespeicherten Secrets ab und zeigt ihn an.
@@ -1031,16 +1031,16 @@ Beispiele:
 
 ```sh
 # Einen API-Schlüssel abrufen
-wsh secret get github_token
+ndsh secret get github_token
 
 # In Skripten nutzen
-export API_KEY=$(wsh secret get my_api_key)
+export API_KEY=$(ndsh secret get my_api_key)
 ```
 
 ### set
 
 ```sh
-wsh secret set [name]=[value]
+ndsh secret set [name]=[value]
 ```
 
 Speichert einen Secret-Wert sicher. Dieser Befehl erfordert einen geeigneten System-Secret-Manager und schlägt fehl, wenn nur einfache Textspeicherung verfügbar ist.
@@ -1049,10 +1049,10 @@ Beispiele:
 
 ```sh
 # Ein API-Token setzen
-wsh secret set github_token=ghp_abc123xyz
+ndsh secret set github_token=ghp_abc123xyz
 
 # Ein Datenbankpasswort setzen
-wsh secret set db_password=mySecurePassword123
+ndsh secret set db_password=mySecurePassword123
 ```
 
 :::warning
@@ -1062,7 +1062,7 @@ Der Befehl `set` erfordert einen richtigen System-Secret-Manager (Keychain, Secr
 ### list
 
 ```sh
-wsh secret list
+ndsh secret list
 ```
 
 Zeigt alle gespeicherten Secret-Namen an (Werte werden nicht angezeigt).
@@ -1071,13 +1071,13 @@ Beispiel:
 
 ```sh
 # Alle Secrets auflisten
-wsh secret list
+ndsh secret list
 ```
 
 ### delete
 
 ```sh
-wsh secret delete [name]
+ndsh secret delete [name]
 ```
 
 Entfernt ein Secret aus dem sicheren Speicher.
@@ -1086,17 +1086,17 @@ Beispiele:
 
 ```sh
 # Einen API-Schlüssel löschen
-wsh secret delete github_token
+ndsh secret delete github_token
 
 # Mehrere Secrets löschen
-wsh secret delete old_api_key
-wsh secret delete temp_token
+ndsh secret delete old_api_key
+ndsh secret delete temp_token
 ```
 
 ### ui
 
 ```sh
-wsh secret ui [-m]
+ndsh secret ui [-m]
 ```
 
 Öffnet die Secrets-Verwaltungsoberfläche in einem neuen Block. Bietet eine grafische Oberfläche zum Anzeigen und Verwalten all deiner Secrets.
@@ -1109,15 +1109,15 @@ Beispiele:
 
 ```sh
 # Die Secrets-Oberfläche öffnen
-wsh secret ui
+ndsh secret ui
 
 # Die Secrets-Oberfläche im vergrößerten Modus öffnen
-wsh secret ui -m
+ndsh secret ui -m
 ```
 
 Die Secrets-Oberfläche bietet eine bequeme grafische Möglichkeit, Secrets zu durchsuchen, hinzuzufügen, zu bearbeiten und zu löschen, ohne die Kommandozeile nutzen zu müssen.
 
 :::tip
-Nutze Secrets in deinen Skripten, um das Hartkodieren sensibler Werte zu vermeiden. Secrets funktionieren über entfernte Rechner hinweg - speichere einen API-Schlüssel lokal mit `wsh secret set` und greife dann von jeder SSH- oder WSL-Verbindung aus mit `wsh secret get` darauf zu. Das Secret wird sicher von deinem lokalen Rechner abgerufen, ohne es auf entfernten Systemen duplizieren zu müssen.
+Nutze Secrets in deinen Skripten, um das Hartkodieren sensibler Werte zu vermeiden. Secrets funktionieren über entfernte Rechner hinweg - speichere einen API-Schlüssel lokal mit `ndsh secret set` und greife dann von jeder SSH- oder WSL-Verbindung aus mit `ndsh secret get` darauf zu. Das Secret wird sicher von deinem lokalen Rechner abgerufen, ohne es auf entfernten Systemen duplizieren zu müssen.
 :::
 </PlatformProvider>

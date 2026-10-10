@@ -49,7 +49,7 @@ Das Anheften eines Tabs erschwert das versehentliche Schließen. Du kannst einen
 
 Die Tabs bestehen aus gekachelten Blöcken. Der Inhalt jedes Blocks ist ein einzelnes Widget. Du kannst Blöcke verschieben und zu Layouts anordnen, die am besten zu deinem Workflow passen. Du kannst Blöcke auch vergrößern, um dich auf ein bestimmtes Widget zu konzentrieren.
 
-![screenshot showing a block being dragged over another block, with the placeholder depicting a out-of-line before outer drop](./img/drag-edge.png)
+![screenshot showing a block being dragged over another block, with the placeholder depicting a out-of-line before outer drop](@site/docs/img/drag-edge.png)
 
 ### Das Layout-System unter der Haube
 
@@ -79,7 +79,7 @@ Auch wenn wir für jeden Knoten im Baum bei der automatischen Platzierung neuer 
 
 #### Einen Block löschen
 
-Du kannst Blöcke löschen, indem du auf den <i className="fa-sharp fa-xmark-large" title="x"/>-Button oben rechts im Block klickst, mit der rechten Maustaste auf die Block-Kopfzeile klickst und im Kontextmenü "Close Block" auswählst, oder indem du den Befehl [`wsh deleteblock`](./wsh-reference#deleteblock) ausführst. Alternativ kann der aktuell fokussierte Block/das aktuell fokussierte Widget durch Drücken von <Kbd k="Cmd:w"/> geschlossen werden.
+Du kannst Blöcke löschen, indem du auf den <i className="fa-sharp fa-xmark-large" title="x"/>-Button oben rechts im Block klickst, mit der rechten Maustaste auf die Block-Kopfzeile klickst und im Kontextmenü "Close Block" auswählst, oder indem du den Befehl [`ndsh deleteblock`](./ndsh-reference#deleteblock) ausführst. Alternativ kann der aktuell fokussierte Block/das aktuell fokussierte Widget durch Drücken von <Kbd k="Cmd:w"/> geschlossen werden.
 
 Wenn du einen Block löschst, wird der Layout-Baum automatisch angepasst, um die Baumtiefe zu minimieren.
 
@@ -90,7 +90,7 @@ Du kannst Blöcke verschieben, indem du auf die Block-Kopfzeile klickst und den 
 Es gibt 7 verschiedene Ablagebereiche für jeden Block. Ein Block wird entlang seiner Diagonalen in Quadranten unterteilt. Wenn der Block als Zeile kachelt (von links nach rechts), platziert das Ablegen eines Blocks im linken oder rechten Quadranten den abgelegten Block auf derselben Ebene wie den Zielblock. Dies kann als Inline-Ablage betrachtet werden. Wenn du den Block außerhalb der Reihe ablegst (in Quadranten, die der entgegengesetzten Kachelrichtung entsprechen), wird der Block entweder eine Ebene über oder eine Ebene unter dem Zielblock platziert. Ablegen zur Außenseite platziert ihn auf derselben Ebene wie das übergeordnete Element des Zielblocks, während Ablegen zur Mitte des Blocks eine neue Ebene erzeugt, auf die sowohl der Zielblock als auch der abgelegte Block verschoben werden. Das mittlere Fünftel des Blocks ist für die Tausch-Aktion reserviert. Ablegen eines Blocks hier führt dazu, dass Zielblock und abgelegter Block ihre Position im Layout tauschen.
 
 <video width="100%" height="100%" playsinline autoplay muted controls>
-  <source src="./img/drag-move-24fps-crf43.mp4" type="video/mp4" />
+  <source src="@site/docs/img/drag-move-24fps-crf43.mp4" type="video/mp4" />
 </video>
 
 ##### Mögliche Block-Bewegungen
@@ -99,8 +99,8 @@ Es gibt 7 verschiedene Ablagebereiche für jeden Block. Ein Block wird entlang s
 Alle Block-Bewegungen außer dem Tausch führen dazu, dass sich der Rest des Layouts verschiebt, um die neue Position des Blocks aufzunehmen.
 :::
 
-![screenshot showing a block being dragged over another block, with the placeholder depicting a swap movement](./img/drag-swap.png)
-![annotated example showing the drop targets within a block](./img/block-drag-example.jpg)
+![screenshot showing a block being dragged over another block, with the placeholder depicting a swap movement](@site/docs/img/drag-swap.png)
+![annotated example showing the drop targets within a block](@site/docs/img/block-drag-example.jpg)
 
 1. Inline davor: Legt den Block unter demselben Knoten wie den Zielblock ab und platziert ihn in derselben Kachelrichtung vor dem Ziel
 2. Inline danach: Legt den Block unter demselben Knoten wie den Zielblock ab und platziert ihn in derselben Kachelrichtung nach dem Ziel
@@ -113,11 +113,11 @@ Alle Block-Bewegungen außer dem Tausch führen dazu, dass sich der Rest des Lay
 #### Einen Block in der Größe ändern
 
 <video width="100%" height="100%" playsinline autoplay muted controls>
-  <source src="./img/resize-24fps-crf43.mp4" type="video/mp4" />
+  <source src="@site/docs/img/resize-24fps-crf43.mp4" type="video/mp4" />
 </video>
 
 ![screenshot showing the line that appears when the cursor hovers over the margin of a block, indicating which blocks
-will be resized by dragging the margin](./img/node-resize.png)
+will be resized by dragging the margin](@site/docs/img/node-resize.png)
 
 Du änderst nicht direkt die Größe eines Blocks, sondern die Größe der Knoten, die die Blöcke enthalten. Wenn du mit der Maus über den Rand eines Blocks fährst, ändert sich der Cursor zu <i className="fa-sharp fa-arrows-left-right" title="left/right arrows"/> oder <i className="fa-sharp fa-arrows-up-down" title="up/down arrows"/>, um die Richtung anzuzeigen, in der der Knoten in der Größe geändert werden kann. Nach 500ms erscheint außerdem eine Linie, die zeigt, wie viele Blöcke durch das Verschieben dieses Rands in der Größe geändert werden. Klicken und Ziehen auf diesem Rand ändert die Größe der Blöcke.
 

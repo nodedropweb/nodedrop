@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1.5
 id: "waveai"
-title: "Wave AI"
+title: "NodeDrop AI"
 ---
 
 import { Kbd } from "@site/src/components/kbd";
@@ -44,12 +44,12 @@ Drag files onto the AI panel to attach (not supported with all models):
 
 ## CLI Integration
 
-Use `wsh ai` to send files and prompts from the command line:
+Use `ndsh ai` to send files and prompts from the command line:
 
 ```bash
-git diff | wsh ai -                          # Pipe to AI
-wsh ai main.go -m "find bugs"                # Attach files with message
-wsh ai $(tail -n 500 my.log) -m "review" -s  # Auto-submit with output
+git diff | ndsh ai -                          # Pipe to AI
+ndsh ai main.go -m "find bugs"                # Attach files with message
+ndsh ai $(tail -n 500 my.log) -m "review" -s  # Auto-submit with output
 ```
 
 Supports text files, images, PDFs, and directories. Use `-n` for new chat, `-s` to auto-submit.
@@ -76,30 +76,28 @@ File system operations require explicit approval. You control all file access.
 
 ## Local Models & BYOK
 
-Wave AI supports using your own AI models and API keys:
+NodeDrop AI supports using your own AI models and API keys:
 
 - **Local Models**: Run AI models locally with [Ollama](https://ollama.ai), [LM Studio](https://lmstudio.ai), [vLLM](https://docs.vllm.ai), and other OpenAI-compatible servers
 - **BYOK (Bring Your Own Key)**: Use your own API keys with OpenAI, OpenRouter, Google AI (Gemini), Azure OpenAI, and other cloud providers
 - **Multiple Modes**: Configure and switch between multiple AI providers and models
 - **Privacy**: Keep your data local or use your preferred cloud provider
 
+To add a model, open **Settings → NodeDrop AI Modes** and choose **Add model (wizard)**. The wizard explains what is possible, asks for the values step by step and writes the configuration for you, so you do not have to edit JSON by hand.
+
 See the [**Local Models & BYOK guide**](./waveai-modes.mdx) for complete configuration instructions, examples, and troubleshooting.
 
 ## Privacy
 
-**Default Wave AI Service:**
-- Messages are proxied through the Wave Cloud AI service (powered by OpenAI's APIs). Please refer to OpenAI's privacy policy for details on how they handle your data.
-- Wave does not store your chats, attachments, or use them for training
-- Usage counters included in anonymous telemetry
-- File access requires explicit approval
+NodeDrop does not operate an AI service of its own and does not proxy your messages.
 
-**Local Models & BYOK:**
-- When using local models, your chat data never leaves your machine
-- When using BYOK with cloud providers, requests are sent directly to your chosen provider
-- Refer to your provider's privacy policy for details on how they handle your data
+- **Local models**: your chat data never leaves your machine.
+- **BYOK**: requests go directly from your computer to the provider you chose. Refer to your provider's privacy policy for details on how they handle your data.
+- File access requires explicit approval.
+- API keys are stored in the secret store of your operating system, not in the configuration file.
 
 :::info Under Active Development
-Wave AI is in active beta with included AI credits while we refine the experience. Share feedback in our [Discord](https://discord.gg/XfvZ334gwU).
+NodeDrop AI is under active development. Share feedback in [GitHub Discussions](https://github.com/nodedropweb/nodedrop/discussions).
 
 **Coming Soon:**
 - **Remote File Access**: Read files on SSH-connected systems

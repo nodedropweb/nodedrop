@@ -1,6 +1,6 @@
 {
     "copyright": {
-        "message": "Copyright © 2026 Command Line Inc. Erstellt mit Docusaurus.",
+        "message": "Copyright © 2026 NodeDrop. Basiert auf Wave Terminal (Command Line Inc., Apache-2.0). Erstellt mit Docusaurus.",
         "description": "The footer copyright"
     }
 }

@@ -10,9 +10,9 @@ title: "Customization"
 
 Right click on any tab to bring up a menu which allows you to rename the tab and select different backgrounds.
 
-It is also possible to create your own background themes using custom colors, gradients, images and more by editing your backgrounds.json config file. To see how Wave's built-in tab backgrounds are defined, you can check out the [default backgrounds.json file](https://github.com/wavetermdev/waveterm/blob/main/pkg/wconfig/defaultconfig/backgrounds.json).
+It is also possible to create your own background themes using custom colors, gradients, images and more by editing your backgrounds.json config file. To see how NodeDrop's built-in tab backgrounds are defined, you can check out the [default backgrounds.json file](https://github.com/nodedropweb/nodedrop/blob/main/pkg/wconfig/defaultconfig/backgrounds.json).
 
-To apply a tab background to all new tabs by default, set the key `tab:background` in your [Wave Config File](/config) to one of the background preset keys (e.g. `"bg@ocean-depths"`). The available built-in background keys can be found in the [default backgrounds.json file](https://github.com/wavetermdev/waveterm/blob/main/pkg/wconfig/defaultconfig/backgrounds.json).
+To apply a tab background to all new tabs by default, set the key `tab:background` in your [NodeDrop Config File](/config) to one of the background preset keys (e.g. `"bg@ocean-depths"`). The available built-in background keys can be found in the [default backgrounds.json file](https://github.com/nodedropweb/nodedrop/blob/main/pkg/wconfig/defaultconfig/backgrounds.json).
 
 ## Terminal Customization
 
@@ -24,7 +24,7 @@ Right click in the header area of any terminal block to bring up a menu which al
 theme for that terminal.
 
 You can set the default theme for all terminals (which haven't had their theme manually overridden) by editing your settings.json file and adding the key `term:theme` and setting it to the appropriate key. The keys can be found
-in the [default termthemes.json file](https://github.com/wavetermdev/waveterm/blob/main/pkg/wconfig/defaultconfig/termthemes.json).
+in the [default termthemes.json file](https://github.com/nodedropweb/nodedrop/blob/main/pkg/wconfig/defaultconfig/termthemes.json).
 
 If you add your own termthemes.json file in the config directory, you can also add your own custom terminal themes (just follow the same format).
 
@@ -48,27 +48,27 @@ You can also suppress the help widgets in the bottom right by setting the config
 
 ## Tab Backgrounds
 
-Wave supports powerful custom backgrounds for your tabs using images, patterns, gradients, and colors. The quickest way to set an image background is using the `wsh setbg` command:
+NodeDrop supports powerful custom backgrounds for your tabs using images, patterns, gradients, and colors. The quickest way to set an image background is using the `ndsh setbg` command:
 
 ```bash
 # Set an image background with 50% opacity (default)
-wsh setbg ~/pictures/background.jpg
+ndsh setbg ~/pictures/background.jpg
 
 # Set a color background (use quotes to prevent # being interpreted as a shell comment)
-wsh setbg "#ff0000"          # hex color
-wsh setbg forestgreen        # CSS color name
+ndsh setbg "#ff0000"          # hex color
+ndsh setbg forestgreen        # CSS color name
 
 # Adjust opacity
-wsh setbg --opacity 0.3 ~/pictures/light-pattern.png
-wsh setbg --opacity 0.7      # change only opacity of current background
+ndsh setbg --opacity 0.3 ~/pictures/light-pattern.png
+ndsh setbg --opacity 0.7      # change only opacity of current background
 
 # Image positioning options
-wsh setbg --tile ~/pictures/texture.png          # create tiled pattern
-wsh setbg --center ~/pictures/logo.png           # center without scaling
-wsh setbg --center --size 200px ~/pictures/logo.png  # center with specific size (px, %, auto)
+ndsh setbg --tile ~/pictures/texture.png          # create tiled pattern
+ndsh setbg --center ~/pictures/logo.png           # center without scaling
+ndsh setbg --center --size 200px ~/pictures/logo.png  # center with specific size (px, %, auto)
 
 # Remove background
-wsh setbg --clear
+ndsh setbg --clear
 ```
 
 You can use any JPEG, PNG, GIF, WebP, or SVG image as your background. The `--center` option is particularly useful for logos or icons where you want to maintain the original size.
@@ -76,7 +76,7 @@ You can use any JPEG, PNG, GIF, WebP, or SVG image as your background. The `--ce
 To preview the metadata for any background without applying it, use the `--print` flag:
 
 ```bash
-wsh setbg --print "#ff0000"
+ndsh setbg --print "#ff0000"
 ```
 
 For more advanced customization options including gradients, colors, and saving your own custom backgrounds, check out our [Tab Backgrounds](/tab-backgrounds) documentation.

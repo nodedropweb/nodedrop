@@ -8,11 +8,11 @@ import { VersionBadge } from "@site/src/components/versionbadge";
 
 # Dauerhafte Sitzungen <VersionBadge version="v0.14" />
 
-Halte deine entfernten SSH-Shell-Sitzungen über Netzwerkwechsel, Ruhezustand des Computers und Wave-Neustarts hinweg am Leben.
+Halte deine entfernten SSH-Shell-Sitzungen über Netzwerkwechsel, Ruhezustand des Computers und NodeDrop-Neustarts hinweg am Leben.
 
 ## Überblick
 
-Dauerhafte Sitzungen schützen deinen Terminal-Status bei der Arbeit mit entfernten SSH-Verbindungen, ähnlich wie tmux oder screen, aber direkt in Wave integriert. Anders als bei Standard-SSH-Sitzungen, die bei Verbindungsabbruch enden, bleiben bei dauerhaften Sitzungen erhalten:
+Dauerhafte Sitzungen schützen deinen Terminal-Status bei der Arbeit mit entfernten SSH-Verbindungen, ähnlich wie tmux oder screen, aber direkt in NodeDrop integriert. Anders als bei Standard-SSH-Sitzungen, die bei Verbindungsabbruch enden, bleiben bei dauerhaften Sitzungen erhalten:
 
 - **Shell-Status** - Aktuelles Verzeichnis, Umgebungsvariablen und Shell-Verlauf
 - **Laufende Programme** - Hintergrundjobs und lang laufende Befehle werden weiter ausgeführt
@@ -21,19 +21,19 @@ Dauerhafte Sitzungen schützen deinen Terminal-Status bei der Arbeit mit entfern
 Dauerhafte Sitzungen verbinden sich automatisch neu, sobald deine Verbindung wiederhergestellt ist, und setzen genau dort fort, wo du aufgehört hast.
 
 :::info Nur Remote-Verbindungen
-Dauerhafte Sitzungen sind ausschließlich für **entfernte SSH-Verbindungen** konzipiert. Lokale Terminals und WSL-Verbindungen nutzen Standard-Sitzungen, da sie von Netzwerkunterbrechungen nicht betroffen sind und aktiv bleiben, solange Wave läuft.
+Dauerhafte Sitzungen sind ausschließlich für **entfernte SSH-Verbindungen** konzipiert. Lokale Terminals und WSL-Verbindungen nutzen Standard-Sitzungen, da sie von Netzwerkunterbrechungen nicht betroffen sind und aktiv bleiben, solange NodeDrop läuft.
 :::
 
 ## So funktioniert es
 
-Wenn du eine dauerhafte Sitzung startest, startet Wave einen schlanken Job-Manager auf dem entfernten Server. Ähnlich wie tmux und screen tut dieser Manager Folgendes:
+Wenn du eine dauerhafte Sitzung startest, startet NodeDrop einen schlanken Job-Manager auf dem entfernten Server. Ähnlich wie tmux und screen tut dieser Manager Folgendes:
 
-1. Hält deinen Shell-Prozess unabhängig von der Wave-Verbindung am Laufen
+1. Hält deinen Shell-Prozess unabhängig von der NodeDrop-Verbindung am Laufen
 2. Puffert Terminal-Ausgaben während der Trennung
-3. Ermöglicht Wave, sich beim Wiederverbinden nahtlos erneut anzuhängen
-4. Übersteht Wave-Neustarts und Netzwerkunterbrechungen
+3. Ermöglicht NodeDrop, sich beim Wiederverbinden nahtlos erneut anzuhängen
+4. Übersteht NodeDrop-Neustarts und Netzwerkunterbrechungen
 
-Die Sitzung läuft auf dem entfernten Server weiter, selbst wenn du Wave schließt, deinen Computer in den Ruhezustand versetzt oder das Netzwerk wechselst.
+Die Sitzung läuft auf dem entfernten Server weiter, selbst wenn du NodeDrop schließt, deinen Computer in den Ruhezustand versetzt oder das Netzwerk wechselst.
 
 ## Sitzungsstatus-Anzeige
 
@@ -82,7 +82,7 @@ Konfiguriere die Dauerhaftigkeit pro Verbindung in deiner `connections.json`:
 
 - **Kontextmenü**: Rechtsklick auf Terminal → Erweitert → Session Durability
 - **Flyover-Aktionen**: Klick auf das Schild-Symbol → "Restart as Durable" oder "Restart as Standard"
-- **Kommandozeile**: Nutze `wsh setmeta term:durable=true` oder `wsh setmeta term:durable=false`
+- **Kommandozeile**: Nutze `ndsh setmeta term:durable=true` oder `ndsh setmeta term:durable=false`
 
 Konfigurationshierarchie (höchste zu niedrigste Priorität):
 1. Einstellung auf Blockebene
@@ -122,7 +122,7 @@ Der Wechsel zwischen Standard- und dauerhaftem Modus erfordert einen Neustart de
 Dein Terminal ist mit der entfernten Sitzung verbunden. Du kannst mit der Shell interagieren und Ausgaben in Echtzeit sehen.
 
 ### Getrennt
-Verbindung verloren, aber die Sitzung läuft auf dem entfernten Server weiter. Wave verbindet sich automatisch neu, sobald möglich. Alle von dir gestarteten Befehle laufen weiter.
+Verbindung verloren, aber die Sitzung läuft auf dem entfernten Server weiter. NodeDrop verbindet sich automatisch neu, sobald möglich. Alle von dir gestarteten Befehle laufen weiter.
 
 ### Wartet auf Start
 Sitzung ist für Dauerhaftigkeit konfiguriert, aber noch nicht gestartet. Klicke auf "Start Session" oder führe einen Befehl aus, um zu beginnen.
@@ -158,11 +158,11 @@ Arbeite aus einem Café, im Zug oder über eine Mobilfunkverbindung. Kurze Unter
 Beginne die Arbeit an deinem Desktop, mach auf deinem Laptop weiter. Deine Sitzung und ihr Status bleiben auf dem entfernten Server erhalten.
 
 ### Systemwartung
-Wave-Updates, -Neustarts oder -Abstürze unterbrechen deine Remote-Arbeit nicht. Verbinde dich erneut und mach sofort weiter.
+NodeDrop-Updates, -Neustarts oder -Abstürze unterbrechen deine Remote-Arbeit nicht. Verbinde dich erneut und mach sofort weiter.
 
 ## Sitzungslebenszyklus
 
-Dauerhafte Sitzungen sind an den Terminal-Block in Wave gebunden. Die Sitzung wird beendet, wenn du:
+Dauerhafte Sitzungen sind an den Terminal-Block in NodeDrop gebunden. Die Sitzung wird beendet, wenn du:
 
 - **Den Block schließt**: Schließt das Terminal und beendet die entfernte Sitzung
 - **Die Verbindung wechselst**: Das Ändern der Verbindung eines Blocks beendet die alte Sitzung
@@ -170,7 +170,7 @@ Dauerhafte Sitzungen sind an den Terminal-Block in Wave gebunden. Die Sitzung wi
 
 ### Aufräumverhalten
 
-Wenn du einen Block schließt, während er **getrennt** ist, läuft die entfernte Sitzung bis zur nächsten Wiederverbindung weiter. Wenn Wave sich wieder mit diesem Server verbindet, räumt es automatisch verwaiste Sitzungen von geschlossenen Blöcken auf.
+Wenn du einen Block schließt, während er **getrennt** ist, läuft die entfernte Sitzung bis zur nächsten Wiederverbindung weiter. Wenn NodeDrop sich wieder mit diesem Server verbindet, räumt es automatisch verwaiste Sitzungen von geschlossenen Blöcken auf.
 
 Das stellt sicher, dass sich entfernte Sitzungen nicht auf deinen Servern ansammeln, wenn du Terminals offline schließt.
 
@@ -204,13 +204,13 @@ Der Job-Manager konnte auf dem entfernten Server nicht initialisiert werden. Pr�
 **Versuche**: Starte die Sitzung neu. Falls das Problem weiter besteht, melde einen Fehlerbericht mit den Fehlerdetails.
 
 :::info Technische Details
-Dauerhafte Sitzungen nutzen Unix-Domain-Sockets auf dem entfernten Server, um dauerhafte Verbindungen zwischen der Shell und Waves Job-Manager aufrechtzuerhalten. Der Job-Manager-Prozess läuft unabhängig und übersteht SSH-Verbindungsabbrüche.
+Dauerhafte Sitzungen nutzen Unix-Domain-Sockets auf dem entfernten Server, um dauerhafte Verbindungen zwischen der Shell und NodeDrops Job-Manager aufrechtzuerhalten. Der Job-Manager-Prozess läuft unabhängig und übersteht SSH-Verbindungsabbrüche.
 :::
 
 ## Datenschutz & Sicherheit
 
 - Dauerhafte Sitzungen laufen vollständig auf deinen entfernten Servern
-- Alle Daten werden über SSH zwischen deiner lokalen Wave-Instanz und dem entfernten Rechner übertragen
+- Alle Daten werden über SSH zwischen deiner lokalen NodeDrop-Instanz und dem entfernten Rechner übertragen
 - Keine offenen Ports auf dem entfernten Rechner - die Kommunikation läuft über deine bestehende SSH-Verbindung
 - Bei Trennung werden Ausgaben lokal auf dem entfernten Rechner gepuffert, bis du dich wieder verbindest
 - Sitzungen sind pro Benutzer isoliert und nutzen die Berechtigungen deines entfernten Benutzers

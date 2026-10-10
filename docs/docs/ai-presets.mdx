@@ -4,20 +4,20 @@ id: "ai-presets"
 title: "AI Presets (Deprecated)"
 ---
 :::warning Deprecation Notice
-The AI Widget and its presets are being replaced by [Wave AI](./waveai.mdx). Please refer to the Wave AI documentation for the latest AI features and configuration options.
+The AI Widget and its presets are being replaced by [NodeDrop AI](./waveai.mdx). Please refer to the NodeDrop AI documentation for the latest AI features and configuration options.
 :::
 
 
 ![AI Presets Menu](./img/ai-presets.png#right)
 
-Wave's AI widget can be configured to work with various AI providers and models through presets. Presets allow you to define multiple AI configurations and easily switch between them using the dropdown menu in the AI widget.
+NodeDrop's AI widget can be configured to work with various AI providers and models through presets. Presets allow you to define multiple AI configurations and easily switch between them using the dropdown menu in the AI widget.
 
 ## How AI Presets Work
 
-AI presets are defined in `~/.config/waveterm/presets/ai.json`. You can easily edit this file using:
+AI presets are defined in `~/.config/nodedrop/presets/ai.json`. You can easily edit this file using:
 
 ```bash
-wsh editconfig presets/ai.json
+ndsh editconfig presets/ai.json
 ```
 
 Each preset defines a complete set of configuration values for the AI widget. When you select a preset from the dropdown menu, those configuration values are applied to the widget. If no preset is selected, the widget uses the default values from `settings.json`.
@@ -49,7 +49,7 @@ To make a preset your default, add this single line to your `settings.json`:
 You can quickly set your default preset using the `setconfig` command:
 
 ```bash
-wsh setconfig ai:preset=ai@claude-sonnet
+ndsh setconfig ai:preset=ai@claude-sonnet
 ```
 
 This is easier than editing settings.json directly!

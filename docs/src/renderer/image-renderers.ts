@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import React, { ReactNode } from "react";
 
-const waveLogo = join(__dirname, "../../static/img/logo/wave-dark.png");
+const waveLogo = join(__dirname, "../../static/img/logo/nodedrop-dark.png");
 const waveLogoBase64 = `data:image/png;base64,${readFileSync(waveLogo).toString("base64")}`;
 
 const titleElement = ({ children }) =>

@@ -8,7 +8,7 @@ import { VersionBadge } from "@site/src/components/versionbadge";
 
 # Claude-Code-Tab-Badges <VersionBadge version="v0.14.2" />
 
-Wenn du mehrere Claude-Code-Sitzungen parallel laufen lässt - eine pro Feature, eine pro Repo, ein paar lang laufende Aufgaben - wird es schwierig, ohne jeden Tab einzeln anzuklicken zu wissen, welcher deine Aufmerksamkeit braucht. Waves Badge-System löst das: Hooks in Claude Code schreiben einen kleinen visuellen Indikator in die Tab-Kopfzeile, sobald etwas Wichtiges passiert, sodass du auf einen Blick siehst, welche Sitzungen warten, fertig sind oder Probleme haben.
+Wenn du mehrere Claude-Code-Sitzungen parallel laufen lässt - eine pro Feature, eine pro Repo, ein paar lang laufende Aufgaben - wird es schwierig, ohne jeden Tab einzeln anzuklicken zu wissen, welcher deine Aufmerksamkeit braucht. NodeDrops Badge-System löst das: Hooks in Claude Code schreiben einen kleinen visuellen Indikator in die Tab-Kopfzeile, sobald etwas Wichtiges passiert, sodass du auf einen Blick siehst, welche Sitzungen warten, fertig sind oder Probleme haben.
 
 :::info
 tl;dr Du kannst diese Seite direkt in Claude Code kopieren und einfügen, und es hilft dir, alles einzurichten!
@@ -16,15 +16,15 @@ tl;dr Du kannst diese Seite direkt in Claude Code kopieren und einfügen, und es
 
 ## So funktioniert es
 
-Claude Code unterstützt [Lifecycle-Hooks](https://code.claude.com/docs/en/hooks) - Shell-Befehle, die automatisch an bestimmten Punkten einer Sitzung ausgeführt werden. Waves Befehl `wsh badge` setzt oder entfernt einen visuellen Indikator am aktuellen Block oder Tab. Durch das Verknüpfen dieser beiden Dinge erhältst du ein ambientes Bewusstsein über all deine Sitzungen, ohne eine davon beobachten zu müssen.
+Claude Code unterstützt [Lifecycle-Hooks](https://code.claude.com/docs/en/hooks) - Shell-Befehle, die automatisch an bestimmten Punkten einer Sitzung ausgeführt werden. NodeDrops Befehl `ndsh badge` setzt oder entfernt einen visuellen Indikator am aktuellen Block oder Tab. Durch das Verknüpfen dieser beiden Dinge erhältst du ein ambientes Bewusstsein über all deine Sitzungen, ohne eine davon beobachten zu müssen.
 
 Badges werden automatisch entfernt, sobald du den Block fokussierst - sie sind also rein ein "Hey, schau hier"-Signal. Sobald du hineinklickst und liest, was passiert, verschwindet das Badge von selbst.
 
-Wave zeigt bereits ein Glockensymbol an, wenn ein Terminal ein BEL-Zeichen ausgibt. Diese Hooks ergänzen das um semantische Badges - *Freigabe benötigt*, *fertig* - die Tab-Wechsel und Splits überstehen.
+NodeDrop zeigt bereits ein Glockensymbol an, wenn ein Terminal ein BEL-Zeichen ausgibt. Diese Hooks ergänzen das um semantische Badges - *Freigabe benötigt*, *fertig* - die Tab-Wechsel und Splits überstehen.
 
 ### Badge-Rollup
 
-Hat ein Tab mehrere Terminals (Blöcke), zeigt Wave das Badge mit der höchsten Priorität in der Tab-Kopfzeile. Bei Gleichstand in der Priorität gewinnt das zuerst gesetzte Badge, sodass das dringendste Signal aus jedem Bereich des Tabs nach oben durchdringt.
+Hat ein Tab mehrere Terminals (Blöcke), zeigt NodeDrop das Badge mit der höchsten Priorität in der Tab-Kopfzeile. Bei Gleichstand in der Priorität gewinnt das zuerst gesetzte Badge, sodass das dringendste Signal aus jedem Bereich des Tabs nach oben durchdringt.
 
 ## Einrichtung
 
@@ -41,7 +41,7 @@ Füge Folgendes zu `~/.claude/settings.json` hinzu. Wenn du bereits einen `hooks
         "hooks": [
           {
             "type": "command",
-            "command": "wsh badge bell-exclamation --color '#e0b956' --priority 20 --beep"
+            "command": "ndsh badge bell-exclamation --color '#e0b956' --priority 20 --beep"
           }
         ]
       },
@@ -50,7 +50,7 @@ Füge Folgendes zu `~/.claude/settings.json` hinzu. Wenn du bereits einen `hooks
         "hooks": [
           {
             "type": "command",
-            "command": "wsh badge message-question --color '#e0b956' --priority 20 --beep"
+            "command": "ndsh badge message-question --color '#e0b956' --priority 20 --beep"
           }
         ]
       }
@@ -60,7 +60,7 @@ Füge Folgendes zu `~/.claude/settings.json` hinzu. Wenn du bereits einen `hooks
         "hooks": [
           {
             "type": "command",
-            "command": "wsh badge check --color '#58c142' --priority 10"
+            "command": "ndsh badge check --color '#58c142' --priority 10"
           }
         ]
       }
@@ -71,7 +71,7 @@ Füge Folgendes zu `~/.claude/settings.json` hinzu. Wenn du bereits einen `hooks
         "hooks": [
           {
             "type": "command",
-            "command": "wsh badge message-question --color '#e0b956' --priority 20 --beep"
+            "command": "ndsh badge message-question --color '#e0b956' --priority 20 --beep"
           }
         ]
       }
@@ -83,7 +83,7 @@ Füge Folgendes zu `~/.claude/settings.json` hinzu. Wenn du bereits einen `hooks
 Das war's. Starte alle laufenden Claude-Code-Sitzungen neu, damit die Hooks wirksam werden.
 
 :::warning Bekanntes Problem
-Es gibt ein bekanntes Problem in Claude Code, bei dem `Notification`-Hooks um mehrere Sekunden verzögert ausgelöst werden können. Diese Verzögerung hat nichts mit Wave zu tun - sie tritt in Claude Code selbst auf. Details siehe [#5186](https://github.com/anthropics/claude-code/issues/5186) und [#19627](https://github.com/anthropics/claude-code/issues/19627).
+Es gibt ein bekanntes Problem in Claude Code, bei dem `Notification`-Hooks um mehrere Sekunden verzögert ausgelöst werden können. Diese Verzögerung hat nichts mit NodeDrop zu tun - sie tritt in Claude Code selbst auf. Details siehe [#5186](https://github.com/anthropics/claude-code/issues/5186) und [#19627](https://github.com/anthropics/claude-code/issues/19627).
 :::
 
 ## Was jeder Hook macht
@@ -119,7 +119,7 @@ Ein paar Icon- und Farbideen:
 | Neutral / informativ | `circle-info` | `#429DFF` |
 | Hintergrundaufgabe läuft | `spinner` | `#00FFDB` |
 
-Alle verfügbaren Flags findest du in der [`wsh badge`-Referenz](/wsh-reference#badge).
+Alle verfügbaren Flags findest du in der [`ndsh badge`-Referenz](/ndsh-reference#badge).
 
 ## Prioritäten anpassen
 

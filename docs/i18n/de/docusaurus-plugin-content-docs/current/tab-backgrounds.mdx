@@ -6,11 +6,11 @@ title: "Tab-Hintergründe"
 
 # Tab-Hintergründe
 
-Waves Hintergrundsystem nutzt die volle Kraft von CSS-Hintergründen und lässt dich über das Attribut "background" umfangreiche visuelle Effekte erzeugen. Du kannst Vollfarben, Verläufe (linear und radial), Bilder und sogar mehrere Elemente überblendet anwenden.
+NodeDrops Hintergrundsystem nutzt die volle Kraft von CSS-Hintergründen und lässt dich über das Attribut "background" umfangreiche visuelle Effekte erzeugen. Du kannst Vollfarben, Verläufe (linear und radial), Bilder und sogar mehrere Elemente überblendet anwenden.
 
 ## Hintergründe verwalten
 
-Benutzerdefinierte Hintergründe werden in `~/.config/waveterm/backgrounds.json` gespeichert.
+Benutzerdefinierte Hintergründe werden in `~/.config/nodedrop/backgrounds.json` gespeichert.
 
 **Zum Bearbeiten über die Oberfläche:**
 1. Klicke auf das Einstellungssymbol (Zahnrad) in der Widget-Leiste
@@ -19,7 +19,7 @@ Benutzerdefinierte Hintergründe werden in `~/.config/waveterm/backgrounds.json`
 
 **Oder starte über die Kommandozeile:**
 ```bash
-wsh editconfig backgrounds.json
+ndsh editconfig backgrounds.json
 ```
 
 ## Dateiformat
@@ -37,7 +37,7 @@ Hintergründe folgen diesem Format:
 }
 ```
 
-Wie Waves integrierte Hintergründe definiert sind, kannst du in der [Standard-backgrounds.json-Datei](https://github.com/wavetermdev/waveterm/blob/main/pkg/wconfig/defaultconfig/backgrounds.json) nachsehen.
+Wie NodeDrops integrierte Hintergründe definiert sind, kannst du in der [Standard-backgrounds.json-Datei](https://github.com/nodedropweb/nodedrop/blob/main/pkg/wconfig/defaultconfig/backgrounds.json) nachsehen.
 
 ## Konfigurationsschlüssel
 
@@ -100,7 +100,7 @@ Der Befehl `setbg` kann dir helfen, das Hintergrund-JSON zu erzeugen:
 
 ```bash
 # Vorschau eines Vollfarben-Hintergrunds
-wsh setbg --print "#ff0000"
+ndsh setbg --print "#ff0000"
 {
   "bg:*": true,
   "bg": "#ff0000",
@@ -108,7 +108,7 @@ wsh setbg --print "#ff0000"
 }
 
 # Vorschau eines zentrierten Bildhintergrunds
-wsh setbg --print --center --opacity 0.3 ~/logo.png
+ndsh setbg --print --center --opacity 0.3 ~/logo.png
 {
   "bg:*": true,
   "bg": "url('/absolute/path/to/logo.png') no-repeat center/auto",

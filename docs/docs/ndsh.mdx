@@ -1,0 +1,210 @@
+---
+sidebar_position: 4
+id: "ndsh"
+title: "ndsh overview"
+---
+
+The `ndsh` command provides NodeDrop Terminal's core command line interface, allowing users to interact with both terminal and graphical elements from the command line. This guide covers the basics of using `ndsh` and its key features.
+
+See the [ndsh reference](/ndsh-reference) for a list of all ndsh commands and their arguments.
+
+## Overview
+
+At its core, `ndsh` enables seamless interaction between your terminal commands and NodeDrop's graphical blocks. It allows you to:
+
+- Control graphical widgets directly from the command line
+- Share data between terminal sessions and GUI components
+- Manage your workspace programmatically
+- Connect remote and local environments
+- Send CLI output and files directly to AI conversations
+- Run terminal commands in separate, isolated blocks
+
+## Key Concepts
+
+### Interacting with Blocks
+
+`ndsh` provides direct interaction with NodeDrop's graphical blocks through the command line. For example:
+
+```bash
+# Open a file in the editor
+ndsh edit config.json
+
+# Get the current file path from a preview block
+ndsh getmeta -b 2 file
+
+# Send output to an AI assistant (the "-" reads from stdin)
+ls -la | ndsh ai - "what are the largest files here?"
+```
+
+### Persistent State
+
+`ndsh` can maintain state across terminal sessions through its variable system:
+
+```bash
+# Store a variable that persists across sessions
+ndsh setvar API_KEY=abc123
+
+# Store globally
+ndsh setvar DEPLOY_ENV=prod
+# Or store in the current workspace
+ndsh setvar -b workspace DEPLOY_ENV=staging
+
+# Use stored variables in commands
+curl -H "Authorization: $(ndsh getvar API_KEY)" https://api.example.com
+```
+
+### Accessing Local Files from Remote
+
+When working on remote machines, you can access files on your local computer using the `ndsh://local/~/` path prefix with `ndsh file` commands. The shorthand `/~/` can also be used as an alias for `ndsh://local/~/`:
+
+```bash
+# Read a local file from a remote machine
+ndsh file cat ndsh://local/~/config/app.json
+
+# Run a local script on the remote machine using shell process substitution
+bash <(ndsh file cat ndsh://local/~/scripts/deploy.sh)
+python <(ndsh file cat ndsh://local/~/scripts/deploy.py)
+
+# Append remote output to a local log file
+echo "Remote machine log entry" | ndsh file append ndsh://local/~/app.log
+
+# Copy a local file to the remote machine
+ndsh file cp ndsh://local/~/data.csv ./remote-data.csv
+
+# Copy remote file back to local machine
+ndsh file cp ./results.txt ndsh://local/~/results.txt
+
+# You can also use the shorthand /~/ instead of ndsh://local/~/
+ndsh file cat /~/config/app.json
+```
+
+### Block Management
+
+Every visual element in NodeDrop is a block, and `ndsh` gives you complete control over them (hold Ctrl+Shift to see block numbers):
+
+```bash
+# Create a new block showing a webpage
+ndsh web open github.com
+
+# Do a web search in a new block
+ndsh web open "wave terminal"
+
+# Run a command in a new block and auto-close when done
+ndsh run -x -- npm test
+
+# Get information about the current block
+ndsh getmeta
+```
+
+## Common Workflows
+
+Here are some common ways to use `ndsh`:
+
+### Development Workflow
+
+```bash
+# Open directory or markdown files
+ndsh view .
+ndsh view README.md
+
+# add a -m to open the block in "magnified" mode
+ndsh view -m README.md
+
+# Start development server in a new block (-m will magnify the block on startup)
+ndsh run -m -- npm run dev
+
+# Open documentation in a web block
+ndsh web open http://localhost:3000
+```
+
+### Remote Development
+
+```bash
+# Connect to remote server with optional key
+ndsh ssh -i ~/.ssh/mykey.pem dev@server
+
+# Edit remote files
+ndsh edit /etc/nginx/nginx.conf
+
+# Monitor remote logs
+ndsh run -- tail -f /var/log/app.log
+
+# Share variables between sessions
+ndsh setvar -b tab SHARED_ENV=staging
+```
+
+### AI-Assisted Development
+
+The `ndsh ai` command appends content to the NodeDrop AI sidebar. By default, files are attached without auto-submitting, allowing you to review and add more context before sending.
+
+```bash
+# Pipe output to AI sidebar (ask question in UI)
+git diff | ndsh ai -
+
+# Attach files with a message
+ndsh ai main.go utils.go -m "find bugs in these files"
+
+# Auto-submit with message
+ndsh ai config.json -s -m "explain this config"
+
+# Start new chat with attached files
+ndsh ai -n *.log -m "analyze these logs"
+
+# Attach multiple file types (images, PDFs, code)
+ndsh ai screenshot.png report.pdf app.py -m "review these"
+
+# Debug with stdin and auto-submit
+dmesg | ndsh ai -s - -m "help me understand these errors"
+```
+
+**Flags:**
+- `-` - Read from stdin instead of a file
+- `-m, --message` - Add message text along with files
+- `-s, --submit` - Auto-submit immediately (default is to wait for user)
+- `-n, --new` - Clear chat and start fresh conversation
+
+**File Limits:**
+- Text files: 200KB max
+- PDFs: 5MB max
+- Images: 7MB max
+- Maximum 15 files per command
+
+## Tips & Features
+
+1. **Working with Blocks**
+
+   - Use block numbers (1-9) to target specific blocks within a tab (hold Ctrl+Shift to see block numbers)
+   - Can get full block ids by right click a block's header and selecting "Copy Block Id" (useful for scripting)
+   - Use references like "this", "tab", "workspace", or "global" for different scopes
+
+2. **Data Storage**
+
+   - Use `ndsh setvar/getvar` for configuration and secrets
+   - Store file data using `ndsh file`, which can be easily referenced in all terminals (local and remote)
+   - Use appropriate storage scopes (block, tab, workspace, global)
+
+3. **Command Execution**
+   - Use `ndsh run` to execute commands in new blocks
+   - Send command output and files quickly to AI blocks with `ndsh ai`
+
+## Scripting with ndsh
+
+ndsh commands can be combined in scripts to automate common tasks. Here's an example that sets up a development environment and uses `ndsh notify` to monitor a long-running build:
+
+```bash
+#!/bin/bash
+# Setup development environment
+ndsh run -- docker-compose up -d
+ndsh web open localhost:8080
+ndsh view ./src
+ndsh run -- npm run test:watch
+
+# Get notified when long-running tasks complete using ndsh notify
+npm run build && ndsh notify "Build complete" || ndsh notify "Build failed"
+```
+
+## Getting Help
+
+You can get help on available commands by running `ndsh` with no arguments, or get detailed help for a specific command using `ndsh [command] -h`.
+
+For a complete reference of all `ndsh` functionality, see the [WSH Command Reference](./ndsh-reference).

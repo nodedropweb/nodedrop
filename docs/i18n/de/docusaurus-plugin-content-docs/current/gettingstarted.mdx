@@ -7,7 +7,7 @@ title: "Erste Schritte"
 import { PlatformProvider, PlatformSelectorButton, PlatformItem } from "@site/src/components/platformcontext";
 import { Kbd } from "@site/src/components/kbd";
 
-Wave Terminal ist ein modernes Terminal, das neben klassischen Terminal-Funktionen grafische Fähigkeiten wie Web-Browsing, Dateivorschau und KI-Unterstützung bietet. Diese Anleitung hilft dir beim Einstieg.
+NodeDrop Terminal ist ein modernes Terminal, das neben klassischen Terminal-Funktionen grafische Fähigkeiten wie Web-Browsing, Dateivorschau und KI-Unterstützung bietet. Diese Anleitung hilft dir beim Einstieg.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Wave Terminal ist ein modernes Terminal, das neben klassischen Terminal-Funktion
 
 :::note
 
-ARM64 ist geplant, wird aber derzeit durch vorgelagerte Abhängigkeiten blockiert (siehe [Windows-ARM-Unterstützung](https://github.com/wavetermdev/waveterm/issues/928)).
+ARM64 ist geplant, wird aber derzeit durch vorgelagerte Abhängigkeiten blockiert (siehe [Windows-ARM-Unterstützung](https://github.com/nodedropweb/nodedrop/issues/928)).
 
 :::
 
@@ -43,47 +43,27 @@ ARM64 ist geplant, wird aber derzeit durch vorgelagerte Abhängigkeiten blockier
 
 </PlatformItem>
 
-### Paketmanager
+### Download
 
-<PlatformItem platforms={["mac"]}>
-
-#### Homebrew
-
-```bash
-brew install --cask wave
-```
-
-</PlatformItem>
+NodeDrop Terminal wird über die [Releases-Seite](https://github.com/nodedropweb/nodedrop/releases) verteilt.
 
 <PlatformItem platforms={["windows"]}>
 
-#### Windows Package Manager
+Lade `NodeDrop-win32-x64-<Version>.exe` (Installationsprogramm) oder die `.zip` (portable Version) herunter. Vergleiche vor dem Start die SHA-256-Prüfsumme mit der Angabe in `SHA256SUMS.txt`.
 
-```powershell
-winget install CommandLine.Wave
-```
+:::note
 
-#### Chocolatey
+Die aktuellen Releases sind noch nicht code-signiert. Windows SmartScreen oder Smart App Control kann deshalb warnen oder den Start blockieren.
 
-```powershell
-choco install wave
-```
+:::
 
 </PlatformItem>
 
-<PlatformItem platforms={["linux"]}>
+<PlatformItem platforms={["mac", "linux"]}>
 
-#### Snap
-
-```bash
-sudo snap install --classic waveterm
-```
-
-Weitere Optionen verfügbar: [AUR-Paket](https://aur.archlinux.org/packages/waveterm) (community-gepflegt), [Nix-Paket](https://search.nixos.org/packages?channel=unstable&show=waveterm) (community-gepflegt)
+Für macOS und Linux gibt es noch keine fertigen Pakete. Du kannst NodeDrop aus dem Quellcode bauen, siehe [BUILD.md](https://github.com/nodedropweb/nodedrop/blob/main/BUILD.md).
 
 </PlatformItem>
-
-Du kannst Installationsprogramme auch direkt von unserer [Download-Seite](https://www.waveterm.dev/download) herunterladen.
 
 ## Grundkonzepte
 
@@ -99,7 +79,7 @@ Du kannst Installationsprogramme auch direkt von unserer [Download-Seite](https:
 
    - Funktioniert mit gängigen Shells (bash, zsh, fish)
    - Unterstützt Standard-Terminal-Funktionen (readline, Steuersequenzen usw.)
-   - Enthält den Befehl `wsh` zur Interaktion mit Waves GUI-Funktionen
+   - Enthält den Befehl `ndsh` zur Interaktion mit NodeDrops GUI-Funktionen
    - GPU-beschleunigt (auf den meisten Plattformen)
 
 2. **Grafische Widgets**
@@ -118,7 +98,7 @@ Du kannst Installationsprogramme auch direkt von unserer [Download-Seite](https:
 
 1. **Öffne deinen ersten neuen Tab**
 
-   - Neue Wave-Tabs starten mit einem einzelnen Terminal-Block
+   - Neue NodeDrop-Tabs starten mit einem einzelnen Terminal-Block
    - Nutze ihn wie dein gewohntes Terminal
    - Erstelle weitere Terminal-Blöcke mit <Kbd k="Cmd:n"/>
 
@@ -126,13 +106,13 @@ Du kannst Installationsprogramme auch direkt von unserer [Download-Seite](https:
 
    ```bash
    # Eine Datei oder ein Verzeichnis anzeigen
-   wsh view ~/Documents
+   ndsh view ~/Documents
 
    # Eine Webseite öffnen
-   wsh web open github.com
+   ndsh web open github.com
 
    # KI-Unterstützung erhalten
-   wsh ai -m "how do I find large files in my current directory?" -s
+   ndsh ai -m "how do I find large files in my current directory?" -s
    ```
 
 3. **Passe dein Layout an**
@@ -152,13 +132,12 @@ Du kannst Installationsprogramme auch direkt von unserer [Download-Seite](https:
 - Entdecke [Tastenkombinationen](./keybindings), um effizienter zu arbeiten
 - Erfahre mehr über [Tab-Layouts](./layout), um deinen Workspace zu organisieren
 - Richte [benutzerdefinierte Widgets](./customwidgets) für schnellen Zugriff auf deine Tools ein
-- Konfiguriere [Wave AI](./waveai), um deine bevorzugten KI-Modelle zu nutzen
+- Konfiguriere [NodeDrop AI](./waveai), um deine bevorzugten KI-Modelle zu nutzen
 - Schau dir [Konfiguration](./config) für ausführliche Anpassungsoptionen an
 
 ## Hilfe erhalten
 
-- Tritt unserer [Discord-Community](https://discord.gg/XfvZ334gwU) für Hilfe und Diskussionen bei
-- Melde Probleme auf [GitHub](https://github.com/wavetermdev/waveterm/issues)
+- Melde Probleme auf [GitHub](https://github.com/nodedropweb/nodedrop/issues)
 - Schau in unsere [FAQ](./faq) für häufige Fragen
 
 </PlatformProvider>

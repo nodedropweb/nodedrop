@@ -8,7 +8,7 @@
         "description": "Navbar item with label Storybook"
     },
     "logo.alt": {
-        "message": "Wave Terminal Logo",
+        "message": "NodeDrop Terminal Logo",
         "description": "The alt text of navbar logo"
     }
 }

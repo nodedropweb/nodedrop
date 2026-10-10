@@ -2,23 +2,23 @@ import type { Config } from "@docusaurus/types";
 import rehypeHighlight from "rehype-highlight";
 import { docOgRenderer } from "./src/renderer/image-renderers";
 
-const baseUrl = process.env.EMBEDDED ? "/docsite/" : "/";
+const baseUrl = process.env.EMBEDDED ? "/docsite/" : "/nodedrop/";
 
 const config: Config = {
-    title: "Wave Terminal Documentation",
+    title: "NodeDrop Terminal Documentation",
     tagline: "Level Up Your Terminal With Graphical Widgets",
-    favicon: "img/logo/wave-logo_appicon.svg",
+    favicon: "img/logo/nodedrop-logo_appicon.svg",
 
     // Set the production url of your site here
-    url: "https://docs.waveterm.dev/",
+    url: "https://nodedropweb.github.io",
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl,
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: "wavetermdev", // Usually your GitHub org/user name.
-    projectName: "waveterm-docs", // Usually your repo name.
+    organizationName: "nodedropweb", // Usually your GitHub org/user name.
+    projectName: "nodedrop", // Usually your repo name.
     deploymentBranch: "main",
 
     onBrokenAnchors: "ignore",
@@ -40,7 +40,7 @@ const config: Config = {
                 path: "docs",
                 routeBasePath: "/",
                 exclude: ["features/**"],
-                editUrl: !process.env.EMBEDDED ? "https://github.com/wavetermdev/waveterm/edit/main/docs/" : undefined,
+                editUrl: !process.env.EMBEDDED ? "https://github.com/nodedropweb/nodedrop/edit/main/docs/" : undefined,
                 rehypePlugins: [rehypeHighlight],
             } as import("@docusaurus/plugin-content-docs").Options,
         ],
@@ -66,7 +66,6 @@ const config: Config = {
     ].filter((v) => v),
     themes: [
         ["classic", { customCss: "src/css/custom.scss" }],
-        !process.env.EMBEDDED && "@docusaurus/theme-search-algolia",
     ].filter((v) => v),
     themeConfig: {
         docs: {
@@ -82,9 +81,9 @@ const config: Config = {
         },
         navbar: {
             logo: {
-                src: "img/logo/wave-light.png",
-                srcDark: "img/logo/wave-dark.png",
-                href: "https://www.waveterm.dev/",
+                src: "img/logo/nodedrop-light.png",
+                srcDark: "img/logo/nodedrop-dark.png",
+                href: "https://github.com/nodedropweb/nodedrop",
             },
             hideOnScroll: true,
             items: [
@@ -97,18 +96,7 @@ const config: Config = {
                 !process.env.EMBEDDED
                     ? [
                           {
-                              position: "left",
-                              href: "https://docs.waveterm.dev/storybook",
-                              label: "Storybook",
-                          },
-                          {
-                              href: "https://discord.gg/zUeP2aAjaP",
-                              position: "right",
-                              className: "header-link-custom custom-icon-discord",
-                              "aria-label": "Discord invite",
-                          },
-                          {
-                              href: "https://github.com/wavetermdev/waveterm",
+                              href: "https://github.com/nodedropweb/nodedrop",
                               position: "right",
                               className: "header-link-custom custom-icon-github",
                               "aria-label": "GitHub repository",
@@ -125,7 +113,7 @@ const config: Config = {
             {
                 name: "keywords",
                 content:
-                    "terminal, developer, development, command, line, wave, linux, macos, windows, connection, ssh, cli, waveterm, documentation, docs, ai, graphical, widgets, remote, open, source, open-source, go, golang, react, typescript, javascript",
+                    "terminal, developer, development, command, line, linux, macos, windows, connection, ssh, cli, nodedrop, documentation, docs, ai, graphical, widgets, remote, open, source, open-source, go, golang, react, typescript, javascript",
             },
             {
                 name: "og:type",
@@ -133,24 +121,19 @@ const config: Config = {
             },
             {
                 name: "og:site_name",
-                content: "Wave Terminal Documentation",
+                content: "NodeDrop Terminal Documentation",
             },
             {
                 name: "application-name",
-                content: "Wave Terminal Documentation",
+                content: "NodeDrop Terminal Documentation",
             },
             {
                 name: "apple-mobile-web-app-title",
-                content: "Wave Terminal Documentation",
+                content: "NodeDrop Terminal Documentation",
             },
         ],
         footer: {
-            copyright: `Copyright © ${new Date().getFullYear()} Command Line Inc. Built with Docusaurus.`,
-        },
-        algolia: {
-            appId: "B6A8512SN4",
-            apiKey: "e879cd8663f109b2822cd004d9cd468c",
-            indexName: "waveterm",
+            copyright: `Copyright © ${new Date().getFullYear()} NodeDrop. Based on Wave Terminal (Command Line Inc., Apache-2.0). Built with Docusaurus.`,
         },
     },
     headTags: [

@@ -1,0 +1,210 @@
+---
+sidebar_position: 4
+id: "ndsh"
+title: "ndsh-Überblick"
+---
+
+Der Befehl `ndsh` stellt die zentrale Kommandozeilen-Schnittstelle von NodeDrop Terminal bereit und ermöglicht es Nutzern, sowohl mit Terminal- als auch mit grafischen Elementen von der Kommandozeile aus zu interagieren. Diese Anleitung behandelt die Grundlagen der Nutzung von `ndsh` und seine wichtigsten Funktionen.
+
+Eine Liste aller ndsh-Befehle und ihrer Argumente findest du in der [ndsh-Referenz](/ndsh-reference).
+
+## Überblick
+
+Im Kern ermöglicht `ndsh` eine nahtlose Interaktion zwischen deinen Terminal-Befehlen und NodeDrops grafischen Blöcken. Damit kannst du:
+
+- Grafische Widgets direkt von der Kommandozeile aus steuern
+- Daten zwischen Terminal-Sitzungen und GUI-Komponenten teilen
+- Deinen Workspace programmatisch verwalten
+- Entfernte und lokale Umgebungen verbinden
+- CLI-Ausgaben und Dateien direkt an KI-Gespräche senden
+- Terminal-Befehle in separaten, isolierten Blöcken ausführen
+
+## Grundkonzepte
+
+### Mit Blöcken interagieren
+
+`ndsh` ermöglicht die direkte Interaktion mit NodeDrops grafischen Blöcken über die Kommandozeile. Zum Beispiel:
+
+```bash
+# Eine Datei im Editor öffnen
+ndsh edit config.json
+
+# Den aktuellen Dateipfad aus einem Vorschau-Block abrufen
+ndsh getmeta -b 2 file
+
+# Ausgabe an einen KI-Assistenten senden (das "-" liest von stdin)
+ls -la | ndsh ai - "what are the largest files here?"
+```
+
+### Dauerhafter Status
+
+`ndsh` kann über sein Variablensystem einen Status über Terminal-Sitzungen hinweg beibehalten:
+
+```bash
+# Eine Variable speichern, die über Sitzungen hinweg erhalten bleibt
+ndsh setvar API_KEY=abc123
+
+# Global speichern
+ndsh setvar DEPLOY_ENV=prod
+# Oder im aktuellen Workspace speichern
+ndsh setvar -b workspace DEPLOY_ENV=staging
+
+# Gespeicherte Variablen in Befehlen nutzen
+curl -H "Authorization: $(ndsh getvar API_KEY)" https://api.example.com
+```
+
+### Auf lokale Dateien von einem entfernten Rechner aus zugreifen
+
+Wenn du auf entfernten Rechnern arbeitest, kannst du mit dem Pfadpräfix `ndsh://local/~/` zusammen mit `ndsh file`-Befehlen auf Dateien auf deinem lokalen Computer zugreifen. Die Kurzform `/~/` kann ebenfalls als Alias für `ndsh://local/~/` genutzt werden:
+
+```bash
+# Eine lokale Datei von einem entfernten Rechner lesen
+ndsh file cat ndsh://local/~/config/app.json
+
+# Ein lokales Skript per Shell-Prozesssubstitution auf dem entfernten Rechner ausführen
+bash <(ndsh file cat ndsh://local/~/scripts/deploy.sh)
+python <(ndsh file cat ndsh://local/~/scripts/deploy.py)
+
+# Entfernte Ausgabe an eine lokale Log-Datei anhängen
+echo "Remote machine log entry" | ndsh file append ndsh://local/~/app.log
+
+# Eine lokale Datei auf den entfernten Rechner kopieren
+ndsh file cp ndsh://local/~/data.csv ./remote-data.csv
+
+# Entfernte Datei zurück auf den lokalen Rechner kopieren
+ndsh file cp ./results.txt ndsh://local/~/results.txt
+
+# Du kannst auch die Kurzform /~/ anstelle von ndsh://local/~/ nutzen
+ndsh file cat /~/config/app.json
+```
+
+### Blockverwaltung
+
+Jedes visuelle Element in NodeDrop ist ein Block, und `ndsh` gibt dir vollständige Kontrolle darüber (Strg+Umschalt gedrückt halten, um Blocknummern anzuzeigen):
+
+```bash
+# Einen neuen Block erstellen, der eine Webseite zeigt
+ndsh web open github.com
+
+# Eine Websuche in einem neuen Block durchführen
+ndsh web open "wave terminal"
+
+# Einen Befehl in einem neuen Block ausführen und nach Abschluss automatisch schließen
+ndsh run -x -- npm test
+
+# Informationen über den aktuellen Block abrufen
+ndsh getmeta
+```
+
+## Häufige Workflows
+
+Hier sind einige gängige Wege, `ndsh` zu nutzen:
+
+### Entwicklungs-Workflow
+
+```bash
+# Verzeichnis oder Markdown-Dateien öffnen
+ndsh view .
+ndsh view README.md
+
+# -m hinzufügen, um den Block im "vergrößerten" Modus zu öffnen
+ndsh view -m README.md
+
+# Entwicklungsserver in einem neuen Block starten (-m vergrößert den Block beim Start)
+ndsh run -m -- npm run dev
+
+# Dokumentation in einem Web-Block öffnen
+ndsh web open http://localhost:3000
+```
+
+### Remote-Entwicklung
+
+```bash
+# Mit optionalem Schlüssel zu einem entfernten Server verbinden
+ndsh ssh -i ~/.ssh/mykey.pem dev@server
+
+# Entfernte Dateien bearbeiten
+ndsh edit /etc/nginx/nginx.conf
+
+# Entfernte Logs überwachen
+ndsh run -- tail -f /var/log/app.log
+
+# Variablen zwischen Sitzungen teilen
+ndsh setvar -b tab SHARED_ENV=staging
+```
+
+### KI-unterstützte Entwicklung
+
+Der Befehl `ndsh ai` fügt der NodeDrop-AI-Seitenleiste Inhalte hinzu. Standardmäßig werden Dateien angehängt, ohne automatisch abzusenden, sodass du vor dem Senden weiteren Kontext prüfen und hinzufügen kannst.
+
+```bash
+# Ausgabe an die KI-Seitenleiste weiterleiten (Frage in der UI stellen)
+git diff | ndsh ai -
+
+# Dateien mit einer Nachricht anhängen
+ndsh ai main.go utils.go -m "find bugs in these files"
+
+# Mit Nachricht automatisch absenden
+ndsh ai config.json -s -m "explain this config"
+
+# Neuen Chat mit angehängten Dateien starten
+ndsh ai -n *.log -m "analyze these logs"
+
+# Mehrere Dateitypen anhängen (Bilder, PDFs, Code)
+ndsh ai screenshot.png report.pdf app.py -m "review these"
+
+# Debuggen mit stdin und automatischem Absenden
+dmesg | ndsh ai -s - -m "help me understand these errors"
+```
+
+**Flags:**
+- `-` - Von stdin statt aus einer Datei lesen
+- `-m, --message` - Nachrichtentext zusammen mit Dateien hinzufügen
+- `-s, --submit` - Sofort automatisch absenden (Standard ist, auf den Nutzer zu warten)
+- `-n, --new` - Chat leeren und neues Gespräch beginnen
+
+**Dateigrenzen:**
+- Textdateien: max. 200KB
+- PDFs: max. 5MB
+- Bilder: max. 7MB
+- Maximal 15 Dateien pro Befehl
+
+## Tipps & Funktionen
+
+1. **Mit Blöcken arbeiten**
+
+   - Nutze Blocknummern (1-9), um bestimmte Blöcke innerhalb eines Tabs anzusprechen (Strg+Umschalt gedrückt halten, um Blocknummern anzuzeigen)
+   - Vollständige Block-IDs erhältst du per Rechtsklick auf die Kopfzeile eines Blocks und Auswahl von "Copy Block Id" (nützlich zum Skripten)
+   - Nutze Referenzen wie "this", "tab", "workspace" oder "global" für verschiedene Geltungsbereiche
+
+2. **Datenspeicherung**
+
+   - Nutze `ndsh setvar/getvar` für Konfiguration und Secrets
+   - Speichere Dateidaten mit `ndsh file`, die sich leicht in allen Terminals (lokal und entfernt) referenzieren lassen
+   - Nutze passende Speicher-Geltungsbereiche (Block, Tab, Workspace, global)
+
+3. **Befehlsausführung**
+   - Nutze `ndsh run`, um Befehle in neuen Blöcken auszuführen
+   - Sende Befehlsausgaben und Dateien schnell mit `ndsh ai` an KI-Blöcke
+
+## Skripten mit ndsh
+
+ndsh-Befehle können in Skripten kombiniert werden, um wiederkehrende Aufgaben zu automatisieren. Hier ist ein Beispiel, das eine Entwicklungsumgebung einrichtet und mit `ndsh notify` einen lang laufenden Build überwacht:
+
+```bash
+#!/bin/bash
+# Entwicklungsumgebung einrichten
+ndsh run -- docker-compose up -d
+ndsh web open localhost:8080
+ndsh view ./src
+ndsh run -- npm run test:watch
+
+# Mit ndsh notify benachrichtigt werden, wenn lang laufende Aufgaben abgeschlossen sind
+npm run build && ndsh notify "Build complete" || ndsh notify "Build failed"
+```
+
+## Hilfe erhalten
+
+Du kannst dir Hilfe zu verfügbaren Befehlen anzeigen lassen, indem du `ndsh` ohne Argumente ausführst, oder detaillierte Hilfe zu einem bestimmten Befehl mit `ndsh [command] -h` erhalten.
+
+Eine vollständige Referenz aller `ndsh`-Funktionen findest du in der [WSH-Befehlsreferenz](./ndsh-reference).

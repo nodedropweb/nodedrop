@@ -4,20 +4,20 @@ id: "ai-presets"
 title: "KI-Voreinstellungen (veraltet)"
 ---
 :::warning Hinweis zur Abkündigung
-Das KI-Widget und seine Voreinstellungen werden durch [Wave AI](./waveai.mdx) ersetzt. Die aktuellen KI-Funktionen und Konfigurationsoptionen findest du in der Wave-AI-Dokumentation.
+Das KI-Widget und seine Voreinstellungen werden durch [NodeDrop AI](./waveai.mdx) ersetzt. Die aktuellen KI-Funktionen und Konfigurationsoptionen findest du in der NodeDrop-AI-Dokumentation.
 :::
 
 
-![AI Presets Menu](./img/ai-presets.png#right)
+![AI Presets Menu](@site/docs/img/ai-presets.png#right)
 
-Waves KI-Widget kann über Voreinstellungen (Presets) für verschiedene KI-Anbieter und -Modelle konfiguriert werden. Mit Presets kannst du mehrere KI-Konfigurationen definieren und über das Dropdown-Menü im KI-Widget einfach zwischen ihnen wechseln.
+NodeDrops KI-Widget kann über Voreinstellungen (Presets) für verschiedene KI-Anbieter und -Modelle konfiguriert werden. Mit Presets kannst du mehrere KI-Konfigurationen definieren und über das Dropdown-Menü im KI-Widget einfach zwischen ihnen wechseln.
 
 ## Wie KI-Voreinstellungen funktionieren
 
-KI-Voreinstellungen werden in `~/.config/waveterm/presets/ai.json` definiert. Du kannst diese Datei einfach bearbeiten mit:
+KI-Voreinstellungen werden in `~/.config/nodedrop/presets/ai.json` definiert. Du kannst diese Datei einfach bearbeiten mit:
 
 ```bash
-wsh editconfig presets/ai.json
+ndsh editconfig presets/ai.json
 ```
 
 Jede Voreinstellung definiert einen vollständigen Satz an Konfigurationswerten für das KI-Widget. Wählst du eine Voreinstellung aus dem Dropdown-Menü, werden diese Konfigurationswerte auf das Widget angewendet. Ist keine Voreinstellung ausgewählt, nutzt das Widget die Standardwerte aus `settings.json`.
@@ -49,7 +49,7 @@ Um eine Voreinstellung zu deinem Standard zu machen, füge diese eine Zeile zu d
 Du kannst deine Standard-Voreinstellung schnell mit dem Befehl `setconfig` festlegen:
 
 ```bash
-wsh setconfig ai:preset=ai@claude-sonnet
+ndsh setconfig ai:preset=ai@claude-sonnet
 ```
 
 Das ist einfacher, als die settings.json direkt zu bearbeiten!
