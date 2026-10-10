@@ -197,6 +197,16 @@ const TerminalView = ({ blockId, model }: ViewComponentProps<TermViewModel>) => 
     const connFontFamily = fullConfig.connections?.[blockData?.meta?.connection]?.["term:fontfamily"];
     const isFocused = jotai.useAtomValue(model.nodeModel.isFocused);
     const isMI = jotai.useAtomValue(tabModel.isTermMultiInput);
+    const isMagnified = jotai.useAtomValue(model.nodeModel.isMagnified);
+    // Magnifying a block resizes it through a layout transition. Re-check the terminal size a few times so the pty
+    // gets the final size even when the ResizeObserver does not fire for it (handleResize only reports real changes).
+    React.useEffect(() => {
+        if (termWrapInst == null) {
+            return;
+        }
+        const timers = [60, 350, 900].map((ms) => window.setTimeout(() => termWrapInst.handleResize(), ms));
+        return () => timers.forEach((t) => window.clearTimeout(t));
+    }, [isMagnified, termWrapInst]);
     const isBasicTerm = termMode != "vdom" && blockData?.meta?.controller != "cmd"; // needs to match isBasicTerm
 
     // search
