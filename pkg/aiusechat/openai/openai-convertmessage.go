@@ -304,7 +304,7 @@ func buildOpenAIHTTPRequest(ctx context.Context, inputs []any, chatOpts uctypes.
 	}
 	req.Header.Set("Accept", "text/event-stream")
 
-	// Only send Wave-specific headers when using Wave provider
+	// Only send NodeDrop-specific headers when using NodeDrop provider
 	if opts.Provider == uctypes.AIProvider_Wave {
 		if chatOpts.ClientId != "" {
 			req.Header.Set("X-Wave-ClientId", chatOpts.ClientId)

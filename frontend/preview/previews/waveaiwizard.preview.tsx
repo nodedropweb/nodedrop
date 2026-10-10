@@ -58,7 +58,7 @@ export default function WaveAiWizardPreview() {
     return (
         <div className="flex w-full max-w-[1000px] flex-col gap-2 px-6 py-6">
             <div className="text-xs text-muted font-mono">
-                Wave AI Modes wizard (mock RPC: file read/write in memory, secrets in memory). File writes: {writes}
+                NodeDrop AI Modes wizard (mock RPC: file read/write in memory, secrets in memory). File writes: {writes}
             </div>
             <div className="rounded-md border border-border bg-panel">
                 <div className="h-[640px]">

@@ -370,7 +370,7 @@ var App = app.DefineComponent("App", func(_ struct{}) any {
 						vdom.H("span", map[string]any{
 							"className": "text-blue-400 mt-1",
 						}, "•"),
-						"Dark theme optimized for Wave Terminal",
+						"Dark theme optimized for NodeDrop Terminal",
 					),
 				),
 			),

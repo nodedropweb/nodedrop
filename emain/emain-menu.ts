@@ -37,7 +37,7 @@ function getWindowWebContents(window: electron.BaseWindow): electron.WebContents
     if (window instanceof electron.BrowserWindow) {
         return window.webContents;
     }
-    // Check WaveBrowserWindow (for main Wave windows with tab views)
+    // Check WaveBrowserWindow (for main NodeDrop windows with tab views)
     if (window instanceof WaveBrowserWindow) {
         if (window.activeTabView) {
             return window.activeTabView.webContents;

@@ -534,7 +534,7 @@ export const createImagePreview = async (file: File): Promise<string | null> => 
 
 
 /**
- * Filter and organize AI mode configs into Wave and custom provider groups
+ * Filter and organize AI mode configs into NodeDrop and custom provider groups
  * Returns organized configs that should be displayed based on settings and premium status
  */
 export interface FilteredAIModeConfigs {
@@ -575,7 +575,7 @@ export const getFilteredAIModeConfigs = (
     };
 };
 
-// Wave's built-in modes ship translated name/description strings (see locales/*.json,
+// NodeDrop's built-in modes ship translated name/description strings (see locales/*.json,
 // "aimode.modes.*"), since their config values are shipped defaults, not user-authored text.
 const BUILT_IN_MODE_I18N_KEYS: Record<string, string> = {
     "waveai@quick": "aimode.modes.quick",

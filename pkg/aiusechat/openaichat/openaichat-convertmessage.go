@@ -41,7 +41,7 @@ func appendToLastUserMessage(messages []ChatRequestMessage, text string) {
 	}
 }
 
-// convertToolDefinitions converts Wave ToolDefinitions to OpenAI format
+// convertToolDefinitions converts NodeDrop ToolDefinitions to OpenAI format
 // Only includes tools whose required capabilities are met
 func convertToolDefinitions(waveTools []uctypes.ToolDefinition, capabilities []string) []ToolDefinition {
 	if len(waveTools) == 0 {
@@ -151,7 +151,7 @@ func buildChatHTTPRequest(ctx context.Context, messages []ChatRequestMessage, ch
 
 	req.Header.Set("Accept", "text/event-stream")
 
-	// Only send Wave-specific headers when using Wave provider
+	// Only send NodeDrop-specific headers when using NodeDrop provider
 	if opts.Provider == uctypes.AIProvider_Wave {
 		if chatOpts.ClientId != "" {
 			req.Header.Set("X-Wave-ClientId", chatOpts.ClientId)

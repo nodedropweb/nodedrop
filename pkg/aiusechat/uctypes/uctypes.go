@@ -149,7 +149,7 @@ func (td *ToolDefinition) HasRequiredCapabilities(capabilities []string) bool {
 }
 
 //------------------
-// Wave specific types, stop reasons, tool calls, config
+// NodeDrop specific types, stop reasons, tool calls, config
 // these are used internally to coordinate the calls/steps
 
 const (
@@ -245,13 +245,13 @@ type WaveStopReason struct {
 	ErrorText string         `json:"error_text,omitempty"`
 }
 
-// Wave Specific parameter used to signal to our step function that this is a continuation step, not an initial step
+// NodeDrop Specific parameter used to signal to our step function that this is a continuation step, not an initial step
 type WaveContinueResponse struct {
 	Model            string         `json:"model,omitempty"`
 	ContinueFromKind StopReasonKind `json:"continue_from_kind"`
 }
 
-// Wave Specific AI opts for configuration
+// NodeDrop Specific AI opts for configuration
 type AIOptsType struct {
 	Provider      string   `json:"provider,omitempty"`
 	APIType       string   `json:"apitype,omitempty"`

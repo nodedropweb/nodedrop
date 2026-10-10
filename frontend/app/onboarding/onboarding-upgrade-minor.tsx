@@ -45,7 +45,7 @@ const UpgradeMinorWelcomePage = ({ onStarClick, onAlreadyStarred, onMaybeLater }
                         <div className="flex flex-row gap-4 items-center">
                             <div className="flex h-[52px] px-3 items-center rounded-lg bg-hover text-accent text-[24px]">
                                 <i className="fa fa-sparkles" />
-                                <span className="font-bold ml-2 font-mono">Wave AI</span>
+                                <span className="font-bold ml-2 font-mono">NodeDrop AI</span>
                             </div>
                             <div className="flex h-[52px] px-3 items-center rounded-lg bg-hover text-[18px]">
                                 <i className="fa-sharp fa-solid fa-shield text-sky-500" />

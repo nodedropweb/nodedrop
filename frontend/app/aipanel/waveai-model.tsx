@@ -73,7 +73,7 @@ export class WaveAIModel {
     useChatSetMessages: UseChatSetMessagesType | null = null;
     useChatStatus: ChatStatus = "ready";
     useChatStop: (() => void) | null = null;
-    // Used for injecting Wave-specific message data into DefaultChatTransport's prepareSendMessagesRequest
+    // Used for injecting NodeDrop-specific message data into DefaultChatTransport's prepareSendMessagesRequest
     realMessage: AIMessage | null = null;
     orefContext: ORef;
     inBuilder: boolean = false;

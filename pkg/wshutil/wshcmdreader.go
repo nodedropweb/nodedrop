@@ -97,7 +97,7 @@ func (b *PtyBuffer) processData(data []byte) {
 				outputBuf = append(outputBuf, ch)
 				b.EscSeqBuf = nil
 			} else if ch == BEL || ch == ST {
-				// terminates the escpae sequence (is a valid Wave OSC command)
+				// terminates the escpae sequence (is a valid NodeDrop OSC command)
 				b.EscMode = Mode_Normal
 				waveEscSeq := b.EscSeqBuf[WaveOSCPrefixLen:]
 				b.EscSeqBuf = nil
@@ -109,7 +109,7 @@ func (b *PtyBuffer) processData(data []byte) {
 		}
 		if b.EscMode == Mode_Esc {
 			if ch == ESC || ch == BEL || ch == ST {
-				// these all terminate the escape sequence (invalid, not a Wave OSC)
+				// these all terminate the escape sequence (invalid, not a NodeDrop OSC)
 				b.EscMode = Mode_Normal
 				outputBuf = append(outputBuf, b.EscSeqBuf...)
 				outputBuf = append(outputBuf, ch)
@@ -117,16 +117,16 @@ func (b *PtyBuffer) processData(data []byte) {
 				continue
 			}
 			if ch != b.OSCPrefix[len(b.EscSeqBuf)] {
-				// this is not a Wave OSC sequence, just an escape sequence
+				// this is not a NodeDrop OSC sequence, just an escape sequence
 				b.EscMode = Mode_Normal
 				outputBuf = append(outputBuf, b.EscSeqBuf...)
 				outputBuf = append(outputBuf, ch)
 				b.EscSeqBuf = nil
 				continue
 			}
-			// we're still building what could be a Wave OSC sequence
+			// we're still building what could be a NodeDrop OSC sequence
 			b.EscSeqBuf = append(b.EscSeqBuf, ch)
-			// check to see if we have a full Wave OSC prefix
+			// check to see if we have a full NodeDrop OSC prefix
 			if len(b.EscSeqBuf) == len(b.OSCPrefix) {
 				b.EscMode = Mode_WaveEsc
 			}

@@ -509,7 +509,7 @@ const AIPanelComponentInner = memo(({ roundTopLeft }: AIPanelComponentInnerProps
 
     const handleFocusCapture = useCallback(
         (_event: React.FocusEvent) => {
-            // console.log("Wave AI focus capture", getElemAsStr(event.target));
+            // console.log("NodeDrop AI focus capture", getElemAsStr(event.target));
             model.requestWaveAIFocus();
         },
         [model]

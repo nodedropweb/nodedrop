@@ -24,8 +24,8 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/wshutil"
 )
 
-const JobAccessTokenLabel = "Wave-JobAccessToken"
-const JobManagerStartLabel = "Wave-JobManagerStart"
+const JobAccessTokenLabel = "NodeDrop-JobAccessToken"
+const JobManagerStartLabel = "NodeDrop-JobManagerStart"
 const JobInputQueueTimeout = 100 * time.Millisecond
 const JobInputQueueSize = 1000
 

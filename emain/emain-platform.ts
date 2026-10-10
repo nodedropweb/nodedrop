@@ -32,7 +32,7 @@ const waveDirName = `${waveDirNamePrefix}${waveDirNameSuffix ? `-${waveDirNameSu
 
 const paths = envPaths("nodedrop", { suffix: waveDirNameSuffix });
 
-app.setName(isDev ? "Wave (Dev)" : "Wave");
+app.setName(isDev ? "NodeDrop (Dev)" : "NodeDrop");
 const unamePlatform = process.platform;
 const unameArch: string = process.arch;
 keyutil.setKeyUtilPlatform(unamePlatform);
@@ -47,8 +47,8 @@ export function checkIfRunningUnderARM64Translation(fullConfig: FullConfigType) 
         const dialogOpts: Electron.MessageBoxOptions = {
             type: "warning",
             buttons: ["Dismiss", "Learn More"],
-            title: "Wave has detected a performance issue",
-            message: `Wave is running in ARM64 translation mode which may impact performance.\n\nRecommendation: Download the native ARM64 version from our website for optimal performance.`,
+            title: "NodeDrop has detected a performance issue",
+            message: `NodeDrop is running in ARM64 translation mode which may impact performance.\n\nRecommendation: Download the native ARM64 version from our website for optimal performance.`,
         };
 
         const choice = dialog.showMessageBoxSync(null, dialogOpts);
@@ -68,7 +68,7 @@ export function checkIfRunningUnderARM64Translation(fullConfig: FullConfigType) 
 }
 
 /**
- * Gets the path to the old Wave home directory (defaults to `~/.nodedrop`).
+ * Gets the path to the old NodeDrop home directory (defaults to `~/.nodedrop`).
  * @returns The path to the directory if it exists and contains valid data for the current app, otherwise null.
  */
 function getWaveHomeDir(): string {
@@ -79,7 +79,7 @@ function getWaveHomeDir(): string {
             home = path.join(homeDir, `.${waveDirName}`);
         }
     }
-    // If home exists and it has `wave.lock` in it, we know it has valid data from Wave >=v0.8. Otherwise, it could be for WaveLegacy (<v0.8)
+    // If home exists and it has `wave.lock` in it, we know it has valid data from NodeDrop >=v0.8. Otherwise, it could be for WaveLegacy (<v0.8)
     if (home && existsSync(home) && existsSync(path.join(home, "wave.lock"))) {
         return home;
     }
@@ -99,8 +99,8 @@ function ensurePathExists(path: string): string {
 }
 
 /**
- * Gets the path to the directory where Wave configurations are stored. Creates the directory if it does not exist.
- * Handles backwards compatibility with the old Wave Home directory model, where configurations and data were stored together.
+ * Gets the path to the directory where NodeDrop configurations are stored. Creates the directory if it does not exist.
+ * Handles backwards compatibility with the old NodeDrop Home directory model, where configurations and data were stored together.
  * @returns The path where configurations should be stored.
  */
 function getWaveConfigDir(): string {
@@ -124,8 +124,8 @@ function getWaveConfigDir(): string {
 }
 
 /**
- * Gets the path to the directory where Wave data is stored. Creates the directory if it does not exist.
- * Handles backwards compatibility with the old Wave Home directory model, where configurations and data were stored together.
+ * Gets the path to the directory where NodeDrop data is stored. Creates the directory if it does not exist.
+ * Handles backwards compatibility with the old NodeDrop Home directory model, where configurations and data were stored together.
  * @returns The path where data should be stored.
  */
 function getWaveDataDir(): string {

@@ -24,7 +24,7 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/web/sse"
 )
 
-// sanitizeHostnameInError removes the Wave cloud hostname from error messages
+// sanitizeHostnameInError removes the NodeDrop cloud hostname from error messages
 func sanitizeHostnameInError(err error) error {
 	if err == nil {
 		return nil

@@ -9,7 +9,7 @@ if ($nodedrop_swaptoken_output -and $nodedrop_swaptoken_output -ne "") {
 Remove-Variable -Name nodedrop_swaptoken_output
 Remove-Item Env:NODEDROP_SWAPTOKEN
 
-# Load Wave completions
+# Load NodeDrop completions
 ndsh completion powershell | Out-String | Invoke-Expression
 
 if ($PSVersionTable.PSVersion.Major -lt 7) {

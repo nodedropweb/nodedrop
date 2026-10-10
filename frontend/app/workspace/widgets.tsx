@@ -62,7 +62,7 @@ async function handleWidgetSelect(widget: WidgetConfigType, env: WidgetsEnv) {
     env.createBlock(blockDef, widget.magnified);
 }
 
-// Wave's built-in default widgets (pkg/wconfig/defaultconfig/widgets.json) carry
+// NodeDrop's built-in default widgets (pkg/wconfig/defaultconfig/widgets.json) carry
 // plain-English labels as data, not i18n resources. Translate them only while a
 // user hasn't overridden the default label, so customized widgets.json entries
 // are left alone.

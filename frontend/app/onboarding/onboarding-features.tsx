@@ -45,7 +45,7 @@ export const WaveAIPage = ({ onNext, onSkip }: { onNext: () => void; onSkip: () 
                 <div>
                     <Logo />
                 </div>
-                <div className="text-[25px] font-normal text-foreground">Wave AI</div>
+                <div className="text-[25px] font-normal text-foreground">NodeDrop AI</div>
             </header>
             <div className="flex-1 flex flex-row gap-0 min-h-0">
                 <div className="flex-1 flex flex-col items-center justify-center gap-8 pr-6 unselectable">

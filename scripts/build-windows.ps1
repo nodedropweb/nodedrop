@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Builds a Windows installer/executable for Wave Terminal.
+    Builds a Windows installer/executable for NodeDrop Terminal.
 
 .DESCRIPTION
     Wraps the project's Task-based build pipeline (`task package`) to produce
@@ -73,7 +73,7 @@ try {
         task clean
     }
 
-    Write-Host "==> Building and packaging Wave Terminal for Windows (task package)..." -ForegroundColor Cyan
+    Write-Host "==> Building and packaging NodeDrop Terminal for Windows (task package)..." -ForegroundColor Cyan
     Write-Host "    This installs npm/go dependencies, builds nodedropsrv + ndsh, then runs electron-builder." -ForegroundColor DarkGray
     task package
 

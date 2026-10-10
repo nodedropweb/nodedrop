@@ -171,7 +171,7 @@ func buildAnthropicHTTPRequest(ctx context.Context, msgs []anthropicInputMessage
 	}
 	req.Header.Set("anthropic-version", AnthropicDefaultAPIVersion)
 	req.Header.Set("accept", "text/event-stream")
-	// Only send Wave-specific headers when using Wave provider
+	// Only send NodeDrop-specific headers when using NodeDrop provider
 	if opts.Provider == uctypes.AIProvider_Wave {
 		if chatOpts.ClientId != "" {
 			req.Header.Set("X-Wave-ClientId", chatOpts.ClientId)

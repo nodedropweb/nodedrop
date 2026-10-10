@@ -5,12 +5,12 @@ if type update-alternatives 2>/dev/null >&1; then
     if [ -L '/usr/bin/nodedrop' -a -e '/usr/bin/nodedrop' -a "`readlink '/usr/bin/nodedrop'`" != '/etc/alternatives/nodedrop' ]; then
         rm -f '/usr/bin/nodedrop'
     fi
-    update-alternatives --install '/usr/bin/nodedrop' 'nodedrop' '/opt/Wave/nodedrop' 100 || ln -sf '/opt/Wave/nodedrop' '/usr/bin/nodedrop'
+    update-alternatives --install '/usr/bin/nodedrop' 'nodedrop' '/opt/NodeDrop/nodedrop' 100 || ln -sf '/opt/NodeDrop/nodedrop' '/usr/bin/nodedrop'
 else
-    ln -sf '/opt/Wave/nodedrop' '/usr/bin/nodedrop'
+    ln -sf '/opt/NodeDrop/nodedrop' '/usr/bin/nodedrop'
 fi
 
-chmod 4755 '/opt/Wave/chrome-sandbox' || true
+chmod 4755 '/opt/NodeDrop/chrome-sandbox' || true
 
 if hash update-mime-database 2>/dev/null; then
     update-mime-database /usr/share/mime || true

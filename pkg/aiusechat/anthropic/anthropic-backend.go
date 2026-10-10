@@ -238,7 +238,7 @@ type anthropicUsageType struct {
 	CacheCreationInputTokens int `json:"cache_creation_input_tokens,omitempty"`
 	CacheReadInputTokens     int `json:"cache_read_input_tokens,omitempty"`
 
-	// internal fields for Wave use (not sent to API)
+	// internal fields for NodeDrop use (not sent to API)
 	Model                string `json:"model,omitempty"`
 	NativeWebSearchCount int    `json:"nativewebsearchcount,omitempty"`
 
@@ -343,7 +343,7 @@ func (p *partialJSON) FinalObject() (json.RawMessage, error) {
 	}
 }
 
-// sanitizeHostnameInError removes the Wave cloud hostname from error messages
+// sanitizeHostnameInError removes the NodeDrop cloud hostname from error messages
 func sanitizeHostnameInError(err error) error {
 	if err == nil {
 		return nil

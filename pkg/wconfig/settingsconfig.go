@@ -284,7 +284,7 @@ type WebBookmark struct {
 	DisplayOrder float64 `json:"display:order,omitempty"`
 }
 
-// Wave AI panel mode configuration (NEW)
+// NodeDrop AI panel mode configuration (NEW)
 type AIModeConfigType struct {
 	DisplayName        string   `json:"display:name"`
 	DisplayOrder       float64  `json:"display:order,omitempty"`

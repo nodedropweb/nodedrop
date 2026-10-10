@@ -77,7 +77,7 @@ func cleanSchemaForGemini(schema map[string]any) map[string]any {
 	return cleaned
 }
 
-// ConvertToolDefinitionToGemini converts a Wave ToolDefinition to Gemini format
+// ConvertToolDefinitionToGemini converts a NodeDrop ToolDefinition to Gemini format
 func ConvertToolDefinitionToGemini(tool uctypes.ToolDefinition) GeminiFunctionDeclaration {
 	// Clean the schema to remove fields that Gemini doesn't accept
 	cleanedSchema := cleanSchemaForGemini(tool.InputSchema)

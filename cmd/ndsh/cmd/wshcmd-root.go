@@ -20,8 +20,8 @@ import (
 var (
 	rootCmd = &cobra.Command{
 		Use:          "ndsh",
-		Short:        "CLI tool to control Wave Terminal",
-		Long:         `ndsh is a small utility that lets you do cool things with Wave Terminal, right from the command line`,
+		Short:        "CLI tool to control NodeDrop Terminal",
+		Long:         `ndsh is a small utility that lets you do cool things with NodeDrop Terminal, right from the command line`,
 		SilenceUsage: true,
 	}
 )
@@ -85,7 +85,7 @@ func OutputHelpMessage(cmd *cobra.Command) {
 func preRunSetupRpcClient(cmd *cobra.Command, args []string) error {
 	jwtToken := os.Getenv(wshutil.WaveJwtTokenVarName)
 	if jwtToken == "" {
-		return fmt.Errorf("ndsh must be run inside a Wave-managed SSH session (NODEDROP_JWT not found)")
+		return fmt.Errorf("ndsh must be run inside a NodeDrop-managed SSH session (NODEDROP_JWT not found)")
 	}
 	err := setupRpcClient(nil, jwtToken)
 	if err != nil {

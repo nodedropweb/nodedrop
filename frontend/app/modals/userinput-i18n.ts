@@ -9,7 +9,7 @@ type TFn = (key: string, opts?: Record<string, unknown>) => string;
 
 // exact English text from the backend -> key below "userInput.texts"
 const KnownTexts: Record<string, string> = {
-    "Install Wave Shell Extensions": "installWshTitle",
+    "Install NodeDrop Shell Extensions": "installWshTitle",
     "Install ndsh": "installWshOk",
     "No ndsh": "installWshCancel",
     "Automatically install for all connections": "installWshAuto",
@@ -21,7 +21,7 @@ const KnownTexts: Record<string, string> = {
 };
 
 const InstallWshQuery =
-    /^Wave requires Wave Shell Extensions to be\s+installed on "([\s\S]*)"\s+to ensure a seamless experience\.\s+Would you like to install them\?$/;
+    /^NodeDrop requires NodeDrop Shell Extensions to be\s+installed on "([\s\S]*)"\s+to ensure a seamless experience\.\s+Would you like to install them\?$/;
 const PassphraseQuery = /^Enter passphrase for the SSH key: ([\s\S]*)$/;
 
 function translateText(text: string, t: TFn): string {

@@ -174,7 +174,7 @@ func (impl *ServerImpl) RemoteStartJobCommand(ctx context.Context, data wshrpc.C
 	readyPipeWrite.Close()
 	log.Printf("RemoteStartJobCommand: job manager process started\n")
 
-	jobAuthTokenLine := fmt.Sprintf("Wave-JobAccessToken:%s\n", data.JobAuthToken)
+	jobAuthTokenLine := fmt.Sprintf("NodeDrop-JobAccessToken:%s\n", data.JobAuthToken)
 	if _, err := stdin.Write([]byte(jobAuthTokenLine)); err != nil {
 		cmd.Process.Kill()
 		return nil, fmt.Errorf("cannot write job auth token: %w", err)
@@ -214,7 +214,7 @@ func (impl *ServerImpl) RemoteStartJobCommand(ctx context.Context, data wshrpc.C
 		for scanner.Scan() {
 			line := scanner.Text()
 			log.Printf("RemoteStartJobCommand: ready pipe line: %s\n", line)
-			if strings.Contains(line, "Wave-JobManagerStart") {
+			if strings.Contains(line, "NodeDrop-JobManagerStart") {
 				startCh <- nil
 				return
 			}

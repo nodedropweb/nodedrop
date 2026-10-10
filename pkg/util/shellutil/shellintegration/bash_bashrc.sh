@@ -55,7 +55,7 @@ fi
 
 _NODEDROP_SI_FIRSTPROMPT=1
 
-# Wave Terminal Shell Integration
+# NodeDrop Terminal Shell Integration
 _nodedrop_si_blocked() {
     [[ -n "$TMUX" || -n "$STY" || "$TERM" == tmux* || "$TERM" == screen* ]]
 }

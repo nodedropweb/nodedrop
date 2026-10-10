@@ -1,7 +1,7 @@
 // Copyright 2026, Command Line Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-// Pure logic for the Wave AI "bring your own key" wizard (no React, no RPC).
+// Pure logic for the NodeDrop AI "bring your own key" wizard (no React, no RPC).
 // The provider defaults mirror pkg/aiusechat/usechat-mode.go (applyProviderDefaults):
 // for the hosted providers the backend fills in endpoint, API type and secret name itself,
 // so the wizard only writes the fields the user actually has to decide.
@@ -169,7 +169,7 @@ export const LocalPresets: { id: LocalPresetId; label: string; endpoint: string;
     { id: "other", label: "", endpoint: "", modelPlaceholder: "model-name" },
 ];
 
-// Local servers ignore the token, but Wave requires one to be present.
+// Local servers ignore the token, but NodeDrop requires one to be present.
 export const LocalDummyToken = "not-needed";
 
 export type WizardState = {
@@ -255,7 +255,7 @@ export function validateWizardState(state: WizardState, step: StepId, keyExists:
     return errs;
 }
 
-// Soft hint (not an error): Wave expects the FULL endpoint, not just a base URL.
+// Soft hint (not an error): NodeDrop expects the FULL endpoint, not just a base URL.
 export function endpointLooksLikeBaseUrl(endpoint: string): boolean {
     const ep = endpoint.trim();
     if (!isHttpUrl(ep)) return false;

@@ -36,7 +36,7 @@ const TelemetryRequiredMessage = ({ className }: TelemetryRequiredMessageProps) 
                 <div className="max-w-md space-y-6">
                     <div className="space-y-4">
                         <i className="fa fa-sparkles text-accent text-5xl"></i>
-                        <h2 className="text-2xl font-semibold text-foreground">Wave AI</h2>
+                        <h2 className="text-2xl font-semibold text-foreground">NodeDrop AI</h2>
                         <p className="text-secondary leading-relaxed">{t("aiPanel.telemetryIntro")}</p>
                     </div>
 
