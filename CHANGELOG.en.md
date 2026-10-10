@@ -11,6 +11,14 @@ Base of this fork: Wave Terminal `v0.14.5`.
 
 Entries are sorted newest first.
 
+## v0.14.6 — 2026-10-10
+
+- **Rebrand to NodeDrop Terminal**: new name, logo and theme; the CLI helper is now `ndsh` (was `wsh`); Wave cloud services are disabled.
+- **AI settings wizard** for bring-your-own-key and local models (OpenAI, Gemini, Azure, OpenRouter, Ollama, LM Studio, custom endpoints) instead of hand-editing `waveai.json`.
+- **Monitor widget** replaces the old system info widget and runs btop4win, which ships with the Windows build (Apache-2.0, SHA-256 verified). It opens magnified and restarts itself when the block is resized. If no monitor is available, it falls back to the built-in system info view.
+- Translated the `ndsh` install dialog; docs and READMEs rebranded and available in English and German.
+- Windows: more reliable startup (domain sockets in `%TEMP%`, stale sockets are cleaned up).
+
 ## [PR #2](https://github.com/nodedropweb/nodedrop/pull/2) — 2026-09-05
 
 ### Browser block
