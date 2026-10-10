@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://www.waveterm.dev">
 	<picture>
-		<source media="(prefers-color-scheme: dark)" srcset="./assets/wave-dark.png">
-		<source media="(prefers-color-scheme: light)" srcset="./assets/wave-light.png">
-		<img alt="Wave Terminal Logo" src="./assets/wave-light.png" width="240">
+		<source media="(prefers-color-scheme: dark)" srcset="./assets/nodedrop-dark.png">
+		<source media="(prefers-color-scheme: light)" srcset="./assets/nodedrop-light.png">
+		<img alt="NodeDrop Terminal Logo" src="./assets/nodedrop-light.png" width="240">
 	</picture>
   </a>
   <br/>

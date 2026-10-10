@@ -11,7 +11,7 @@
     --border-color: rgba(255, 255, 255, 0.16);
     --base-font: normal 14px / normal "Inter", sans-serif;
     --fixed-font: normal 12px / normal "Hack", monospace;
-    --accent-color: rgb(88, 193, 66);
+    --accent-color: rgb(123, 92, 255);
     --panel-bg-color: rgba(31, 33, 31, 0.5);
     --highlight-bg-color: rgba(255, 255, 255, 0.2);
     --markdown-font-family:
@@ -42,7 +42,7 @@
     --header-icon-width: 16px;
     --header-height: 30px;
 
-    --tab-green: rgb(88, 193, 66);
+    --tab-green: rgb(123, 92, 255);
 
     /* z-index values */
     --zindex-header-hover: 100;
@@ -90,7 +90,7 @@
     --toggle-checked-bg-color: var(--accent-color);
 
     // link color
-    --link-color: #58c142;
+    --link-color: #5ce1ff;
 
     // form colors
     --form-element-border-color: rgba(241, 246, 243, 0.15);
@@ -112,7 +112,7 @@
     --conn-icon-color-8: #58c142;
     --conn-status-overlay-bg-color: rgba(230, 186, 30, 0.2);
 
-    --sysinfo-cpu-color: #58c142;
+    --sysinfo-cpu-color: #00e5ff;
     --sysinfo-mem-color: #53b4ea;
 
     --bulb-color: rgb(255, 221, 51);

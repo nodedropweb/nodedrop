@@ -293,7 +293,7 @@ function createMockFilesystemEntries(): MockFsEntryInput[] {
         makeMockFsInput(`${MockHomePath}/nodedrop/docs/connections.md`),
         makeMockFsInput(`${MockHomePath}/nodedrop/docs/preview-gallery.md`),
         makeMockFsInput(`${MockHomePath}/nodedrop/docs/release-notes.md`),
-        makeMockFsInput(`${MockHomePath}/nodedrop/images/wave-logo.png`, TinyPngBytes, "image/png"),
+        makeMockFsInput(`${MockHomePath}/nodedrop/images/nodedrop-logo.png`, TinyPngBytes, "image/png"),
         makeMockFsInput(`${MockHomePath}/nodedrop/images/hero.png`),
         makeMockFsInput(`${MockHomePath}/nodedrop/images/avatar.jpg`),
         makeMockFsInput(`${MockHomePath}/nodedrop/images/icon-16.png`),

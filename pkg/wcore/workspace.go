@@ -24,7 +24,7 @@ import (
 )
 
 var WorkspaceColors = [...]string{
-	"#58C142", // Green (accent)
+	"#7B5CFF", // Violet (accent)
 	"#00FFDB", // Teal
 	"#429DFF", // Blue
 	"#BF55EC", // Purple
@@ -34,7 +34,7 @@ var WorkspaceColors = [...]string{
 }
 
 var WorkspaceIcons = [...]string{
-	"custom@wave-logo-solid",
+	"droplet",
 	"triangle",
 	"star",
 	"heart",

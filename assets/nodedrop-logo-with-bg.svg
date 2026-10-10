@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>NodeDrop</title>
+  <defs>
+    <radialGradient id="nd-bg" cx="512" cy="430" r="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D0B45"/>
+      <stop offset="1" stop-color="#07040F"/>
+    </radialGradient>
+    <linearGradient id="nd-grad" x1="200" y1="140" x2="840" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="0.55" stop-color="#7B5CFF"/>
+      <stop offset="1" stop-color="#FF2BD6"/>
+    </linearGradient>
+    <linearGradient id="nd-rim" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FF2BD6" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="nd-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="232" fill="url(#nd-bg)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="222" fill="none" stroke="url(#nd-rim)" stroke-width="8"/>
+  <g filter="url(#nd-glow)" stroke="url(#nd-grad)" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M512 262 C512 262 272 520 272 656 C272 790 380 880 512 880 C644 880 752 790 752 656 C752 520 512 262 512 262 Z" stroke-width="44"/>
+    <circle cx="512" cy="146" r="46" fill="url(#nd-grad)" stroke="none"/>
+    <path d="M512 214 L512 234" stroke-width="18"/>
+    <path d="M410 590 L516 680 L410 770" stroke-width="54"/>
+    <path d="M556 776 L636 776" stroke-width="54"/>
+  </g>
+</svg>

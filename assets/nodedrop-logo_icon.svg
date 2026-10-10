@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>NodeDrop</title>
+  <defs>
+    <linearGradient id="nd-grad" x1="200" y1="140" x2="840" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="0.55" stop-color="#7B5CFF"/>
+      <stop offset="1" stop-color="#FF2BD6"/>
+    </linearGradient>
+    <filter id="nd-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#nd-glow)" stroke="url(#nd-grad)" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- the drop -->
+    <path d="M512 262 C512 262 272 520 272 656 C272 790 380 880 512 880 C644 880 752 790 752 656 C752 520 512 262 512 262 Z" stroke-width="44"/>
+    <!-- the node falling into it -->
+    <circle cx="512" cy="146" r="46" fill="url(#nd-grad)" stroke="none"/>
+    <path d="M512 214 L512 234" stroke-width="18"/>
+    <!-- prompt -->
+    <path d="M410 590 L516 680 L410 770" stroke-width="54"/>
+    <path d="M556 776 L636 776" stroke-width="54"/>
+  </g>
+</svg>
