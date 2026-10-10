@@ -9,10 +9,10 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/wavetermdev/waveterm/pkg/aiusechat/aiutil"
-	"github.com/wavetermdev/waveterm/pkg/aiusechat/uctypes"
-	"github.com/wavetermdev/waveterm/pkg/wconfig"
-	"github.com/wavetermdev/waveterm/pkg/wps"
+	"github.com/nodedropweb/nodedrop/pkg/aiusechat/aiutil"
+	"github.com/nodedropweb/nodedrop/pkg/aiusechat/uctypes"
+	"github.com/nodedropweb/nodedrop/pkg/wconfig"
+	"github.com/nodedropweb/nodedrop/pkg/wps"
 )
 
 var AzureResourceNameRegex = regexp.MustCompile(`^[a-z0-9]([a-z0-9-]*[a-z0-9])?$`)

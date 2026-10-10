@@ -11,9 +11,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/wavetermdev/waveterm/tsunami/rpctypes"
-	"github.com/wavetermdev/waveterm/tsunami/util"
-	"github.com/wavetermdev/waveterm/tsunami/vdom"
+	"github.com/nodedropweb/nodedrop/tsunami/rpctypes"
+	"github.com/nodedropweb/nodedrop/tsunami/util"
+	"github.com/nodedropweb/nodedrop/tsunami/vdom"
 )
 
 const ChildrenPropKey = "children"

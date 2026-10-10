@@ -6,7 +6,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 )
 
 type DataSender interface {

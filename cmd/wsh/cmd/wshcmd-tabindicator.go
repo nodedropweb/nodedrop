@@ -9,11 +9,11 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
-	"github.com/wavetermdev/waveterm/pkg/baseds"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
-	"github.com/wavetermdev/waveterm/pkg/wps"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc/wshclient"
+	"github.com/nodedropweb/nodedrop/pkg/baseds"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/wps"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
 )
 
 var tabIndicatorCmd = &cobra.Command{

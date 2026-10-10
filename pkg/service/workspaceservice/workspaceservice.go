@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/wavetermdev/waveterm/pkg/blockcontroller"
-	"github.com/wavetermdev/waveterm/pkg/panichandler"
-	"github.com/wavetermdev/waveterm/pkg/tsgen/tsgenmeta"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
-	"github.com/wavetermdev/waveterm/pkg/wcore"
-	"github.com/wavetermdev/waveterm/pkg/wps"
-	"github.com/wavetermdev/waveterm/pkg/wstore"
+	"github.com/nodedropweb/nodedrop/pkg/blockcontroller"
+	"github.com/nodedropweb/nodedrop/pkg/panichandler"
+	"github.com/nodedropweb/nodedrop/pkg/tsgen/tsgenmeta"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/wcore"
+	"github.com/nodedropweb/nodedrop/pkg/wps"
+	"github.com/nodedropweb/nodedrop/pkg/wstore"
 )
 
 const DefaultTimeout = 2 * time.Second

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
 )
 
 // this broker interface is mostly generic

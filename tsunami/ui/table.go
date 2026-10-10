@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/wavetermdev/waveterm/tsunami/app"
-	"github.com/wavetermdev/waveterm/tsunami/vdom"
+	"github.com/nodedropweb/nodedrop/tsunami/app"
+	"github.com/nodedropweb/nodedrop/tsunami/vdom"
 )
 
 // Core table types

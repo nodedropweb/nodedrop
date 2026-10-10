@@ -4,7 +4,7 @@
 package userinputservice
 
 import (
-	"github.com/wavetermdev/waveterm/pkg/userinput"
+	"github.com/nodedropweb/nodedrop/pkg/userinput"
 )
 
 type UserInputService struct {

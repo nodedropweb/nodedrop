@@ -16,16 +16,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wavetermdev/waveterm/pkg/panichandler"
-	"github.com/wavetermdev/waveterm/pkg/remote/connparse"
-	"github.com/wavetermdev/waveterm/pkg/remote/fileshare/fspath"
-	"github.com/wavetermdev/waveterm/pkg/remote/fileshare/wshfs"
-	"github.com/wavetermdev/waveterm/pkg/util/fileutil"
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
-	"github.com/wavetermdev/waveterm/pkg/wavebase"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc/wshclient"
-	"github.com/wavetermdev/waveterm/pkg/wshutil"
+	"github.com/nodedropweb/nodedrop/pkg/panichandler"
+	"github.com/nodedropweb/nodedrop/pkg/remote/connparse"
+	"github.com/nodedropweb/nodedrop/pkg/remote/fileshare/fspath"
+	"github.com/nodedropweb/nodedrop/pkg/remote/fileshare/wshfs"
+	"github.com/nodedropweb/nodedrop/pkg/util/fileutil"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/wavebase"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
+	"github.com/nodedropweb/nodedrop/pkg/wshutil"
 )
 
 const RemoteFileTransferSizeLimit = 32 * 1024 * 1024

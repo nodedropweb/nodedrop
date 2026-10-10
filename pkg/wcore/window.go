@@ -9,13 +9,13 @@ import (
 	"log"
 
 	"github.com/google/uuid"
-	"github.com/wavetermdev/waveterm/pkg/eventbus"
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc/wshclient"
-	"github.com/wavetermdev/waveterm/pkg/wshutil"
-	"github.com/wavetermdev/waveterm/pkg/wstore"
+	"github.com/nodedropweb/nodedrop/pkg/eventbus"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
+	"github.com/nodedropweb/nodedrop/pkg/wshutil"
+	"github.com/nodedropweb/nodedrop/pkg/wstore"
 )
 
 func SwitchWorkspace(ctx context.Context, windowId string, workspaceId string) (*waveobj.Workspace, error) {

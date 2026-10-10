@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/wavetermdev/waveterm/tsunami/engine"
-	"github.com/wavetermdev/waveterm/tsunami/rpctypes"
-	"github.com/wavetermdev/waveterm/tsunami/util"
-	"github.com/wavetermdev/waveterm/tsunami/vdom"
+	"github.com/nodedropweb/nodedrop/tsunami/engine"
+	"github.com/nodedropweb/nodedrop/tsunami/rpctypes"
+	"github.com/nodedropweb/nodedrop/tsunami/util"
+	"github.com/nodedropweb/nodedrop/tsunami/vdom"
 )
 
 // UseVDomRef provides a reference to a DOM element in the VDOM tree.

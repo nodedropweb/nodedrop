@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/wavetermdev/waveterm/pkg/aiusechat/uctypes"
-	"github.com/wavetermdev/waveterm/pkg/wcore"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc/wshclient"
-	"github.com/wavetermdev/waveterm/pkg/wshutil"
+	"github.com/nodedropweb/nodedrop/pkg/aiusechat/uctypes"
+	"github.com/nodedropweb/nodedrop/pkg/wcore"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
+	"github.com/nodedropweb/nodedrop/pkg/wshutil"
 )
 
 func makeTabCaptureBlockScreenshot(tabId string) func(any) (string, error) {

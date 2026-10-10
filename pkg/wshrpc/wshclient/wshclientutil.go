@@ -7,10 +7,10 @@ import (
 	"context"
 	"errors"
 
-	"github.com/wavetermdev/waveterm/pkg/panichandler"
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshutil"
+	"github.com/nodedropweb/nodedrop/pkg/panichandler"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshutil"
 )
 
 func sendRpcRequestCallHelper[T any](w *wshutil.WshRpc, command string, data interface{}, opts *wshrpc.RpcOpts) (T, error) {

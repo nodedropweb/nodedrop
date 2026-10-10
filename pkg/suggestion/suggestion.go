@@ -16,12 +16,12 @@ import (
 
 	"github.com/junegunn/fzf/src/algo"
 	"github.com/junegunn/fzf/src/util"
-	"github.com/wavetermdev/waveterm/pkg/faviconcache"
-	"github.com/wavetermdev/waveterm/pkg/util/fileutil"
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
-	"github.com/wavetermdev/waveterm/pkg/wavebase"
-	"github.com/wavetermdev/waveterm/pkg/wconfig"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/faviconcache"
+	"github.com/nodedropweb/nodedrop/pkg/util/fileutil"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/wavebase"
+	"github.com/nodedropweb/nodedrop/pkg/wconfig"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 )
 
 const MaxSuggestions = 50

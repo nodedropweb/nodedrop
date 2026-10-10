@@ -9,13 +9,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/wavetermdev/waveterm/pkg/remote/conncontroller"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
-	"github.com/wavetermdev/waveterm/pkg/wconfig"
-	"github.com/wavetermdev/waveterm/pkg/wcore"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wslconn"
-	"github.com/wavetermdev/waveterm/pkg/wstore"
+	"github.com/nodedropweb/nodedrop/pkg/remote/conncontroller"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/wconfig"
+	"github.com/nodedropweb/nodedrop/pkg/wcore"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wslconn"
+	"github.com/nodedropweb/nodedrop/pkg/wstore"
 )
 
 type ClientService struct{}

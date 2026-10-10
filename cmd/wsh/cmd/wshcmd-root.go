@@ -10,11 +10,11 @@ import (
 	"runtime/debug"
 
 	"github.com/spf13/cobra"
-	"github.com/wavetermdev/waveterm/pkg/util/shellutil"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc/wshclient"
-	"github.com/wavetermdev/waveterm/pkg/wshutil"
+	"github.com/nodedropweb/nodedrop/pkg/util/shellutil"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
+	"github.com/nodedropweb/nodedrop/pkg/wshutil"
 )
 
 var (

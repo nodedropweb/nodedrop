@@ -11,10 +11,10 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/wavetermdev/waveterm/pkg/filestore"
-	"github.com/wavetermdev/waveterm/pkg/panichandler"
-	"github.com/wavetermdev/waveterm/pkg/util/dbutil"
-	"github.com/wavetermdev/waveterm/pkg/waveobj"
+	"github.com/nodedropweb/nodedrop/pkg/filestore"
+	"github.com/nodedropweb/nodedrop/pkg/panichandler"
+	"github.com/nodedropweb/nodedrop/pkg/util/dbutil"
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
 )
 
 var ErrNotFound = fmt.Errorf("not found")

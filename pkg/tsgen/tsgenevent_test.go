@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wavetermdev/waveterm/pkg/wps"
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wps"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 )
 
 func TestGenerateWaveEventTypes(t *testing.T) {

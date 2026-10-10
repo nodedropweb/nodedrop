@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
 )
 
 func debugPrintInput(idx int, input any) {

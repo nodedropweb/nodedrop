@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/wavetermdev/waveterm/pkg/wshrpc"
+	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 )
 
 func TestGetWshMethodDataParamsAndExpr_MultiArg(t *testing.T) {

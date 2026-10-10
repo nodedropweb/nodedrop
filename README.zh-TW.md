@@ -132,7 +132,7 @@ WSH 輔助程式支援以下平台：
 
 Wave 持續進化中！發展藍圖會隨每次發行版本持續更新，請至[此處](./ROADMAP.md)查閱。
 
-想為未來版本提供建議？歡迎加入 [Discord](https://discord.gg/XfvZ334gwU) 社群，或提交 [Feature Request](https://github.com/wavetermdev/waveterm/issues/new/choose)！
+想為未來版本提供建議？歡迎加入 [Discord](https://discord.gg/XfvZ334gwU) 社群，或提交 [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)！
 
 ## 連結
 

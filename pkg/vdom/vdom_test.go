@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/wavetermdev/waveterm/pkg/util/utilfn"
+	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
 )
 
 type renderContextKeyType struct{}

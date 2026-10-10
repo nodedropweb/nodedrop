@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"sort"
 
-	"github.com/wavetermdev/waveterm/tsunami/util"
-	"github.com/wavetermdev/waveterm/tsunami/vdom"
+	"github.com/nodedropweb/nodedrop/tsunami/util"
+	"github.com/nodedropweb/nodedrop/tsunami/vdom"
 )
 
 // Json is any JSON-compatible value

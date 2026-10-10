@@ -79,7 +79,7 @@ Der WSH-Helper läuft auf folgenden Plattformen:
 
 ## Änderungen in diesem Fork
 
-Dieses Repository ist ein Fork von [wavetermdev/waveterm](https://github.com/wavetermdev/waveterm).
+Dieses Repository ist ein Fork von [wavetermdev/waveterm](https://github.com/nodedropweb/nodedrop).
 Alle Änderungen, die zusätzlich zum Original vorgenommen wurden, sind im [CHANGELOG](./CHANGELOG.md)
 dokumentiert.
 
@@ -87,7 +87,7 @@ dokumentiert.
 
 Wave wird laufend weiterentwickelt! Die Roadmap wird kontinuierlich mit den Zielen für jedes Release aktualisiert. Sie ist [hier](./ROADMAP.md) zu finden.
 
-Ihr habt Ideen für zukünftige Releases? Meldet euch auf [Discord](https://discord.gg/XfvZ334gwU) oder eröffnet einen [Feature Request](https://github.com/wavetermdev/waveterm/issues/new/choose)!
+Ihr habt Ideen für zukünftige Releases? Meldet euch auf [Discord](https://discord.gg/XfvZ334gwU) oder eröffnet einen [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)!
 
 ## Links
 
