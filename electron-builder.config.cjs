@@ -3,7 +3,8 @@ const pkg = require("./package.json");
 const fs = require("fs");
 const path = require("path");
 
-const windowsShouldSign = !!process.env.SM_CODE_SIGNING_CERT_SHA1_HASH;
+const azureShouldSign = !!process.env.AZURE_SIGN_ACCOUNT_NAME;
+const windowsShouldSign = !azureShouldSign && !!process.env.SM_CODE_SIGNING_CERT_SHA1_HASH;
 
 /**
  * @type {import('electron-builder').Configuration}
@@ -97,6 +98,13 @@ const config = {
     },
     win: {
         target: ["nsis", "msi", "zip"],
+        // Azure Trusted Signing authenticates via AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET
+        azureSignOptions: azureShouldSign && {
+            publisherName: process.env.AZURE_SIGN_PUBLISHER_NAME,
+            endpoint: process.env.AZURE_SIGN_ENDPOINT,
+            codeSigningAccountName: process.env.AZURE_SIGN_ACCOUNT_NAME,
+            certificateProfileName: process.env.AZURE_SIGN_PROFILE_NAME,
+        },
         signtoolOptions: windowsShouldSign && {
             signingHashAlgorithms: ["sha256"],
             publisherName: "Command Line Inc",
