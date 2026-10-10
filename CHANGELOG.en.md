@@ -2,7 +2,7 @@
 
 [Deutsch](CHANGELOG.md) | [English](CHANGELOG.en.md)
 
-This repository is a fork of [wavetermdev/waveterm](https://github.com/nodedropweb/nodedrop).
+This repository is a fork of [wavetermdev/waveterm](https://github.com/wavetermdev/waveterm).
 This document lists only the changes made **in this fork** on top of the original — not Wave
 Terminal's regular release history (see [RELEASES.md](./RELEASES.md) or the
 [official release notes](https://docs.waveterm.dev/releasenotes) for that).

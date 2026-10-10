@@ -79,7 +79,7 @@ Der WSH-Helper läuft auf folgenden Plattformen:
 
 ## Änderungen in diesem Fork
 
-Dieses Repository ist ein Fork von [wavetermdev/waveterm](https://github.com/nodedropweb/nodedrop).
+Dieses Repository ist ein Fork von [wavetermdev/waveterm](https://github.com/wavetermdev/waveterm).
 Alle Änderungen, die zusätzlich zum Original vorgenommen wurden, sind im [CHANGELOG](./CHANGELOG.md)
 dokumentiert.
 

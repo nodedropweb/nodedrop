@@ -28,7 +28,7 @@ var (
 		Min:   app.Ptr(1.0),
 		Max:   app.Ptr(300.0),
 	})
-	repositoryAtom = app.ConfigAtom("repository", "nodedropweb/nodedrop", &app.AtomMeta{
+	repositoryAtom = app.ConfigAtom("repository", "nodedropweb/waveterm", &app.AtomMeta{
 		Desc:    "GitHub repository in owner/repo format",
 		Pattern: `^[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+$`,
 	})
