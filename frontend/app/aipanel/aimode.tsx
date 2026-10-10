@@ -277,7 +277,7 @@ export const AIModeDropdown = memo(({ compatibilityMode = false }: AIModeDropdow
                                             {section.noTelemetry && (
                                                 <button
                                                     onClick={handleEnableTelemetry}
-                                                    className="text-center text-[11px] text-green-300 hover:text-green-200 pb-1 cursor-pointer transition-colors w-full"
+                                                    className="text-center text-[11px] text-accent hover:text-accenthover pb-1 cursor-pointer transition-colors w-full"
                                                 >
                                                     {t("aimode.enableTelemetryToUnlock")}
                                                 </button>

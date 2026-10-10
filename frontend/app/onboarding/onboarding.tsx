@@ -38,9 +38,7 @@ const InitPage = ({
     telemetryUpdateFn: (value: boolean) => Promise<void>;
 }) => {
     const { t } = useTranslation();
-    const telemetrySetting = useSettingsKeyAtom("telemetry:enabled");
     const clientData = useAtomValue(ClientModel.getInstance().clientAtom);
-    const [telemetryEnabled, setTelemetryEnabled] = useState<boolean>(!!telemetrySetting);
     const setPageName = useSetAtom(pageNameAtom);
 
     const handleStarClick = async () => {
@@ -63,21 +61,10 @@ const InitPage = ({
         if (!clientData?.tosagreed) {
             fireAndForget(() => services.ClientService.AgreeTos());
         }
-        if (telemetryEnabled) {
-            WorkspaceLayoutModel.getInstance().setAIPanelVisible(true);
-        }
-        setPageName(telemetryEnabled ? "features" : "notelemetrystar");
+        // NodeDrop: telemetry is disabled; the AI panel guides the user through BYOK / local model setup
+        WorkspaceLayoutModel.getInstance().setAIPanelVisible(true);
+        setPageName("features");
     };
-
-    const setTelemetry = (value: boolean) => {
-        fireAndForget(() =>
-            telemetryUpdateFn(value).then(() => {
-                setTelemetryEnabled(value);
-            })
-        );
-    };
-
-    const label = telemetryEnabled ? t("onboarding.enabled") : t("onboarding.disabled");
 
     return (
         <div className="flex flex-col h-full">
@@ -124,63 +111,6 @@ const InitPage = ({
                                     {t("onboarding.githubLinkText")}
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <div className="flex w-full items-center gap-[18px]">
-                        <div>
-                            <a
-                                target="_blank"
-                                href="https://discord.gg/XfvZ334gwU"
-                                rel="noopener"
-                                className="text-accent"
-                            >
-                                <i className="text-[25px] text-white/50 fa-solid fa-people-group"></i>
-                            </a>
-                        </div>
-                        <div className="flex flex-col items-start gap-1 flex-1">
-                            <div className="text-foreground text-base leading-[18px]">
-                                {t("onboarding.joinCommunity")}
-                            </div>
-                            <div className="text-secondary leading-5">
-                                {t("onboarding.communityBody")}
-                                <br />
-                                <a
-                                    target="_blank"
-                                    href="https://discord.gg/XfvZ334gwU"
-                                    rel="noopener"
-                                    className="text-accent"
-                                >
-                                    {t("onboarding.discordLinkText")}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex w-full items-center gap-[18px]">
-                        <div>
-                            <i className="text-[32px] text-white/50 fa-solid fa-chart-line"></i>
-                        </div>
-                        <div className="flex flex-col items-start gap-1 flex-1">
-                            <div className="text-secondary leading-5">
-                                {t("onboarding.telemetryHint")}
-                                <br />
-                                <a
-                                    className="text-secondary! hover:underline!"
-                                    target="_blank"
-                                    href="https://waveterm.dev/privacy"
-                                    rel="noopener"
-                                >
-                                    {t("onboarding.privacyPolicy")}
-                                </a>
-                            </div>
-                            <label className="flex items-center gap-2 cursor-pointer text-secondary">
-                                <input
-                                    type="checkbox"
-                                    checked={telemetryEnabled}
-                                    onChange={(e) => setTelemetry(e.target.checked)}
-                                    className="cursor-pointer accent-gray-500"
-                                />
-                                <span>{label}</span>
-                            </label>
                         </div>
                     </div>
                 </div>
