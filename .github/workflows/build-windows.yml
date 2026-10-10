@@ -1,0 +1,56 @@
+name: Build Windows
+run-name: Build Windows ${{ github.ref_name }}
+
+# Builds the unsigned Windows installer and zip of NodeDrop Terminal and uploads them as a workflow
+# artifact. Code signing is added as a separate step once a signing service has been approved
+# (see CODE_SIGNING_POLICY.md).
+
+on:
+    workflow_dispatch:
+    push:
+        tags:
+            - "v*"
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        runs-on: windows-latest
+        timeout-minutes: 60
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - uses: actions/setup-go@v5
+              with:
+                  go-version-file: go.mod
+
+            - uses: mlugg/setup-zig@v1
+
+            - uses: arduino/setup-task@v2
+              with:
+                  version: 3.x
+                  repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build installer and zip
+              shell: pwsh
+              run: task package -- --win nsis zip
+
+            - name: List build output
+              shell: pwsh
+              run: Get-ChildItem make -File | Select-Object Name, Length
+
+            - name: Upload unsigned artifacts
+              id: upload
+              uses: actions/upload-artifact@v4
+              with:
+                  name: nodedrop-windows-unsigned
+                  path: |
+                      make/*.exe
+                      make/*.zip
+                  if-no-files-found: error
