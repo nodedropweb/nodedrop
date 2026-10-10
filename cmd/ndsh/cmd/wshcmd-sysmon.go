@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"time"
 
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
@@ -183,7 +184,9 @@ func sysmonSwitchToBuiltin() error {
 		"cmd:runonstart":   nil,
 		"cmd:runonce":      nil,
 		"cmd:clearonstart": nil,
+		"cmd:jwt":          nil,
 	}
-	WriteStdout("\nShowing the built-in system info instead ...\n")
+	WriteStdout("\nShowing the built-in system info in 3 seconds ...\n")
+	time.Sleep(3 * time.Second)
 	return wshclient.SetMetaCommand(RpcClient, wshrpc.CommandSetMetaData{ORef: *oref, Meta: meta}, &wshrpc.RpcOpts{Timeout: 2000})
 }

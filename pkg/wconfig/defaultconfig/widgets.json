@@ -51,6 +51,7 @@
                 "controller": "cmd",
                 "cmd": "ndsh sysmon",
                 "cmd:shell": true,
+                "cmd:jwt": true,
                 "cmd:runonstart": true,
                 "cmd:clearonstart": true
             }
