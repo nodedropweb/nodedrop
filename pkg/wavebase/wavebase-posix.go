@@ -28,3 +28,11 @@ func AcquireWaveLock() (FDLock, error) {
 	}
 	return fd, nil
 }
+
+// domainSocketFileName is the file name of the local domain socket inside the data dir.
+func domainSocketFileName() string {
+	return DomainSocketBaseName
+}
+
+// CleanStaleDomainSockets is a no-op on POSIX systems (a stale socket file can simply be removed).
+func CleanStaleDomainSockets() {}

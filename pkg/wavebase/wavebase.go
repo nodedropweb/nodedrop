@@ -56,9 +56,9 @@ var AppResourcesPath_VarCache string    // caches NODEDROP_RESOURCES_PATH
 var AppElectronExecPath_VarCache string // caches NODEDROP_ELECTRONEXECPATH
 var Dev_VarCache string                 // caches NODEDROP_DEV
 
-const WaveLockFile = "wave.lock"
-const DomainSocketBaseName = "wave.sock"
-const RemoteDomainSocketBaseName = "wave-remote.sock"
+const WaveLockFile = "nodedrop.lock"
+const DomainSocketBaseName = "nodedrop.sock"
+const RemoteDomainSocketBaseName = "nodedrop-remote.sock"
 const WaveDBDir = "db"
 const ConfigDir = "config"
 const RemoteWaveHomeDirName = ".nodedrop"
@@ -180,7 +180,7 @@ func ReplaceHomeDir(pathStr string) string {
 }
 
 func GetDomainSocketName() string {
-	return filepath.Join(GetWaveDataDir(), DomainSocketBaseName)
+	return filepath.Join(GetWaveDataDir(), domainSocketFileName())
 }
 
 // returns a Unix-style path for the remote socket (using fmt.Sprintf instead of filepath.Join

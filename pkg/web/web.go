@@ -429,6 +429,7 @@ func MakeTCPListener(serviceName string) (net.Listener, error) {
 }
 
 func MakeUnixListener() (net.Listener, error) {
+	wavebase.CleanStaleDomainSockets()
 	serverAddr := wavebase.GetDomainSocketName()
 	os.Remove(serverAddr) // ignore error
 	rtn, err := net.Listen("unix", serverAddr)
