@@ -649,3 +649,33 @@ func FormatOSC(oscNum int, parts ...string) string {
 	}
 	return fmt.Sprintf("\x1b]%d;%s\x07", oscNum, strings.Join(parts, ";"))
 }
+
+// prependToPathEnv returns env with dir added at the front of the PATH variable
+// (the variable name is matched case-insensitively because Windows uses "Path").
+func prependToPathEnv(env []string, dir string) []string {
+	sep := string(os.PathListSeparator)
+	for i, envStr := range env {
+		key := GetEnvStrKey(envStr)
+		if strings.EqualFold(key, "PATH") {
+			val := ""
+			if len(envStr) > len(key)+1 {
+				val = envStr[len(key)+1:]
+			}
+			if val == "" {
+				env[i] = key + "=" + dir
+			} else {
+				env[i] = key + "=" + dir + sep + val
+			}
+			return env
+		}
+	}
+	return append(env, "PATH="+dir)
+}
+
+// PrependLocalWshBinDirToPath makes ndsh callable from commands that are started without shell
+// integration (for example widgets that use the "cmd" controller). Interactive shells get the same
+// directory through their startup files.
+func PrependLocalWshBinDirToPath(cmd *exec.Cmd) {
+	binDir := filepath.Join(wavebase.GetWaveDataDir(), WaveHomeBinDir)
+	cmd.Env = prependToPathEnv(cmd.Env, binDir)
+}

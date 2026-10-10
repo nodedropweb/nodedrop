@@ -628,6 +628,8 @@ func StartLocalShellProc(logCtx context.Context, termSize waveobj.TermSize, cmdS
 		shellOpts = append(shellOpts, "-c", cmdStr)
 		ecmd = exec.Command(shellPath, shellOpts...)
 		ecmd.Env = os.Environ()
+		// widgets and other command blocks run without shell integration: make ndsh callable
+		shellutil.PrependLocalWshBinDirToPath(ecmd)
 	}
 
 	packedToken, err := cmdOpts.SwapToken.PackForClient()
