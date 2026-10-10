@@ -30,7 +30,7 @@ jobs:
               with:
                   go-version-file: go.mod
 
-            - uses: mlugg/setup-zig@v1
+            - uses: mlugg/setup-zig@v2
 
             - uses: arduino/setup-task@v2
               with:
