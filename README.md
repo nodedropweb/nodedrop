@@ -9,7 +9,7 @@
   <br/>
 </p>
 
-# Wave Terminal
+# NodeDrop Terminal
 
 <div align="center">
 
@@ -17,18 +17,16 @@
 
 </div>
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwavetermdev%2Fwaveterm.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwavetermdev%2Fwaveterm?ref=badge_shield)
 
-Wave ist ein Open-Source-Terminal mit integrierter KI für macOS, Linux und Windows. Es funktioniert mit jedem KI-Modell: Eigene API-Schlüssel für OpenAI, Claude oder Gemini mitbringen, oder lokale Modelle über Ollama und LM Studio betreiben. Es ist kein Account erforderlich.
+NodeDrop ist ein Open-Source-Terminal mit integrierter KI für macOS, Linux und Windows. Es funktioniert mit jedem KI-Modell: Eigene API-Schlüssel für OpenAI, Claude oder Gemini mitbringen, oder lokale Modelle über Ollama und LM Studio betreiben. Es ist kein Account erforderlich.
 
-Wave unterstützt außerdem dauerhafte SSH-Sitzungen, die Netzwerkunterbrechungen und Neustarts überstehen und sich automatisch wiederverbinden. Entfernte Dateien lassen sich mit einem integrierten grafischen Editor bearbeiten und direkt im Terminal als Vorschau anzeigen.
+NodeDrop unterstützt außerdem dauerhafte SSH-Sitzungen, die Netzwerkunterbrechungen und Neustarts überstehen und sich automatisch wiederverbinden. Entfernte Dateien lassen sich mit einem integrierten grafischen Editor bearbeiten und direkt im Terminal als Vorschau anzeigen.
 
-![WaveTerm Screenshot](./assets/wave-screenshot.webp)
 
 ## Hauptfunktionen
 
-- Wave AI - Kontextbewusster Terminal-Assistent, der die Terminal-Ausgabe liest, Widgets analysiert und Dateioperationen ausführt
-- Dauerhafte SSH-Sitzungen - Entfernte Terminal-Sitzungen überstehen Verbindungsabbrüche, Netzwerkwechsel und Wave-Neustarts dank automatischer Wiederverbindung
+- NodeDrop AI - Kontextbewusster Terminal-Assistent, der die Terminal-Ausgabe liest, Widgets analysiert und Dateioperationen ausführt
+- Dauerhafte SSH-Sitzungen - Entfernte Terminal-Sitzungen überstehen Verbindungsabbrüche, Netzwerkwechsel und NodeDrop-Neustarts dank automatischer Wiederverbindung
 - Flexible Drag-&-Drop-Oberfläche zum Organisieren von Terminal-Blöcken, Editoren, Web-Browsern und KI-Assistenten
 - Integrierter Editor zum Bearbeiten entfernter Dateien mit Syntax-Highlighting und modernen Editor-Funktionen
 - Umfangreiches Dateivorschau-System für entfernte Dateien (Markdown, Bilder, Video, PDFs, CSVs, Verzeichnisse)
@@ -41,9 +39,9 @@ Wave unterstützt außerdem dauerhafte SSH-Sitzungen, die Netzwerkunterbrechunge
 - Leistungsstarkes `wsh`-Befehlssystem zur Verwaltung des Workspaces über die CLI und zum Teilen von Daten zwischen Terminal-Sitzungen
 - Verbundene Dateiverwaltung mit `wsh file` - Dateien nahtlos zwischen lokalen und entfernten SSH-Hosts kopieren und synchronisieren
 
-## Wave AI
+## NodeDrop AI
 
-Wave AI ist der kontextbewusste Terminal-Assistent mit Zugriff auf den gesamten Workspace:
+NodeDrop AI ist der kontextbewusste Terminal-Assistent mit Zugriff auf den gesamten Workspace:
 
 - **Terminal-Kontext**: Liest Terminal-Ausgabe und Scrollback zur Fehlersuche und Analyse
 - **Dateioperationen**: Dateien lesen, schreiben und bearbeiten - mit automatischen Backups und Nutzerbestätigung
@@ -53,19 +51,19 @@ Wave AI ist der kontextbewusste Terminal-Assistent mit Zugriff auf den gesamten 
 - **Kostenlose Beta**: Enthaltenes KI-Guthaben, während die Erfahrung weiter verfeinert wird
 - **Demnächst**: Befehlsausführung (mit Bestätigung)
 
-Mehr dazu in der [Wave-AI-Dokumentation](https://docs.waveterm.dev/waveai) und der [Wave-AI-Modi-Dokumentation](https://docs.waveterm.dev/waveai-modes).
+Mehr dazu in der [NodeDrop-AI-Dokumentation](https://docs.waveterm.dev/waveai) und der [NodeDrop-AI-Modi-Dokumentation](https://docs.waveterm.dev/waveai-modes).
 
 ## Installation
 
-Wave Terminal läuft auf macOS, Linux und Windows.
+NodeDrop Terminal läuft auf macOS, Linux und Windows.
 
 Plattformspezifische Installationsanleitungen gibt es [hier](https://docs.waveterm.dev/gettingstarted).
 
-Wave Terminal kann außerdem direkt von hier installiert werden: [www.waveterm.dev/download](https://www.waveterm.dev/download).
+NodeDrop Terminal kann außerdem direkt von hier installiert werden: [www.waveterm.dev/download](https://www.waveterm.dev/download).
 
 ### Mindestanforderungen
 
-Wave Terminal läuft auf folgenden Plattformen:
+NodeDrop Terminal läuft auf folgenden Plattformen:
 
 - macOS 11 oder neuer (arm64, x64)
 - Windows 10 1809 oder neuer (x64)
@@ -85,39 +83,28 @@ dokumentiert.
 
 ## Roadmap
 
-Wave wird laufend weiterentwickelt! Die Roadmap wird kontinuierlich mit den Zielen für jedes Release aktualisiert. Sie ist [hier](./ROADMAP.md) zu finden.
+NodeDrop wird laufend weiterentwickelt! Die Roadmap wird kontinuierlich mit den Zielen für jedes Release aktualisiert. Sie ist [hier](./ROADMAP.md) zu finden.
 
-Ihr habt Ideen für zukünftige Releases? Meldet euch auf [Discord](https://discord.gg/XfvZ334gwU) oder eröffnet einen [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
+Ihr habt Ideen für zukünftige Releases? Eröffnet einen [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
 
 ## Links
 
-- Homepage &mdash; https://www.waveterm.dev
-- Download-Seite &mdash; https://www.waveterm.dev/download
-- Dokumentation &mdash; https://docs.waveterm.dev
-- X &mdash; https://x.com/wavetermdev
-- Discord-Community &mdash; https://discord.gg/XfvZ334gwU
+- Repository &mdash; https://github.com/nodedropweb/waveterm
+- Dokumentation des Originalprojekts (Wave Terminal) &mdash; https://docs.waveterm.dev
 
 ## Aus dem Quellcode bauen
 
-Siehe [Wave Terminal bauen](BUILD.md).
+Siehe [NodeDrop Terminal bauen](BUILD.md).
 
 ## Mitwirken
 
-Wave nutzt GitHub Issues für die Fehler- und Feature-Verfolgung.
+NodeDrop nutzt GitHub Issues für die Fehler- und Feature-Verfolgung.
 
 Weitere Informationen gibt es im [Leitfaden für Mitwirkende](CONTRIBUTING.md), unter anderem:
 
 - [Möglichkeiten mitzuwirken](CONTRIBUTING.md#contributing-to-wave-terminal)
 - [Richtlinien für Beiträge](CONTRIBUTING.md#before-you-start)
 
-### Wave sponsern ❤️
+## Lizenz und Herkunft
 
-Wenn Wave Terminal für dich oder dein Unternehmen nützlich ist, zieh in Erwägung, die Entwicklung zu sponsern.
-
-Sponsoring unterstützt den Zeitaufwand, der in den Bau und die Pflege des Projekts fließt.
-
-- https://github.com/sponsors/wavetermdev
-
-## Lizenz
-
-Wave Terminal steht unter der Apache-2.0-Lizenz. Weitere Informationen zu den verwendeten Abhängigkeiten gibt es [hier](./ACKNOWLEDGEMENTS.md).
+NodeDrop Terminal ist ein Fork von [Wave Terminal](https://github.com/wavetermdev/waveterm) von Command Line Inc. und steht wie das Original unter der Apache-2.0-Lizenz. Die Urheberrechtshinweise des Originalprojekts bleiben erhalten (siehe [LICENSE](./LICENSE) und [NOTICE](./NOTICE)). "Wave" und "Wave Terminal" sind Marken ihrer jeweiligen Inhaber. NodeDrop ist ein eigenstÃ¤ndiges Projekt und nicht mit Command Line Inc. verbunden. Informationen zu den verwendeten AbhÃ¤ngigkeiten gibt es [hier](./ACKNOWLEDGEMENTS.md).
