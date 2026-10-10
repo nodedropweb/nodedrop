@@ -100,3 +100,25 @@ func TestSysmonIgnoresBundledMonitorOutsideWindows(t *testing.T) {
 		t.Fatalf("expected no monitor, got %q", got)
 	}
 }
+
+func TestResizeTrackerRestartsOnlyAfterTheSizeSettles(t *testing.T) {
+	r := resizeTracker{current: termSize{cols: 43, rows: 79}}
+	steps := []struct {
+		sz   termSize
+		want bool
+	}{
+		{termSize{43, 79}, false},  // unchanged
+		{termSize{100, 40}, false}, // first sight of a new size: wait
+		{termSize{120, 40}, false}, // still being dragged: wait again
+		{termSize{120, 40}, true},  // stable for two checks: restart
+		{termSize{120, 40}, false}, // already handled
+		{termSize{0, 0}, false},    // unknown size is ignored
+		{termSize{43, 79}, false},  // back to a new size: wait
+		{termSize{43, 79}, true},
+	}
+	for i, s := range steps {
+		if got := r.observe(s.sz); got != s.want {
+			t.Fatalf("step %d (%v): got %v, want %v", i, s.sz, got, s.want)
+		}
+	}
+}

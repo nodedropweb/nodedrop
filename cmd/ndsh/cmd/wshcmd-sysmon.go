@@ -16,6 +16,7 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 // SysmonOverrideEnvVar lets the user pick any terminal monitor (full path or command name).
@@ -175,11 +176,49 @@ func sysmonRun(cmd *cobra.Command, args []string) error {
 		}
 		return sysmonSwitchToBuiltin()
 	}
-	child := exec.Command(monitor)
-	child.Stdin = os.Stdin
-	child.Stdout = os.Stdout
-	child.Stderr = os.Stderr
-	err := child.Run()
+	return runMonitor(monitor, runtime.GOOS == "windows")
+}
+
+type termSize struct {
+	cols int
+	rows int
+}
+
+// terminalSize returns the size of the terminal ndsh is attached to (zero if unknown).
+func terminalSize() termSize {
+	w, h, err := term.GetSize(int(os.Stdout.Fd()))
+	if err != nil {
+		return termSize{}
+	}
+	return termSize{cols: w, rows: h}
+}
+
+// resizeTracker decides when a monitor that only reads the terminal size at startup (btop4win) has to be
+// restarted: the size must change and then stay the same for two consecutive checks, so dragging the edge
+// of a block does not restart the monitor on every step.
+type resizeTracker struct {
+	current termSize
+	pending termSize
+}
+
+func (r *resizeTracker) observe(sz termSize) bool {
+	if sz.cols == 0 || sz.rows == 0 {
+		return false
+	}
+	if sz == r.current {
+		r.pending = termSize{}
+		return false
+	}
+	if sz == r.pending {
+		r.current = sz
+		r.pending = termSize{}
+		return true
+	}
+	r.pending = sz
+	return false
+}
+
+func handleMonitorExit(monitor string, err error) error {
 	var exitErr *exec.ExitError
 	if errors.As(err, &exitErr) {
 		os.Exit(exitErr.ExitCode())
@@ -188,6 +227,49 @@ func sysmonRun(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("running %s: %w", monitor, err)
 	}
 	return nil
+}
+
+// runMonitor runs the monitor attached to this terminal. With restartOnResize the monitor is restarted when the
+// terminal size changes, because btop4win does not follow window resizes and would keep showing
+// "Terminal size too small" after the block has been enlarged.
+func runMonitor(monitor string, restartOnResize bool) error {
+	tracker := resizeTracker{current: terminalSize()}
+	for {
+		child := exec.Command(monitor)
+		child.Stdin = os.Stdin
+		child.Stdout = os.Stdout
+		child.Stderr = os.Stderr
+		if err := child.Start(); err != nil {
+			return fmt.Errorf("running %s: %w", monitor, err)
+		}
+		done := make(chan error, 1)
+		go func() { done <- child.Wait() }()
+		if !restartOnResize {
+			return handleMonitorExit(monitor, <-done)
+		}
+		ticker := time.NewTicker(600 * time.Millisecond)
+		restart := false
+	wait:
+		for {
+			select {
+			case err := <-done:
+				ticker.Stop()
+				return handleMonitorExit(monitor, err)
+			case <-ticker.C:
+				if tracker.observe(terminalSize()) {
+					_ = child.Process.Kill()
+					<-done
+					restart = true
+					break wait
+				}
+			}
+		}
+		ticker.Stop()
+		if restart {
+			// leave the alternate screen of the killed monitor, show the cursor and clear before starting again
+			WriteStdout("%s", "\x1b[?1049l\x1b[?25h\x1b[0m\x1b[2J\x1b[H")
+		}
+	}
 }
 
 // sysmonSwitchToBuiltin turns the current block into the built-in system info view.
