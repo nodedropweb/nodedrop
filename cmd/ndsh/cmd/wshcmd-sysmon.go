@@ -169,7 +169,9 @@ func sysmonRun(cmd *cobra.Command, args []string) error {
 // sysmonSwitchToBuiltin turns the current block into the built-in system info view.
 func sysmonSwitchToBuiltin() error {
 	if err := preRunSetupRpcClient(nil, nil); err != nil {
-		return nil // not inside a NodeDrop block: the hint above is all we can do
+		// not inside a NodeDrop block (or the block has no access token): the hint above is all we can do
+		WriteStdout("\n(could not switch to the built-in system info: %v)\n", err)
+		return nil
 	}
 	oref, err := resolveBlockArg()
 	if err != nil {
