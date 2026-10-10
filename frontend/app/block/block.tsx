@@ -275,16 +275,26 @@ const BlockInner = memo((props: BlockProps & { viewType: string }) => {
     counterInc("render-Block-" + props.nodeModel?.blockId?.substring(0, 8));
     const tabModel = useTabModel();
     const waveEnv = useWaveEnv();
-    const bcm = getBlockComponentModel(props.nodeModel.blockId);
-    let viewModel = bcm?.viewModel;
-    if (viewModel == null) {
-        // viewModel gets the full waveEnv
-        viewModel = makeViewModel(props.nodeModel.blockId, props.viewType, props.nodeModel, tabModel, waveEnv);
-        registerBlockComponentModel(props.nodeModel.blockId, { viewModel });
+    // Decide once per instance (the parent re-keys us when the view changes). The view of a block can change at
+    // runtime (e.g. "ndsh setmeta view=sysinfo"), so a cached model that belongs to another view type must not be reused.
+    const viewModelRef = useRef<ViewModel>(null);
+    if (viewModelRef.current == null) {
+        const cached = getBlockComponentModel(props.nodeModel.blockId)?.viewModel;
+        if (cached != null && (cached.viewType == null || props.viewType === "" || cached.viewType === props.viewType)) {
+            viewModelRef.current = cached;
+        } else {
+            // viewModel gets the full waveEnv
+            viewModelRef.current = makeViewModel(props.nodeModel.blockId, props.viewType, props.nodeModel, tabModel, waveEnv);
+            registerBlockComponentModel(props.nodeModel.blockId, { viewModel: viewModelRef.current });
+        }
     }
+    const viewModel = viewModelRef.current;
     useEffect(() => {
         return () => {
-            unregisterBlockComponentModel(props.nodeModel.blockId);
+            // only drop the cache entry if it still belongs to this instance (a newer instance may have replaced it)
+            if (getBlockComponentModel(props.nodeModel.blockId)?.viewModel === viewModel) {
+                unregisterBlockComponentModel(props.nodeModel.blockId);
+            }
             viewModel?.dispose?.();
         };
     }, []);
@@ -310,16 +320,26 @@ const SubBlockInner = memo((props: SubBlockProps & { viewType: string }) => {
     counterInc("render-Block-" + props.nodeModel.blockId?.substring(0, 8));
     const tabModel = useTabModel();
     const waveEnv = useWaveEnv();
-    const bcm = getBlockComponentModel(props.nodeModel.blockId);
-    let viewModel = bcm?.viewModel;
-    if (viewModel == null) {
-        // viewModel gets the full waveEnv
-        viewModel = makeViewModel(props.nodeModel.blockId, props.viewType, props.nodeModel, tabModel, waveEnv);
-        registerBlockComponentModel(props.nodeModel.blockId, { viewModel });
+    // Decide once per instance (the parent re-keys us when the view changes). The view of a block can change at
+    // runtime (e.g. "ndsh setmeta view=sysinfo"), so a cached model that belongs to another view type must not be reused.
+    const viewModelRef = useRef<ViewModel>(null);
+    if (viewModelRef.current == null) {
+        const cached = getBlockComponentModel(props.nodeModel.blockId)?.viewModel;
+        if (cached != null && (cached.viewType == null || props.viewType === "" || cached.viewType === props.viewType)) {
+            viewModelRef.current = cached;
+        } else {
+            // viewModel gets the full waveEnv
+            viewModelRef.current = makeViewModel(props.nodeModel.blockId, props.viewType, props.nodeModel, tabModel, waveEnv);
+            registerBlockComponentModel(props.nodeModel.blockId, { viewModel: viewModelRef.current });
+        }
     }
+    const viewModel = viewModelRef.current;
     useEffect(() => {
         return () => {
-            unregisterBlockComponentModel(props.nodeModel.blockId);
+            // only drop the cache entry if it still belongs to this instance (a newer instance may have replaced it)
+            if (getBlockComponentModel(props.nodeModel.blockId)?.viewModel === viewModel) {
+                unregisterBlockComponentModel(props.nodeModel.blockId);
+            }
             viewModel?.dispose?.();
         };
     }, []);
