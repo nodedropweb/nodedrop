@@ -85,11 +85,11 @@ dokumentiert.
 
 NodeDrop wird laufend weiterentwickelt! Die Roadmap wird kontinuierlich mit den Zielen für jedes Release aktualisiert. Sie ist [hier](./ROADMAP.md) zu finden.
 
-Ihr habt Ideen für zukünftige Releases? Eröffnet einen [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
+Ihr habt Ideen für zukünftige Releases? Eröffnet einen [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)!
 
 ## Links
 
-- Repository &mdash; https://github.com/nodedropweb/waveterm
+- Repository &mdash; https://github.com/nodedropweb/nodedrop
 - Dokumentation des Originalprojekts (Wave Terminal) &mdash; https://docs.waveterm.dev
 
 ## Aus dem Quellcode bauen

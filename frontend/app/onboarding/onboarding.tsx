@@ -87,7 +87,7 @@ const InitPage = ({
                         <div>
                             <a
                                 target="_blank"
-                                href="https://github.com/nodedropweb/waveterm?ref=install"
+                                href="https://github.com/nodedropweb/nodedrop?ref=install"
                                 rel="noopener"
                                 className="text-accent"
                                 onClick={handleStarClick}
@@ -103,7 +103,7 @@ const InitPage = ({
                                 {t("onboarding.githubSupportBody")}{" "}
                                 <a
                                     target="_blank"
-                                    href="https://github.com/nodedropweb/waveterm?ref=install"
+                                    href="https://github.com/nodedropweb/nodedrop?ref=install"
                                     rel="noopener"
                                     className="text-accent"
                                     onClick={handleStarClick}
@@ -144,7 +144,7 @@ const NoTelemetryStarPage = ({ isCompact }: { isCompact: boolean }) => {
             oref: WOS.makeORef("client", clientId),
             meta: { "onboarding:githubstar": true },
         });
-        window.open("https://github.com/nodedropweb/waveterm?ref=not", "_blank");
+        window.open("https://github.com/nodedropweb/nodedrop?ref=not", "_blank");
         setPageName("features");
     };
 

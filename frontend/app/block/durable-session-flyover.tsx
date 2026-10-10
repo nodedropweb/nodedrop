@@ -32,7 +32,7 @@ function LearnMoreButton() {
     return (
         <button
             className="text-muted text-xs hover:underline cursor-pointer text-left"
-            onClick={() => waveEnv.electron.openExternal("https://github.com/nodedropweb/waveterm/blob/main/docs/docs/durable-sessions.mdx")}
+            onClick={() => waveEnv.electron.openExternal("https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/durable-sessions.mdx")}
         >
             {t("durableSession.learnMore")}
         </button>

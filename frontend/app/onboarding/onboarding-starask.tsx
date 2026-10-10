@@ -30,7 +30,7 @@ export function StarAskPage({ onClose, page = "upgrade" }: StarAskPageProps) {
             oref: WOS.makeORef("client", clientId),
             meta: { "onboarding:githubstar": true },
         });
-        window.open(`https://github.com/nodedropweb/waveterm?ref=${page}`, "_blank");
+        window.open(`https://github.com/nodedropweb/nodedrop?ref=${page}`, "_blank");
         onClose();
     };
 
@@ -60,7 +60,7 @@ export function StarAskPage({ onClose, page = "upgrade" }: StarAskPageProps) {
             },
             { noresponse: true }
         );
-        window.open("https://github.com/nodedropweb/waveterm", "_blank");
+        window.open("https://github.com/nodedropweb/nodedrop", "_blank");
     };
 
     const handleMaybeLater = async () => {
@@ -97,7 +97,7 @@ export function StarAskPage({ onClose, page = "upgrade" }: StarAskPageProps) {
                     >
                         <i className="fa-brands fa-github text-foreground text-lg group-hover:text-accent transition-colors" />
                         <span className="text-foreground font-mono text-sm group-hover:text-accent group-hover:underline transition-colors">
-                            nodedropweb/waveterm
+                            nodedropweb/nodedrop
                         </span>
                     </div>
                 </div>

@@ -84,11 +84,11 @@ All changes made on top of the original are documented in the [CHANGELOG](./CHAN
 
 NodeDrop is constantly improving! Our roadmap will be continuously updated with our goals for each release. You can find it [here](./ROADMAP.md).
 
-Want to provide input to our future releases? Open a [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
+Want to provide input to our future releases? Open a [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)!
 
 ## Links
 
-- Repository &mdash; https://github.com/nodedropweb/waveterm
+- Repository &mdash; https://github.com/nodedropweb/nodedrop
 - Documentation of the original project (Wave Terminal) &mdash; https://docs.waveterm.dev
 
 ## Building from Source

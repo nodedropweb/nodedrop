@@ -8,7 +8,7 @@ import { WebView, WebViewModel } from "@/app/view/webview/webview";
 import i18n from "@/util/i18n/i18n";
 import { atom } from "jotai";
 
-const docsiteUrl = "https://github.com/nodedropweb/waveterm/tree/main/docs/docs";
+const docsiteUrl = "https://github.com/nodedropweb/nodedrop/tree/main/docs/docs";
 
 class HelpViewModel extends WebViewModel {
     get viewComponent(): ViewComponent {

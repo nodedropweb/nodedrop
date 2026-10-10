@@ -11,7 +11,7 @@ Basis dieses Forks: Wave Terminal `v0.14.5`.
 
 Die Einträge sind neuestes zuerst sortiert.
 
-## [PR #2](https://github.com/nodedropweb/waveterm/pull/2) — 2026-09-05
+## [PR #2](https://github.com/nodedropweb/nodedrop/pull/2) — 2026-09-05
 
 ### Browser-Block
 
@@ -20,7 +20,7 @@ Die Einträge sind neuestes zuerst sortiert.
   die Einstellung `web:defaulturl` im Settings-Dialog ändern, oder bequemer per Rechtsklick im
   Browser-Block über "Set Default Homepage" (global) bzw. "Set Block Homepage" (nur für den
   aktuellen Block).
-  ([`91550a1`](https://github.com/nodedropweb/waveterm/commit/91550a1))
+  ([`91550a1`](https://github.com/nodedropweb/nodedrop/commit/91550a1))
 
 ### Internationalisierung (i18n)
 
@@ -29,12 +29,12 @@ Die Einträge sind neuestes zuerst sortiert.
   Dropdown-Oberfläche (Sektionen, Premium-/Tool-Hinweise, Buttons) laufen jetzt über das
   bestehende `react-i18next`-Setup statt fest codierter englischer Texte. Selbst angelegte,
   benutzerdefinierte Modi behalten ihren eigenen, unübersetzten Namen.
-  ([`74682a8`](https://github.com/nodedropweb/waveterm/commit/74682a8))
+  ([`74682a8`](https://github.com/nodedropweb/nodedrop/commit/74682a8))
 - **README auf Deutsch als Standardsprache**, bestehende Übersetzungen (Englisch, Koreanisch,
   Traditionelles Chinesisch) bleiben erhalten und sind über die Sprachleiste am Anfang jeder
   README-Datei verlinkt. Die vorherige englische Originaldatei wurde nach `README.en.md`
   verschoben.
-  ([`d5ae9ed`](https://github.com/nodedropweb/waveterm/commit/d5ae9ed))
+  ([`d5ae9ed`](https://github.com/nodedropweb/nodedrop/commit/d5ae9ed))
 
 ### Tastenkürzel
 
@@ -45,7 +45,7 @@ Die Einträge sind neuestes zuerst sortiert.
   `ViewModel`-Interface; aktuell für Terminal-Blöcke implementiert (passt die
   `term:fontsize`-Override-Metadaten an), weitere Blocktypen können dieselben Hooks künftig
   ergänzen.
-  ([`8d7d2b5`](https://github.com/nodedropweb/waveterm/commit/8d7d2b5))
+  ([`8d7d2b5`](https://github.com/nodedropweb/nodedrop/commit/8d7d2b5))
 
 ### Terminal
 
@@ -53,7 +53,7 @@ Die Einträge sind neuestes zuerst sortiert.
   damit sich auch sehr umfangreiche Ausgaben (z. B. beim Tailen großer Log-Dateien) vollständig
   zurückscrollen lassen. Die zugehörige Dokumentation, die noch einen veralteten Wert von 10.000
   auswies, wurde korrigiert.
-  ([`82b645c`](https://github.com/nodedropweb/waveterm/commit/82b645c))
+  ([`82b645c`](https://github.com/nodedropweb/nodedrop/commit/82b645c))
 
 ## PR #1 — 2026-09-04
 
@@ -64,4 +64,4 @@ Die Einträge sind neuestes zuerst sortiert.
   Ressourcen-Dateien für Englisch und Deutsch (`locales/en.json`, `locales/de.json`).
 - **"Über Wave Terminal"-Dialog übersetzt** (erster produktiver Anwendungsfall des neuen
   i18n-Systems) inklusive EN/DE-Umschalter direkt im Dialog.
-  ([`99c60cc`](https://github.com/nodedropweb/waveterm/commit/99c60cc))
+  ([`99c60cc`](https://github.com/nodedropweb/nodedrop/commit/99c60cc))

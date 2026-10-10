@@ -52,12 +52,12 @@ const TelemetryRequiredMessage = ({ className }: TelemetryRequiredMessageProps) 
                                     <p>
                                         {t("aiPanel.telemetryByokInfo")}{" "}
                                         <a
-                                            href="https://github.com/nodedropweb/waveterm/blob/main/docs/docs/waveai-modes.mdx"
+                                            href="https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/waveai-modes.mdx"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="!text-secondary hover:!text-accent/80 cursor-pointer"
                                         >
-                                            https://github.com/nodedropweb/waveterm/blob/main/docs/docs/waveai-modes.mdx
+                                            https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/waveai-modes.mdx
                                         </a>
                                         .
                                     </p>
@@ -75,7 +75,7 @@ const TelemetryRequiredMessage = ({ className }: TelemetryRequiredMessageProps) 
 
                     <div className="text-xs text-secondary">
                         <a
-                            href="https://github.com/nodedropweb/waveterm/blob/main/docs/docs/telemetry.mdx"
+                            href="https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/telemetry.mdx"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="!text-secondary hover:!text-accent/80 cursor-pointer"

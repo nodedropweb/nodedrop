@@ -21,7 +21,7 @@ const UpgradeOnboardingModal_v0_14_0_Content = () => {
                     <div className="text-foreground text-base font-semibold leading-[18px]">
                         {t("onboardingUpgrade.v0140.durableSectionTitle")}{" "}
                         <button
-                            onClick={() => waveEnv.electron.openExternal("https://github.com/nodedropweb/waveterm/blob/main/docs/docs/durable-sessions.mdx")}
+                            onClick={() => waveEnv.electron.openExternal("https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/durable-sessions.mdx")}
                             className="text-accent text-sm font-normal cursor-pointer hover:underline"
                         >
                             {t("onboardingUpgrade.v0140.seeDocs")}

@@ -48,7 +48,7 @@ func GetStarterLayout() PortableLayout {
 		{IndexArr: []int{1, 1}, BlockDef: &waveobj.BlockDef{
 			Meta: waveobj.MetaMapType{
 				waveobj.MetaKey_View: "web",
-				waveobj.MetaKey_Url:  "https://github.com/nodedropweb/waveterm",
+				waveobj.MetaKey_Url:  "https://github.com/nodedropweb/nodedrop",
 			},
 		}},
 		{IndexArr: []int{1, 2}, BlockDef: &waveobj.BlockDef{

@@ -45,7 +45,7 @@ const UpgradeOnboardingModal_v0_14_2_Content = () => {
                                 {t("onboardingUpgrade.v0142.claudeIntegrationBodySuffix")}{" "}
                                 <button
                                     onClick={() =>
-                                        waveEnv.electron.openExternal("https://github.com/nodedropweb/waveterm/blob/main/docs/docs/claude-code.mdx")
+                                        waveEnv.electron.openExternal("https://github.com/nodedropweb/nodedrop/blob/main/docs/docs/claude-code.mdx")
                                     }
                                     className="text-accent text-sm font-normal cursor-pointer hover:underline"
                                 >
