@@ -23,9 +23,11 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/wavebase"
 )
 
-const WCloudEndpoint = "https://api.waveterm.dev/central"
+// NodeDrop: the Wave cloud services (telemetry, ping) belong to the original vendor and are disabled.
+// With empty endpoints every send function below is a silent no-op.
+const WCloudEndpoint = ""
 const WCloudEndpointVarName = "WCLOUD_ENDPOINT"
-const WCloudPingEndpoint = "https://ping.waveterm.dev/central"
+const WCloudPingEndpoint = ""
 const WCloudPingEndpointVarName = "WCLOUD_PING_ENDPOINT"
 
 var WCloudEndpoint_VarCache string
@@ -62,11 +64,9 @@ func CacheAndRemoveEnvVars() error {
 }
 
 func checkEndpointVar(endpoint string, debugName string, varName string) error {
-	if !wavebase.IsDevMode() {
-		return nil
-	}
-	if endpoint == "" || !strings.HasPrefix(endpoint, "https://") {
-		return fmt.Errorf("invalid %s, %s not set or invalid", debugName, varName)
+	// the cloud endpoint is optional in NodeDrop (empty = disabled)
+	if endpoint != "" && !strings.HasPrefix(endpoint, "https://") {
+		return fmt.Errorf("invalid %s, %s must start with https://", debugName, varName)
 	}
 	return nil
 }
@@ -211,6 +211,9 @@ func SendAllTelemetry(clientId string) error {
 		log.Printf("telemetry disabled, not sending\n")
 		return nil
 	}
+	if GetEndpoint() == "" {
+		return nil
+	}
 	_, err := sendTEvents(clientId)
 	if err != nil {
 		return err
@@ -255,6 +258,9 @@ func sendTelemetry(clientId string) error {
 }
 
 func SendNoTelemetryUpdate(ctx context.Context, clientId string, noTelemetryVal bool) error {
+	if GetEndpoint() == "" {
+		return nil
+	}
 	req, err := makeAnonPostReq(ctx, NoTelemetryUrl, NoTelemetryInputType{ClientId: clientId, Value: noTelemetryVal})
 	if err != nil {
 		return err

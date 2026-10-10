@@ -125,10 +125,7 @@ const config = {
         // this should remove /usr/lib/.build-id/ links which can conflict with other electron apps like slack
         fpm: ["--rpm-rpmbuild-define", "_build_id_links none"],
     },
-    publish: {
-        provider: "generic",
-        url: "https://dl.waveterm.dev/releases-w2",
-    },
+    // NodeDrop: no update feed is configured (the original Wave update server is not ours).
     afterPack: (context) => {
         // This is a workaround to restore file permissions to the nodedropsrv binaries on macOS after packaging the universal binary.
         if (context.electronPlatformName === "darwin" && context.arch === Arch.universal) {
