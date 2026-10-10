@@ -36,8 +36,8 @@ NodeDrop also supports durable SSH sessions that survive network interruptions a
 - One-click remote connections with full terminal and file system access
 - Secure secret storage using native system backends - store API keys and credentials locally, access them across SSH sessions
 - Rich customization including tab themes, terminal styles, and background images
-- Powerful `wsh` command system for managing your workspace from the CLI and sharing data between terminal sessions
-- Connected file management with `wsh file` - seamlessly copy and sync files between local and remote SSH hosts
+- Powerful `ndsh` command system for managing your workspace from the CLI and sharing data between terminal sessions
+- Connected file management with `ndsh file` - seamlessly copy and sync files between local and remote SSH hosts
 
 ## NodeDrop AI
 
@@ -45,7 +45,7 @@ NodeDrop AI is your context-aware terminal assistant with access to your workspa
 
 - **Terminal Context**: Reads terminal output and scrollback for debugging and analysis
 - **File Operations**: Read, write, and edit files with automatic backups and user approval
-- **CLI Integration**: Use `wsh ai` to pipe output or attach files directly from the command line
+- **CLI Integration**: Use `ndsh ai` to pipe output or attach files directly from the command line
 - **BYOK Support**: Bring your own API keys for OpenAI, Claude, Gemini, Azure, and other providers
 - **Local Models**: Run local models with Ollama, LM Studio, and other OpenAI-compatible providers
 - **Free Beta**: Included AI credits while we refine the experience

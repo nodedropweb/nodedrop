@@ -468,7 +468,7 @@ Damit kannst du Desktop-Benachrichtigungen aus Skripten oder Befehlen auslösen.
 
 Flags:
 
-- `-t, --title string` - legt den Titel der Benachrichtigung fest (Standard "Wsh Notify")
+- `-t, --title string` - legt den Titel der Benachrichtigung fest (Standard "NodeDrop Notify")
 - `-s, --silent` - deaktiviert den Benachrichtigungston
 
 Beispiele:
@@ -589,9 +589,9 @@ URI-Format: `[profile]:[uri-scheme]://[connection]/[path]`
 
 Unterstützte URI-Schemata:
 
-- `ndsh` - Wird genutzt, um über SSH per WSH-Helfer auf Dateien auf entfernten Hosts zuzugreifen. Ermöglicht Datei-Streaming zu NodeDrop und anderen entfernten Rechnern.
+- `ndsh` - Wird genutzt, um über SSH per ndsh-Helfer auf Dateien auf entfernten Hosts zuzugreifen. Ermöglicht Datei-Streaming zu NodeDrop und anderen entfernten Rechnern.
 
-  Profile sind für WSH-URIs optional, sofern du den entfernten Host in deiner "connections.json" oder "~/.ssh/config"-Datei konfiguriert hast.
+  Profile sind für ndsh-URIs optional, sofern du den entfernten Host in deiner "connections.json" oder "~/.ssh/config"-Datei konfiguriert hast.
 
   Ist ein Profil angegeben, muss es in "profiles.json" im NodeDrop-Konfigurationsverzeichnis definiert sein.
 
