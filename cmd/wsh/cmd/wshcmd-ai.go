@@ -160,9 +160,9 @@ func aiRun(cmd *cobra.Command, args []string) (rtnErr error) {
 		})
 	}
 
-	tabId := os.Getenv("WAVETERM_TABID")
+	tabId := os.Getenv("NODEDROP_TABID")
 	if tabId == "" {
-		return fmt.Errorf("WAVETERM_TABID environment variable not set")
+		return fmt.Errorf("NODEDROP_TABID environment variable not set")
 	}
 
 	route := wshutil.MakeTabRouteId(tabId)

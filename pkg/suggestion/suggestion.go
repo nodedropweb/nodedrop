@@ -106,7 +106,7 @@ func resolveFileQuery(cwd string, query string) (string, string, string, error) 
 	}
 
 	// For relative queries:
-	// If the query ends with a slash (e.g. "./" or "waveterm/"), then treat it
+	// If the query ends with a slash (e.g. "./" or "nodedrop/"), then treat it
 	// as a directory listing.
 	if strings.HasSuffix(query, PathSepStr) {
 		fullPath := filepath.Join(cwd, query)

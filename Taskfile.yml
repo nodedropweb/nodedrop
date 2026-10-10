@@ -10,7 +10,7 @@ vars:
         sh: node version.cjs
     RMRF: '{{if eq OS "windows"}}powershell -NoProfile -NonInteractive Remove-Item -Force -Recurse -ErrorAction SilentlyContinue{{else}}rm -rf{{end}}'
     DATE: '{{if eq OS "windows"}}powershell -NoProfile -NonInteractive Get-Date -UFormat{{else}}date{{end}}'
-    ARTIFACTS_BUCKET: waveterm-github-artifacts/staging-w2
+    ARTIFACTS_BUCKET: nodedrop-github-artifacts/staging-w2
     RELEASES_BUCKET: dl.waveterm.dev/releases-w2
     WINGET_PACKAGE: CommandLine.Wave
 
@@ -25,11 +25,11 @@ tasks:
             - build:backend
             - build:tsunamiscaffold
         env:
-            WAVETERM_ENVFILE: "{{.ROOT_DIR}}/.env"
+            NODEDROP_ENVFILE: "{{.ROOT_DIR}}/.env"
             WCLOUD_PING_ENDPOINT: "https://ping-dev.waveterm.dev/central"
             WCLOUD_ENDPOINT: "https://api-dev.waveterm.dev/central"
             WCLOUD_WS_ENDPOINT: "wss://wsapi-dev.waveterm.dev"
-            WAVETERM_NOCONFIRMQUIT: "1"
+            NODEDROP_NOCONFIRMQUIT: "1"
 
     electron:start:
         desc: Run the Electron application directly.
@@ -40,7 +40,7 @@ tasks:
             - npm:install
             - build:backend
         env:
-            WAVETERM_ENVFILE: "{{.ROOT_DIR}}/.env"
+            NODEDROP_ENVFILE: "{{.ROOT_DIR}}/.env"
             WCLOUD_PING_ENDPOINT: "https://ping-dev.waveterm.dev/central"
             WCLOUD_ENDPOINT: "https://api-dev.waveterm.dev/central"
             WCLOUD_WS_ENDPOINT: "wss://wsapi-dev.waveterm.dev"
@@ -52,11 +52,11 @@ tasks:
             - npm:install
             - build:backend:quickdev
         env:
-            WAVETERM_ENVFILE: "{{.ROOT_DIR}}/.env"
+            NODEDROP_ENVFILE: "{{.ROOT_DIR}}/.env"
             WCLOUD_PING_ENDPOINT: "https://ping-dev.waveterm.dev/central"
             WCLOUD_ENDPOINT: "https://api-dev.waveterm.dev/central"
             WCLOUD_WS_ENDPOINT: "wss://wsapi-dev.waveterm.dev/"
-            WAVETERM_NOCONFIRMQUIT: "1"
+            NODEDROP_NOCONFIRMQUIT: "1"
 
     preview:
         desc: Run the standalone component preview server with HMR (no Electron, no backend).
@@ -79,7 +79,7 @@ tasks:
             - npm:install
             - build:backend:quickdev:windows
         env:
-            WAVETERM_ENVFILE: "{{.ROOT_DIR}}/.env"
+            NODEDROP_ENVFILE: "{{.ROOT_DIR}}/.env"
             WCLOUD_PING_ENDPOINT: "https://ping-dev.waveterm.dev/central"
             WCLOUD_ENDPOINT: "https://api-dev.waveterm.dev/central"
             WCLOUD_WS_ENDPOINT: "wss://wsapi-dev.waveterm.dev/"
@@ -425,7 +425,7 @@ tasks:
             CHANNEL: '{{if contains "beta" .UP_VERSION}}beta{{else}}beta,stable{{end}}'
         cmd: |
             echo "Releasing to channels: [{{.CHANNEL}}]"
-            for file in waveterm_{{.UP_VERSION}}_*.snap; do
+            for file in nodedrop_{{.UP_VERSION}}_*.snap; do
                 echo "Publishing $file"
                 snapcraft upload --release={{.CHANNEL}} $file
                 echo "Finished publishing $file"
@@ -450,14 +450,14 @@ tasks:
               vars:
                   GOOS: darwin
                   GOARCH: arm64
-            - cp dist/bin/wsh-{{.VERSION}}-darwin.arm64 ~/Library/Application\ Support/waveterm-dev/bin/wsh
+            - cp dist/bin/wsh-{{.VERSION}}-darwin.arm64 ~/Library/Application\ Support/nodedrop-dev/bin/wsh
 
     dev:clearconfig:
-        desc: Clear the config directory for waveterm-dev
-        cmd: "{{.RMRF}} ~/.config/waveterm-dev"
+        desc: Clear the config directory for nodedrop-dev
+        cmd: "{{.RMRF}} ~/.config/nodedrop-dev"
 
     dev:cleardata:
-        desc: Clear the data directory for waveterm-dev
+        desc: Clear the data directory for nodedrop-dev
         cmds:
             - task: dev:cleardata:windows
             - task: dev:cleardata:linux
@@ -479,17 +479,17 @@ tasks:
     dev:cleardata:windows:
         internal: true
         platforms: [windows]
-        cmd: '{{.RMRF}} %LOCALAPPDATA%\waveterm-dev\Data'
+        cmd: '{{.RMRF}} %LOCALAPPDATA%\nodedrop-dev\Data'
 
     dev:cleardata:linux:
         internal: true
         platforms: [linux]
-        cmd: "rm -rf ~/.local/share/waveterm-dev"
+        cmd: "rm -rf ~/.local/share/nodedrop-dev"
 
     dev:cleardata:macos:
         internal: true
         platforms: [darwin]
-        cmd: 'rm -rf ~/Library/Application\ Support/waveterm-dev'
+        cmd: 'rm -rf ~/Library/Application\ Support/nodedrop-dev'
 
     npm:install:
         desc: Runs `npm install`

@@ -2,12 +2,12 @@
 
 if type update-alternatives 2>/dev/null >&1; then
     # Remove previous link if it doesn't use update-alternatives
-    if [ -L '/usr/bin/waveterm' -a -e '/usr/bin/waveterm' -a "`readlink '/usr/bin/waveterm'`" != '/etc/alternatives/waveterm' ]; then
-        rm -f '/usr/bin/waveterm'
+    if [ -L '/usr/bin/nodedrop' -a -e '/usr/bin/nodedrop' -a "`readlink '/usr/bin/nodedrop'`" != '/etc/alternatives/nodedrop' ]; then
+        rm -f '/usr/bin/nodedrop'
     fi
-    update-alternatives --install '/usr/bin/waveterm' 'waveterm' '/opt/Wave/waveterm' 100 || ln -sf '/opt/Wave/waveterm' '/usr/bin/waveterm'
+    update-alternatives --install '/usr/bin/nodedrop' 'nodedrop' '/opt/Wave/nodedrop' 100 || ln -sf '/opt/Wave/nodedrop' '/usr/bin/nodedrop'
 else
-    ln -sf '/opt/Wave/waveterm' '/usr/bin/waveterm'
+    ln -sf '/opt/Wave/nodedrop' '/usr/bin/nodedrop'
 fi
 
 chmod 4755 '/opt/Wave/chrome-sandbox' || true

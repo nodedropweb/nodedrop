@@ -1,5 +1,5 @@
 {
-    "name": "waveterm",
+    "name": "nodedrop",
     "author": {
         "name": "Command Line Inc",
         "email": "info@commandline.dev"
@@ -10,7 +10,7 @@
     "version": "0.14.5",
     "homepage": "https://waveterm.dev",
     "build": {
-        "appId": "dev.commandline.waveterm"
+        "appId": "dev.commandline.nodedrop"
     },
     "private": true,
     "main": "./dist/main/index.js",

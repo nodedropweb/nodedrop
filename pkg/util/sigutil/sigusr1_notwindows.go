@@ -15,7 +15,7 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/util/utilfn"
 )
 
-const DumpFilePath = "/tmp/waveterm-usr1-dump.log"
+const DumpFilePath = "/tmp/nodedrop-usr1-dump.log"
 
 func InstallSIGUSR1Handler() {
 	sigCh := make(chan os.Signal, 1)

@@ -26,18 +26,18 @@ var WaveVersion = "0.0.0"
 var BuildTime = "0"
 
 const (
-	WaveConfigHomeEnvVar           = "WAVETERM_CONFIG_HOME"
-	WaveDataHomeEnvVar             = "WAVETERM_DATA_HOME"
-	WaveAppPathVarName             = "WAVETERM_APP_PATH"
-	WaveAppResourcesPathVarName    = "WAVETERM_RESOURCES_PATH"
-	WaveAppElectronExecPathVarName = "WAVETERM_ELECTRONEXECPATH"
-	WaveDevVarName                 = "WAVETERM_DEV"
-	WaveDevViteVarName             = "WAVETERM_DEV_VITE"
-	WaveWshForceUpdateVarName      = "WAVETERM_WSHFORCEUPDATE"
-	WaveNoConfirmQuitVarName       = "WAVETERM_NOCONFIRMQUIT"
+	WaveConfigHomeEnvVar           = "NODEDROP_CONFIG_HOME"
+	WaveDataHomeEnvVar             = "NODEDROP_DATA_HOME"
+	WaveAppPathVarName             = "NODEDROP_APP_PATH"
+	WaveAppResourcesPathVarName    = "NODEDROP_RESOURCES_PATH"
+	WaveAppElectronExecPathVarName = "NODEDROP_ELECTRONEXECPATH"
+	WaveDevVarName                 = "NODEDROP_DEV"
+	WaveDevViteVarName             = "NODEDROP_DEV_VITE"
+	WaveWshForceUpdateVarName      = "NODEDROP_WSHFORCEUPDATE"
+	WaveNoConfirmQuitVarName       = "NODEDROP_NOCONFIRMQUIT"
 
-	WaveJwtTokenVarName  = "WAVETERM_JWT"
-	WaveSwapTokenVarName = "WAVETERM_SWAPTOKEN"
+	WaveJwtTokenVarName  = "NODEDROP_JWT"
+	WaveSwapTokenVarName = "NODEDROP_SWAPTOKEN"
 )
 
 const (
@@ -49,22 +49,22 @@ const (
 
 const NeedJwtConst = "NEED-JWT"
 
-var ConfigHome_VarCache string          // caches WAVETERM_CONFIG_HOME
-var DataHome_VarCache string            // caches WAVETERM_DATA_HOME
-var AppPath_VarCache string             // caches WAVETERM_APP_PATH
-var AppResourcesPath_VarCache string    // caches WAVETERM_RESOURCES_PATH
-var AppElectronExecPath_VarCache string // caches WAVETERM_ELECTRONEXECPATH
-var Dev_VarCache string                 // caches WAVETERM_DEV
+var ConfigHome_VarCache string          // caches NODEDROP_CONFIG_HOME
+var DataHome_VarCache string            // caches NODEDROP_DATA_HOME
+var AppPath_VarCache string             // caches NODEDROP_APP_PATH
+var AppResourcesPath_VarCache string    // caches NODEDROP_RESOURCES_PATH
+var AppElectronExecPath_VarCache string // caches NODEDROP_ELECTRONEXECPATH
+var Dev_VarCache string                 // caches NODEDROP_DEV
 
 const WaveLockFile = "wave.lock"
 const DomainSocketBaseName = "wave.sock"
 const RemoteDomainSocketBaseName = "wave-remote.sock"
 const WaveDBDir = "db"
 const ConfigDir = "config"
-const RemoteWaveHomeDirName = ".waveterm"
+const RemoteWaveHomeDirName = ".nodedrop"
 const RemoteWshBinDirName = "bin"
-const RemoteFullWshBinPath = "~/.waveterm/bin/wsh"
-const RemoteFullDomainSocketPath = "~/.waveterm/wave-remote.sock"
+const RemoteFullWshBinPath = "~/.nodedrop/bin/wsh"
+const RemoteFullDomainSocketPath = "~/.nodedrop/wave-remote.sock"
 
 const AppPathBinDir = "bin"
 
@@ -186,7 +186,7 @@ func GetDomainSocketName() string {
 // returns a Unix-style path for the remote socket (using fmt.Sprintf instead of filepath.Join
 // because this path is for a remote Unix system, not the local OS which might be Windows)
 func GetPersistentRemoteSockName(clientId string) string {
-	return fmt.Sprintf("~/.waveterm/client/%s/waveterm.sock", clientId)
+	return fmt.Sprintf("~/.nodedrop/client/%s/nodedrop.sock", clientId)
 }
 
 func EnsureWaveDataDir() error {
@@ -207,9 +207,9 @@ func EnsureWavePresetsDir() error {
 
 func resolveWaveCachesDir() string {
 	var cacheDir string
-	appBundle := "waveterm"
+	appBundle := "nodedrop"
 	if IsDevMode() {
-		appBundle = "waveterm-dev"
+		appBundle = "nodedrop-dev"
 	}
 
 	switch runtime.GOOS {
@@ -478,7 +478,7 @@ func getSystemSummary(ctx context.Context) string {
 
 // job socket path on remote machine
 func GetRemoteJobSocketPath(jobId string) string {
-	socketDir := filepath.Join("/tmp", fmt.Sprintf("waveterm-%d", os.Getuid()))
+	socketDir := filepath.Join("/tmp", fmt.Sprintf("nodedrop-%d", os.Getuid()))
 	return filepath.Join(socketDir, fmt.Sprintf("%s.sock", jobId))
 }
 
@@ -491,6 +491,6 @@ func GetRemoteJobFilePath(jobId string, extension string) string {
 // job file dir on remote machines
 func GetRemoteJobLogDir() string {
 	homeDir := GetHomeDir()
-	jobDir := filepath.Join(homeDir, ".waveterm", "jobs")
+	jobDir := filepath.Join(homeDir, ".nodedrop", "jobs")
 	return jobDir
 }

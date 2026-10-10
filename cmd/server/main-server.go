@@ -68,7 +68,7 @@ const DiagnosticTick = 10 * time.Minute
 var shutdownOnce sync.Once
 
 func init() {
-	envFilePath := os.Getenv("WAVETERM_ENVFILE")
+	envFilePath := os.Getenv("NODEDROP_ENVFILE")
 	if envFilePath != "" {
 		log.Printf("applying env file: %s\n", envFilePath)
 		_ = godotenv.Load(envFilePath)
@@ -137,8 +137,8 @@ func diagnosticLoop() {
 	defer func() {
 		panichandler.PanicHandler("diagnosticLoop", recover())
 	}()
-	if os.Getenv("WAVETERM_NOPING") != "" {
-		log.Printf("WAVETERM_NOPING set, disabling diagnostic ping\n")
+	if os.Getenv("NODEDROP_NOPING") != "" {
+		log.Printf("NODEDROP_NOPING set, disabling diagnostic ping\n")
 		return
 	}
 	var lastSentDate string
@@ -411,13 +411,13 @@ func grabAndRemoveEnvVars() error {
 	}
 
 	// Remove WAVETERM env vars that leak from prod => dev
-	os.Unsetenv("WAVETERM_CLIENTID")
-	os.Unsetenv("WAVETERM_WORKSPACEID")
-	os.Unsetenv("WAVETERM_TABID")
-	os.Unsetenv("WAVETERM_BLOCKID")
-	os.Unsetenv("WAVETERM_CONN")
-	os.Unsetenv("WAVETERM_JWT")
-	os.Unsetenv("WAVETERM_VERSION")
+	os.Unsetenv("NODEDROP_CLIENTID")
+	os.Unsetenv("NODEDROP_WORKSPACEID")
+	os.Unsetenv("NODEDROP_TABID")
+	os.Unsetenv("NODEDROP_BLOCKID")
+	os.Unsetenv("NODEDROP_CONN")
+	os.Unsetenv("NODEDROP_JWT")
+	os.Unsetenv("NODEDROP_VERSION")
 
 	return nil
 }

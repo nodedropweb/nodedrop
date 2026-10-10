@@ -11,7 +11,7 @@ import { useRpcOverride } from "../mock/use-rpc-override";
 const PreviewNodeId = "preview-waveaiwizard-node";
 const PreviewBlockId = "preview-waveaiwizard-block";
 
-// In-memory stand-in for ~/.config/waveterm/waveai.json
+// In-memory stand-in for ~/.config/nodedrop/waveai.json
 let mockWaveAiJson = JSON.stringify(
     {
         "ollama@llama3.3": {

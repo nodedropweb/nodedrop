@@ -221,13 +221,13 @@ func WaveshellLocalEnvVars(termType string) map[string]string {
 		rtn["TERM"] = termType
 	}
 	// these are not necessary since they should be set with the swap token, but no harm in setting them here
-	rtn["TERM_PROGRAM"] = "waveterm"
+	rtn["TERM_PROGRAM"] = "nodedrop"
 	if os.Getenv("COLORTERM") == "" {
 		rtn["COLORTERM"] = "truecolor"
 	}
 	rtn["WAVETERM"], _ = os.Executable()
-	rtn["WAVETERM_VERSION"] = wavebase.WaveVersion
-	rtn["WAVETERM_WSHBINDIR"] = filepath.Join(wavebase.GetWaveDataDir(), WaveHomeBinDir)
+	rtn["NODEDROP_VERSION"] = wavebase.WaveVersion
+	rtn["NODEDROP_WSHBINDIR"] = filepath.Join(wavebase.GetWaveDataDir(), WaveHomeBinDir)
 	return rtn
 }
 

@@ -14,7 +14,7 @@ import (
 	"github.com/nodedropweb/nodedrop/pkg/waveobj"
 )
 
-const OldDBName = "~/.waveterm/waveterm.db"
+const OldDBName = "~/.nodedrop/nodedrop.db"
 
 func GetOldDBName() string {
 	return wavebase.ExpandHomeDirSafe(OldDBName)

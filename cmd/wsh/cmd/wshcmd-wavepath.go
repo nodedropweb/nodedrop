@@ -16,7 +16,7 @@ import (
 
 var wavepathCmd = &cobra.Command{
 	Use:     "wavepath {config|data|log}",
-	Short:   "Get paths to various waveterm files and directories",
+	Short:   "Get paths to various nodedrop files and directories",
 	RunE:    wavepathRun,
 	PreRunE: preRunSetupRpcClient,
 }
@@ -58,7 +58,7 @@ func wavepathRun(cmd *cobra.Command, args []string) (rtnErr error) {
 
 	tabId := getTabIdFromEnv()
 	if tabId == "" {
-		return fmt.Errorf("no WAVETERM_TABID env var set")
+		return fmt.Errorf("no NODEDROP_TABID env var set")
 	}
 
 	path, err := wshclient.PathCommand(RpcClient, wshrpc.PathCommandData{

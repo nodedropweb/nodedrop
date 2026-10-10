@@ -19,7 +19,7 @@ import (
 	dbfs "github.com/nodedropweb/nodedrop/db"
 )
 
-const WStoreDBName = "waveterm.db"
+const WStoreDBName = "nodedrop.db"
 
 type TxWrap = txwrap.TxWrap
 

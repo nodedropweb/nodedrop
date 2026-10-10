@@ -40,7 +40,7 @@ func editConfigRun(cmd *cobra.Command, args []string) (rtnErr error) {
 
 	tabId := getTabIdFromEnv()
 	if tabId == "" {
-		return fmt.Errorf("no WAVETERM_TABID env var set")
+		return fmt.Errorf("no NODEDROP_TABID env var set")
 	}
 
 	wshCmd := &wshrpc.CommandCreateBlockData{

@@ -26,7 +26,7 @@ var tabListCmd = &cobra.Command{
 	Aliases: []string{"ls"},
 	Short:   "List tabs in a workspace",
 	Long: `List tabs with their ids and names, in their current order.
-Defaults to the current workspace (from WAVETERM_WORKSPACEID).`,
+Defaults to the current workspace (from NODEDROP_WORKSPACEID).`,
 	RunE:    tabListRun,
 	PreRunE: preRunSetupRpcClient,
 }
@@ -49,11 +49,11 @@ var (
 )
 
 func init() {
-	tabListCmd.Flags().StringVar(&tabWorkspaceId, "workspace", "", "workspace id (defaults to WAVETERM_WORKSPACEID)")
+	tabListCmd.Flags().StringVar(&tabWorkspaceId, "workspace", "", "workspace id (defaults to NODEDROP_WORKSPACEID)")
 	tabListCmd.Flags().BoolVar(&tabListJSON, "json", false, "output as JSON")
 	tabCommand.AddCommand(tabListCmd)
 
-	tabMoveCmd.Flags().StringVar(&tabWorkspaceId, "workspace", "", "workspace id (defaults to WAVETERM_WORKSPACEID)")
+	tabMoveCmd.Flags().StringVar(&tabWorkspaceId, "workspace", "", "workspace id (defaults to NODEDROP_WORKSPACEID)")
 	tabMoveCmd.Flags().IntVar(&tabMoveIndex, "index", -1, "0-based target position (required)")
 	tabMoveCmd.MarkFlagRequired("index")
 	tabCommand.AddCommand(tabMoveCmd)
@@ -73,11 +73,11 @@ func resolveWorkspaceId() (string, error) {
 	if wsId != "" {
 		return wsId, nil
 	}
-	wsId = os.Getenv("WAVETERM_WORKSPACEID")
+	wsId = os.Getenv("NODEDROP_WORKSPACEID")
 	if wsId != "" {
 		return wsId, nil
 	}
-	return "", fmt.Errorf("no workspace id specified (use --workspace or set WAVETERM_WORKSPACEID)")
+	return "", fmt.Errorf("no workspace id specified (use --workspace or set NODEDROP_WORKSPACEID)")
 }
 
 func getWorkspaceForId(wsId string, workspaces []wshrpc.WorkspaceInfoData) (*waveobj.Workspace, error) {

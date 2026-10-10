@@ -85,7 +85,7 @@ func OutputHelpMessage(cmd *cobra.Command) {
 func preRunSetupRpcClient(cmd *cobra.Command, args []string) error {
 	jwtToken := os.Getenv(wshutil.WaveJwtTokenVarName)
 	if jwtToken == "" {
-		return fmt.Errorf("wsh must be run inside a Wave-managed SSH session (WAVETERM_JWT not found)")
+		return fmt.Errorf("wsh must be run inside a Wave-managed SSH session (NODEDROP_JWT not found)")
 	}
 	err := setupRpcClient(nil, jwtToken)
 	if err != nil {
@@ -184,7 +184,7 @@ func setupRpcClient(serverImpl wshutil.ServerImpl, jwtToken string) error {
 		return fmt.Errorf("error authenticating: %v", err)
 	}
 	RpcClientRouteId = authRtn.RouteId
-	blockId := os.Getenv("WAVETERM_BLOCKID")
+	blockId := os.Getenv("NODEDROP_BLOCKID")
 	if blockId != "" {
 		peerInfo := fmt.Sprintf("domain:block:%s", blockId)
 		wshclient.SetPeerInfoCommand(RpcClient, peerInfo, &wshrpc.RpcOpts{Route: wshutil.ControlRoute})
@@ -206,9 +206,9 @@ func resolveSimpleId(id string) (*waveobj.ORef, error) {
 		}
 		return &orefObj, nil
 	}
-	blockId := os.Getenv("WAVETERM_BLOCKID")
+	blockId := os.Getenv("NODEDROP_BLOCKID")
 	if blockId == "" {
-		return nil, fmt.Errorf("no WAVETERM_BLOCKID env var set")
+		return nil, fmt.Errorf("no NODEDROP_BLOCKID env var set")
 	}
 	rtnData, err := wshclient.ResolveIdsCommand(RpcClient, wshrpc.CommandResolveIdsData{
 		BlockId: blockId,
@@ -225,7 +225,7 @@ func resolveSimpleId(id string) (*waveobj.ORef, error) {
 }
 
 func getTabIdFromEnv() string {
-	return os.Getenv("WAVETERM_TABID")
+	return os.Getenv("NODEDROP_TABID")
 }
 
 // this will send wsh activity to the client running on *your* local machine (it does not contact any wave cloud infrastructure)
