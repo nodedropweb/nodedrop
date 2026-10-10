@@ -223,7 +223,7 @@ Displays over block content when:
 - Shows connection status text
 - Displays error messages (scrollable)
 - Reconnect button (for disconnected/error)
-- "Always disable wsh" button (for WSH errors)
+- "Always disable ndsh" button (for WSH errors)
 - Adaptive layout based on width
 
 **Handlers:**
@@ -787,7 +787,7 @@ connStatus = {
     connected: true,
     activeconnnum: 3,
     wshenabled: false,
-    wsherror: "wsh installation failed: permission denied"
+    wsherror: "ndsh installation failed: permission denied"
 }
 
 // Error
@@ -803,7 +803,7 @@ connStatus = {
 
 **WSH Errors:**
 - Shown in ConnStatusOverlay
-- "always disable wsh" button sets `conn:wshenabled: false`
+- "always disable ndsh" button sets `conn:wshenabled: false`
 - Terminal still works without WSH (limited features)
 - Preview requires WSH (shows error if unavailable)
 
@@ -867,7 +867,7 @@ showS3 = atom(true)
 - ConnStatusOverlay shows separate WSH error section
 - Options:
   - Dismiss error (temporary)
-  - "always disable wsh" (permanent config change)
+  - "always disable ndsh" (permanent config change)
 
 ### View Model Error Handling
 

@@ -1,21 +1,21 @@
 ---
 name: add-wshcmd
-description: Guide for adding new wsh commands to Wave Terminal. Use when implementing new CLI commands, adding command-line functionality, or extending the wsh command interface.
+description: Guide for adding new ndsh commands to Wave Terminal. Use when implementing new CLI commands, adding command-line functionality, or extending the ndsh command interface.
 ---
 
-# Adding a New wsh Command to Wave Terminal
+# Adding a New ndsh Command to Wave Terminal
 
-This guide explains how to add a new command to the `wsh` CLI tool.
+This guide explains how to add a new command to the `ndsh` CLI tool.
 
-## wsh Command System Overview
+## ndsh Command System Overview
 
-Wave Terminal's `wsh` command provides CLI access to Wave Terminal features. The system uses:
+Wave Terminal's `ndsh` command provides CLI access to Wave Terminal features. The system uses:
 
 1. **Cobra Framework** - CLI command structure and parsing
-2. **Command Files** - Individual command implementations in `cmd/wsh/cmd/wshcmd-*.go`
+2. **Command Files** - Individual command implementations in `cmd/ndsh/cmd/wshcmd-*.go`
 3. **RPC Client** - Communication with Wave Terminal backend via `RpcClient`
 4. **Activity Tracking** - Telemetry for command usage analytics
-5. **Documentation** - User-facing docs in `docs/docs/wsh-reference.mdx`
+5. **Documentation** - User-facing docs in `docs/docs/ndsh-reference.mdx`
 
 Commands are registered in their `init()` functions and execute through the Cobra framework.
 
@@ -23,7 +23,7 @@ Commands are registered in their `init()` functions and execute through the Cobr
 
 ### Step 1: Create Command File
 
-Create a new file in `cmd/wsh/cmd/` named `wshcmd-[commandname].go`:
+Create a new file in `cmd/ndsh/cmd/` named `wshcmd-[commandname].go`:
 
 ```go
 // Copyright 2025, Command Line Inc.
@@ -107,7 +107,7 @@ var myCommandCmd = &cobra.Command{
     PreRunE: preRunSetupRpcClient,  // Sets up RPC client for backend communication
     
     // Example usage (optional)
-    Example: "  wsh mycommand foo\n  wsh mycommand --flag bar",
+    Example: "  ndsh mycommand foo\n  ndsh mycommand --flag bar",
     
     // Disable flag notation in usage line
     DisableFlagsInUseLine: true,
@@ -340,7 +340,7 @@ if err != nil {
 
 ### Step 7: Add Documentation
 
-Add your command to `docs/docs/wsh-reference.mdx`:
+Add your command to `docs/docs/ndsh-reference.mdx`:
 
 ````markdown
 ## mycommand
@@ -348,7 +348,7 @@ Add your command to `docs/docs/wsh-reference.mdx`:
 Brief description of what the command does.
 
 ```sh
-wsh mycommand [args] [flags]
+ndsh mycommand [args] [flags]
 ```
 
 Detailed explanation of the command's purpose and behavior.
@@ -362,16 +362,16 @@ Examples:
 
 ```sh
 # Basic usage
-wsh mycommand arg1
+ndsh mycommand arg1
 
 # With flags
-wsh mycommand --name value arg1
+ndsh mycommand --name value arg1
 
 # With block targeting
-wsh mycommand -b 2 arg1
+ndsh mycommand -b 2 arg1
 
 # Complex example
-wsh mycommand -v --name "example" arg1 arg2
+ndsh mycommand -v --name "example" arg1 arg2
 ```
 
 Additional notes, tips, or warnings about the command.
@@ -393,15 +393,15 @@ Additional notes, tips, or warnings about the command.
 Build and test the command:
 
 ```bash
-# Build wsh
-task build:wsh
+# Build ndsh
+task build:ndsh
 
 # Or build everything
 task build
 
 # Test the command
-./bin/wsh/wsh mycommand --help
-./bin/wsh/wsh mycommand arg1 arg2
+./bin/ndsh/ndsh mycommand --help
+./bin/ndsh/ndsh mycommand arg1 arg2
 ```
 
 **Testing Checklist:**
@@ -419,7 +419,7 @@ task build
 
 **Use case:** A command that prints Wave Terminal version info
 
-#### Command File (`cmd/wsh/cmd/wshcmd-version.go`)
+#### Command File (`cmd/ndsh/cmd/wshcmd-version.go`)
 
 ```go
 // Copyright 2025, Command Line Inc.
@@ -460,14 +460,14 @@ func versionRun(cmd *cobra.Command, args []string) (rtnErr error) {
 Print the current Wave Terminal version.
 
 ```sh
-wsh version
+ndsh version
 ```
 
 Examples:
 
 ```sh
 # Print version
-wsh version
+ndsh version
 ```
 ````
 
@@ -475,7 +475,7 @@ wsh version
 
 **Use case:** A command to update block title
 
-#### Command File (`cmd/wsh/cmd/wshcmd-settitle.go`)
+#### Command File (`cmd/ndsh/cmd/wshcmd-settitle.go`)
 
 ```go
 // Copyright 2025, Command Line Inc.
@@ -550,7 +550,7 @@ func setTitleRun(cmd *cobra.Command, args []string) (rtnErr error) {
 Set the title for a block.
 
 ```sh
-wsh settitle [title]
+ndsh settitle [title]
 ```
 
 Update the display title for the current or specified block. Optionally set an icon as well.
@@ -563,21 +563,21 @@ Examples:
 
 ```sh
 # Set title for current block
-wsh settitle "My Terminal"
+ndsh settitle "My Terminal"
 
 # Set title and icon
-wsh settitle --icon "terminal" "Development Shell"
+ndsh settitle --icon "terminal" "Development Shell"
 
 # Set title for specific block
-wsh settitle -b 2 "Build Output"
+ndsh settitle -b 2 "Build Output"
 ```
 ````
 
 ### Example 3: Subcommands
 
-**Use case:** Command with multiple subcommands (like `wsh conn`)
+**Use case:** Command with multiple subcommands (like `ndsh conn`)
 
-#### Command File (`cmd/wsh/cmd/wshcmd-mygroup.go`)
+#### Command File (`cmd/ndsh/cmd/wshcmd-mygroup.go`)
 
 ```go
 // Copyright 2025, Command Line Inc.
@@ -655,7 +655,7 @@ Manage something with subcommands.
 List all items.
 
 ```sh
-wsh mygroup list
+ndsh mygroup list
 ```
 
 ### add
@@ -663,17 +663,17 @@ wsh mygroup list
 Add a new item.
 
 ```sh
-wsh mygroup add [name]
+ndsh mygroup add [name]
 ```
 
 Examples:
 
 ```sh
 # List items
-wsh mygroup list
+ndsh mygroup list
 
 # Add an item
-wsh mygroup add "new-item"
+ndsh mygroup add "new-item"
 ```
 ````
 
@@ -798,7 +798,7 @@ func myCommandRun(cmd *cobra.Command, args []string) (rtnErr error) {
 
 1. **Single Responsibility**: Each command should do one thing well
 2. **Composable**: Design commands to work with pipes and other commands
-3. **Consistent**: Follow existing wsh command patterns and conventions
+3. **Consistent**: Follow existing ndsh command patterns and conventions
 4. **Documented**: Provide clear help text and examples
 
 ### Error Handling
@@ -874,7 +874,7 @@ if len(args) == 0 {
 
 ### 4. Forgetting to Add to init()
 
-**Problem**: Command not available when running wsh
+**Problem**: Command not available when running ndsh
 
 **Solution**: Always add command in `init()` function:
 ```go
@@ -898,24 +898,24 @@ fmt.Fprintf(os.Stderr, "error message\n")
 
 ## Quick Reference Checklist
 
-When adding a new wsh command:
+When adding a new ndsh command:
 
-- [ ] Create `cmd/wsh/cmd/wshcmd-[commandname].go`
+- [ ] Create `cmd/ndsh/cmd/wshcmd-[commandname].go`
 - [ ] Define command struct with Use, Short, Long descriptions
 - [ ] Add `PreRunE: preRunSetupRpcClient` if using RPC
 - [ ] Implement command function with activity tracking
 - [ ] Add command to `rootCmd` in `init()` function
 - [ ] Define flags in `init()` function if needed
-- [ ] Add documentation to `docs/docs/wsh-reference.mdx`
-- [ ] Build and test: `task build:wsh`
-- [ ] Test help: `wsh [commandname] --help`
+- [ ] Add documentation to `docs/docs/ndsh-reference.mdx`
+- [ ] Build and test: `task build:ndsh`
+- [ ] Test help: `ndsh [commandname] --help`
 - [ ] Test all flag combinations
 - [ ] Test error cases
 
 ## Related Files
 
-- **Root Command**: `cmd/wsh/cmd/wshcmd-root.go` - Main command setup and utilities
+- **Root Command**: `cmd/ndsh/cmd/wshcmd-root.go` - Main command setup and utilities
 - **RPC Client**: `pkg/wshrpc/wshclient/` - Client functions for RPC calls
 - **RPC Types**: `pkg/wshrpc/wshrpctypes.go` - RPC request/response data structures
-- **Documentation**: `docs/docs/wsh-reference.mdx` - User-facing command reference
-- **Examples**: `cmd/wsh/cmd/wshcmd-*.go` - Existing command implementations
+- **Documentation**: `docs/docs/ndsh-reference.mdx` - User-facing command reference
+- **Examples**: `cmd/ndsh/cmd/wshcmd-*.go` - Existing command implementations

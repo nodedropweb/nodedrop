@@ -267,7 +267,7 @@ const TabBar = () => {
 
 ```bash
 # Set in settings file
-wsh setconfig app:hideaibutton=true
+ndsh setconfig app:hideaibutton=true
 
 # Or edit ~/.config/waveterm/settings.json
 {
@@ -340,13 +340,13 @@ const TerminalView = ({ blockId }: { blockId: string }) => {
 
 ```bash
 # Set globally in settings file
-wsh setconfig term:bellsound="custom.wav"
+ndsh setconfig term:bellsound="custom.wav"
 
 # Set for current block only
-wsh setmeta term:bellsound="none"
+ndsh setmeta term:bellsound="none"
 
 # Set for specific block
-wsh setmeta --block BLOCK_ID term:bellsound="beep"
+ndsh setmeta --block BLOCK_ID term:bellsound="beep"
 
 # Or edit ~/.config/waveterm/settings.json
 {

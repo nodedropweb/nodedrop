@@ -83,10 +83,10 @@ const settingValue = useAtomValue(getOverrideConfigAtom(blockId, "namespace:sett
 
 ```bash
 # Set for current block
-wsh setmeta namespace:setting=value
+ndsh setmeta namespace:setting=value
 
 # Set for specific block
-wsh setmeta --block BLOCK_ID namespace:setting=value
+ndsh setmeta --block BLOCK_ID namespace:setting=value
 ```
 
 ## How to Add a New Configuration Value
@@ -348,13 +348,13 @@ const bellSound = useAtomValue(bellSoundAtom) ?? "default";
 
 ```bash
 # Set globally
-wsh setconfig term:bellsound="custom.wav"
+ndsh setconfig term:bellsound="custom.wav"
 
 # Set for current block only
-wsh setmeta term:bellsound="none"
+ndsh setmeta term:bellsound="none"
 
 # Set for specific block
-wsh setmeta --block BLOCK_ID term:bellsound="beep"
+ndsh setmeta --block BLOCK_ID term:bellsound="beep"
 ```
 
 ## Testing Your Configuration

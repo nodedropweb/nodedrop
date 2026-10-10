@@ -15,10 +15,10 @@ This guide covers how to add a new RPC command to the system.
 
 - `pkg/wshrpc/wshrpctypes.go` - RPC interface and type definitions
 - `pkg/wshrpc/wshserver/wshserver.go` - Main server implementation (most common)
-- `emain/emain-wsh.ts` - Electron main process implementation
+- `emain/emain-ndsh.ts` - Electron main process implementation
 - `frontend/app/store/tabrpcclient.ts` - Frontend tab implementation
 - `pkg/wshrpc/wshremote/wshremote.go` - Remote server implementation
-- `frontend/app/view/term/term-wsh.tsx` - Terminal block implementation
+- `frontend/app/view/term/term-ndsh.tsx` - Terminal block implementation
 
 ## RPC Command Structure
 
@@ -126,7 +126,7 @@ func (ws *WshServer) YourNewCommand(ctx context.Context, data wshrpc.CommandYour
 
 #### B. Electron Implementation
 
-Implement in `emain/emain-wsh.ts`:
+Implement in `emain/emain-ndsh.ts`:
 
 ```typescript
 async handle_yournew(rh: RpcResponseHelper, data: CommandYourNewData): Promise<YourNewResponse> {
@@ -198,7 +198,7 @@ func (impl *ServerImpl) RemoteYourNewCommand(ctx context.Context, data wshrpc.Co
 
 #### E. Terminal Block Implementation
 
-Implement in `frontend/app/view/term/term-wsh.tsx`:
+Implement in `frontend/app/view/term/term-ndsh.tsx`:
 
 ```typescript
 async handle_yournew(rh: RpcResponseHelper, data: CommandYourNewData): Promise<YourNewResponse> {
@@ -440,10 +440,10 @@ When adding a new RPC command:
 - [ ] Run `task generate` to create bindings
 - [ ] Implement in appropriate location:
   - [ ] `wshserver.go` for main server (most common)
-  - [ ] `emain-wsh.ts` for Electron
+  - [ ] `emain-ndsh.ts` for Electron
   - [ ] `tabrpcclient.ts` for frontend
   - [ ] `wshremote.go` for remote (prefix with `Remote`)
-  - [ ] `term-wsh.tsx` for terminal
+  - [ ] `term-ndsh.tsx` for terminal
 - [ ] Add input validation
 - [ ] Handle errors with context
 - [ ] Test the command end-to-end

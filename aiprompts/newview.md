@@ -213,7 +213,7 @@ The registry key (e.g., `"myview"`) becomes the view type used in block metadata
 ### 4. Create Blocks with Your View
 
 Users can create blocks with your view type:
-- Via CLI: `wsh view myview`
+- Via CLI: `ndsh view myview`
 - Via RPC: Use the block's `meta.view` field set to `"myview"`
 
 ## Real-World Examples

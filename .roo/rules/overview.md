@@ -34,7 +34,7 @@ The Electron main process handles the native desktop application layer:
 - [`emain-window.ts`](emain/emain-window.ts) - Window management (`WaveBrowserWindow` class)
 - [`emain-tabview.ts`](emain/emain-tabview.ts) - Tab view management (`WaveTabView` class)
 - [`emain-wavesrv.ts`](emain/emain-wavesrv.ts) - Go backend server integration
-- [`emain-wsh.ts`](emain/emain-wsh.ts) - WSH (Wave Shell) client integration
+- [`emain-ndsh.ts`](emain/emain-ndsh.ts) - WSH (Wave Shell) client integration
 - [`emain-ipc.ts`](emain/emain-ipc.ts) - IPC handlers for frontend ↔ main process communication
 - [`emain-menu.ts`](emain/emain-menu.ts) - Application menu system
 - [`updater.ts`](emain/updater.ts) - Auto-update functionality
@@ -121,7 +121,7 @@ The Go codebase is organized into modular packages:
 
 Key Go command-line utilities:
 
-- `wsh/` - Wave Shell command-line tool
+- `ndsh/` - Wave Shell command-line tool
 - `server/` - Main backend server
 - `generatego/` - Code generation
 - `generateschema/` - Schema generation

@@ -30,12 +30,12 @@ ALL dependent atoms recalculate (every isFocused, etc.)
 React re-renders with updated state
 ```
 
-**The critical insight**: The backend reads ONLY `leaforder` from the WaveObject (for block number resolution in commands like `wsh block:1`). The `rootnode`, `focusednodeid`, and `magnifiednodeid` fields exist **only for persistence** (tab restore, uncaching).
+**The critical insight**: The backend reads ONLY `leaforder` from the WaveObject (for block number resolution in commands like `ndsh block:1`). The `rootnode`, `focusednodeid`, and `magnifiednodeid` fields exist **only for persistence** (tab restore, uncaching).
 
 ### What the Backend Actually Does
 
 **Backend Reads** (from [`pkg/wshrpc/wshserver/resolvers.go`](../pkg/wshrpc/wshserver/resolvers.go:196-206)):
-- **`LeafOrder`** - Used to resolve block numbers in commands (e.g., `wsh block:1` → blockId lookup)
+- **`LeafOrder`** - Used to resolve block numbers in commands (e.g., `ndsh block:1` → blockId lookup)
 
 **Backend Writes** (from [`pkg/wcore/layout.go`](../pkg/wcore/layout.go)):
 - **`PendingBackendActions`** - Queued layout actions via [`QueueLayoutAction()`](../pkg/wcore/layout.go:101-118)
@@ -389,12 +389,12 @@ private persistToBackend() {
 ### 4. Backend Actions (New Blocks)
 ### 5. LeafOrder and CLI Commands
 
-**Concern**: The backend reads `LeafOrder` for CLI command resolution (e.g., `wsh block:1`). What if it's not synced yet?
+**Concern**: The backend reads `LeafOrder` for CLI command resolution (e.g., `ndsh block:1`). What if it's not synced yet?
 
 **Solution**: Fire-and-forget is perfectly fine! CLI commands aren't time-sensitive:
 - Commands are typed/run by users (human speed, not machine speed)
 - Even if `LeafOrder` is 100ms behind, no one will notice
-- By the time a user types `wsh block:1`, the async write has long since completed
+- By the time a user types `ndsh block:1`, the async write has long since completed
 - Worst case: User types command during a split operation and gets previous block - extremely rare and not breaking
 
 

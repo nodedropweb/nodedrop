@@ -102,7 +102,7 @@ type SSHConn struct {
     Client             *ssh.Client      // Underlying SSH client
     DomainSockName     string          // Unix socket for RPC
     DomainSockListener net.Listener    // Socket listener
-    ConnController     *ssh.Session    // Runs "wsh connserver"
+    ConnController     *ssh.Session    // Runs "ndsh connserver"
     Error              string          // Connection error
     WshError           string          // WSH-specific error
     WshVersion         string          // Installed WSH version
@@ -122,12 +122,12 @@ type SSHConn struct {
    - Socket used by both connserver and shell processes
 
 3. **WSH (Wave Shell Extensions) Management**:
-   - **Version Check** ([`StartConnServer()`](../pkg/remote/conncontroller/conncontroller.go:277)): Runs `wsh version` to check installation
+   - **Version Check** ([`StartConnServer()`](../pkg/remote/conncontroller/conncontroller.go:277)): Runs `ndsh version` to check installation
    - **Installation** ([`InstallWsh()`](../pkg/remote/conncontroller/conncontroller.go:478)): Copies appropriate WSH binary to remote
    - **Update** ([`UpdateWsh()`](../pkg/remote/conncontroller/conncontroller.go:417)): Updates existing WSH installation
    - **User Prompts** ([`getPermissionToInstallWsh()`](../pkg/remote/conncontroller/conncontroller.go:434)): Asks user for install permission
 
-4. **Connection Server** (`wsh connserver`):
+4. **Connection Server** (`ndsh connserver`):
    - Long-running process on remote host
    - Provides RPC services for file operations, command execution, etc.
    - Communicates via domain socket
@@ -139,7 +139,7 @@ type SSHConn struct {
 2. Connect(ctx) - Initiate connection
 3. CheckIfNeedsAuth() - Verify authentication needed
 4. OpenDomainSocketListener() - Set up RPC channel
-5. StartConnServer() - Launch wsh connserver
+5. StartConnServer() - Launch ndsh connserver
 6. (Install/Update WSH if needed)
 7. Status: Connected - Ready for shell processes
 ```
@@ -184,7 +184,7 @@ type WslConn struct {
     Name               wsl.WslName      // Distro name
     Client             *wsl.Distro      // WSL distro interface
     DomainSockName     string          // Uses RemoteFullDomainSocketPath
-    ConnController     *wsl.WslCmd     // Runs "wsh connserver"
+    ConnController     *wsl.WslCmd     // Runs "ndsh connserver"
     // ... similar to SSHConn
 }
 ```
@@ -200,7 +200,7 @@ type WslConn struct {
 1. GetWslConn(distroName) - Get/create WSL connection
 2. Connect(ctx) - Start connection process
 3. OpenDomainSocketListener() - Set domain socket path (no actual listener)
-4. StartConnServer() - Launch wsh connserver in WSL
+4. StartConnServer() - Launch ndsh connserver in WSL
 5. (Install/Update WSH if needed)
 6. Status: Connected - Ready for shell processes
 ```
@@ -358,13 +358,13 @@ proc.Wait()
                               ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │ 5. StartConnServer(ctx) - Launch Wave Shell Extensions         │
-│    - Run: "wsh version" to check installation                   │
+│    - Run: "ndsh version" to check installation                   │
 │    - If not installed or outdated:                              │
 │      a. Detect remote platform (OS/arch)                        │
 │      b. Get user permission (if configured)                     │
 │      c. InstallWsh() - Copy binary to remote                    │
 │      d. Retry StartConnServer()                                 │
-│    - Run: "wsh connserver" on remote                            │
+│    - Run: "ndsh connserver" on remote                            │
 │    - Pass JWT token for authentication                          │
 │    - Monitor connserver output                                   │
 │    - Wait for RPC route registration                            │
@@ -392,24 +392,24 @@ proc.Wait()
 **WSH (Wave Shell Extensions) Details:**
 
 **What is WSH?**
-- Binary program (`wsh`) that runs on remote hosts
+- Binary program (`ndsh`) that runs on remote hosts
 - Provides RPC services for Wave Terminal
 - Written in Go, cross-platform
 - Versioned to match Wave Terminal version
 
 **WSH Components:**
-1. **wsh version**: Reports installed version
-2. **wsh connserver**: Long-running RPC server
+1. **ndsh version**: Reports installed version
+2. **ndsh connserver**: Long-running RPC server
    - Handles file operations
    - Executes commands
    - Provides remote state information
    - Communicates over domain socket
 
 **WSH Installation Process:**
-1. Check if wsh is installed: Run `wsh version`
+1. Check if ndsh is installed: Run `ndsh version`
 2. If not installed: Detect platform with `uname -sm`
 3. Get appropriate binary from local cache
-4. Copy to remote: `~/.waveterm/bin/wsh`
+4. Copy to remote: `~/.waveterm/bin/ndsh`
 5. Set executable permissions
 6. Restart connection process
 
@@ -427,7 +427,7 @@ proc.Wait()
 1. GetWslConn(distroName) - Get/create WslConn
 2. conn.Connect(ctx) - Start connection
 3. OpenDomainSocketListener() - Set socket path (no actual listener)
-4. StartConnServer() - Launch "wsh connserver" via wsl.exe
+4. StartConnServer() - Launch "ndsh connserver" via wsl.exe
 5. Install/update WSH if needed (similar to SSH)
 6. Status: "connected"
 7. StartWslShellProc() - Create shell process in WSL

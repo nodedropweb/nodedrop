@@ -33,10 +33,10 @@ URI format: [profile]:[uri-scheme]://[connection]/[path]
 
 Supported URI schemes:
   ndsh:
-    Used to access files on remote hosts over SSH via the WSH helper. Allows
+    Used to access files on remote hosts over SSH via the ndsh helper. Allows
     for file streaming to NodeDrop and other remotes.
 
-    Profiles are optional for WSH URIs, provided that you have configured the
+    Profiles are optional for ndsh URIs, provided that you have configured the
     remote host in your "connections.json" or "~/.ssh/config" file.
 
     If a profile is provided, it must be defined in "profiles.json" in the NodeDrop
