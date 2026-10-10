@@ -35,6 +35,7 @@
         "display:order": -2,
         "icon": "gauge-high",
         "label": "monitor",
+        "magnified": true,
         "blockdef": {
             "meta": {
                 "view": "term",
