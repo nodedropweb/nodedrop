@@ -7,9 +7,13 @@ import { modalsModel } from "@/store/modalmodel";
 import * as keyutil from "@/util/keyutil";
 import { fireAndForget } from "@/util/util";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { translateUserInputRequest } from "./userinput-i18n";
 import { UserInputService } from "../store/services";
 
-const UserInputModal = (userInputRequest: UserInputRequest) => {
+const UserInputModal = (rawUserInputRequest: UserInputRequest) => {
+    const { t } = useTranslation();
+    const userInputRequest = useMemo(() => translateUserInputRequest(rawUserInputRequest, t), [rawUserInputRequest, t]);
     const [responseText, setResponseText] = useState("");
     const [countdown, setCountdown] = useState(Math.floor(userInputRequest.timeoutms / 1000));
     const checkboxRef = useRef<HTMLInputElement>(null);

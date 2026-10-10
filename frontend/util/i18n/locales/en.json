@@ -331,7 +331,127 @@
         "jsonMustBeObject": "JSON must be an object, not an array, primitive, or null",
         "noSecretManagerFound": "No appropriate secret manager found. Cannot manage secrets securely.",
         "invalidKeyMustStartWithAi": "Invalid key \"{{key}}\": all top-level keys must start with \"ai@\"",
-        "invalidKeyChars": "Invalid key \"{{key}}\": keys must only contain letters, numbers, underscores, @, dots, and hyphens"
+        "invalidKeyChars": "Invalid key \"{{key}}\": keys must only contain letters, numbers, underscores, @, dots, and hyphens",
+        "wizard": {
+            "stepIntro": "Overview",
+            "stepProvider": "Provider",
+            "stepDetails": "Details",
+            "stepKey": "API key",
+            "stepSummary": "Summary",
+            "yourModels": "Your AI models",
+            "addButton": "Add model (wizard)",
+            "noModels": "You have not added any models of your own yet.",
+            "builtinNote": "The built-in Wave AI modes (Quick, Balanced, Deep) are managed by Wave and are not listed here.",
+            "invalidJson": "waveai.json contains invalid JSON, so the wizard cannot edit it. Fix the file in the \"Raw JSON\" tab first.",
+            "edit": "Edit",
+            "defaultBadge": "Default",
+            "makeDefault": "Make default",
+            "deleteConfirm": "Delete the model \"{{name}}\"? The stored API key is kept.",
+            "introTitle": "Your own models: BYOK and local AI",
+            "introBody": "Besides Wave's own cloud AI, Wave AI can use your own AI accounts (\"bring your own key\", BYOK) or models running on your computer. Every model you add appears as its own mode in the Wave AI panel.",
+            "introCloud": "Cloud with your own API key: OpenAI, OpenRouter, Groq, NanoGPT, Google Gemini or Azure OpenAI.",
+            "introLocal": "Local models via Ollama, LM Studio or vLLM: no key needed and your prompts stay on your computer.",
+            "introCustom": "Any other service with an OpenAI-compatible API, using its endpoint URL.",
+            "introKeys": "API keys are stored encrypted in Wave's secret store (system keychain), never in waveai.json.",
+            "introNoTypos": "The wizard writes the configuration for you, so there are no typos in the JSON.",
+            "start": "Start",
+            "next": "Next",
+            "back": "Back",
+            "done": "Done",
+            "saveModel": "Save model",
+            "chooseProvider": "Which provider do you want to use?",
+            "providers": {
+                "openai": {
+                    "name": "OpenAI",
+                    "desc": "GPT models with your OpenAI API key."
+                },
+                "openrouter": {
+                    "name": "OpenRouter",
+                    "desc": "One key for many models from different vendors."
+                },
+                "groq": {
+                    "name": "Groq",
+                    "desc": "Very fast inference for open models."
+                },
+                "nanogpt": {
+                    "name": "NanoGPT",
+                    "desc": "Many models via one OpenAI-compatible service."
+                },
+                "google": {
+                    "name": "Google Gemini",
+                    "desc": "Gemini models with a Google AI Studio key."
+                },
+                "azure": {
+                    "name": "Azure OpenAI",
+                    "desc": "Azure OpenAI Service (current API)."
+                },
+                "azure-legacy": {
+                    "name": "Azure OpenAI (legacy)",
+                    "desc": "Azure OpenAI with the older deployment API."
+                },
+                "local": {
+                    "name": "Local model",
+                    "desc": "Ollama, LM Studio or vLLM on your computer. No key needed."
+                },
+                "custom": {
+                    "name": "Other (OpenAI-compatible)",
+                    "desc": "Any service with an OpenAI-compatible endpoint, e.g. xAI."
+                }
+            },
+            "localServer": "Local server",
+            "localOther": "Other",
+            "name": "Display name",
+            "nameHint": "Shown in the mode selector of the Wave AI panel.",
+            "namePlaceholder": "e.g. GPT-4o (work)",
+            "model": "Model ID",
+            "modelHint": "Exactly as the provider names it, e.g. {{example}}.",
+            "endpoint": "Endpoint URL",
+            "endpointHint": "The FULL endpoint including the path (e.g. .../v1/chat/completions), not just the base URL.",
+            "endpointBaseWarn": "This looks like a base URL. Wave needs the full endpoint, usually ending in /chat/completions. Otherwise you will most likely get a 404 error.",
+            "apiType": "API type",
+            "apiTypeChat": "Chat Completions (most services)",
+            "apiTypeResponses": "Responses (newer OpenAI API)",
+            "azureResource": "Azure resource name",
+            "azureResourceHint": "The part before .openai.azure.com.",
+            "azureDeployment": "Azure deployment name",
+            "thinking": "Thinking level",
+            "thinkingHint": "Optional. Only models that support reasoning use it.",
+            "thinkingNone": "Model default",
+            "thinkingLow": "Low",
+            "thinkingMedium": "Medium",
+            "thinkingHigh": "High",
+            "capabilities": "Capabilities",
+            "capsHint": "Without \"Tools\" Wave AI is only a chat and cannot work with your terminal, files or widgets.",
+            "capsAuto": "Wave detects the capabilities of this provider's models automatically.",
+            "cap_tools": "Tools (terminal, files, widgets)",
+            "cap_images": "Images",
+            "cap_pdfs": "PDFs",
+            "keyTitle": "API key",
+            "keyBody": "The key is stored encrypted in Wave's secret store. Only the name of the secret goes into waveai.json.",
+            "secretName": "Secret name",
+            "secretNameFixedHint": "Wave looks up the key under this name automatically.",
+            "secretNameCustomHint": "Name of the secret that holds the key: letters, digits and underscores, starting with a letter.",
+            "keyExists": "A key is already stored under this name. Leave the field empty to keep it.",
+            "keyMissing": "No key is stored under this name yet.",
+            "keyValue": "API key",
+            "keyKeepPlaceholder": "Leave empty to keep the stored key",
+            "getKey": "Where do I get a key?",
+            "summaryTitle": "Summary",
+            "summaryBody": "This entry will be written to waveai.json under the key \"{{key}}\":",
+            "summaryKeyWillBeStored": "The API key will be stored as secret {{name}}.",
+            "summaryKeyKept": "The key already stored as {{name}} will be used.",
+            "setDefault": "Use this model as the default in the Wave AI panel",
+            "saved": "Saved.",
+            "savedHint": "The model now appears in the mode selector of the Wave AI panel.",
+            "err": {
+                "required": "Required field",
+                "badUrl": "Please enter a valid URL starting with http:// or https://",
+                "badAzureResource": "Only lowercase letters, digits and hyphens, at most 63 characters.",
+                "badSecretName": "Must start with a letter and may contain only letters, digits and underscores.",
+                "saveFailed": "Saving failed: {{error}}",
+                "keyFailed": "Storing the API key failed: {{error}}"
+            }
+        }
     },
     "connTypeahead": {
         "reconnectTo": "Reconnect to {{connection}}",
@@ -1147,5 +1267,20 @@
         "configureModes": "Configure Modes",
         "aiModeTitle": "AI Mode: {{name}}",
         "invalidMode": "Invalid ({{mode}})"
+    },
+    "userInput": {
+        "texts": {
+            "installWshTitle": "Install Wave Shell Extensions",
+            "installWshQuery": "Wave requires Wave Shell Extensions to be installed on \"{{name}}\" to ensure a seamless experience.\n\nWould you like to install them?",
+            "installWshOk": "Install wsh",
+            "installWshCancel": "No wsh",
+            "installWshAuto": "Automatically install for all connections",
+            "passphraseTitle": "Publickey Auth + Passphrase",
+            "passphraseQuery": "Enter passphrase for the SSH key: {{file}}",
+            "passwordTitle": "Password Authentication",
+            "keyboardInteractiveTitle": "Keyboard Interactive Authentication",
+            "knownHostsKeyMissingTitle": "Known Hosts Key Missing",
+            "knownHostsFileMissingTitle": "Known Hosts File Missing"
+        }
     }
 }

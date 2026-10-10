@@ -7,6 +7,7 @@ import type { TabModel } from "@/app/store/tab-model";
 import { makeORef } from "@/app/store/wos";
 import { TabRpcClient } from "@/app/store/wshrpcutil";
 import { SecretsContent } from "@/app/view/waveconfig/secretscontent";
+import { WaveAIVisualContent } from "@/app/view/waveconfig/waveaivisual";
 import { WaveConfigView } from "@/app/view/waveconfig/waveconfig";
 import type { WaveConfigEnv } from "@/app/view/waveconfig/waveconfigenv";
 import i18n from "@/util/i18n/i18n";
@@ -88,7 +89,7 @@ function makeConfigFiles(isWindows: boolean): ConfigFile[] {
             docsUrl: "https://docs.waveterm.dev/waveai-modes",
             validator: validateWaveAiJson,
             hasJsonView: true,
-            // visualComponent: WaveAIVisualContent,
+            visualComponent: WaveAIVisualContent,
         },
         {
             name: i18n.t("waveConfig.fileTabBackgrounds"),

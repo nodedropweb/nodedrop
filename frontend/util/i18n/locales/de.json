@@ -331,7 +331,127 @@
         "jsonMustBeObject": "JSON muss ein Objekt sein, kein Array, Primitiv oder null",
         "noSecretManagerFound": "Kein passender Secret-Manager gefunden. Secrets können nicht sicher verwaltet werden.",
         "invalidKeyMustStartWithAi": "Ungültiger Key \"{{key}}\": Alle Top-Level-Keys müssen mit \"ai@\" beginnen",
-        "invalidKeyChars": "Ungültiger Key \"{{key}}\": Keys dürfen nur Buchstaben, Zahlen, Unterstriche, @, Punkte und Bindestriche enthalten"
+        "invalidKeyChars": "Ungültiger Key \"{{key}}\": Keys dürfen nur Buchstaben, Zahlen, Unterstriche, @, Punkte und Bindestriche enthalten",
+        "wizard": {
+            "stepIntro": "Überblick",
+            "stepProvider": "Anbieter",
+            "stepDetails": "Details",
+            "stepKey": "API-Schlüssel",
+            "stepSummary": "Zusammenfassung",
+            "yourModels": "Deine KI-Modelle",
+            "addButton": "Modell hinzufügen (Assistent)",
+            "noModels": "Du hast noch keine eigenen Modelle hinzugefügt.",
+            "builtinNote": "Die eingebauten Wave-AI-Modi (Quick, Balanced, Deep) werden von Wave verwaltet und hier nicht aufgelistet.",
+            "invalidJson": "waveai.json enthält ungültiges JSON, deshalb kann der Assistent sie nicht bearbeiten. Korrigiere die Datei zuerst im Tab \"Rohes JSON\".",
+            "edit": "Bearbeiten",
+            "defaultBadge": "Standard",
+            "makeDefault": "Als Standard",
+            "deleteConfirm": "Das Modell \"{{name}}\" löschen? Der gespeicherte API-Schlüssel bleibt erhalten.",
+            "introTitle": "Eigene Modelle: BYOK und lokale KI",
+            "introBody": "Neben der Cloud-KI von Wave kann Wave AI deine eigenen KI-Konten (\"Bring your own key\", BYOK) oder Modelle nutzen, die auf deinem Rechner laufen. Jedes Modell, das du hinzufügst, erscheint als eigener Modus im Wave-AI-Panel.",
+            "introCloud": "Cloud mit eigenem API-Schlüssel: OpenAI, OpenRouter, Groq, NanoGPT, Google Gemini oder Azure OpenAI.",
+            "introLocal": "Lokale Modelle über Ollama, LM Studio oder vLLM: kein Schlüssel nötig, und deine Eingaben bleiben auf deinem Rechner.",
+            "introCustom": "Jeder andere Dienst mit OpenAI-kompatibler API, über seine Endpoint-URL.",
+            "introKeys": "API-Schlüssel werden verschlüsselt im Secret-Speicher von Wave abgelegt (System-Schlüsselbund), nie in der waveai.json.",
+            "introNoTypos": "Der Assistent schreibt die Konfiguration für dich, damit keine Tippfehler im JSON entstehen.",
+            "start": "Los geht's",
+            "next": "Weiter",
+            "back": "Zurück",
+            "done": "Fertig",
+            "saveModel": "Modell speichern",
+            "chooseProvider": "Welchen Anbieter möchtest du nutzen?",
+            "providers": {
+                "openai": {
+                    "name": "OpenAI",
+                    "desc": "GPT-Modelle mit deinem OpenAI-API-Schlüssel."
+                },
+                "openrouter": {
+                    "name": "OpenRouter",
+                    "desc": "Ein Schlüssel für viele Modelle verschiedener Hersteller."
+                },
+                "groq": {
+                    "name": "Groq",
+                    "desc": "Sehr schnelle Inferenz für offene Modelle."
+                },
+                "nanogpt": {
+                    "name": "NanoGPT",
+                    "desc": "Viele Modelle über einen OpenAI-kompatiblen Dienst."
+                },
+                "google": {
+                    "name": "Google Gemini",
+                    "desc": "Gemini-Modelle mit einem Google-AI-Studio-Schlüssel."
+                },
+                "azure": {
+                    "name": "Azure OpenAI",
+                    "desc": "Azure OpenAI Service (aktuelle API)."
+                },
+                "azure-legacy": {
+                    "name": "Azure OpenAI (Legacy)",
+                    "desc": "Azure OpenAI mit der älteren Deployment-API."
+                },
+                "local": {
+                    "name": "Lokales Modell",
+                    "desc": "Ollama, LM Studio oder vLLM auf deinem Rechner. Kein Schlüssel nötig."
+                },
+                "custom": {
+                    "name": "Anderer Dienst (OpenAI-kompatibel)",
+                    "desc": "Jeder Dienst mit OpenAI-kompatiblem Endpoint, z. B. xAI."
+                }
+            },
+            "localServer": "Lokaler Server",
+            "localOther": "Anderer",
+            "name": "Anzeigename",
+            "nameHint": "Wird in der Modusauswahl des Wave-AI-Panels angezeigt.",
+            "namePlaceholder": "z. B. GPT-4o (Arbeit)",
+            "model": "Modell-ID",
+            "modelHint": "Genau so, wie der Anbieter es nennt, z. B. {{example}}.",
+            "endpoint": "Endpoint-URL",
+            "endpointHint": "Der VOLLSTÄNDIGE Endpoint inklusive Pfad (z. B. .../v1/chat/completions), nicht nur die Basis-URL.",
+            "endpointBaseWarn": "Das sieht nach einer Basis-URL aus. Wave braucht den vollständigen Endpoint, meist mit /chat/completions am Ende. Sonst bekommst du sehr wahrscheinlich einen 404-Fehler.",
+            "apiType": "API-Typ",
+            "apiTypeChat": "Chat Completions (die meisten Dienste)",
+            "apiTypeResponses": "Responses (neuere OpenAI-API)",
+            "azureResource": "Azure-Ressourcenname",
+            "azureResourceHint": "Der Teil vor .openai.azure.com.",
+            "azureDeployment": "Azure-Deployment-Name",
+            "thinking": "Denkstufe",
+            "thinkingHint": "Optional. Nur Modelle mit Reasoning nutzen sie.",
+            "thinkingNone": "Standard des Modells",
+            "thinkingLow": "Niedrig",
+            "thinkingMedium": "Mittel",
+            "thinkingHigh": "Hoch",
+            "capabilities": "Fähigkeiten",
+            "capsHint": "Ohne \"Tools\" ist Wave AI nur ein Chat und kann nicht mit Terminal, Dateien oder Widgets arbeiten.",
+            "capsAuto": "Wave erkennt die Fähigkeiten der Modelle dieses Anbieters automatisch.",
+            "cap_tools": "Tools (Terminal, Dateien, Widgets)",
+            "cap_images": "Bilder",
+            "cap_pdfs": "PDFs",
+            "keyTitle": "API-Schlüssel",
+            "keyBody": "Der Schlüssel wird verschlüsselt im Secret-Speicher von Wave abgelegt. In die waveai.json kommt nur der Name des Secrets.",
+            "secretName": "Secret-Name",
+            "secretNameFixedHint": "Wave sucht den Schlüssel automatisch unter diesem Namen.",
+            "secretNameCustomHint": "Name des Secrets, das den Schlüssel enthält: Buchstaben, Zahlen und Unterstriche, beginnend mit einem Buchstaben.",
+            "keyExists": "Unter diesem Namen ist bereits ein Schlüssel gespeichert. Lass das Feld leer, um ihn zu behalten.",
+            "keyMissing": "Unter diesem Namen ist noch kein Schlüssel gespeichert.",
+            "keyValue": "API-Schlüssel",
+            "keyKeepPlaceholder": "Leer lassen, um den gespeicherten Schlüssel zu behalten",
+            "getKey": "Wo bekomme ich einen Schlüssel?",
+            "summaryTitle": "Zusammenfassung",
+            "summaryBody": "Dieser Eintrag wird unter dem Schlüssel \"{{key}}\" in die waveai.json geschrieben:",
+            "summaryKeyWillBeStored": "Der API-Schlüssel wird als Secret {{name}} gespeichert.",
+            "summaryKeyKept": "Der bereits als {{name}} gespeicherte Schlüssel wird verwendet.",
+            "setDefault": "Dieses Modell im Wave-AI-Panel als Standard verwenden",
+            "saved": "Gespeichert.",
+            "savedHint": "Das Modell erscheint jetzt in der Modusauswahl des Wave-AI-Panels.",
+            "err": {
+                "required": "Pflichtfeld",
+                "badUrl": "Bitte eine gültige URL angeben, die mit http:// oder https:// beginnt",
+                "badAzureResource": "Nur Kleinbuchstaben, Zahlen und Bindestriche, höchstens 63 Zeichen.",
+                "badSecretName": "Muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Unterstriche enthalten.",
+                "saveFailed": "Speichern fehlgeschlagen: {{error}}",
+                "keyFailed": "Der API-Schlüssel konnte nicht gespeichert werden: {{error}}"
+            }
+        }
     },
     "connTypeahead": {
         "reconnectTo": "Erneut verbinden mit {{connection}}",
@@ -1147,5 +1267,20 @@
         "configureModes": "Modi konfigurieren",
         "aiModeTitle": "KI-Modus: {{name}}",
         "invalidMode": "Ungültig ({{mode}})"
+    },
+    "userInput": {
+        "texts": {
+            "installWshTitle": "Wave-Shell-Erweiterungen installieren",
+            "installWshQuery": "Wave benötigt die Wave-Shell-Erweiterungen (wsh) auf \"{{name}}\", damit alles reibungslos funktioniert.\n\nMöchtest du sie installieren?",
+            "installWshOk": "wsh installieren",
+            "installWshCancel": "Kein wsh",
+            "installWshAuto": "Automatisch für alle Verbindungen installieren",
+            "passphraseTitle": "Publickey-Anmeldung + Passphrase",
+            "passphraseQuery": "Passphrase für den SSH-Schlüssel eingeben: {{file}}",
+            "passwordTitle": "Passwort-Anmeldung",
+            "keyboardInteractiveTitle": "Tastatur-interaktive Anmeldung",
+            "knownHostsKeyMissingTitle": "Host-Schlüssel fehlt in known_hosts",
+            "knownHostsFileMissingTitle": "known_hosts-Datei fehlt"
+        }
     }
 }
