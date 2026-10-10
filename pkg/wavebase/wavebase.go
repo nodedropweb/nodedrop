@@ -180,7 +180,7 @@ func ReplaceHomeDir(pathStr string) string {
 }
 
 func GetDomainSocketName() string {
-	return filepath.Join(GetWaveDataDir(), domainSocketFileName())
+	return domainSocketPath()
 }
 
 // returns a Unix-style path for the remote socket (using fmt.Sprintf instead of filepath.Join
