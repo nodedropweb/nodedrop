@@ -52,7 +52,7 @@ const BYOKAnnouncement = () => {
                             {t("aiPanel.configureAiModes")}
                         </button>
                         <a
-                            href="https://docs.waveterm.dev/waveai-modes"
+                            href="https://github.com/nodedropweb/waveterm/blob/main/docs/docs/waveai-modes.mdx"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={handleViewDocs}

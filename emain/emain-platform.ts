@@ -57,7 +57,7 @@ export function checkIfRunningUnderARM64Translation(fullConfig: FullConfigType) 
             console.log("User chose to learn more");
             fireAndForget(() =>
                 shell.openExternal(
-                    "https://docs.waveterm.dev/faq#why-does-wave-warn-me-about-arm64-translation-when-it-launches"
+                    "https://github.com/nodedropweb/waveterm/blob/main/docs/docs/faq.mdx"
                 )
             );
             throw new Error("User redirected to docsite to learn more about ARM64 translation, exiting");
