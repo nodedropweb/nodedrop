@@ -12,6 +12,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/nodedropweb/nodedrop/pkg/waveobj"
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc"
 	"github.com/nodedropweb/nodedrop/pkg/wshrpc/wshclient"
 	"github.com/spf13/cobra"
@@ -173,10 +174,12 @@ func sysmonSwitchToBuiltin() error {
 		WriteStdout("\n(could not switch to the built-in system info: %v)\n", err)
 		return nil
 	}
-	oref, err := resolveBlockArg()
-	if err != nil {
-		return err
+	// Blocks that run a command (widgets) do not get NODEDROP_BLOCKID, but the access token carries the block id.
+	if RpcContext.BlockId == "" {
+		WriteStdout("\n(could not switch to the built-in system info: the access token has no block id)\n")
+		return nil
 	}
+	oref := waveobj.MakeORef(waveobj.OType_Block, RpcContext.BlockId)
 	meta := map[string]any{
 		"view":             "sysinfo",
 		"controller":       nil,
@@ -190,5 +193,5 @@ func sysmonSwitchToBuiltin() error {
 	}
 	WriteStdout("\nShowing the built-in system info in 3 seconds ...\n")
 	time.Sleep(3 * time.Second)
-	return wshclient.SetMetaCommand(RpcClient, wshrpc.CommandSetMetaData{ORef: *oref, Meta: meta}, &wshrpc.RpcOpts{Timeout: 2000})
+	return wshclient.SetMetaCommand(RpcClient, wshrpc.CommandSetMetaData{ORef: oref, Meta: meta}, &wshrpc.RpcOpts{Timeout: 2000})
 }
