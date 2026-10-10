@@ -6,7 +6,7 @@
     "productName": "NodeDrop",
     "description": "NodeDrop Terminal - an open-source, AI-native terminal with BYOK and local model support",
     "license": "Apache-2.0",
-    "version": "0.14.5",
+    "version": "0.14.6",
     "homepage": "https://github.com/nodedropweb/nodedrop",
     "build": {
         "appId": "com.nodedropweb.nodedrop"
