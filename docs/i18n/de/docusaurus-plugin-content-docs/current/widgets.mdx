@@ -139,6 +139,14 @@ Du kannst auch mit <Kbd k="Cmd:s" /> speichern.
 Um den **Bearbeitungsmodus** ohne Speichern zu verlassen, klicke auf den Abbrechen-Button rechts in der Kopfzeile.
 Du kannst auch mit <Kbd k="Cmd:r" /> ohne Speichern verlassen.
 
+### Systemmonitor
+
+Das Widget **Monitor** startet in einem Block einen Systemmonitor für das Terminal: [btop4win](https://github.com/aristocratos/btop4win) unter Windows und [btop](https://github.com/aristocratos/btop) unter macOS und Linux. Es ersetzt das frühere Widget „Systeminfo“ in der Widget-Leiste.
+
+Das Widget startet [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). Der Monitor wird in deinem `PATH` und an üblichen Installationsorten gesucht (zum Beispiel scoop). Ist keiner installiert, zeigt der Block, wie du einen installierst, und schaltet dann auf die eingebaute Systeminfo-Ansicht (CPU-Diagramm) um. So hast du immer einen funktionierenden Monitor.
+
+Installiere btop4win mit `scoop install btop` oder von der [Releases-Seite](https://github.com/aristocratos/btop4win/releases). Mit der Umgebungsvariable `NODEDROP_SYSMON` kannst du ein anderes Programm verwenden.
+
 ### Prozess-Viewer <VersionBadge version="v0.14.5" />
 
 Der Prozess-Viewer zeigt eine Live-Liste laufender Prozesse auf jedem verbundenen Host. Er ähnelt `top` oder `htop` und zeigt PID, Befehl, CPU% und Speichernutzung an. Unter Linux zeigt er zusätzlich Prozessstatus und Thread-Anzahl.

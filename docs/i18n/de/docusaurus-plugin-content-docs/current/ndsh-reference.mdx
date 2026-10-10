@@ -1121,3 +1121,22 @@ Die Secrets-Oberfläche bietet eine bequeme grafische Möglichkeit, Secrets zu d
 Nutze Secrets in deinen Skripten, um das Hartkodieren sensibler Werte zu vermeiden. Secrets funktionieren über entfernte Rechner hinweg - speichere einen API-Schlüssel lokal mit `ndsh secret set` und greife dann von jeder SSH- oder WSL-Verbindung aus mit `ndsh secret get` darauf zu. Das Secret wird sicher von deinem lokalen Rechner abgerufen, ohne es auf entfernten Systemen duplizieren zu müssen.
 :::
 </PlatformProvider>
+
+## sysmon
+
+Der Befehl `sysmon` startet im aktuellen Block einen Systemmonitor für das Terminal: `btop4win` unter Windows, `btop` unter macOS und Linux. Der Monitor wird in `PATH` und an üblichen Installationsorten gesucht. Dieser Befehl steckt hinter dem Widget **Monitor**.
+
+```bash
+ndsh sysmon [--no-fallback]
+```
+
+Ist kein Monitor installiert, gibt der Befehl aus, wie du einen installierst, und schaltet den Block auf die eingebaute Systeminfo-Ansicht um. Mit `--no-fallback` wird nur der Hinweis ausgegeben.
+
+Setze die Umgebungsvariable `NODEDROP_SYSMON` auf einen Befehlsnamen oder einen vollständigen Pfad, um ein anderes Programm zu verwenden.
+
+Beispiele:
+
+```bash
+ndsh sysmon
+NODEDROP_SYSMON=htop ndsh sysmon
+```

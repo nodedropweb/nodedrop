@@ -1121,3 +1121,22 @@ The secrets UI provides a convenient visual way to browse, add, edit, and delete
 Use secrets in your scripts to avoid hardcoding sensitive values. Secrets work across remote machines - store an API key locally with `ndsh secret set`, then access it from any SSH or WSL connection with `ndsh secret get`. The secret is securely retrieved from your local machine without needing to duplicate it on remote systems.
 :::
 </PlatformProvider>
+
+## sysmon
+
+The `sysmon` command runs a terminal system monitor in the current block: `btop4win` on Windows, `btop` on macOS and Linux. The monitor is looked up in `PATH` and in common install locations. This is the command behind the **Monitor** widget.
+
+```bash
+ndsh sysmon [--no-fallback]
+```
+
+If no monitor is installed, the command prints how to install one and switches the block to the built-in system info view. With `--no-fallback` it only prints the hint.
+
+Set the environment variable `NODEDROP_SYSMON` to a command name or a full path to use a different program.
+
+Examples:
+
+```bash
+ndsh sysmon
+NODEDROP_SYSMON=htop ndsh sysmon
+```

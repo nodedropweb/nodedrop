@@ -31,18 +31,8 @@
             }
         }
     },
-    "defwidget@sysinfo": {
-        "display:order": -2,
-        "icon": "chart-line",
-        "label": "sysinfo",
-        "blockdef": {
-            "meta": {
-                "view": "sysinfo"
-            }
-        }
-    },
     "defwidget@sysmon": {
-        "display:order": -1.5,
+        "display:order": -2,
         "icon": "gauge-high",
         "label": "monitor",
         "blockdef": {

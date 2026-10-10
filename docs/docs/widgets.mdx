@@ -139,6 +139,14 @@ You can also save by pressing <Kbd k="Cmd:s" />.
 To exit **edit mode** without saving, click the cancel button to the right of the header.
 You can also exit without saving by pressing <Kbd k="Cmd:r" />.
 
+### System Monitor
+
+The **Monitor** widget runs a terminal system monitor in a block: [btop4win](https://github.com/aristocratos/btop4win) on Windows and [btop](https://github.com/aristocratos/btop) on macOS and Linux. It replaces the former "Systeminfo" widget in the widget bar.
+
+The widget starts [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). It looks for the monitor in your `PATH` and in common install locations (for example scoop). If none is installed, the block shows how to install one and then switches to the built-in system info view (CPU chart), so you always get a working monitor.
+
+Install btop4win with `scoop install btop` or from its [releases page](https://github.com/aristocratos/btop4win/releases). Set the environment variable `NODEDROP_SYSMON` to use a different program.
+
 ### Process Viewer <VersionBadge version="v0.14.5" />
 
 The Process Viewer shows a live list of running processes on any connected host. It is similar to `top` or `htop`, displaying PID, command, CPU%, and memory usage. On Linux it also shows process status and thread count.
