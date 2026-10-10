@@ -80,6 +80,9 @@ function getTranslatedWidgetLabel(widget: WidgetConfigType, t: TFunction): strin
     if (view === "sysinfo" && widget.label === "sysinfo") {
         return t("widgets.sysinfo");
     }
+    if (view === "term" && widget.label === "monitor") {
+        return t("widgets.monitor");
+    }
     if (view === "processviewer" && widget.label === "processes") {
         return t("widgets.processes");
     }

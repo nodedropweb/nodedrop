@@ -226,7 +226,7 @@ func testWshExec(connName string, cmd string, timeout time.Duration) error {
 		Exp:   time.Now().Add(5 * time.Minute),
 	}
 	swapToken.Env["TERM_PROGRAM"] = "nodedrop"
-	swapToken.Env["WAVETERM"] = "1"
+	swapToken.Env["NODEDROP"] = "1"
 	swapToken.Env["NODEDROP_VERSION"] = wavebase.WaveVersion
 	swapToken.Env["NODEDROP_CONN"] = connName
 

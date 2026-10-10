@@ -225,7 +225,7 @@ func WaveshellLocalEnvVars(termType string) map[string]string {
 	if os.Getenv("COLORTERM") == "" {
 		rtn["COLORTERM"] = "truecolor"
 	}
-	rtn["WAVETERM"], _ = os.Executable()
+	rtn["NODEDROP"], _ = os.Executable()
 	rtn["NODEDROP_VERSION"] = wavebase.WaveVersion
 	rtn["NODEDROP_WSHBINDIR"] = filepath.Join(wavebase.GetWaveDataDir(), WaveHomeBinDir)
 	return rtn

@@ -121,6 +121,7 @@
         "files": "Dateien",
         "web": "Web",
         "sysinfo": "Systeminfo",
+        "monitor": "Monitor",
         "processes": "Prozesse",
         "settingsAndHelp": "Einstellungen & Hilfe",
         "configErrors": "Konfigurationsfehler",

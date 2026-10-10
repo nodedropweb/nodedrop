@@ -465,7 +465,7 @@ func makeSwapToken(ctx context.Context, logCtx context.Context, blockId string, 
 	token.Env["TERM_PROGRAM"] = "nodedrop"
 	token.Env["NODEDROP_BLOCKID"] = blockId
 	token.Env["NODEDROP_VERSION"] = wavebase.WaveVersion
-	token.Env["WAVETERM"] = "1"
+	token.Env["NODEDROP"] = "1"
 	tabId, err := wstore.DBFindTabForBlockId(ctx, blockId)
 	if err != nil {
 		log.Printf("error finding tab for block: %v\n", err)

@@ -41,6 +41,21 @@
             }
         }
     },
+    "defwidget@sysmon": {
+        "display:order": -1.5,
+        "icon": "gauge-high",
+        "label": "monitor",
+        "blockdef": {
+            "meta": {
+                "view": "term",
+                "controller": "cmd",
+                "cmd": "ndsh sysmon",
+                "cmd:shell": true,
+                "cmd:runonstart": true,
+                "cmd:clearonstart": true
+            }
+        }
+    },
     "defwidget@processviewer": {
         "display:order": -1,
         "icon": "list-tree",

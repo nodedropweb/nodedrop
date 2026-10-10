@@ -410,7 +410,7 @@ func grabAndRemoveEnvVars() error {
 		return err
 	}
 
-	// Remove WAVETERM env vars that leak from prod => dev
+	// Remove NODEDROP env vars that leak from prod => dev
 	os.Unsetenv("NODEDROP_CLIENTID")
 	os.Unsetenv("NODEDROP_WORKSPACEID")
 	os.Unsetenv("NODEDROP_TABID")
