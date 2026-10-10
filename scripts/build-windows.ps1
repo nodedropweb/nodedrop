@@ -19,7 +19,7 @@
     The resulting build is unsigned unless you set the code-signing
     environment variables electron-builder expects (CSC_LINK / CSC_KEY_PASSWORD,
     or the Azure Trusted Signing AZURE_* variables used in CI - see
-    .github/workflows/build-helper.yml for reference).
+    electron-builder.config.cjs for the signing options).
 
 .PARAMETER Clean
     Remove the `make/` and `dist/` directories before building.
