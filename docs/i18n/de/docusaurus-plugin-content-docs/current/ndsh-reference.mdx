@@ -1124,7 +1124,7 @@ Nutze Secrets in deinen Skripten, um das Hartkodieren sensibler Werte zu vermeid
 
 ## sysmon
 
-Der Befehl `sysmon` startet im aktuellen Block einen Systemmonitor für das Terminal: `btop4win` unter Windows, `btop` unter macOS und Linux. Der Monitor wird in `PATH` und an üblichen Installationsorten gesucht. Dieser Befehl steckt hinter dem Widget **Monitor**.
+Der Befehl `sysmon` startet im aktuellen Block einen Systemmonitor für das Terminal: `btop4win` unter Windows (wird mit NodeDrop mitgeliefert), `btop` unter macOS und Linux. Zuerst wird das mitgelieferte btop4win verwendet, dann `PATH` und übliche Installationsorte. Dieser Befehl steckt hinter dem Widget **Monitor**.
 
 ```bash
 ndsh sysmon [--no-fallback]

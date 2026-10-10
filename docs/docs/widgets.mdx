@@ -141,11 +141,11 @@ You can also exit without saving by pressing <Kbd k="Cmd:r" />.
 
 ### System Monitor
 
-The **Monitor** widget runs a terminal system monitor in a block: [btop4win](https://github.com/aristocratos/btop4win) on Windows and [btop](https://github.com/aristocratos/btop) on macOS and Linux. It replaces the former "Systeminfo" widget in the widget bar.
+The **Monitor** widget runs a terminal system monitor in a block: [btop4win](https://github.com/aristocratos/btop4win) on Windows and [btop](https://github.com/aristocratos/btop) on macOS and Linux. It replaces the former "Systeminfo" widget in the widget bar. On Windows, NodeDrop ships with btop4win, so the widget works out of the box.
 
-The widget starts [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). It looks for the monitor in your `PATH` and in common install locations (for example scoop). If none is installed, the block shows how to install one and then switches to the built-in system info view (CPU chart), so you always get a working monitor.
+The widget starts [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). It uses the bundled btop4win first and otherwise looks for a monitor in your `PATH` and in common install locations (for example scoop). If none is found, the block shows how to install one and then switches to the built-in system info view (CPU chart), so you always get a working monitor.
 
-Install btop4win with `scoop install btop` or from its [releases page](https://github.com/aristocratos/btop4win/releases). Set the environment variable `NODEDROP_SYSMON` to use a different program.
+On macOS and Linux, install btop with your package manager (for example `brew install btop` or `sudo apt install btop`). Set the environment variable `NODEDROP_SYSMON` to use a different program.
 
 ### Process Viewer <VersionBadge version="v0.14.5" />
 

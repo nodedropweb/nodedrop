@@ -122,6 +122,13 @@ tasks:
             - npm:install
             - build:backend
             - build:tsunamiscaffold
+            - build:tools
+
+    build:tools:
+        desc: Fetch third-party tools that ship with the Windows build (btop4win for the Monitor widget).
+        platforms: [windows]
+        cmds:
+            - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/fetch-btop4win.ps1
 
     build:frontend:dev:
         desc: Build the frontend in development mode.

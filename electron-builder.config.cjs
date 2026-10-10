@@ -44,6 +44,7 @@ const config = {
     asarUnpack: [
         "dist/bin/**/*", // nodedropsrv and ndsh binaries
         "dist/schema/**/*", // schema files for Monaco editor
+        "dist/tools/**/*", // third-party tools that must be executable (btop4win)
     ],
     mac: {
         target: [

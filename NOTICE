@@ -4,3 +4,7 @@ NodeDrop Terminal is a fork of Wave Terminal (https://github.com/wavetermdev/wav
 Modifications Copyright 2026, nodedropweb.
 
 Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product bundles btop4win (https://github.com/aristocratos/btop4win) by aristocratos,
+licensed under the Apache License 2.0. Its license text ships next to the program in the
+installed "tools/btop4win" folder.

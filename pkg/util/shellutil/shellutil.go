@@ -440,6 +440,9 @@ func initCustomShellStartupFilesInternal() error {
 		return err
 	}
 
+	// third-party tools that ship with the app (for example btop4win for the Monitor widget)
+	InstallBundledTools(waveDataHome)
+
 	// copy the correct binary to bin
 	wshFullPath, err := GetLocalWshBinaryPath(wavebase.WaveVersion, runtime.GOOS, runtime.GOARCH)
 	if err != nil {

@@ -47,12 +47,32 @@ type sysmonFinder struct {
 	getenv   func(string) string
 	lookPath func(string) (string, error)
 	isFile   func(string) bool
+	exePath  func() (string, error) // path of the running ndsh, used to locate the bundled monitor
+}
+
+// bundledPath returns the btop4win that ships with NodeDrop (Windows only). The app copies it to
+// <data dir>/tools/btop4win next to <data dir>/bin where this ndsh lives.
+func (f sysmonFinder) bundledPath() string {
+	if f.goos != "windows" || f.exePath == nil {
+		return ""
+	}
+	exe, err := f.exePath()
+	if err != nil {
+		return ""
+	}
+	dataDir := filepath.Dir(filepath.Dir(exe))
+	p := filepath.Join(dataDir, "tools", "btop4win", "btop4win.exe")
+	if f.isFile(p) {
+		return p
+	}
+	return ""
 }
 
 func defaultSysmonFinder() sysmonFinder {
 	return sysmonFinder{
 		goos:     runtime.GOOS,
 		getenv:   os.Getenv,
+		exePath:  os.Executable,
 		lookPath: exec.LookPath,
 		isFile: func(p string) bool {
 			st, err := os.Stat(p)
@@ -105,6 +125,9 @@ func (f sysmonFinder) find() string {
 		if f.isFile(override) {
 			return override
 		}
+	}
+	if p := f.bundledPath(); p != "" {
+		return p
 	}
 	for _, name := range f.candidateNames() {
 		if p, err := f.lookPath(name); err == nil {

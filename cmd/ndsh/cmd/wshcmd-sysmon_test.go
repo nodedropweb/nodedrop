@@ -72,3 +72,31 @@ func TestSysmonInstallHintMentionsPlatformInstaller(t *testing.T) {
 		}
 	}
 }
+
+func TestSysmonPrefersBundledMonitorOnWindows(t *testing.T) {
+	exe := filepath.Join("C:", "Users", "me", "AppData", "Local", "nodedrop", "Data", "bin", "ndsh.exe")
+	bundled := filepath.Join("C:", "Users", "me", "AppData", "Local", "nodedrop", "Data", "tools", "btop4win", "btop4win.exe")
+	f := testFinder("windows", nil, map[string]string{"btop": `C:\scoop\btop.exe`}, bundled)
+	f.exePath = func() (string, error) { return exe, nil }
+	if got := f.find(); got != bundled {
+		t.Fatalf("got %q, want the bundled %q", got, bundled)
+	}
+}
+
+func TestSysmonOverrideBeatsBundledMonitor(t *testing.T) {
+	exe := filepath.Join("C:", "data", "bin", "ndsh.exe")
+	bundled := filepath.Join("C:", "data", "tools", "btop4win", "btop4win.exe")
+	f := testFinder("windows", map[string]string{SysmonOverrideEnvVar: "htop"}, map[string]string{"htop": `C:\tools\htop.exe`}, bundled)
+	f.exePath = func() (string, error) { return exe, nil }
+	if got := f.find(); got != `C:\tools\htop.exe` {
+		t.Fatalf("got %q", got)
+	}
+}
+
+func TestSysmonIgnoresBundledMonitorOutsideWindows(t *testing.T) {
+	f := testFinder("linux", nil, nil, "/data/tools/btop4win/btop4win.exe")
+	f.exePath = func() (string, error) { return "/data/bin/ndsh", nil }
+	if got := f.find(); got != "" {
+		t.Fatalf("expected no monitor, got %q", got)
+	}
+}

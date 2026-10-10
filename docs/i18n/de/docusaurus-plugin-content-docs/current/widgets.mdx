@@ -141,11 +141,11 @@ Du kannst auch mit <Kbd k="Cmd:r" /> ohne Speichern verlassen.
 
 ### Systemmonitor
 
-Das Widget **Monitor** startet in einem Block einen Systemmonitor für das Terminal: [btop4win](https://github.com/aristocratos/btop4win) unter Windows und [btop](https://github.com/aristocratos/btop) unter macOS und Linux. Es ersetzt das frühere Widget „Systeminfo“ in der Widget-Leiste.
+Das Widget **Monitor** startet in einem Block einen Systemmonitor für das Terminal: [btop4win](https://github.com/aristocratos/btop4win) unter Windows und [btop](https://github.com/aristocratos/btop) unter macOS und Linux. Es ersetzt das frühere Widget „Systeminfo“ in der Widget-Leiste. Unter Windows liefert NodeDrop btop4win mit, das Widget funktioniert also sofort.
 
-Das Widget startet [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). Der Monitor wird in deinem `PATH` und an üblichen Installationsorten gesucht (zum Beispiel scoop). Ist keiner installiert, zeigt der Block, wie du einen installierst, und schaltet dann auf die eingebaute Systeminfo-Ansicht (CPU-Diagramm) um. So hast du immer einen funktionierenden Monitor.
+Das Widget startet [`ndsh sysmon`](./ndsh-reference.mdx#sysmon). Zuerst wird das mitgelieferte btop4win verwendet, sonst wird ein Monitor in deinem `PATH` und an üblichen Installationsorten gesucht (zum Beispiel scoop). Findet sich keiner, zeigt der Block, wie du einen installierst, und schaltet dann auf die eingebaute Systeminfo-Ansicht (CPU-Diagramm) um. So hast du immer einen funktionierenden Monitor.
 
-Installiere btop4win mit `scoop install btop` oder von der [Releases-Seite](https://github.com/aristocratos/btop4win/releases). Mit der Umgebungsvariable `NODEDROP_SYSMON` kannst du ein anderes Programm verwenden.
+Unter macOS und Linux installierst du btop mit deinem Paketmanager (zum Beispiel `brew install btop` oder `sudo apt install btop`). Mit der Umgebungsvariable `NODEDROP_SYSMON` kannst du ein anderes Programm verwenden.
 
 ### Prozess-Viewer <VersionBadge version="v0.14.5" />
 

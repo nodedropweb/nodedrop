@@ -1124,7 +1124,7 @@ Use secrets in your scripts to avoid hardcoding sensitive values. Secrets work a
 
 ## sysmon
 
-The `sysmon` command runs a terminal system monitor in the current block: `btop4win` on Windows, `btop` on macOS and Linux. The monitor is looked up in `PATH` and in common install locations. This is the command behind the **Monitor** widget.
+The `sysmon` command runs a terminal system monitor in the current block: `btop4win` on Windows (it ships with NodeDrop), `btop` on macOS and Linux. The bundled btop4win is used first, then `PATH` and common install locations. This is the command behind the **Monitor** widget.
 
 ```bash
 ndsh sysmon [--no-fallback]
