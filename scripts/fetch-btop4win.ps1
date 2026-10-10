@@ -27,7 +27,11 @@ $zipPath = Join-Path $cacheDir "btop4win-x64-$Version.zip"
 $outDir = Join-Path $repoRoot "dist/tools/btop4win"
 
 function Get-Sha256([string]$Path) {
-    return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant()
+    # plain .NET: the Get-FileHash cmdlet is not always available when PowerShell 5.1 is started from a pwsh 7 session (CI)
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    $stream = [System.IO.File]::OpenRead($Path)
+    try { return ([BitConverter]::ToString($sha.ComputeHash($stream)) -replace "-", "").ToLowerInvariant() }
+    finally { $stream.Dispose(); $sha.Dispose() }
 }
 
 New-Item -ItemType Directory -Force $cacheDir | Out-Null
@@ -35,7 +39,7 @@ New-Item -ItemType Directory -Force $cacheDir | Out-Null
 if (-not (Test-Path -LiteralPath $zipPath) -or (Get-Sha256 $zipPath) -ne $Sha256) {
     Write-Host "Downloading btop4win $Version ..."
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri $Url -OutFile $zipPath -UseBasicParsing
+    (New-Object System.Net.WebClient).DownloadFile($Url, $zipPath)
 }
 
 $actual = Get-Sha256 $zipPath
@@ -46,7 +50,8 @@ if ($actual -ne $Sha256) {
 
 $tmp = Join-Path ([IO.Path]::GetTempPath()) ("btop4win-" + [Guid]::NewGuid().ToString("N"))
 try {
-    Expand-Archive -LiteralPath $zipPath -DestinationPath $tmp
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $tmp)
     $src = Join-Path $tmp "btop4win"
     if (-not (Test-Path -LiteralPath (Join-Path $src "btop4win.exe"))) {
         throw "btop4win.exe not found in the downloaded archive"
