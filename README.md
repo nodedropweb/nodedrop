@@ -87,7 +87,7 @@ dokumentiert.
 
 Wave wird laufend weiterentwickelt! Die Roadmap wird kontinuierlich mit den Zielen für jedes Release aktualisiert. Sie ist [hier](./ROADMAP.md) zu finden.
 
-Ihr habt Ideen für zukünftige Releases? Meldet euch auf [Discord](https://discord.gg/XfvZ334gwU) oder eröffnet einen [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)!
+Ihr habt Ideen für zukünftige Releases? Meldet euch auf [Discord](https://discord.gg/XfvZ334gwU) oder eröffnet einen [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
 
 ## Links
 

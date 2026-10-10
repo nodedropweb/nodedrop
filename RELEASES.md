@@ -11,7 +11,7 @@
      - If you are creating a new prerelease following an official release, you would set "SemVer Bump" to to the expected version bump (`patch`, `minor`, or `major`) and "Is Prerelease" to `true`.
      - If you are bumping an existing prerelease to a new prerelease under the same version, you would set "SemVer Bump" to `none` and "Is Prerelease" to `true`.
      - If you are promoting a prerelease version to an official release, you would set "SemVer Bump" to `none` and "Is Prerelease" to `false`.
-3. After "Bump Version" a "Build Helper" run will kick off automatically for the new version. When this completes, it will generate a [draft GitHub Release](https://github.com/nodedropweb/nodedrop/releases) with all the built artifacts.
+3. After "Bump Version" a "Build Helper" run will kick off automatically for the new version. When this completes, it will generate a [draft GitHub Release](https://github.com/nodedropweb/waveterm/releases) with all the built artifacts.
 4. Review the artifacts in the release and test them locally.
 5. When you are confident that the build is good, edit the GitHub Release to add a changelog and release summary and publish the release.
 6. The new version will be published to our release feed automatically when the GitHub Release is published. If the build is a prerelease, it will only release to users subscribed to the `beta` channel. If it is a general release, it will be released to all users.
@@ -40,7 +40,7 @@ Once a build is complete, the artifacts will be placed in `s3://waveterm-github-
 
 ### Testing new releases
 
-The [Build Helper workflow](https://github.com/nodedropweb/nodedrop/actions/workflows/build-helper.yml). creates a draft release on GitHub once it completes. You can find this on the [Releases page](https://github.com/nodedropweb/nodedrop/releases) of the repo. You can use this to download the build artifacts for testing.
+The [Build Helper workflow](https://github.com/nodedropweb/nodedrop/actions/workflows/build-helper.yml). creates a draft release on GitHub once it completes. You can find this on the [Releases page](https://github.com/nodedropweb/waveterm/releases) of the repo. You can use this to download the build artifacts for testing.
 
 You can also use the `artifacts:download` task in the [`Taskfile.yml`](./Taskfile.yml) to download all the artifacts for a build. You will need to configure an AWS CLI profile with write permissions for the S3 buckets in order for the script to work. You should invoke the tasks as follows:
 
@@ -50,7 +50,7 @@ task artifacts:download:<version> -- --profile <aws-profile>
 
 ### Publishing a release
 
-Once you have validated that the new release is ready, navigate to the [Releases page](https://github.com/nodedropweb/nodedrop/releases) and click on the draft release for the version that is ready. Click the pencil button in the top right corner to edit the draft. Use this opportunity to adjust the release notes as needed. When you are ready to publish, scroll all the way to the bottom of the release editor and click Publish. This will kick off the [Publish Release workflow](https://github.com/nodedropweb/nodedrop/actions/workflows/publish-release.yml), at which point all further tasks are automated and hands-off.
+Once you have validated that the new release is ready, navigate to the [Releases page](https://github.com/nodedropweb/waveterm/releases) and click on the draft release for the version that is ready. Click the pencil button in the top right corner to edit the draft. Use this opportunity to adjust the release notes as needed. When you are ready to publish, scroll all the way to the bottom of the release editor and click Publish. This will kick off the [Publish Release workflow](https://github.com/nodedropweb/nodedrop/actions/workflows/publish-release.yml), at which point all further tasks are automated and hands-off.
 
 ### Automatic updates
 

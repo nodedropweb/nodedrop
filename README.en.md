@@ -86,7 +86,7 @@ All changes made on top of the original are documented in the [CHANGELOG](./CHAN
 
 Wave is constantly improving! Our roadmap will be continuously updated with our goals for each release. You can find it [here](./ROADMAP.md).
 
-Want to provide input to our future releases? Connect with us on [Discord](https://discord.gg/XfvZ334gwU) or open a [Feature Request](https://github.com/nodedropweb/nodedrop/issues/new/choose)!
+Want to provide input to our future releases? Connect with us on [Discord](https://discord.gg/XfvZ334gwU) or open a [Feature Request](https://github.com/nodedropweb/waveterm/issues/new/choose)!
 
 ## Links
 
