@@ -64,7 +64,7 @@ const ConfigDir = "config"
 const RemoteWaveHomeDirName = ".nodedrop"
 const RemoteWshBinDirName = "bin"
 const RemoteFullWshBinPath = "~/.nodedrop/bin/ndsh"
-const RemoteFullDomainSocketPath = "~/.nodedrop/wave-remote.sock"
+const RemoteFullDomainSocketPath = "~/.nodedrop/nodedrop-remote.sock"
 
 const AppPathBinDir = "bin"
 

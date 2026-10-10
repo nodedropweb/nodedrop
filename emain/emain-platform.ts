@@ -80,7 +80,7 @@ function getWaveHomeDir(): string {
         }
     }
     // If home exists and it has `wave.lock` in it, we know it has valid data from NodeDrop >=v0.8. Otherwise, it could be for WaveLegacy (<v0.8)
-    if (home && existsSync(home) && existsSync(path.join(home, "wave.lock"))) {
+    if (home && existsSync(home) && existsSync(path.join(home, "nodedrop.lock"))) {
         return home;
     }
     return null;
