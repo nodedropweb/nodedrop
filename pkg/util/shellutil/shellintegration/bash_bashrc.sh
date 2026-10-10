@@ -9,8 +9,8 @@ NODEDROP_WSHBINDIR={{.WSHBINDIR}}
 # after /etc/profile which is likely to clobber the path
 export PATH="$NODEDROP_WSHBINDIR:$PATH"
 
-# Source the dynamic script from wsh token
-eval "$(wsh token "$NODEDROP_SWAPTOKEN" bash 2> /dev/null)"
+# Source the dynamic script from ndsh token
+eval "$(ndsh token "$NODEDROP_SWAPTOKEN" bash 2> /dev/null)"
 unset NODEDROP_SWAPTOKEN
 
 # Source the first of ~/.bash_profile, ~/.bash_login, or ~/.profile that exists
@@ -27,7 +27,7 @@ if [[ ":$PATH:" != *":$NODEDROP_WSHBINDIR:"* ]]; then
 fi
 unset NODEDROP_WSHBINDIR
 if type _init_completion &>/dev/null; then
-  source <(wsh completion bash)
+  source <(ndsh completion bash)
 fi
 
 # extdebug breaks bash-preexec semantics; bail out cleanly

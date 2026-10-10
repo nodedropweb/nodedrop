@@ -458,7 +458,7 @@ func maybeStartPprofServer() {
 
 func main() {
 	log.SetFlags(0) // disable timestamp since electron's winston logger already wraps with timestamp
-	log.SetPrefix("[wavesrv] ")
+	log.SetPrefix("[nodedropsrv] ")
 	wavebase.WaveVersion = WaveVersion
 	wavebase.BuildTime = BuildTime
 	wshutil.DefaultRouter = wshutil.NewWshRouter()
@@ -532,7 +532,7 @@ func main() {
 		}()
 		err := shellutil.InitCustomShellStartupFiles()
 		if err != nil {
-			log.Printf("error initializing wsh and shell-integration files: %v\n", err)
+			log.Printf("error initializing ndsh and shell-integration files: %v\n", err)
 		}
 	}()
 	firstLaunch, err := wcore.EnsureInitialData()

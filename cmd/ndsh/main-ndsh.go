@@ -4,7 +4,7 @@
 package main
 
 import (
-	"github.com/nodedropweb/nodedrop/cmd/wsh/cmd"
+	"github.com/nodedropweb/nodedrop/cmd/ndsh/cmd"
 	"github.com/nodedropweb/nodedrop/pkg/wavebase"
 )
 

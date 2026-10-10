@@ -232,7 +232,7 @@ const QuickTips = () => {
                     <div className="flex flex-col gap-2 p-4 bg-black/20 rounded-lg border border-accent-400/30 hover:border-accent-400/50 transition-colors">
                         <code className="font-mono text-sm">
                             <span className="text-secondary">&gt; </span>
-                            <span className="text-accent-400 font-semibold">wsh view</span>
+                            <span className="text-accent-400 font-semibold">ndsh view</span>
                             <span className="text-muted"> [filename|url]</span>
                         </code>
                         <div className="text-secondary text-sm mt-1">{t("quickTips.wshViewDesc")}</div>
@@ -240,7 +240,7 @@ const QuickTips = () => {
                     <div className="flex flex-col gap-2 p-4 bg-black/20 rounded-lg border border-accent-400/30 hover:border-accent-400/50 transition-colors">
                         <code className="font-mono text-sm">
                             <span className="text-secondary">&gt; </span>
-                            <span className="text-accent-400 font-semibold">wsh edit</span>
+                            <span className="text-accent-400 font-semibold">ndsh edit</span>
                             <span className="text-muted"> [filename]</span>
                         </code>
                         <div className="text-secondary text-sm mt-1">{t("quickTips.wshEditDesc")}</div>

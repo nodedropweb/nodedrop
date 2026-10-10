@@ -9,7 +9,7 @@ import { globalEvents } from "emain/emain-events";
 import path from "path";
 import { getElectronAppBasePath, isDevVite, unamePlatform } from "./emain-platform";
 import { calculateWindowBounds, MinWindowHeight, MinWindowWidth } from "./emain-window";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 
 export type BuilderWindowType = BrowserWindow & {
     builderId: string;

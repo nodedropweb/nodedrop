@@ -195,7 +195,7 @@ func testWshExec(connName string, cmd string, timeout time.Duration) error {
 		return fmt.Errorf("failed to parse connection string: %w", err)
 	}
 
-	log.Printf("Connecting to %s with wsh enabled...", opts.String())
+	log.Printf("Connecting to %s with ndsh enabled...", opts.String())
 
 	conn := conncontroller.GetConn(opts)
 	ctx, cancel := context.WithTimeout(context.Background(), timeout)
@@ -210,15 +210,15 @@ func testWshExec(connName string, cmd string, timeout time.Duration) error {
 	}
 
 	status := conn.DeriveConnStatus()
-	log.Printf("✓ Connected! (wsh enabled: %v)", status.WshEnabled)
+	log.Printf("✓ Connected! (ndsh enabled: %v)", status.WshEnabled)
 	if status.WshVersion != "" {
-		log.Printf("  wsh version: %s", status.WshVersion)
+		log.Printf("  ndsh version: %s", status.WshVersion)
 	}
 	if !status.WshEnabled {
-		log.Printf("  WARNING: wsh not enabled - reason: %s", status.NoWshReason)
+		log.Printf("  WARNING: ndsh not enabled - reason: %s", status.NoWshReason)
 	}
 
-	log.Printf("Starting wsh-enabled shell...")
+	log.Printf("Starting ndsh-enabled shell...")
 
 	swapToken := &shellutil.TokenSwapEntry{
 		Token: uuid.New().String(),

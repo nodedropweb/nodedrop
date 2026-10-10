@@ -35,13 +35,13 @@ const UpgradeOnboardingModal_v0_14_2_Content = () => {
                             </li>
                             <li>
                                 <strong>
-                                    <code>wsh badge</code>
+                                    <code>ndsh badge</code>
                                 </strong>{" "}
                                 - {t("onboardingUpgrade.v0142.wshBadgeBody")}
                             </li>
                             <li>
                                 <strong>{t("onboardingUpgrade.v0142.claudeIntegrationLabel")}</strong> -{" "}
-                                {t("onboardingUpgrade.v0142.claudeIntegrationBodyPrefix")} <code>wsh badge</code>{" "}
+                                {t("onboardingUpgrade.v0142.claudeIntegrationBodyPrefix")} <code>ndsh badge</code>{" "}
                                 {t("onboardingUpgrade.v0142.claudeIntegrationBodySuffix")}{" "}
                                 <button
                                     onClick={() =>

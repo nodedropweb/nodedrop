@@ -61,7 +61,7 @@
         "splitRight": "Rechts teilen",
         "splitBelow": "Unten teilen",
         "splitInDirection": "In Richtung teilen",
-        "wshCommands": "wsh-Befehle",
+        "wshCommands": "ndsh-Befehle",
         "wshViewDesc": "Dateien, Verzeichnisse oder Web-URLs in der Vorschau anzeigen",
         "wshEditDesc": "Konfigurations- und Code-Dateien bearbeiten",
         "moreTips": "Weitere Tipps",
@@ -169,7 +169,7 @@
         "web": "Web"
     },
     "connStatus": {
-        "alwaysDisableWsh": "wsh immer deaktivieren",
+        "alwaysDisableWsh": "ndsh immer deaktivieren",
         "connectingTo": "Verbindung zu \"{{connName}}\" wird hergestellt...",
         "connectionStalled": "Verbindung ins Stocken geraten",
         "connectionStalledText": "Die Verbindung zu \"{{connName}}\" ist ins Stocken geraten",
@@ -179,7 +179,7 @@
         "moreThanADay": "mehr als ein Tag",
         "noActivityFor": "(keine Aktivität seit {{elapsedTime}})",
         "reconnect": "Erneut verbinden",
-        "unableToUseWsh": "wsh kann nicht verwendet werden:"
+        "unableToUseWsh": "ndsh kann nicht verwendet werden:"
     },
     "connectionButton": {
         "connectedTo": "Verbunden mit {{connection}}",
@@ -190,7 +190,7 @@
         "connectionStalled": "Verbindung ins Stocken geraten: {{connection}}",
         "disconnectedFrom": "Getrennt von {{connection}}",
         "errorConnectingTo": "Fehler beim Verbinden mit {{connection}}",
-        "wshNotInstalled": "wsh ist für diese Verbindung nicht installiert"
+        "wshNotInstalled": "ndsh ist für diese Verbindung nicht installiert"
     },
     "durableSession": {
         "learnMore": "Mehr erfahren",
@@ -1271,9 +1271,9 @@
     "userInput": {
         "texts": {
             "installWshTitle": "Wave-Shell-Erweiterungen installieren",
-            "installWshQuery": "Wave benötigt die Wave-Shell-Erweiterungen (wsh) auf \"{{name}}\", damit alles reibungslos funktioniert.\n\nMöchtest du sie installieren?",
-            "installWshOk": "wsh installieren",
-            "installWshCancel": "Kein wsh",
+            "installWshQuery": "Wave benötigt die Wave-Shell-Erweiterungen (ndsh) auf \"{{name}}\", damit alles reibungslos funktioniert.\n\nMöchtest du sie installieren?",
+            "installWshOk": "ndsh installieren",
+            "installWshCancel": "Kein ndsh",
             "installWshAuto": "Automatisch für alle Verbindungen installieren",
             "passphraseTitle": "Publickey-Anmeldung + Passphrase",
             "passphraseQuery": "Passphrase für den SSH-Schlüssel eingeben: {{file}}",

@@ -7,7 +7,7 @@ cd "$HOME/testcp"
 touch foo.txt
 
 # this is different from cp behavior
-wsh file copy foo.txt baz/
+ndsh file copy foo.txt baz/
 
 if [ ! -f baz/foo.txt ]; then
     echo "baz/foo.txt does not exist"

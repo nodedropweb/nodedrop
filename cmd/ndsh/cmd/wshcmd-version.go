@@ -20,7 +20,7 @@ var versionJSON bool
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
 	Use:   "version [-v] [--json]",
-	Short: "Print the version number of wsh",
+	Short: "Print the version number of ndsh",
 	RunE:  runVersionCmd,
 }
 
@@ -32,7 +32,7 @@ func init() {
 
 func runVersionCmd(cmd *cobra.Command, args []string) error {
 	if !versionVerbose && !versionJSON {
-		WriteStdout("wsh v%s\n", wavebase.WaveVersion)
+		WriteStdout("ndsh v%s\n", wavebase.WaveVersion)
 		return nil
 	}
 

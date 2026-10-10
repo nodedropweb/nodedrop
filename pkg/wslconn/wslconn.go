@@ -247,7 +247,7 @@ func (conn *WslConn) GetConfigShellPath() string {
 }
 
 // returns (needsInstall, clientVersion, osArchStr, error)
-// if wsh is not installed, the clientVersion will be "not-installed", and it will also return an osArchStr
+// if ndsh is not installed, the clientVersion will be "not-installed", and it will also return an osArchStr
 // if clientVersion is set, then no osArchStr will be returned
 func (conn *WslConn) StartConnServer(ctx context.Context, afterUpdate bool) (bool, string, string, error) {
 	conn.Infof(ctx, "running StartConnServer...\n")
@@ -289,17 +289,17 @@ func (conn *WslConn) StartConnServer(ctx context.Context, afterUpdate bool) (boo
 	versionLine, err := utilfn.ReadLineWithTimeout(linesChan, 30*time.Second)
 	if err != nil {
 		cancelFn()
-		return false, "", "", fmt.Errorf("error reading wsh version: %w", err)
+		return false, "", "", fmt.Errorf("error reading ndsh version: %w", err)
 	}
 	conn.Infof(ctx, "got connserver version: %s\n", strings.TrimSpace(versionLine))
 	isUpToDate, clientVersion, osArchStr, err := conncontroller.IsWshVersionUpToDate(ctx, versionLine)
 	if err != nil {
 		cancelFn()
-		return false, "", "", fmt.Errorf("error checking wsh version: %w", err)
+		return false, "", "", fmt.Errorf("error checking ndsh version: %w", err)
 	}
 	if isUpToDate && !afterUpdate && os.Getenv(wavebase.WaveWshForceUpdateVarName) != "" {
 		isUpToDate = false
-		conn.Infof(ctx, "%s set, forcing wsh update\n", wavebase.WaveWshForceUpdateVarName)
+		conn.Infof(ctx, "%s set, forcing ndsh update\n", wavebase.WaveWshForceUpdateVarName)
 	}
 	conn.Infof(ctx, "connserver up-to-date: %v\n", isUpToDate)
 	if !isUpToDate {
@@ -362,17 +362,17 @@ Would you like to install them?
 `)
 
 func (conn *WslConn) UpdateWsh(ctx context.Context, clientDisplayName string, remoteInfo *wshrpc.RemoteInfo) error {
-	conn.Infof(ctx, "attempting to update wsh for connection %s (os:%s arch:%s version:%s)\n",
+	conn.Infof(ctx, "attempting to update ndsh for connection %s (os:%s arch:%s version:%s)\n",
 		conn.GetName(), remoteInfo.ClientOs, remoteInfo.ClientArch, remoteInfo.ClientVersion)
 	client := conn.GetClient()
 	if client == nil {
-		return fmt.Errorf("cannot update wsh: ssh client is not connected")
+		return fmt.Errorf("cannot update ndsh: ssh client is not connected")
 	}
 	err := CpWshToRemote(ctx, client, remoteInfo.ClientOs, remoteInfo.ClientArch)
 	if err != nil {
-		return fmt.Errorf("error installing wsh to remote: %w", err)
+		return fmt.Errorf("error installing ndsh to remote: %w", err)
 	}
-	conn.Infof(ctx, "successfully updated wsh on %s\n", conn.GetName())
+	conn.Infof(ctx, "successfully updated ndsh on %s\n", conn.GetName())
 	return nil
 
 }
@@ -388,8 +388,8 @@ func (conn *WslConn) getPermissionToInstallWsh(ctx context.Context, clientDispla
 		Title:        title,
 		Markdown:     true,
 		CheckBoxMsg:  "Automatically install for all connections",
-		OkLabel:      "Install wsh",
-		CancelLabel:  "No wsh",
+		OkLabel:      "Install ndsh",
+		CancelLabel:  "No ndsh",
 	}
 	conn.Infof(ctx, "requesting user confirmation...\n")
 	response, err := userinput.GetUserInput(ctx, request)
@@ -397,7 +397,7 @@ func (conn *WslConn) getPermissionToInstallWsh(ctx context.Context, clientDispla
 		conn.Infof(ctx, "error getting user input: %v\n", err)
 		return false, err
 	}
-	conn.Infof(ctx, "user response to allowing wsh: %v\n", response.Confirm)
+	conn.Infof(ctx, "user response to allowing ndsh: %v\n", response.Confirm)
 	meta := make(map[string]any)
 	meta["conn:wshenabled"] = response.Confirm
 	conn.Infof(ctx, "writing conn:wshenabled=%v to connections.json\n", response.Confirm)
@@ -442,10 +442,10 @@ func (conn *WslConn) InstallWsh(ctx context.Context, osArchStr string) error {
 	conn.Infof(ctx, "detected remote platform os:%s arch:%s\n", clientOs, clientArch)
 	err = CpWshToRemote(ctx, client, clientOs, clientArch)
 	if err != nil {
-		conn.Infof(ctx, "ERROR copying wsh binary to remote: %v\n", err)
-		return fmt.Errorf("error copying wsh binary to remote: %w", err)
+		conn.Infof(ctx, "ERROR copying ndsh binary to remote: %v\n", err)
+		return fmt.Errorf("error copying ndsh binary to remote: %w", err)
 	}
-	conn.Infof(ctx, "successfully installed wsh\n")
+	conn.Infof(ctx, "successfully installed ndsh\n")
 	return nil
 }
 
@@ -522,7 +522,7 @@ func (conn *WslConn) Connect(ctx context.Context) error {
 				},
 			})
 		} else {
-			conn.Infof(ctx, "successfully connected (wsh:%v)\n\n", conn.WshEnabled.Load())
+			conn.Infof(ctx, "successfully connected (ndsh:%v)\n\n", conn.WshEnabled.Load())
 			conn.Status = Status_Connected
 			conn.LastConnectTime = time.Now().UnixMilli()
 			if conn.ActiveConnNum == 0 {
@@ -555,7 +555,7 @@ func WithLockRtn[T any](conn *WslConn, fn func() T) T {
 	return fn()
 }
 
-// returns (enable-wsh, ask-before-install)
+// returns (enable-ndsh, ask-before-install)
 func (conn *WslConn) getConnWshSettings() (bool, bool) {
 	config := wconfig.GetWatcher().GetFullConfig()
 	enableWsh := config.Settings.ConnWshEnabled
@@ -583,22 +583,22 @@ type WshCheckResult struct {
 	WshError      error
 }
 
-// returns (wsh-enabled, clientVersion, text-reason, wshError)
+// returns (ndsh-enabled, clientVersion, text-reason, wshError)
 func (conn *WslConn) tryEnableWsh(ctx context.Context, clientDisplayName string) WshCheckResult {
 	conn.Infof(ctx, "running tryEnableWsh...\n")
 	enableWsh, askBeforeInstall := conn.getConnWshSettings()
-	conn.Infof(ctx, "wsh settings enable:%v ask:%v\n", enableWsh, askBeforeInstall)
+	conn.Infof(ctx, "ndsh settings enable:%v ask:%v\n", enableWsh, askBeforeInstall)
 	if !enableWsh {
 		return WshCheckResult{NoWshReason: "conn:wshenabled set to false"}
 	}
 	if askBeforeInstall {
 		allowInstall, err := conn.getPermissionToInstallWsh(ctx, clientDisplayName)
 		if err != nil {
-			log.Printf("error getting permission to install wsh: %v\n", err)
+			log.Printf("error getting permission to install ndsh: %v\n", err)
 			return WshCheckResult{NoWshReason: "error getting user permission to install", WshError: err}
 		}
 		if !allowInstall {
-			return WshCheckResult{NoWshReason: "user selected not to install wsh extensions"}
+			return WshCheckResult{NoWshReason: "user selected not to install ndsh extensions"}
 		}
 	}
 	err := conn.OpenDomainSocketListener(ctx)
@@ -617,9 +617,9 @@ func (conn *WslConn) tryEnableWsh(ctx context.Context, clientDisplayName string)
 		conn.Infof(ctx, "connserver needs to be (re)installed\n")
 		err = conn.InstallWsh(ctx, osArchStr)
 		if err != nil {
-			conn.Infof(ctx, "ERROR installing wsh: %v\n", err)
-			err = fmt.Errorf("error installing wsh: %w", err)
-			return WshCheckResult{NoWshReason: "error installing wsh/connserver", WshError: err}
+			conn.Infof(ctx, "ERROR installing ndsh: %v\n", err)
+			err = fmt.Errorf("error installing ndsh: %w", err)
+			return WshCheckResult{NoWshReason: "error installing ndsh/connserver", WshError: err}
 		}
 		needsInstall, clientVersion, _, err = conn.StartConnServer(ctx, true)
 		if err != nil {
@@ -688,10 +688,10 @@ func (conn *WslConn) connectInternal(ctx context.Context) error {
 	wshResult := conn.tryEnableWsh(ctx, conn.GetName())
 	if !wshResult.WshEnabled {
 		if wshResult.WshError != nil {
-			conn.Infof(ctx, "ERROR enabling wsh: %v\n", wshResult.WshError)
-			conn.Infof(ctx, "will connect with wsh disabled\n")
+			conn.Infof(ctx, "ERROR enabling ndsh: %v\n", wshResult.WshError)
+			conn.Infof(ctx, "will connect with ndsh disabled\n")
 		} else {
-			conn.Infof(ctx, "wsh not enabled: %s\n", wshResult.NoWshReason)
+			conn.Infof(ctx, "ndsh not enabled: %s\n", wshResult.NoWshReason)
 		}
 	}
 	conn.persistWshInstalled(ctx, wshResult)

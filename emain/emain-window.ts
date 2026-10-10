@@ -20,7 +20,7 @@ import { log } from "./emain-log";
 import { getElectronAppBasePath, isDev, unamePlatform } from "./emain-platform";
 import { getOrCreateWebViewForTab, getWaveTabViewByWebContentsId, WaveTabView } from "./emain-tabview";
 import { delay, ensureBoundsAreVisible, waveKeyToElectronKey } from "./emain-util";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 import { updater } from "./updater";
 
 const DevInitTimeoutMs = 5000;

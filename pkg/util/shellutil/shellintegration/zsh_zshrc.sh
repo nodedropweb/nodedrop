@@ -1,7 +1,7 @@
-# add wsh to path, source dynamic script from wsh token
+# add ndsh to path, source dynamic script from ndsh token
 NODEDROP_WSHBINDIR={{.WSHBINDIR}}
 export PATH="$NODEDROP_WSHBINDIR:$PATH"
-source <(wsh token "$NODEDROP_SWAPTOKEN" zsh 2>/dev/null)
+source <(ndsh token "$NODEDROP_SWAPTOKEN" zsh 2>/dev/null)
 unset NODEDROP_SWAPTOKEN
 
 # Source the original zshrc only if ZDOTDIR has not been changed
@@ -15,7 +15,7 @@ fi
 unset NODEDROP_WSHBINDIR
 
 if [[ -n ${_comps+x} ]]; then
-  source <(wsh completion zsh)
+  source <(ndsh completion zsh)
 fi
 
 # fix history (macos)

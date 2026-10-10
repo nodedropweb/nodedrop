@@ -176,7 +176,7 @@ export const FilesPage = ({ onFinish, onPrev }: { onFinish: () => void; onPrev?:
             RpcApi.RecordTEventCommand(TabRpcClient, {
                 event: "onboarding:fire",
                 props: {
-                    "onboarding:feature": "wsh",
+                    "onboarding:feature": "ndsh",
                     "onboarding:version": CurrentOnboardingVersion,
                 },
             });
@@ -215,7 +215,7 @@ export const FilesPage = ({ onFinish, onPrev }: { onFinish: () => void; onPrev?:
                                     <p className="mb-2">
                                         {t("onboardingFeatures.filesViewPrefix")}{" "}
                                         <span className="font-mono font-semibold text-foreground">
-                                            wsh view [filename]
+                                            ndsh view [filename]
                                         </span>{" "}
                                         {t("onboardingFeatures.filesViewSuffix")}
                                     </p>
@@ -228,7 +228,7 @@ export const FilesPage = ({ onFinish, onPrev }: { onFinish: () => void; onPrev?:
                                     <p className="mb-2">
                                         {t("onboardingFeatures.filesEditPrefix")}{" "}
                                         <span className="font-mono font-semibold text-foreground">
-                                            wsh edit [filename]
+                                            ndsh edit [filename]
                                         </span>{" "}
                                         {t("onboardingFeatures.filesEditSuffix")}
                                     </p>

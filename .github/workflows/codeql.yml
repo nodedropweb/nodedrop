@@ -119,7 +119,7 @@ jobs:
               if: matrix.language == 'go'
               run: |
                   task build:server
-                  task build:wsh
+                  task build:ndsh
 
             # ℹ️ Command-line programs to run using the OS shell.
             # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun

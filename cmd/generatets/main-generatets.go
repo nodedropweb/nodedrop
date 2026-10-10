@@ -29,7 +29,7 @@ func generateTypesFile(tsTypesMap map[reflect.Type]string) error {
 	}
 	err = tsgen.GenerateWshServerTypes(tsTypesMap)
 	if err != nil {
-		return fmt.Errorf("error generating wsh server types: %w", err)
+		return fmt.Errorf("error generating ndsh server types: %w", err)
 	}
 	var buf bytes.Buffer
 	fmt.Fprintf(&buf, "// Copyright 2026, Command Line Inc.\n")

@@ -7,7 +7,7 @@ mkdir foo
 touch foo/bar.txt
 cd foo
 
-wsh file copy . ../baz
+ndsh file copy . ../baz
 cd ..
 
 if [ ! -f baz/bar.txt ]; then

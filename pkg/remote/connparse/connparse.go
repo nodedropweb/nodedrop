@@ -14,10 +14,10 @@ import (
 )
 
 const (
-	ConnectionTypeWsh = "wsh"
+	ConnectionTypeWsh = "ndsh"
 
 	ConnHostCurrent = "current"
-	ConnHostWaveSrv = "wavesrv"
+	ConnHostWaveSrv = "nodedropsrv"
 )
 
 var windowsDriveRegex = regexp.MustCompile(`^[a-zA-Z]:`)

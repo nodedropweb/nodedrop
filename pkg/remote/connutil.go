@@ -95,7 +95,7 @@ cat > {{.tempPath}} || exit 1;
 mv {{.tempPath}} {{.installPath}} || exit 1;
 chmod a+x {{.installPath}} || exit 1;
 `)
-var installTemplate = template.Must(template.New("wsh-install-template").Parse(installTemplateRawDefault))
+var installTemplate = template.Must(template.New("ndsh-install-template").Parse(installTemplateRawDefault))
 
 func CpWshToRemote(ctx context.Context, client *ssh.Client, clientOs string, clientArch string) error {
 	deadline, ok := ctx.Deadline()

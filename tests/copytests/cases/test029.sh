@@ -8,7 +8,7 @@ cd baz
 touch foo.txt
 
 
-wsh file copy foo.txt ..
+ndsh file copy foo.txt ..
 cd ..
 
 if [ ! -f foo.txt ]; then

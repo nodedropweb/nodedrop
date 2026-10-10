@@ -368,7 +368,7 @@ func serverRunRouterDomainSocket(jwtToken string) error {
 	wshfs.RpcClient = client
 	wshfs.RpcClientRouteId = bareRouteId
 
-	// set up the local domain socket listener for local wsh commands
+	// set up the local domain socket listener for local ndsh commands
 	unixListener, err := MakeRemoteUnixListener()
 	if err != nil {
 		return fmt.Errorf("cannot create unix listener: %v", err)
@@ -405,7 +405,7 @@ func serverRunNormal(jwtToken string) error {
 	}
 	wshfs.RpcClient = RpcClient
 	wshfs.RpcClientRouteId = RpcClientRouteId
-	WriteStdout("running wsh connserver (%s)\n", RpcContext.Conn)
+	WriteStdout("running ndsh connserver (%s)\n", RpcContext.Conn)
 	go func() {
 		defer func() {
 			panichandler.PanicHandler("serverRunNormal:RunSysInfoLoop", recover())

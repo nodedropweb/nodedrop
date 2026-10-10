@@ -80,18 +80,18 @@ export function runWaveSrv(handleWSEvent: (evtMsg: WSEventType) => void): Promis
         if (updater?.status == "installing") {
             return;
         }
-        console.log("wavesrv exited, shutting down");
+        console.log("nodedropsrv exited, shutting down");
         setForceQuit(true);
         isWaveSrvDead = true;
         electron.app.quit();
     });
     proc.on("spawn", (e) => {
-        console.log("spawned wavesrv");
+        console.log("spawned nodedropsrv");
         waveSrvProc = proc;
         pResolve(true);
     });
     proc.on("error", (e) => {
-        console.log("error running wavesrv", e);
+        console.log("error running nodedropsrv", e);
         pReject(e);
     });
     const rlStdout = readline.createInterface({

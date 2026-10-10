@@ -30,11 +30,11 @@ Arguments:
   files...               Files to attach (use '-' for stdin)
 
 Examples:
-  git diff | wsh ai -                    # Pipe diff to AI, ask question in UI
-  wsh ai main.go                         # Attach file, ask question in UI
-  wsh ai *.go -m "find bugs"             # Attach files with message
-  wsh ai -s - -m "review" < log.txt      # Stdin + message, auto-submit
-  wsh ai -n config.json                  # New chat with file attached`,
+  git diff | ndsh ai -                    # Pipe diff to AI, ask question in UI
+  ndsh ai main.go                         # Attach file, ask question in UI
+  ndsh ai *.go -m "find bugs"             # Attach files with message
+  ndsh ai -s - -m "review" < log.txt      # Stdin + message, auto-submit
+  ndsh ai -n config.json                  # New chat with file attached`,
 	RunE:                  aiRun,
 	PreRunE:               preRunSetupRpcClient,
 	DisableFlagsInUseLine: true,

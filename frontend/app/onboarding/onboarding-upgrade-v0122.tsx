@@ -51,7 +51,7 @@ const UpgradeOnboardingModal_v0_12_2_Content = () => {
                             <li>{t("onboardingUpgrade.v0122.aiItem1")}</li>
                             <li>
                                 {t("onboardingUpgrade.v0122.aiItem2Prefix")}{" "}
-                                <span className="font-mono">`wsh ai`</span> {t("onboardingUpgrade.v0122.aiItem2Suffix")}
+                                <span className="font-mono">`ndsh ai`</span> {t("onboardingUpgrade.v0122.aiItem2Suffix")}
                             </li>
                             <li>{t("onboardingUpgrade.v0122.aiItem3")}</li>
                             <li>{t("onboardingUpgrade.v0122.aiItem4")}</li>

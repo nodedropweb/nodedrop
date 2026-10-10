@@ -65,7 +65,7 @@ function normalizeMockPath(path: string, basePath = MockHomePath): string {
     if (path == null || path === "") {
         return basePath;
     }
-    if (path.startsWith("wsh://")) {
+    if (path.startsWith("ndsh://")) {
         const url = new URL(path);
         path = url.pathname.replace(/^\/+/, "/");
     }

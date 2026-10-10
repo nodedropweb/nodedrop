@@ -35,7 +35,7 @@ const UpgradeOnboardingModal_v0_14_1_Content = () => {
                             </li>
                             <li>
                                 <strong>{t("onboardingUpgrade.v0141.scrollbackSaveLabel")}</strong> -{" "}
-                                {t("onboardingUpgrade.v0141.scrollbackSaveBodyPrefix")} <code>wsh</code>{" "}
+                                {t("onboardingUpgrade.v0141.scrollbackSaveBodyPrefix")} <code>ndsh</code>{" "}
                                 {t("onboardingUpgrade.v0141.scrollbackSaveBodySuffix")}
                             </li>
                         </ul>

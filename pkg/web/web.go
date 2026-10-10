@@ -341,7 +341,7 @@ func handleStreamFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	no404 := r.URL.Query().Get("no404")
-	// path should already be formatted as a wsh:// URI (e.g. wsh://local/path or wsh://connection/path)
+	// path should already be formatted as a ndsh:// URI (e.g. ndsh://local/path or ndsh://connection/path)
 	err := handleStreamFileFromReader(w, r, path, no404 != "")
 	if err != nil {
 		log.Printf("error streaming file %q: %v\n", path, err)

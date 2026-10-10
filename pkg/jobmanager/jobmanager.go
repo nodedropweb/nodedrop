@@ -128,7 +128,7 @@ func (jm *JobManager) sendJobExited() {
 		return
 	}
 	if attachedClient.WshRpc == nil {
-		log.Printf("sendJobExited: no wsh rpc connection, exit notification not sent\n")
+		log.Printf("sendJobExited: no ndsh rpc connection, exit notification not sent\n")
 		return
 	}
 	if cmd == nil {

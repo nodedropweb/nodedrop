@@ -33,13 +33,13 @@ describe("makeMockWaveEnv", () => {
         const env = makeMockWaveEnv();
 
         const bashrcInfo = await env.rpc.FileInfoCommand(null as any, {
-            info: { path: "wsh://local//Users/mike/.bashrc" },
+            info: { path: "ndsh://local//Users/mike/.bashrc" },
         });
         expect(bashrcInfo.path).toBe("/Users/mike/.bashrc");
         expect(bashrcInfo.mimetype).toBe("text/plain");
 
         const bashrcData = await env.rpc.FileReadCommand(null as any, {
-            info: { path: "wsh://local//Users/mike/.bashrc" },
+            info: { path: "ndsh://local//Users/mike/.bashrc" },
         });
         expect(base64ToString(bashrcData.data64)).toContain('alias gs="git status -sb"');
 
@@ -61,7 +61,7 @@ describe("makeMockWaveEnv", () => {
         expect(dirRead.entries.some((entry) => entry.name === "docs" && entry.isdir)).toBe(true);
 
         const joined = await env.rpc.FileJoinCommand(null as any, [
-            "wsh://local//Users/mike/Documents",
+            "ndsh://local//Users/mike/Documents",
             "../nodedrop/docs",
             "preview-notes.md",
         ]);

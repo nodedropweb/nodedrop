@@ -6,7 +6,7 @@ cd "$HOME/testcp"
 touch foo.txt
 mkdir baz
 
-wsh file copy foo.txt baz/bar.txt
+ndsh file copy foo.txt baz/bar.txt
 
 if [ ! -f baz/bar.txt ]; then
     echo "baz/bar.txt does not exist"

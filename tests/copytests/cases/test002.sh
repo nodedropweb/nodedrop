@@ -5,7 +5,7 @@ cd "$HOME/testcp"
 touch foo.txt
 echo "The quick brown fox jumps over the lazy dog" > foo.txt
 
-wsh file copy foo.txt bar.txt
+ndsh file copy foo.txt bar.txt
 
 
 FOO_MD5=$(md5sum foo.txt | cut -d " " -f1)

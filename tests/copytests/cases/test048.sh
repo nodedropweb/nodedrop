@@ -9,7 +9,7 @@ mkdir baz
 cd foo
 
 
-wsh file copy . ../baz
+ndsh file copy . ../baz
 cd ..
 
 

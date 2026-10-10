@@ -31,7 +31,7 @@ var ValidEventNames = map[string]bool{
 	"action:termdurable": true,
 	"action:link":        true,
 
-	"wsh:run": true,
+	"ndsh:run": true,
 
 	"debug:panic": true,
 
@@ -127,9 +127,9 @@ type TEventProps struct {
 	AiBackendType string `json:"ai:backendtype,omitempty"`
 	AiLocal       bool   `json:"ai:local,omitempty"`
 
-	WshCmd        string `json:"wsh:cmd,omitempty"`
-	WshErrorCount int    `json:"wsh:errorcount,omitempty"`
-	WshCount      int    `json:"wsh:count,omitempty"`
+	WshCmd        string `json:"ndsh:cmd,omitempty"`
+	WshErrorCount int    `json:"ndsh:errorcount,omitempty"`
+	WshCount      int    `json:"ndsh:count,omitempty"`
 
 	ConnType         string `json:"conn:conntype,omitempty"`
 	ConnWshErrorCode string `json:"conn:wsherrorcode,omitempty"`
@@ -137,7 +137,7 @@ type TEventProps struct {
 	ConnSubErrorCode string `json:"conn:suberrorcode,omitempty"`
 	ConnContextError bool   `json:"conn:contexterror,omitempty"`
 
-	OnboardingFeature    string `json:"onboarding:feature,omitempty" tstype:"\"waveai\" | \"durable\" | \"magnify\" | \"wsh\""`
+	OnboardingFeature    string `json:"onboarding:feature,omitempty" tstype:"\"waveai\" | \"durable\" | \"magnify\" | \"ndsh\""`
 	OnboardingVersion    string `json:"onboarding:version,omitempty"`
 	OnboardingGithubStar string `json:"onboarding:githubstar,omitempty" tstype:"\"already\" | \"star\" | \"later\""`
 	OnboardingPage       string `json:"onboarding:page,omitempty"`

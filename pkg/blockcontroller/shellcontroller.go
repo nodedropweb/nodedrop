@@ -449,8 +449,8 @@ func (bc *ShellController) setupAndStartShellProcess(logCtx context.Context, rc 
 			if err != nil {
 				wslConn.SetWshError(err)
 				wslConn.WshEnabled.Store(false)
-				blocklogger.Infof(logCtx, "[conndebug] error starting wsl shell proc with wsh: %v\n", err)
-				blocklogger.Infof(logCtx, "[conndebug] attempting install without wsh\n")
+				blocklogger.Infof(logCtx, "[conndebug] error starting wsl shell proc with ndsh: %v\n", err)
+				blocklogger.Infof(logCtx, "[conndebug] attempting install without ndsh\n")
 				shellProc, err = shellexec.StartWslShellProcNoWsh(ctx, rc.TermSize, cmdStr, cmdOpts, wslConn)
 				if err != nil {
 					return nil, err
@@ -482,8 +482,8 @@ func (bc *ShellController) setupAndStartShellProcess(logCtx context.Context, rc 
 			if err != nil {
 				conn.SetWshError(err)
 				conn.WshEnabled.Store(false)
-				blocklogger.Infof(logCtx, "[conndebug] error starting remote shell proc with wsh: %v\n", err)
-				blocklogger.Infof(logCtx, "[conndebug] attempting install without wsh\n")
+				blocklogger.Infof(logCtx, "[conndebug] error starting remote shell proc with ndsh: %v\n", err)
+				blocklogger.Infof(logCtx, "[conndebug] attempting install without ndsh\n")
 				shellProc, err = shellexec.StartRemoteShellProcNoWsh(ctx, rc.TermSize, cmdStr, cmdOpts, conn)
 				if err != nil {
 					return nil, err

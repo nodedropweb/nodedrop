@@ -32,7 +32,7 @@ const (
 URI format: [profile]:[uri-scheme]://[connection]/[path]
 
 Supported URI schemes:
-  wsh:
+  ndsh:
     Used to access files on remote hosts over SSH via the WSH helper. Allows
     for file streaming to Wave and other remotes.
 
@@ -42,7 +42,7 @@ Supported URI schemes:
     If a profile is provided, it must be defined in "profiles.json" in the Wave
     configuration directory.
 
-    Format: wsh://[remote]/[path]
+    Format: ndsh://[remote]/[path]
 
     Shorthands can be used for the current remote and your local computer:
       [path]              a relative or absolute path on the current remote
@@ -89,7 +89,7 @@ var fileListCmd = &cobra.Command{
 	Aliases: []string{"list"},
 	Short:   "list files",
 	Long:    "List files in a directory. By default, lists files in the current directory." + UriHelpText,
-	Example: "  wsh file ls wsh://user@ec2/home/user/",
+	Example: "  ndsh file ls ndsh://user@ec2/home/user/",
 	RunE:    activityWrap("file", fileListRun),
 	PreRunE: preRunSetupRpcClient,
 }
@@ -98,7 +98,7 @@ var fileCatCmd = &cobra.Command{
 	Use:     "cat [uri]",
 	Short:   "display contents of a file",
 	Long:    "Display the contents of a file." + UriHelpText,
-	Example: "  wsh file cat wsh://user@ec2/home/user/config.txt",
+	Example: "  ndsh file cat ndsh://user@ec2/home/user/config.txt",
 	Args:    cobra.ExactArgs(1),
 	RunE:    activityWrap("file", fileCatRun),
 	PreRunE: preRunSetupRpcClient,
@@ -108,7 +108,7 @@ var fileInfoCmd = &cobra.Command{
 	Use:     "info [uri]",
 	Short:   "show wave file information",
 	Long:    "Show information about a file." + UriHelpText,
-	Example: "  wsh file info wsh://user@ec2/home/user/config.txt",
+	Example: "  ndsh file info ndsh://user@ec2/home/user/config.txt",
 	Args:    cobra.ExactArgs(1),
 	RunE:    activityWrap("file", fileInfoRun),
 	PreRunE: preRunSetupRpcClient,
@@ -118,7 +118,7 @@ var fileRmCmd = &cobra.Command{
 	Use:     "rm [uri]",
 	Short:   "remove a file",
 	Long:    "Remove a file." + UriHelpText,
-	Example: "  wsh file rm wsh://user@ec2/home/user/config.txt",
+	Example: "  ndsh file rm ndsh://user@ec2/home/user/config.txt",
 	Args:    cobra.ExactArgs(1),
 	RunE:    activityWrap("file", fileRmRun),
 	PreRunE: preRunSetupRpcClient,
@@ -128,7 +128,7 @@ var fileWriteCmd = &cobra.Command{
 	Use:     "write [uri]",
 	Short:   "write stdin into a file (up to 10MB)",
 	Long:    "Write stdin into a file, buffering input (10MB total file size limit)." + UriHelpText,
-	Example: "  echo 'hello' | wsh file write ./greeting.txt",
+	Example: "  echo 'hello' | ndsh file write ./greeting.txt",
 	Args:    cobra.ExactArgs(1),
 	RunE:    activityWrap("file", fileWriteRun),
 	PreRunE: preRunSetupRpcClient,
@@ -138,7 +138,7 @@ var fileAppendCmd = &cobra.Command{
 	Use:     "append [uri]",
 	Short:   "append stdin to a file",
 	Long:    "Append stdin to a file, buffering input (10MB total file size limit)." + UriHelpText,
-	Example: "  tail -f log.txt | wsh file append ./app.log",
+	Example: "  tail -f log.txt | ndsh file append ./app.log",
 	Args:    cobra.ExactArgs(1),
 	RunE:    activityWrap("file", fileAppendRun),
 	PreRunE: preRunSetupRpcClient,
@@ -149,7 +149,7 @@ var fileCpCmd = &cobra.Command{
 	Aliases: []string{"copy"},
 	Short:   "copy files between storage systems, recursively if needed",
 	Long:    "Copy files between different storage systems." + UriHelpText,
-	Example: "  wsh file cp wsh://user@ec2/home/user/config.txt ./local-config.txt\n  wsh file cp ./local-config.txt wsh://user@ec2/home/user/config.txt",
+	Example: "  ndsh file cp ndsh://user@ec2/home/user/config.txt ./local-config.txt\n  ndsh file cp ./local-config.txt ndsh://user@ec2/home/user/config.txt",
 	Args:    cobra.ExactArgs(2),
 	RunE:    activityWrap("file", fileCpRun),
 	PreRunE: preRunSetupRpcClient,
@@ -160,7 +160,7 @@ var fileMvCmd = &cobra.Command{
 	Aliases: []string{"move"},
 	Short:   "move files between storage systems",
 	Long:    "Move files between different storage systems. The source file will be deleted once the operation completes successfully." + UriHelpText,
-	Example: "  wsh file mv wsh://user@ec2/home/user/config.txt ./local-config.txt\n  wsh file mv ./local-config.txt wsh://user@ec2/home/user/config.txt",
+	Example: "  ndsh file mv ndsh://user@ec2/home/user/config.txt ./local-config.txt\n  ndsh file mv ./local-config.txt ndsh://user@ec2/home/user/config.txt",
 	Args:    cobra.ExactArgs(2),
 	RunE:    activityWrap("file", fileMvRun),
 	PreRunE: preRunSetupRpcClient,

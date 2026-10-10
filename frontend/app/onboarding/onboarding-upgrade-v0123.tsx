@@ -76,7 +76,7 @@ const UpgradeOnboardingModal_v0_12_3_Content = () => {
                             </li>
                             <li>
                                 {t("onboardingUpgrade.v0123.secretCliPrefix")}{" "}
-                                <span className="font-mono">wsh secret list/get/set</span>{" "}
+                                <span className="font-mono">ndsh secret list/get/set</span>{" "}
                                 {t("onboardingUpgrade.v0123.secretCliSuffix")}
                             </li>
                         </ul>

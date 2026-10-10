@@ -61,7 +61,7 @@
         "splitRight": "Split Right",
         "splitBelow": "Split Below",
         "splitInDirection": "Split in Direction",
-        "wshCommands": "wsh commands",
+        "wshCommands": "ndsh commands",
         "wshViewDesc": "Preview files, directories, or web URLs",
         "wshEditDesc": "Edit config and code files",
         "moreTips": "More Tips",
@@ -169,7 +169,7 @@
         "web": "Web"
     },
     "connStatus": {
-        "alwaysDisableWsh": "always disable wsh",
+        "alwaysDisableWsh": "always disable ndsh",
         "connectingTo": "Connecting to \"{{connName}}\"...",
         "connectionStalled": "Connection Stalled",
         "connectionStalledText": "Connection to \"{{connName}}\" is stalled",
@@ -179,7 +179,7 @@
         "moreThanADay": "more than a day",
         "noActivityFor": "(no activity for {{elapsedTime}})",
         "reconnect": "Reconnect",
-        "unableToUseWsh": "unable to use wsh:"
+        "unableToUseWsh": "unable to use ndsh:"
     },
     "connectionButton": {
         "connectedTo": "Connected to {{connection}}",
@@ -190,7 +190,7 @@
         "connectionStalled": "Connection stalled: {{connection}}",
         "disconnectedFrom": "Disconnected from {{connection}}",
         "errorConnectingTo": "Error connecting to {{connection}}",
-        "wshNotInstalled": "wsh is not installed for this connection"
+        "wshNotInstalled": "ndsh is not installed for this connection"
     },
     "durableSession": {
         "learnMore": "Learn More",
@@ -1272,8 +1272,8 @@
         "texts": {
             "installWshTitle": "Install Wave Shell Extensions",
             "installWshQuery": "Wave requires Wave Shell Extensions to be installed on \"{{name}}\" to ensure a seamless experience.\n\nWould you like to install them?",
-            "installWshOk": "Install wsh",
-            "installWshCancel": "No wsh",
+            "installWshOk": "Install ndsh",
+            "installWshCancel": "No ndsh",
             "installWshAuto": "Automatically install for all connections",
             "passphraseTitle": "Publickey Auth + Passphrase",
             "passphraseQuery": "Enter passphrase for the SSH key: {{file}}",

@@ -165,15 +165,15 @@ function getElectronAppResourcesPath(): string {
     return process.resourcesPath;
 }
 
-const wavesrvBinName = `wavesrv.${unameArch}`;
+const nodedropsrvBinName = `nodedropsrv.${unameArch}`;
 
 function getWaveSrvPath(): string {
     if (process.platform === "win32") {
-        const winBinName = `${wavesrvBinName}.exe`;
+        const winBinName = `${nodedropsrvBinName}.exe`;
         const appPath = path.join(getElectronAppUnpackedBasePath(), "bin", winBinName);
         return `${appPath}`;
     }
-    return path.join(getElectronAppUnpackedBasePath(), "bin", wavesrvBinName);
+    return path.join(getElectronAppUnpackedBasePath(), "bin", nodedropsrvBinName);
 }
 
 function getWaveSrvCwd(): string {

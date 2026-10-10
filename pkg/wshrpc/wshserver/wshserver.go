@@ -3,7 +3,7 @@
 
 package wshserver
 
-// this file contains the implementation of the wsh server methods
+// this file contains the implementation of the ndsh server methods
 
 import (
 	"context"
@@ -690,14 +690,14 @@ func (ws *WshServer) ConnUpdateWshCommand(ctx context.Context, remoteInfo wshrpc
 		return false, fmt.Errorf("invalid remote info: missing connection name")
 	}
 
-	log.Printf("checking wsh version for connection %s (current: %s)", connName, remoteInfo.ClientVersion)
+	log.Printf("checking ndsh version for connection %s (current: %s)", connName, remoteInfo.ClientVersion)
 	upToDate, _, _, err := conncontroller.IsWshVersionUpToDate(ctx, remoteInfo.ClientVersion)
 	if err != nil {
-		return false, fmt.Errorf("unable to compare wsh version: %w", err)
+		return false, fmt.Errorf("unable to compare ndsh version: %w", err)
 	}
 	if upToDate {
 		// no need to update
-		log.Printf("wsh is already up to date for connection %s", connName)
+		log.Printf("ndsh is already up to date for connection %s", connName)
 		return false, nil
 	}
 
@@ -716,7 +716,7 @@ func (ws *WshServer) ConnUpdateWshCommand(ctx context.Context, remoteInfo wshrpc
 	}
 	err = conn.UpdateWsh(ctx, connName, &remoteInfo)
 	if err != nil {
-		return false, fmt.Errorf("wsh update failed for connection %s: %w", connName, err)
+		return false, fmt.Errorf("ndsh update failed for connection %s: %w", connName, err)
 	}
 
 	// todo: need to add code for modifying configs?
@@ -1338,7 +1338,7 @@ func (ws *WshServer) WshActivityCommand(ctx context.Context, data map[string]int
 	activityUpdate := wshrpc.ActivityUpdate{
 		WshCmds: data,
 	}
-	telemetry.GoUpdateActivityWrap(activityUpdate, "wsh-activity")
+	telemetry.GoUpdateActivityWrap(activityUpdate, "ndsh-activity")
 	telemetry.GoRecordTEventWrap(&telemetrydata.TEvent{
 		Event: telemetry.WshRunEventName,
 		Props: props,

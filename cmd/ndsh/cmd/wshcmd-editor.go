@@ -36,11 +36,11 @@ func editorRun(cmd *cobra.Command, args []string) (rtnErr error) {
 	}()
 	if len(args) == 0 {
 		OutputHelpMessage(cmd)
-		return fmt.Errorf("no arguments.  wsh editor requires a file or URL as an argument argument")
+		return fmt.Errorf("no arguments.  ndsh editor requires a file or URL as an argument argument")
 	}
 	if len(args) > 1 {
 		OutputHelpMessage(cmd)
-		return fmt.Errorf("too many arguments.  wsh editor requires exactly one argument")
+		return fmt.Errorf("too many arguments.  ndsh editor requires exactly one argument")
 	}
 	fileArg := args[0]
 	absFile, err := filepath.Abs(fileArg)

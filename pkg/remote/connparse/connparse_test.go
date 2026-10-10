@@ -10,7 +10,7 @@ func TestParseURI_WSHWithScheme(t *testing.T) {
 	t.Parallel()
 
 	// Test with localhost
-	cstr := "wsh://user@localhost:8080/path/to/file"
+	cstr := "ndsh://user@localhost:8080/path/to/file"
 	c, err := connparse.ParseURI(cstr)
 	if err != nil {
 		t.Fatalf("failed to parse URI: %v", err)
@@ -28,7 +28,7 @@ func TestParseURI_WSHWithScheme(t *testing.T) {
 	if pathWithHost != expected {
 		t.Fatalf("expected path with host to be \"%q\", got \"%q\"", expected, pathWithHost)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
@@ -37,7 +37,7 @@ func TestParseURI_WSHWithScheme(t *testing.T) {
 	}
 
 	// Test with an IP address
-	cstr = "wsh://user@192.168.0.1:22/path/to/file"
+	cstr = "ndsh://user@192.168.0.1:22/path/to/file"
 	c, err = connparse.ParseURI(cstr)
 	if err != nil {
 		t.Fatalf("failed to parse URI: %v", err)
@@ -55,7 +55,7 @@ func TestParseURI_WSHWithScheme(t *testing.T) {
 	if pathWithHost != expected {
 		t.Fatalf("expected path with host to be \"%q\", got \"%q\"", expected, pathWithHost)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.GetType() != expected {
 		t.Fatalf("expected conn type to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
@@ -85,11 +85,11 @@ func TestParseURI_WSHRemoteShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://conn/path/to/file"
+	expected = "ndsh://conn/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -108,11 +108,11 @@ func TestParseURI_WSHRemoteShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://user@localhost:8080/path/to/file"
+	expected = "ndsh://user@localhost:8080/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -131,11 +131,11 @@ func TestParseURI_WSHRemoteShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://user@192.168.0.1:8080/path/to/file"
+	expected = "ndsh://user@192.168.0.1:8080/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -158,11 +158,11 @@ func TestParseURI_WSHCurrentPathShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://current/~/path/to/file"
+	expected = "ndsh://current/~/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -181,11 +181,11 @@ func TestParseURI_WSHCurrentPathShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://current/path/to/file"
+	expected = "ndsh://current/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -205,11 +205,11 @@ func TestParseURI_WSHCurrentPath(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://current/./Documents/path/to/file"
+	expected = "ndsh://current/./Documents/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -227,11 +227,11 @@ func TestParseURI_WSHCurrentPath(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be %q, got %q", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be %q, got %q", expected, c.Scheme)
 	}
-	expected = "wsh://current/path/to/file"
+	expected = "ndsh://current/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be %q, got %q", expected, c.GetFullURI())
 	}
@@ -249,11 +249,11 @@ func TestParseURI_WSHCurrentPath(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be %q, got %q", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be %q, got %q", expected, c.Scheme)
 	}
-	expected = "wsh://current/etc/path/to/file"
+	expected = "ndsh://current/etc/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be %q, got %q", expected, c.GetFullURI())
 	}
@@ -273,11 +273,11 @@ func TestParseURI_WSHCurrentPathWindows(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://current/.\\Documents\\path\\to\\file"
+	expected = "ndsh://current/.\\Documents\\path\\to\\file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -297,12 +297,12 @@ func TestParseURI_WSHLocalShorthand(t *testing.T) {
 	if c.Host != "local" {
 		t.Fatalf("expected host to be empty, got \"%q\"", c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
 
-	cstr = "wsh:///~/path/to/file"
+	cstr = "ndsh:///~/path/to/file"
 	c, err = connparse.ParseURI(cstr)
 	if err != nil {
 		t.Fatalf("failed to parse URI: %v", err)
@@ -314,11 +314,11 @@ func TestParseURI_WSHLocalShorthand(t *testing.T) {
 	if c.Host != "local" {
 		t.Fatalf("expected host to be empty, got \"%q\"", c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://local/~/path/to/file"
+	expected = "ndsh://local/~/path/to/file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}
@@ -326,7 +326,7 @@ func TestParseURI_WSHLocalShorthand(t *testing.T) {
 
 func TestParseURI_WSHWSL(t *testing.T) {
 	t.Parallel()
-	cstr := "wsh://wsl://Ubuntu/path/to/file"
+	cstr := "ndsh://wsl://Ubuntu/path/to/file"
 
 	testUri := func() {
 		c, err := connparse.ParseURI(cstr)
@@ -341,11 +341,11 @@ func TestParseURI_WSHWSL(t *testing.T) {
 		if c.Host != expected {
 			t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 		}
-		expected = "wsh"
+		expected = "ndsh"
 		if c.Scheme != expected {
 			t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 		}
-		expected = "wsh://wsl://Ubuntu/path/to/file"
+		expected = "ndsh://wsl://Ubuntu/path/to/file"
 		if expected != c.GetFullURI() {
 			t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 		}
@@ -360,7 +360,7 @@ func TestParseURI_WSHWSL(t *testing.T) {
 
 func TestParseUri_LocalWindowsAbsPath(t *testing.T) {
 	t.Parallel()
-	cstr := "wsh://local/C:\\path\\to\\file"
+	cstr := "ndsh://local/C:\\path\\to\\file"
 
 	testAbsPath := func() {
 		c, err := connparse.ParseURI(cstr)
@@ -375,11 +375,11 @@ func TestParseUri_LocalWindowsAbsPath(t *testing.T) {
 		if c.Host != expected {
 			t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 		}
-		expected = "wsh"
+		expected = "ndsh"
 		if c.Scheme != expected {
 			t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 		}
-		expected = "wsh://local/C:\\path\\to\\file"
+		expected = "ndsh://local/C:\\path\\to\\file"
 		if c.GetFullURI() != expected {
 			t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 		}
@@ -406,11 +406,11 @@ func TestParseURI_LocalWindowsRelativeShorthand(t *testing.T) {
 	if c.Host != expected {
 		t.Fatalf("expected host to be \"%q\", got \"%q\"", expected, c.Host)
 	}
-	expected = "wsh"
+	expected = "ndsh"
 	if c.Scheme != expected {
 		t.Fatalf("expected scheme to be \"%q\", got \"%q\"", expected, c.Scheme)
 	}
-	expected = "wsh://local/~\\path\\to\\file"
+	expected = "ndsh://local/~\\path\\to\\file"
 	if c.GetFullURI() != expected {
 		t.Fatalf("expected full URI to be \"%q\", got \"%q\"", expected, c.GetFullURI())
 	}

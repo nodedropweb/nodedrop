@@ -5,7 +5,7 @@ set -e
 cd "$HOME/testcp"
 touch foo.txt
 
-wsh file copy ~/testcp/foo.txt ~/testcp/bar.txt
+ndsh file copy ~/testcp/foo.txt ~/testcp/bar.txt
 
 if [ ! -f bar.txt ]; then
     echo "bar.txt does not exist"

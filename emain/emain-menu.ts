@@ -21,7 +21,7 @@ import {
     relaunchBrowserWindows,
     WaveBrowserWindow,
 } from "./emain-window";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 import { updater } from "./updater";
 
 type AppMenuCallbacks = {

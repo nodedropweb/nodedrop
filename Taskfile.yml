@@ -46,7 +46,7 @@ tasks:
             WCLOUD_WS_ENDPOINT: "wss://wsapi-dev.waveterm.dev"
 
     electron:quickdev:
-        desc: Run the Electron application via the Vite dev server (quick dev - no docsite, arm64 only, no generate, no wsh).
+        desc: Run the Electron application via the Vite dev server (quick dev - no docsite, arm64 only, no generate, no ndsh).
         cmd: npm run dev
         deps:
             - npm:install
@@ -73,7 +73,7 @@ tasks:
             - npm:install
 
     electron:winquickdev:
-        desc: Run the Electron application via the Vite dev server (quick dev - Windows amd64 only, no generate, no wsh).
+        desc: Run the Electron application via the Vite dev server (quick dev - Windows amd64 only, no generate, no ndsh).
         cmd: npm run dev
         deps:
             - npm:install
@@ -142,13 +142,13 @@ tasks:
             - npm:install
 
     build:backend:
-        desc: Build the wavesrv and wsh components.
+        desc: Build the nodedropsrv and ndsh components.
         cmds:
             - task: build:server
-            - task: build:wsh
+            - task: build:ndsh
 
     build:backend:quickdev:
-        desc: Build only the wavesrv component for quickdev (arm64 macOS only, no generate, no wsh).
+        desc: Build only the nodedropsrv component for quickdev (arm64 macOS only, no generate, no ndsh).
         cmds:
             - task: build:server:quickdev
         sources:
@@ -176,7 +176,7 @@ tasks:
             - task: copyfiles:'schema':'dist/schema'
 
     build:server:
-        desc: Build the wavesrv component.
+        desc: Build the nodedropsrv component.
         cmds:
             - task: build:server:linux
             - task: build:server:macos
@@ -192,20 +192,20 @@ tasks:
             - tsunami/**/*.go
             - package.json
         generates:
-            - dist/bin/wavesrv.*
+            - dist/bin/nodedropsrv.*
 
     build:server:macos:
-        desc: Build the wavesrv component for macOS (Darwin) platforms (generates artifacts for both arm64 and amd64).
+        desc: Build the nodedropsrv component for macOS (Darwin) platforms (generates artifacts for both arm64 and amd64).
         platforms: [darwin]
         cmds:
-            - cmd: rm -f dist/bin/wavesrv*
+            - cmd: rm -f dist/bin/nodedropsrv*
               ignore_error: true
             - task: build:server:internal
               vars:
                   ARCHS: arm64,amd64
 
     build:server:quickdev:
-        desc: Build the wavesrv component for quickdev (arm64 macOS only, no generate).
+        desc: Build the nodedropsrv component for quickdev (arm64 macOS only, no generate).
         platforms: [darwin]
         cmds:
             - task: build:server:internal
@@ -220,10 +220,10 @@ tasks:
             - "pkg/**/*.sh"
             - "tsunami/**/*.go"
         generates:
-            - dist/bin/wavesrv.*
+            - dist/bin/nodedropsrv.*
 
     build:backend:quickdev:windows:
-        desc: Build only the wavesrv component for quickdev (Windows amd64 only, no generate, no wsh).
+        desc: Build only the nodedropsrv component for quickdev (Windows amd64 only, no generate, no ndsh).
         platforms: [windows]
         cmds:
             - task: build:server:internal
@@ -239,13 +239,13 @@ tasks:
             - "pkg/**/*.sh"
             - "tsunami/**/*.go"
         generates:
-            - dist/bin/wavesrv.x64.exe
+            - dist/bin/nodedropsrv.x64.exe
 
     build:server:windows:
-        desc: Build the wavesrv component for Windows platforms (only generates artifacts for the current architecture).
+        desc: Build the nodedropsrv component for Windows platforms (only generates artifacts for the current architecture).
         platforms: [windows]
         cmds:
-            - cmd: powershell -NoProfile -NonInteractive -Command "Remove-Item -Force -ErrorAction SilentlyContinue -Path dist/bin/wavesrv*"
+            - cmd: powershell -NoProfile -NonInteractive -Command "Remove-Item -Force -ErrorAction SilentlyContinue -Path dist/bin/nodedropsrv*"
               ignore_error: true
             - task: build:server:internal
               vars:
@@ -255,10 +255,10 @@ tasks:
                       sh: echo "{{if eq "amd64" ARCH}}CC=\"zig cc -target x86_64-windows-gnu\"{{else}}CC=\"zig cc -target aarch64-windows-gnu\"{{end}}"
 
     build:server:linux:
-        desc: Build the wavesrv component for Linux platforms (only generates artifacts for the current architecture).
+        desc: Build the nodedropsrv component for Linux platforms (only generates artifacts for the current architecture).
         platforms: [linux]
         cmds:
-            - cmd: rm -f dist/bin/wavesrv*
+            - cmd: rm -f dist/bin/nodedropsrv*
               ignore_error: true
             - task: build:server:internal
               vars:
@@ -272,70 +272,70 @@ tasks:
             vars:
                 - ARCHS
         cmd:
-            cmd: CGO_ENABLED=1 GOARCH={{.GOARCH}} {{.GO_ENV_VARS}} go build -tags "osusergo,sqlite_omit_load_extension" -ldflags "{{.GO_LDFLAGS}} -X main.BuildTime=$({{.DATE}} +'%Y%m%d%H%M') -X main.WaveVersion={{.VERSION}}" -o dist/bin/wavesrv.{{if eq .GOARCH "amd64"}}x64{{else}}{{.GOARCH}}{{end}}{{exeExt}} cmd/server/main-server.go
+            cmd: CGO_ENABLED=1 GOARCH={{.GOARCH}} {{.GO_ENV_VARS}} go build -tags "osusergo,sqlite_omit_load_extension" -ldflags "{{.GO_LDFLAGS}} -X main.BuildTime=$({{.DATE}} +'%Y%m%d%H%M') -X main.WaveVersion={{.VERSION}}" -o dist/bin/nodedropsrv.{{if eq .GOARCH "amd64"}}x64{{else}}{{.GOARCH}}{{end}}{{exeExt}} cmd/server/main-server.go
             for:
                 var: ARCHS
                 split: ","
                 as: GOARCH
         internal: true
 
-    build:wsh:
-        desc: Build the wsh component for all possible targets.
+    build:ndsh:
+        desc: Build the ndsh component for all possible targets.
         cmds:
-            - cmd: rm -f dist/bin/wsh*
+            - cmd: rm -f dist/bin/ndsh*
               platforms: [darwin, linux]
               ignore_error: true
-            - cmd: powershell -NoProfile -NonInteractive -Command "Remove-Item -Force -ErrorAction SilentlyContinue -Path dist/bin/wsh*"
+            - cmd: powershell -NoProfile -NonInteractive -Command "Remove-Item -Force -ErrorAction SilentlyContinue -Path dist/bin/ndsh*"
               platforms: [windows]
               ignore_error: true
-            - task: build:wsh:parallel
+            - task: build:ndsh:parallel
         deps:
             - go:mod:tidy
             - generate
         sources:
-            - "cmd/wsh/**/*.go"
+            - "cmd/ndsh/**/*.go"
             - "pkg/**/*.go"
             - package.json
         generates:
-            - "dist/bin/wsh*"
+            - "dist/bin/ndsh*"
 
-    build:wsh:parallel:
+    build:ndsh:parallel:
         deps:
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: darwin
                   GOARCH: arm64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: darwin
                   GOARCH: amd64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: linux
                   GOARCH: arm64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: linux
                   GOARCH: amd64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: linux
                   GOARCH: mips
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: linux
                   GOARCH: mips64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: windows
                   GOARCH: amd64
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: windows
                   GOARCH: arm64
         internal: true
 
-    build:wsh:internal:
+    build:ndsh:internal:
         vars:
             EXT:
                 sh: echo {{if eq .GOOS "windows"}}.exe{{end}}
@@ -346,7 +346,7 @@ tasks:
                 - GOOS
                 - GOARCH
                 - VERSION
-        cmd: (CGO_ENABLED=0 GOOS={{.GOOS}} GOARCH={{.GOARCH}} go build -ldflags="-s -w -X main.BuildTime=$({{.DATE}} +'%Y%m%d%H%M') -X main.WaveVersion={{.VERSION}}" -o dist/bin/wsh-{{.VERSION}}-{{.GOOS}}.{{.NORMALIZEDARCH}}{{.EXT}} cmd/wsh/main-wsh.go)
+        cmd: (CGO_ENABLED=0 GOOS={{.GOOS}} GOARCH={{.GOARCH}} go build -ldflags="-s -w -X main.BuildTime=$({{.DATE}} +'%Y%m%d%H%M') -X main.WaveVersion={{.VERSION}}" -o dist/bin/ndsh-{{.VERSION}}-{{.GOOS}}.{{.NORMALIZEDARCH}}{{.EXT}} cmd/ndsh/main-ndsh.go)
         internal: true
 
     build:tsunamiscaffold:
@@ -441,16 +441,16 @@ tasks:
             wingetcreate update {{.WINGET_PACKAGE}} -s -v {{.UP_VERSION}} -u "https://{{.RELEASES_BUCKET}}/{{.APP_NAME}}-win32-x64-{{.UP_VERSION}}.msi" -t {{.GITHUB_TOKEN}}
 
     dev:installwsh:
-        desc: quick shortcut to rebuild wsh and install for macos arm64
+        desc: quick shortcut to rebuild ndsh and install for macos arm64
         requires:
             vars:
                 - VERSION
         cmds:
-            - task: build:wsh:internal
+            - task: build:ndsh:internal
               vars:
                   GOOS: darwin
                   GOARCH: arm64
-            - cp dist/bin/wsh-{{.VERSION}}-darwin.arm64 ~/Library/Application\ Support/nodedrop-dev/bin/wsh
+            - cp dist/bin/ndsh-{{.VERSION}}-darwin.arm64 ~/Library/Application\ Support/nodedrop-dev/bin/ndsh
 
     dev:clearconfig:
         desc: Clear the config directory for nodedrop-dev

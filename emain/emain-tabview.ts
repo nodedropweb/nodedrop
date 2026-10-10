@@ -19,7 +19,7 @@ import {
     shFrameNavHandler,
     shNavHandler,
 } from "./emain-util";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 
 function handleWindowsMenuAccelerators(
     waveEvent: WaveKeyboardEvent,

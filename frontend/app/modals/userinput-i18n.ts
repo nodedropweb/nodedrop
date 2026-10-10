@@ -1,7 +1,7 @@
 // Copyright 2026, Command Line Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-// The Go backend sends user-input prompts (wsh install, SSH auth, known_hosts, ...) as fixed English
+// The Go backend sends user-input prompts (ndsh install, SSH auth, known_hosts, ...) as fixed English
 // strings and does not know the UI language. This maps the known prompts to translations in the
 // frontend; anything that is not recognised is shown unchanged.
 
@@ -10,8 +10,8 @@ type TFn = (key: string, opts?: Record<string, unknown>) => string;
 // exact English text from the backend -> key below "userInput.texts"
 const KnownTexts: Record<string, string> = {
     "Install Wave Shell Extensions": "installWshTitle",
-    "Install wsh": "installWshOk",
-    "No wsh": "installWshCancel",
+    "Install ndsh": "installWshOk",
+    "No ndsh": "installWshCancel",
     "Automatically install for all connections": "installWshAuto",
     "Publickey Auth + Passphrase": "passphraseTitle",
     "Password Authentication": "passwordTitle",
@@ -32,9 +32,9 @@ function translateText(text: string, t: TFn): string {
     if (key != null) {
         return t(`userInput.texts.${key}`);
     }
-    const wsh = InstallWshQuery.exec(text.trim());
-    if (wsh != null) {
-        return t("userInput.texts.installWshQuery", { name: wsh[1] });
+    const ndsh = InstallWshQuery.exec(text.trim());
+    if (ndsh != null) {
+        return t("userInput.texts.installWshQuery", { name: ndsh[1] });
     }
     const pass = PassphraseQuery.exec(text.trim());
     if (pass != null) {

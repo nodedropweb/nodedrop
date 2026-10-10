@@ -27,7 +27,7 @@ import (
 
 const MaxTzNameLen = 50
 const ActivityEventName = "app:activity"
-const WshRunEventName = "wsh:run"
+const WshRunEventName = "ndsh:run"
 
 var cachedTosAgreedTs atomic.Int64
 
@@ -197,7 +197,7 @@ func updateActivityTEvent(ctx context.Context, tevent *telemetrydata.TEvent) err
 	})
 }
 
-// aggregates wsh:run events per (cmd, haderror) key within the current 1-hour bucket
+// aggregates ndsh:run events per (cmd, haderror) key within the current 1-hour bucket
 func updateWshRunTEvent(ctx context.Context, tevent *telemetrydata.TEvent) error {
 	eventTs := time.Now().Truncate(time.Hour).Add(time.Hour)
 	incomingCount := tevent.Props.WshCount
@@ -206,7 +206,7 @@ func updateWshRunTEvent(ctx context.Context, tevent *telemetrydata.TEvent) error
 	}
 	return wstore.WithTx(ctx, func(tx *wstore.TxWrap) error {
 		uuidStr := tx.GetString(
-			`SELECT uuid FROM db_tevent WHERE ts = ? AND event = ? AND json_extract(props, '$."wsh:cmd"') IS ?`,
+			`SELECT uuid FROM db_tevent WHERE ts = ? AND event = ? AND json_extract(props, '$."ndsh:cmd"') IS ?`,
 			eventTs.UnixMilli(), WshRunEventName, tevent.Props.WshCmd,
 		)
 		if uuidStr != "" {
@@ -214,7 +214,7 @@ func updateWshRunTEvent(ctx context.Context, tevent *telemetrydata.TEvent) error
 			rawProps := tx.GetString(`SELECT props FROM db_tevent WHERE uuid = ?`, uuidStr)
 			if rawProps != "" {
 				if err := json.Unmarshal([]byte(rawProps), &curProps); err != nil {
-					log.Printf("error unmarshalling wsh:run props: %v\n", err)
+					log.Printf("error unmarshalling ndsh:run props: %v\n", err)
 				}
 			}
 			curCount := curProps.WshCount

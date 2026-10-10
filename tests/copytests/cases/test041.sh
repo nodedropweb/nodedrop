@@ -7,7 +7,7 @@ mkdir bar
 touch bar/foo.txt
 mkdir baz
 
-wsh file copy bar baz
+ndsh file copy bar baz
 
 if [ ! -f baz/bar/foo.txt ]; then
     echo "baz/bar/foo.txt does not exist"

@@ -74,7 +74,7 @@ try {
     }
 
     Write-Host "==> Building and packaging Wave Terminal for Windows (task package)..." -ForegroundColor Cyan
-    Write-Host "    This installs npm/go dependencies, builds wavesrv + wsh, then runs electron-builder." -ForegroundColor DarkGray
+    Write-Host "    This installs npm/go dependencies, builds nodedropsrv + ndsh, then runs electron-builder." -ForegroundColor DarkGray
     task package
 
     Write-Host ""

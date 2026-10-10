@@ -67,11 +67,11 @@ const CLIInfoBubble = memo(() => {
                 <div className="text-sm font-medium text-zinc-300">{t("waveConfig.cliAccess")}</div>
             </div>
             <div className="font-mono text-xs bg-black/20 px-3 py-2 rounded leading-relaxed text-zinc-300">
-                wsh secret list
+                ndsh secret list
                 <br />
-                wsh secret get [name]
+                ndsh secret get [name]
                 <br />
-                wsh secret set [name]=[value]
+                ndsh secret set [name]=[value]
             </div>
         </div>
     );

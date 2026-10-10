@@ -63,7 +63,7 @@ const WaveDBDir = "db"
 const ConfigDir = "config"
 const RemoteWaveHomeDirName = ".nodedrop"
 const RemoteWshBinDirName = "bin"
-const RemoteFullWshBinPath = "~/.nodedrop/bin/wsh"
+const RemoteFullWshBinPath = "~/.nodedrop/bin/ndsh"
 const RemoteFullDomainSocketPath = "~/.nodedrop/wave-remote.sock"
 
 const AppPathBinDir = "bin"
@@ -321,7 +321,7 @@ func determineLang() string {
 
 		return preferredLang
 	} else {
-		// this is specifically to get the wavesrv LANG so waveshell
+		// this is specifically to get the nodedropsrv LANG so waveshell
 		// on a remote uses the same LANG
 		return os.Getenv("LANG")
 	}
@@ -433,7 +433,7 @@ func ValidateWshSupportedArch(os string, arch string) error {
 	if SupportedWshBinaries[fmt.Sprintf("%s-%s", os, arch)] {
 		return nil
 	}
-	return fmt.Errorf("unsupported wsh platform: %s-%s", os, arch)
+	return fmt.Errorf("unsupported ndsh platform: %s-%s", os, arch)
 }
 
 func getSystemSummary(ctx context.Context) string {

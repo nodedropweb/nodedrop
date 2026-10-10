@@ -170,7 +170,7 @@ export const ConnStatusOverlay = React.memo(
             try {
                 await waveEnv.rpc.DismissWshFailCommand(TabRpcClient, connName);
             } catch (e) {
-                console.log("unable to dismiss wsh error: ", e);
+                console.log("unable to dismiss ndsh error: ", e);
             }
         }, [connName, waveEnv]);
 

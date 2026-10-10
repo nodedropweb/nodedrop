@@ -5,7 +5,7 @@ set -e
 cd "$HOME/testcp"
 mkdir bar
 
-wsh file copy bar/ baz
+ndsh file copy bar/ baz
 if [ ! -d baz ]; then
     echo "baz does not exist"
     exit 1

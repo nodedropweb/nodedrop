@@ -12,7 +12,7 @@ import { fireAndForget } from "../frontend/util/util";
 import { setUserConfirmedQuit } from "./emain-activity";
 import { delay } from "./emain-util";
 import { focusedWaveWindow, getAllWaveWindows } from "./emain-window";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 
 export let updater: Updater;
 

@@ -40,7 +40,7 @@ import {
     unamePlatform,
 } from "./emain-platform";
 import { ensureHotSpareTab, setMaxTabCacheSize } from "./emain-tabview";
-import { getIsWaveSrvDead, getWaveSrvProc, getWaveSrvReady, runWaveSrv } from "./emain-wavesrv";
+import { getIsWaveSrvDead, getWaveSrvProc, getWaveSrvReady, runWaveSrv } from "./emain-nodedropsrv";
 import {
     createBrowserWindow,
     createNewWaveWindow,
@@ -54,7 +54,7 @@ import {
     relaunchBrowserWindows,
     WaveBrowserWindow,
 } from "./emain-window";
-import { ElectronWshClient, initElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient, initElectronWshClient } from "./emain-ndsh";
 import { getLaunchSettings } from "./launchsettings";
 import { configureAutoUpdater, updater } from "./updater";
 
@@ -294,7 +294,7 @@ electronApp.on("before-quit", (e) => {
     updater?.stop();
     if (unamePlatform == "win32") {
         // win32 doesn't have a SIGINT, so we just let electron die, which
-        // ends up killing wavesrv via closing it's stdin.
+        // ends up killing nodedropsrv via closing it's stdin.
         return;
     }
     getWaveSrvProc()?.kill("SIGINT");
@@ -310,13 +310,13 @@ electronApp.on("before-quit", (e) => {
         builder.hide();
     }
     if (getIsWaveSrvDead()) {
-        console.log("wavesrv is dead, quitting immediately");
+        console.log("nodedropsrv is dead, quitting immediately");
         setForceQuit(true);
         electronApp.quit();
         return;
     }
     setTimeout(() => {
-        console.log("waiting for wavesrv to exit...");
+        console.log("waiting for nodedropsrv to exit...");
         setForceQuit(true);
         electronApp.quit();
     }, 3000);
@@ -396,12 +396,12 @@ async function appMain() {
         console.log(e.toString());
     }
     const ready = await getWaveSrvReady();
-    console.log("wavesrv ready signal received", ready, Date.now() - startTs, "ms");
+    console.log("nodedropsrv ready signal received", ready, Date.now() - startTs, "ms");
     await electronApp.whenReady();
     configureAuthKeyRequestInjection(electron.session.defaultSession);
     initIpcHandlers();
 
-    await sleep(10); // wait a bit for wavesrv to be ready
+    await sleep(10); // wait a bit for nodedropsrv to be ready
     try {
         initElectronWshClient();
         initElectronWshrpc(ElectronWshClient, { authKey: AuthKey });

@@ -29,7 +29,7 @@ var connStatusCmd = &cobra.Command{
 
 var connReinstallCmd = &cobra.Command{
 	Use:     "reinstall CONNECTION",
-	Short:   "reinstall wsh on a connection",
+	Short:   "reinstall ndsh on a connection",
 	RunE:    connReinstallRun,
 	PreRunE: preRunSetupRpcClient,
 }
@@ -60,7 +60,7 @@ var connConnectCmd = &cobra.Command{
 
 var connEnsureCmd = &cobra.Command{
 	Use:     "ensure CONNECTION",
-	Short:   "ensure wsh is installed on a connection",
+	Short:   "ensure ndsh is installed on a connection",
 	Args:    cobra.ExactArgs(1),
 	RunE:    connEnsureRun,
 	PreRunE: preRunSetupRpcClient,
@@ -141,7 +141,7 @@ func connReinstallRun(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return fmt.Errorf("reinstalling connection: %w", err)
 	}
-	WriteStdout("wsh reinstalled on connection %q\n", connName)
+	WriteStdout("ndsh reinstalled on connection %q\n", connName)
 	return nil
 }
 
@@ -207,6 +207,6 @@ func connEnsureRun(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return fmt.Errorf("ensuring connection: %w", err)
 	}
-	WriteStdout("wsh ensured on connection %q\n", connName)
+	WriteStdout("ndsh ensured on connection %q\n", connName)
 	return nil
 }

@@ -23,9 +23,9 @@ import { createBuilderWindow, getAllBuilderWindows, getBuilderWindowByWebContent
 import { callWithOriginalXdgCurrentDesktopAsync, unamePlatform } from "./emain-platform";
 import { getWaveTabViewByWebContentsId } from "./emain-tabview";
 import { handleCtrlShiftState } from "./emain-util";
-import { getWaveVersion } from "./emain-wavesrv";
+import { getWaveVersion } from "./emain-nodedropsrv";
 import { createNewWaveWindow, getWaveWindowByWebContentsId } from "./emain-window";
-import { ElectronWshClient } from "./emain-wsh";
+import { ElectronWshClient } from "./emain-ndsh";
 
 const electronApp = electron.app;
 

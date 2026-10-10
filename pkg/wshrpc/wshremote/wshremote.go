@@ -129,11 +129,11 @@ func (impl *ServerImpl) ConnServerInitCommand(ctx context.Context, data wshrpc.C
 
 func (impl *ServerImpl) getWshPath() (string, error) {
 	if impl.IsLocal {
-		return filepath.Join(wavebase.GetWaveDataDir(), "bin", "wsh"), nil
+		return filepath.Join(wavebase.GetWaveDataDir(), "bin", "ndsh"), nil
 	}
-	wshPath, err := wavebase.ExpandHomeDir("~/.nodedrop/bin/wsh")
+	wshPath, err := wavebase.ExpandHomeDir("~/.nodedrop/bin/ndsh")
 	if err != nil {
-		return "", fmt.Errorf("cannot expand wsh path: %w", err)
+		return "", fmt.Errorf("cannot expand ndsh path: %w", err)
 	}
 	return wshPath, nil
 }

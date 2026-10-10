@@ -23,10 +23,10 @@ Usage:
   test-conn [flags] <command> <user@host> [args...]
 
 Commands:
-  connect <user@host>            - Test basic SSH connection with wsh
+  connect <user@host>            - Test basic SSH connection with ndsh
   ssh <user@host>                - Test basic SSH connection
-  exec <user@host> <command>     - Execute command and show output (no wsh)
-  wshexec <user@host> <command>  - Execute command with wsh enabled
+  exec <user@host> <command>     - Execute command and show output (no ndsh)
+  wshexec <user@host> <command>  - Execute command with ndsh enabled
   shell <user@host>              - Start interactive shell session
 
 Flags:
@@ -37,7 +37,7 @@ Flags:
 Examples:
   test-conn ssh user@example.com
   test-conn exec user@example.com "ls -la"
-  test-conn wshexec user@example.com "wsh version"
+  test-conn wshexec user@example.com "ndsh version"
   test-conn -i connect user@example.com
   test-conn shell user@example.com
 

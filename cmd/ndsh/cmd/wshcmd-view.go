@@ -47,11 +47,11 @@ func viewRun(cmd *cobra.Command, args []string) (rtnErr error) {
 	}()
 	if len(args) == 0 {
 		OutputHelpMessage(cmd)
-		return fmt.Errorf("no arguments.  wsh %s requires a file or URL as an argument argument", cmdName)
+		return fmt.Errorf("no arguments.  ndsh %s requires a file or URL as an argument argument", cmdName)
 	}
 	if len(args) > 1 {
 		OutputHelpMessage(cmd)
-		return fmt.Errorf("too many arguments.  wsh %s requires exactly one argument", cmdName)
+		return fmt.Errorf("too many arguments.  ndsh %s requires exactly one argument", cmdName)
 	}
 	tabId := getTabIdFromEnv()
 	if tabId == "" {

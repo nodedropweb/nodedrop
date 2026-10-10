@@ -1,8 +1,8 @@
 # We source this file with -NoExit -File
 $env:PATH = {{.WSHBINDIR_PWSH}} + "{{.PATHSEP}}" + $env:PATH
 
-# Source dynamic script from wsh token
-$nodedrop_swaptoken_output = wsh token $env:NODEDROP_SWAPTOKEN pwsh 2>$null | Out-String
+# Source dynamic script from ndsh token
+$nodedrop_swaptoken_output = ndsh token $env:NODEDROP_SWAPTOKEN pwsh 2>$null | Out-String
 if ($nodedrop_swaptoken_output -and $nodedrop_swaptoken_output -ne "") {
     Invoke-Expression $nodedrop_swaptoken_output
 }
@@ -10,7 +10,7 @@ Remove-Variable -Name nodedrop_swaptoken_output
 Remove-Item Env:NODEDROP_SWAPTOKEN
 
 # Load Wave completions
-wsh completion powershell | Out-String | Invoke-Expression
+ndsh completion powershell | Out-String | Invoke-Expression
 
 if ($PSVersionTable.PSVersion.Major -lt 7) {
     return  # skip OSC setup entirely

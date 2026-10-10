@@ -2,12 +2,12 @@
 # Add Wave binary directory to PATH
 set -x PATH {{.WSHBINDIR}} $PATH
 
-# Source dynamic script from wsh token (the echo is to prevent fish from complaining about empty input)
-wsh token "$NODEDROP_SWAPTOKEN" fish 2>/dev/null | source
+# Source dynamic script from ndsh token (the echo is to prevent fish from complaining about empty input)
+ndsh token "$NODEDROP_SWAPTOKEN" fish 2>/dev/null | source
 set -e NODEDROP_SWAPTOKEN
 
 # Load Wave completions
-wsh completion fish | source
+ndsh completion fish | source
 
 set -g _NODEDROP_SI_FIRSTPROMPT 1
 

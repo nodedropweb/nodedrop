@@ -20,20 +20,20 @@ const chatConfigs: ChatConfig[] = [
         markdownResponse: `Here's a quick, file-structure–driven overview of this repo (Wave Terminal):
 
 ## What it is
-- Electron + React front end with a Go backend ("wavesrv"). Provides a terminal with GUI widgets, previews, web, and AI. (README.md)
+- Electron + React front end with a Go backend ("nodedropsrv"). Provides a terminal with GUI widgets, previews, web, and AI. (README.md)
 - Licensed Apache-2.0. (LICENSE)
 
 ## Architecture at a glance
 - **Electron main process:** \`emain/*.ts\` configures windows, menus, preload scripts, updater, and ties into the Go backend via local RPC. (\`emain/\`)
 - **Renderer UI:** React/TS built with Vite, Tailwind. (\`frontend/\`, \`index.html\`, \`electron.vite.config.ts\`)
-- **Go backend ("wavesrv"):** starts services, web and websocket listeners, telemetry loops, config watcher, local RPC, filestore and SQLite-backed object store. (\`cmd/server/main-server.go\`, \`pkg/*\`)
-- **CLI/helper ("wsh"):** built for multiple OS/arch; used for shell integration and remote operations. (\`cmd/wsh/\`, \`Taskfile.yml build:wsh\`)
+- **Go backend ("nodedropsrv"):** starts services, web and websocket listeners, telemetry loops, config watcher, local RPC, filestore and SQLite-backed object store. (\`cmd/server/main-server.go\`, \`pkg/*\`)
+- **CLI/helper ("ndsh"):** built for multiple OS/arch; used for shell integration and remote operations. (\`cmd/ndsh/\`, \`Taskfile.yml build:ndsh\`)
 
 ## Key directories
 - **cmd/:** entrypoints and generators
-  - \`server/\`: wavesrv main
+  - \`server/\`: nodedropsrv main
   - \`generategs/\`, \`generatego/\`: TS/Go bindings generation
-  - \`wsh/\`: shell helper
+  - \`ndsh/\`: shell helper
 
 - **pkg/:** backend packages
   - \`wcore/\`: startup coordination, initial data, window/workspace creation

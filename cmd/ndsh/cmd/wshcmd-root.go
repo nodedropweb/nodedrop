@@ -19,9 +19,9 @@ import (
 
 var (
 	rootCmd = &cobra.Command{
-		Use:          "wsh",
+		Use:          "ndsh",
 		Short:        "CLI tool to control Wave Terminal",
-		Long:         `wsh is a small utility that lets you do cool things with Wave Terminal, right from the command line`,
+		Long:         `ndsh is a small utility that lets you do cool things with Wave Terminal, right from the command line`,
 		SilenceUsage: true,
 	}
 )
@@ -85,7 +85,7 @@ func OutputHelpMessage(cmd *cobra.Command) {
 func preRunSetupRpcClient(cmd *cobra.Command, args []string) error {
 	jwtToken := os.Getenv(wshutil.WaveJwtTokenVarName)
 	if jwtToken == "" {
-		return fmt.Errorf("wsh must be run inside a Wave-managed SSH session (NODEDROP_JWT not found)")
+		return fmt.Errorf("ndsh must be run inside a Wave-managed SSH session (NODEDROP_JWT not found)")
 	}
 	err := setupRpcClient(nil, jwtToken)
 	if err != nil {
@@ -228,10 +228,10 @@ func getTabIdFromEnv() string {
 	return os.Getenv("NODEDROP_TABID")
 }
 
-// this will send wsh activity to the client running on *your* local machine (it does not contact any wave cloud infrastructure)
+// this will send ndsh activity to the client running on *your* local machine (it does not contact any wave cloud infrastructure)
 // if you've turned off telemetry in your local client, this data never gets sent to us
 // no parameters or timestamps are sent, as you can see below, it just sends the name of the command (and if there was an error)
-// (e.g. "wsh ai ..." would send "ai")
+// (e.g. "ndsh ai ..." would send "ai")
 // this helps us understand which commands are actually being used so we know where to concentrate our effort
 func sendActivity(wshCmdName string, success bool) {
 	if RpcClient == nil || wshCmdName == "" {
