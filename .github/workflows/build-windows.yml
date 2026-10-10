@@ -37,6 +37,11 @@ jobs:
                   version: 3.x
                   repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+            # Install dependencies up front: the Taskfile starts the tsunami frontend build in parallel
+            # with "npm install", which fails on a clean checkout.
+            - name: Install npm dependencies
+              run: npm ci
+
             - name: Build installer and zip
               shell: pwsh
               run: task package -- --win nsis zip
