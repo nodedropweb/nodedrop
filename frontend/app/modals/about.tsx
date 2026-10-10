@@ -55,15 +55,6 @@ const AboutModalV = ({ versionString, updaterChannel, onClose }: AboutModalVProp
                         {t("about.github")}
                     </a>
                     <a
-                        href="https://www.waveterm.dev/?ref=about"
-                        target="_blank"
-                        rel="noopener"
-                        className="inline-flex items-center justify-center px-4 py-2 rounded border border-border hover:bg-hoverbg transition-colors duration-200"
-                    >
-                        <i className="fa-sharp fa-light fa-globe mr-2"></i>
-                        {t("about.website")}
-                    </a>
-                    <a
                         href="https://github.com/nodedropweb/waveterm/blob/main/ACKNOWLEDGEMENTS.md"
                         target="_blank"
                         rel="noopener"
@@ -71,15 +62,6 @@ const AboutModalV = ({ versionString, updaterChannel, onClose }: AboutModalVProp
                     >
                         <i className="fa-sharp fa-light fa-book mr-2"></i>
                         {t("about.openSource")}
-                    </a>
-                    <a
-                        href="https://github.com/sponsors/wavetermdev"
-                        target="_blank"
-                        rel="noopener"
-                        className="inline-flex items-center justify-center px-4 py-2 rounded border border-border hover:bg-hoverbg transition-colors duration-200"
-                    >
-                        <i className="fa-sharp fa-light fa-heart mr-2"></i>
-                        {t("about.sponsor")}
                     </a>
                 </div>
                 <div className="items-center gap-4 self-stretch w-full text-center">

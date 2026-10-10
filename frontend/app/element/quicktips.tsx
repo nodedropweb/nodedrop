@@ -289,19 +289,6 @@ const QuickTips = () => {
                 <div className="grid grid-cols-1 @sm:grid-cols-2 gap-2">
                     <div className="flex items-center gap-3 p-3 rounded-md bg-black/20 hover:bg-black/30 transition-colors cursor-pointer">
                         <IconBox variant="secondary">
-                            <i className="fa-brands fa-discord fa-fw" />
-                        </IconBox>
-                        <a
-                            target="_blank"
-                            href="https://discord.gg/XfvZ334gwU"
-                            rel="noopener"
-                            className="hover:text-accent-400 hover:underline transition-colors font-medium"
-                        >
-                            {t("quickTips.joinDiscord")}
-                        </a>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-md bg-black/20 hover:bg-black/30 transition-colors cursor-pointer">
-                        <IconBox variant="secondary">
                             <i className="fa-solid fa-sharp fa-sliders fa-fw" />
                         </IconBox>
                         <a

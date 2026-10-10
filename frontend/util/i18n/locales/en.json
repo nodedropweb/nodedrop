@@ -9,7 +9,7 @@
         "website": "Website",
         "openSource": "Open Source",
         "sponsor": "Sponsor",
-        "copyright": "© {{year}} Command Line Inc."
+        "copyright": "NodeDrop Terminal is based on Wave Terminal, © Command Line Inc. (Apache-2.0)"
     },
     "modal": {
         "ok": "Ok",

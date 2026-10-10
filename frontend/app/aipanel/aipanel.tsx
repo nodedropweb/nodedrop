@@ -154,26 +154,9 @@ const AIWelcomeMessage = memo(() => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-start gap-3">
-                            <div className="w-4 text-center flex-shrink-0">
-                                <i className="fa-brands fa-discord text-accent"></i>
-                            </div>
-                            <div>
-                                {t("aiPanel.questionsOrFeedback")}{" "}
-                                <a
-                                    target="_blank"
-                                    href="https://discord.gg/XfvZ334gwU"
-                                    rel="noopener"
-                                    className="text-accent hover:underline cursor-pointer"
-                                >
-                                    {t("aiPanel.joinDiscord")}
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 {!hasCustomModes && <BYOKAnnouncement />}
-                <div className="mt-4 text-center text-[12px] text-muted">{t("aiPanel.betaNotice")}</div>
             </div>
         </div>
     );
